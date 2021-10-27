@@ -1,8 +1,13 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import ReactDOM from 'react-dom';
 
 const App = () => {
-  return <h1>Hello world!</h1>
+  const [random, setRandom] = useState('hello world');
+  return (
+    <div>
+      <h1>{ random }</h1>
+    </div>
+  );
 };
 
-ReactDOM.render(<App />, document.getElementById('root'))
+ReactDOM.render(<App />, document.getElementById('root'));
