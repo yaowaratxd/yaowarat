@@ -1,12 +1,27 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import ReactDOM from 'react-dom';
+
+import styled from 'styled-components';
+
+import sampleData from './sampleData.json'
+
+// import './index.css';
+
+const Root =  styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+`;
+
 
 const App = () => {
   const [random, setRandom] = useState('hello world');
+  const [allThings, setAllThings] = useState(sampleData);
+  console.log(sampleData);
   return (
-    <div>
+    <Root>
       <h1>{ random }</h1>
-    </div>
+    </Root>
   );
 };
 
