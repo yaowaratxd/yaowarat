@@ -13,7 +13,7 @@ const ProductDetail = ({ product }) => {
   return <Container>
     <h1>{ product.name }</h1>
     <h4>{ product.category }</h4>
-    <p>{ product.price }</p>
+    <p>{ product.default_price }</p>
   </Container>
 };
 
