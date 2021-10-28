@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom';
 
 import styled from 'styled-components';
 
+import ImageGallery from './components/overview/ImageGallery.jsx';
 import sampleData from './sampleData.json'
 
 // import './index.css';
@@ -21,6 +22,7 @@ const App = () => {
   return (
     <Root>
       <h1>{ random }</h1>
+      <ImageGallery />
     </Root>
   );
 };
