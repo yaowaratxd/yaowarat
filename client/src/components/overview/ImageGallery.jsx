@@ -4,16 +4,19 @@ import styled from 'styled-components';
 
 const Tile = styled.img`
 height: 10%;
-widht:  10%;
 border: 1px solid black;
-`
+`;
 const LeftRibbon = styled.div`
-width: 15%;
+width: 15vw;
 position: absolute;
 left: 5%;
 height: 80vh;
 overflow: scroll;
-`
+`;
+const ImageContainer = styled.div`
+width: 10vw;
+`;
+
 
 const ImageGallery = ({ product }) => {
   const [selectedImage, setSelectedImage] = useState({});
@@ -35,14 +38,20 @@ const ImageGallery = ({ product }) => {
       temp = [...temp, stylings[i]['photos']];
       }
       setAllImages(temp);
+      setSelectedImage(temp[0][0].url);
     });
   }, []);
 
   return <div>
-    <LeftRibbon>
-    { allImages.map((imag) => imag.map((im) =>  <Tile key={im.thumbnail_url} src={im.thumbnail_url} /> )
-    )}
-    </LeftRibbon>
+    <div>
+      <img src={selectedImage} />
+        <LeftRibbon>
+          <ImageContainer>
+          { allImages.map((imag) => imag.map((im) =>  <Tile onClick={() => setSelectedImage(im.url)} key={im.thumbnail_url} src={im.thumbnail_url} /> )
+          )}
+        </ImageContainer>
+        </LeftRibbon>
+      </div>
   </div>
 };
 

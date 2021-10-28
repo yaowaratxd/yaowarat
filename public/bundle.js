@@ -2911,7 +2911,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var styled_components__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! styled-components */ "./node_modules/styled-components/dist/styled-components.browser.esm.js");
-var _templateObject, _templateObject2;
+var _templateObject, _templateObject2, _templateObject3;
 
 function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _unsupportedIterableToArray(arr) || _nonIterableSpread(); }
 
@@ -2938,8 +2938,9 @@ function _taggedTemplateLiteral(strings, raw) { if (!raw) { raw = strings.slice(
 
 
 
-var Tile = styled_components__WEBPACK_IMPORTED_MODULE_2__["default"].img(_templateObject || (_templateObject = _taggedTemplateLiteral(["\nheight: 10%;\nwidht:  10%;\nborder: 1px solid black;\n"])));
-var LeftRibbon = styled_components__WEBPACK_IMPORTED_MODULE_2__["default"].div(_templateObject2 || (_templateObject2 = _taggedTemplateLiteral(["\nwidth: 15%;\nposition: absolute;\nleft: 5%;\nheight: 80vh;\noverflow: scroll;\n"])));
+var Tile = styled_components__WEBPACK_IMPORTED_MODULE_2__["default"].img(_templateObject || (_templateObject = _taggedTemplateLiteral(["\nheight: 10%;\nborder: 1px solid black;\n"])));
+var LeftRibbon = styled_components__WEBPACK_IMPORTED_MODULE_2__["default"].div(_templateObject2 || (_templateObject2 = _taggedTemplateLiteral(["\nwidth: 15vw;\nposition: absolute;\nleft: 5%;\nheight: 80vh;\noverflow: scroll;\n"])));
+var ImageContainer = styled_components__WEBPACK_IMPORTED_MODULE_2__["default"].div(_templateObject3 || (_templateObject3 = _taggedTemplateLiteral(["\nwidth: 10vw;\n"])));
 
 var ImageGallery = function ImageGallery(_ref) {
   var product = _ref.product;
@@ -2976,16 +2977,22 @@ var ImageGallery = function ImageGallery(_ref) {
       }
 
       setAllImages(temp);
+      setSelectedImage(temp[0][0].url);
     });
   }, []);
-  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(LeftRibbon, null, allImages.map(function (imag) {
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("img", {
+    src: selectedImage
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(LeftRibbon, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(ImageContainer, null, allImages.map(function (imag) {
     return imag.map(function (im) {
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(Tile, {
+        onClick: function onClick() {
+          return setSelectedImage(im.url);
+        },
         key: im.thumbnail_url,
         src: im.thumbnail_url
       });
     });
-  })));
+  })))));
 };
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (ImageGallery);
@@ -33358,7 +33365,6 @@ var App = function App() {
       allThings = _useState4[0],
       setAllThings = _useState4[1];
 
-  console.log(_sampleData_json__WEBPACK_IMPORTED_MODULE_3__);
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(Root, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h1", null, random), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_components_overview_ImageGallery_jsx__WEBPACK_IMPORTED_MODULE_2__["default"], {
     product: allThings[0]
   }));
