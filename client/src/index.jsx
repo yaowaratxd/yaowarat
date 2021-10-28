@@ -22,7 +22,7 @@ const App = () => {
   return (
     <Root>
       <h1>{ random }</h1>
-      <ImageGallery />
+      <ImageGallery product={allThings[0]}/>
     </Root>
   );
 };
