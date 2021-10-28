@@ -28,30 +28,7 @@ height: 60vh;
 width: 40vw;
 `;
 
-const ImageGallery = ({ product }) => {
-  const [selectedImage, setSelectedImage] = useState({});
-  const [allImages, setAllImages] = useState([]);
-  const [styles, setStyles] = useState([]);
-
-  const fetchImages = (productId, callback) => {
-    axios.get(`/api/products/${productId}/styles`).then((results) => {
-      let container = [];
-      setStyles(results.data.results);
-      callback(results.data.results);
-    })
-  };
-
-  useEffect(() => {
-    fetchImages(product.id, (stylings) => {
-      let temp = [];
-      for (let i = 0; i < stylings.length; ++i) {
-      temp = [...temp, stylings[i]['photos']];
-      }
-      setAllImages(temp);
-      setSelectedImage(temp[0][0].url);
-    });
-  }, []);
-
+const ImageGallery = ({ allImages, selectedImage, setSelectedImage }) => {
   return <div>
     <div>
       <BaseImage src={selectedImage} />

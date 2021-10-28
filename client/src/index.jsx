@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 
 import styled from 'styled-components';
 
-import ImageGallery from './components/overview/ImageGallery.jsx';
+import Overview from './components/overview/Overview.jsx';
 import sampleData from './sampleData.json'
 
 // import './index.css';
@@ -18,9 +18,9 @@ const Root =  styled.div`
 const App = () => {
   const [random, setRandom] = useState('hello world');
   const [allThings, setAllThings] = useState(sampleData);
-  return (
+  return (  
     <Root>
-      <ImageGallery product={allThings[0]}/>
+      <Overview product={allThings[0]}/>
     </Root>
   );
 };
