@@ -5829,10 +5829,15 @@ var ImageGallery = function ImageGallery(_ref) {
     }
   };
 
-  var leftButton = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", null);
-  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(ClickyButton, {
-    onClick: handleClickLeft
-  }, "Left"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(BaseImage, {
+  var renderLeftButton = function renderLeftButton() {
+    if (allImages.length > 0) {
+      return allImages[0][0].url === selectedImage ? '' : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(ClickyButton, {
+        onClick: handleClickLeft
+      }, "Left");
+    }
+  };
+
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, renderLeftButton(), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(BaseImage, {
     src: selectedImage
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(ClickyButton, {
     onClick: handleClickRight

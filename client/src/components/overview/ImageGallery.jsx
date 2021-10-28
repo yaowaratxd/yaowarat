@@ -71,10 +71,14 @@ const ImageGallery = ({ allImages, selectedImage, setSelectedImage }) => {
     }
   };
 
-  const leftButton = <button></button>
+  const renderLeftButton = () => {
+    if (allImages.length > 0) {
+      return allImages[0][0].url === selectedImage ? '' : <ClickyButton onClick={handleClickLeft}>Left</ClickyButton>;
+    }
+  };
   return <div>
     <div>
-      <ClickyButton onClick={handleClickLeft}>Left</ClickyButton>
+  { renderLeftButton() }
         <BaseImage src={selectedImage} />
         <ClickyButton onClick={handleClickRight}>Right</ClickyButton>
         <LeftRibbon>
