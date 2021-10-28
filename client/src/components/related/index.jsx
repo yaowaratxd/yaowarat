@@ -1,34 +1,65 @@
 import React from 'react';
 import axios from 'axios';
 import config from '/config.js';
-// config.js
+import OneRelatedProduct from './OneRelatedProduct.jsx'
+
 
 class Related extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       currentBook: placeholder,
+      relatedProducts: [],
     };
     this.getRelated = this.getRelated.bind(this);
+
+  }
+
+  componentDidMount() {
+    this.getRelated();
   }
 
   getRelated() {
-    axios.get('/products/1', {
+    // console.log('get fired');
+    axios.get(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfe/products/${this.state.currentBook.id}/related`, {
       headers: {
-        Authorization: `token ${config.TOKEN}`
-      }
+        authorization: `${config.TOKEN}`,
+      },
     })
-    .then(results => {console.log(results)})
-  };
+      .then((results) => { this.setState({relatedProductsKey: results.data}); })
+      .then(() => {
+        for (var i = 0; i < this.state.relatedProductsKey.length; i++) {
+          this.getBook(this.state.relatedProductsKey[i]);
+        }
+      });
+  }
+
+  getBook(bookID) {
+    axios.get(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfe/products/${bookID}/`, {
+      headers: {
+        authorization: `${config.TOKEN}`,
+      },
+    })
+      .then((results) => {
+        this.setState({ relatedProducts: this.state.relatedProducts.concat(results.data)});
+      });
+  }
+
+
 
 
 
   render() {
     return (
-      <div>related text placeholder</div>
-    );
+      <div>current product selected: <em>{this.state.currentBook.name}</em>
+        <ul>
+          {this.state.relatedProducts.map( function(oneProduct) {
+            return <OneRelatedProduct product={oneProduct} />
+          })}
+        </ul>
+      </div>
+    )
   }
-
 
 }
 

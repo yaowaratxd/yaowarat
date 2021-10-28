@@ -7,10 +7,10 @@ const App = () => {
   const [random, setRandom] = useState('hello world');
   return (
     <div>
-      <h1>Overview</h1>
-      <h1>Ratings and Reviews</h1>
-      <h1>Questions and Answers</h1>
-      <h1><Related /></h1>
+      <h3>Overview</h3>
+      <h3>Ratings and Reviews</h3>
+      <h3>Questions and Answers</h3>
+      <h2><Related /></h2>
     </div>
   );
 };
