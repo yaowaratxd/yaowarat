@@ -18,7 +18,7 @@ const Root =  styled.div`
 const App = () => {
   const [random, setRandom] = useState('hello world');
   const [allThings, setAllThings] = useState(sampleData);
-  return (  
+  return (
     <Root>
       <Overview product={allThings[0]}/>
     </Root>
