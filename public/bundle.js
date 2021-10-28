@@ -2911,7 +2911,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var styled_components__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! styled-components */ "./node_modules/styled-components/dist/styled-components.browser.esm.js");
-var _templateObject;
+var _templateObject, _templateObject2;
 
 function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _unsupportedIterableToArray(arr) || _nonIterableSpread(); }
 
@@ -2939,6 +2939,7 @@ function _taggedTemplateLiteral(strings, raw) { if (!raw) { raw = strings.slice(
 
 
 var Tile = styled_components__WEBPACK_IMPORTED_MODULE_2__["default"].img(_templateObject || (_templateObject = _taggedTemplateLiteral(["\nheight: 10%;\nwidht:  10%;\nborder: 1px solid black;\n"])));
+var LeftRibbon = styled_components__WEBPACK_IMPORTED_MODULE_2__["default"].div(_templateObject2 || (_templateObject2 = _taggedTemplateLiteral(["\nwidth: 15%;\nposition: absolute;\nleft: 5%;\nheight: 80vh;\noverflow: scroll;\n"])));
 
 var ImageGallery = function ImageGallery(_ref) {
   var product = _ref.product;
@@ -2961,17 +2962,7 @@ var ImageGallery = function ImageGallery(_ref) {
   var fetchImages = function fetchImages(productId, callback) {
     axios__WEBPACK_IMPORTED_MODULE_1___default().get("/api/products/".concat(productId, "/styles")).then(function (results) {
       var container = [];
-      setStyles(results.data.results); // for (let i = 0; i < results.data.results.length; ++i) {
-      //   if (results.data.results[i].photos.length > 0) {
-      //     for (let j = 0; i < results.data.results[i].photos.length; ++j) {
-      //       // console.log(results.data.results[i].photos);
-      //       // container.push(results.data.results[i].photos[j]);
-      //     }
-      //   }
-      // }
-      // console.log(container);
-      // setAllImages(container);
-
+      setStyles(results.data.results);
       callback(results.data.results);
     });
   };
@@ -2987,12 +2978,14 @@ var ImageGallery = function ImageGallery(_ref) {
       setAllImages(temp);
     });
   }, []);
-  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, allImages.map(function (imag) {
-    console.log(imag[0]);
-    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("img", {
-      src: imag[0].thumbnail_url
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(LeftRibbon, null, allImages.map(function (imag) {
+    return imag.map(function (im) {
+      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(Tile, {
+        key: im.thumbnail_url,
+        src: im.thumbnail_url
+      });
     });
-  }));
+  })));
 };
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (ImageGallery);

@@ -7,6 +7,13 @@ height: 10%;
 widht:  10%;
 border: 1px solid black;
 `
+const LeftRibbon = styled.div`
+width: 15%;
+position: absolute;
+left: 5%;
+height: 80vh;
+overflow: scroll;
+`
 
 const ImageGallery = ({ product }) => {
   const [selectedImage, setSelectedImage] = useState({});
@@ -17,16 +24,6 @@ const ImageGallery = ({ product }) => {
     axios.get(`/api/products/${productId}/styles`).then((results) => {
       let container = [];
       setStyles(results.data.results);
-      // for (let i = 0; i < results.data.results.length; ++i) {
-      //   if (results.data.results[i].photos.length > 0) {
-      //     for (let j = 0; i < results.data.results[i].photos.length; ++j) {
-      //       // console.log(results.data.results[i].photos);
-      //       // container.push(results.data.results[i].photos[j]);
-      //     }
-      //   }
-      // }
-      // console.log(container);
-      // setAllImages(container);
       callback(results.data.results);
     })
   };
@@ -42,10 +39,10 @@ const ImageGallery = ({ product }) => {
   }, []);
 
   return <div>
-    { allImages.map((imag) => {
-      console.log(imag[0]);
-      return <img src={imag[0].thumbnail_url} />
-    })}
+    <LeftRibbon>
+    { allImages.map((imag) => imag.map((im) =>  <Tile key={im.thumbnail_url} src={im.thumbnail_url} /> )
+    )}
+    </LeftRibbon>
   </div>
 };
 
