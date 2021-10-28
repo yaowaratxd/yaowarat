@@ -2911,7 +2911,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var styled_components__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! styled-components */ "./node_modules/styled-components/dist/styled-components.browser.esm.js");
-var _templateObject, _templateObject2, _templateObject3;
+var _templateObject, _templateObject2, _templateObject3, _templateObject4;
 
 function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _unsupportedIterableToArray(arr) || _nonIterableSpread(); }
 
@@ -2938,9 +2938,10 @@ function _taggedTemplateLiteral(strings, raw) { if (!raw) { raw = strings.slice(
 
 
 
-var Tile = styled_components__WEBPACK_IMPORTED_MODULE_2__["default"].img(_templateObject || (_templateObject = _taggedTemplateLiteral(["\nheight: 10%;\nborder: 1px solid black;\n"])));
-var LeftRibbon = styled_components__WEBPACK_IMPORTED_MODULE_2__["default"].div(_templateObject2 || (_templateObject2 = _taggedTemplateLiteral(["\nwidth: 15vw;\nposition: absolute;\nleft: 5%;\nheight: 80vh;\noverflow: scroll;\n"])));
+var Tile = styled_components__WEBPACK_IMPORTED_MODULE_2__["default"].img(_templateObject || (_templateObject = _taggedTemplateLiteral(["\nheight: 10vh;\nwidth:  10vw;\nborder: 1px solid black;\nmargin-bottom: 5px;\n"])));
+var LeftRibbon = styled_components__WEBPACK_IMPORTED_MODULE_2__["default"].div(_templateObject2 || (_templateObject2 = _taggedTemplateLiteral(["\nwidth: 15vw;\nposition: absolute;\ntop: 5vh;\nleft: 5%;\nheight: 60vh;\noverflow: scroll;\n"])));
 var ImageContainer = styled_components__WEBPACK_IMPORTED_MODULE_2__["default"].div(_templateObject3 || (_templateObject3 = _taggedTemplateLiteral(["\nwidth: 10vw;\n"])));
+var BaseImage = styled_components__WEBPACK_IMPORTED_MODULE_2__["default"].img(_templateObject4 || (_templateObject4 = _taggedTemplateLiteral(["\nwidth: 25vw;\nposition: absolute;\ntop: 5vh;\nleft: 5%;\nheight: 60vh;\nwidth: 40vw;\n"])));
 
 var ImageGallery = function ImageGallery(_ref) {
   var product = _ref.product;
@@ -2980,7 +2981,7 @@ var ImageGallery = function ImageGallery(_ref) {
       setSelectedImage(temp[0][0].url);
     });
   }, []);
-  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("img", {
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(BaseImage, {
     src: selectedImage
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(LeftRibbon, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(ImageContainer, null, allImages.map(function (imag) {
     return imag.map(function (im) {
@@ -33365,7 +33366,7 @@ var App = function App() {
       allThings = _useState4[0],
       setAllThings = _useState4[1];
 
-  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(Root, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h1", null, random), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_components_overview_ImageGallery_jsx__WEBPACK_IMPORTED_MODULE_2__["default"], {
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(Root, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_components_overview_ImageGallery_jsx__WEBPACK_IMPORTED_MODULE_2__["default"], {
     product: allThings[0]
   }));
 };

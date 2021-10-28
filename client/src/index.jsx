@@ -20,7 +20,6 @@ const App = () => {
   const [allThings, setAllThings] = useState(sampleData);
   return (
     <Root>
-      <h1>{ random }</h1>
       <ImageGallery product={allThings[0]}/>
     </Root>
   );
