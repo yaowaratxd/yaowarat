@@ -3,6 +3,7 @@ import axios from 'axios';
 import styled from 'styled-components';
 
 import ImageGallery from './ImageGallery.jsx';
+import ProductDetail from './ProductDetail.jsx';
 
 const Overview = (props) => {
   const [product, setProduct] = useState({});
@@ -31,6 +32,7 @@ const Overview = (props) => {
 
   return <div>
     <ImageGallery allImages={allImages} selectedImage={selectedImage} setSelectedImage={setSelectedImage} />
+    <ProductDetail product={props.product}/>
   </div>
 
 };

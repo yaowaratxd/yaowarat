@@ -2911,7 +2911,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var styled_components__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! styled-components */ "./node_modules/styled-components/dist/styled-components.browser.esm.js");
-var _templateObject, _templateObject2, _templateObject3, _templateObject4;
+var _templateObject, _templateObject2, _templateObject3, _templateObject4, _templateObject5;
 
 function _taggedTemplateLiteral(strings, raw) { if (!raw) { raw = strings.slice(0); } return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); }
 
@@ -2919,9 +2919,10 @@ function _taggedTemplateLiteral(strings, raw) { if (!raw) { raw = strings.slice(
 
 
 var Tile = styled_components__WEBPACK_IMPORTED_MODULE_2__["default"].img(_templateObject || (_templateObject = _taggedTemplateLiteral(["\nheight: 10vh;\nwidth:  10vw;\nborder: 1px solid black;\nmargin-bottom: 5px;\n"])));
-var LeftRibbon = styled_components__WEBPACK_IMPORTED_MODULE_2__["default"].div(_templateObject2 || (_templateObject2 = _taggedTemplateLiteral(["\nwidth: 15vw;\nposition: absolute;\ntop: 5vh;\nleft: 5%;\nheight: 60vh;\noverflow: scroll;\n"])));
-var ImageContainer = styled_components__WEBPACK_IMPORTED_MODULE_2__["default"].div(_templateObject3 || (_templateObject3 = _taggedTemplateLiteral(["\nwidth: 10vw;\n"])));
-var BaseImage = styled_components__WEBPACK_IMPORTED_MODULE_2__["default"].img(_templateObject4 || (_templateObject4 = _taggedTemplateLiteral(["\nwidth: 25vw;\nposition: absolute;\ntop: 5vh;\nleft: 5%;\nheight: 60vh;\nwidth: 40vw;\n"])));
+var SelectedTile = styled_components__WEBPACK_IMPORTED_MODULE_2__["default"].img(_templateObject2 || (_templateObject2 = _taggedTemplateLiteral(["\nheight: 10vh;\nwidth:  10vw;\nborder: 1px solid black;\nborder-bottom: 6px solid rebeccapurple;\nmargin-bottom: 5px;\n"])));
+var LeftRibbon = styled_components__WEBPACK_IMPORTED_MODULE_2__["default"].div(_templateObject3 || (_templateObject3 = _taggedTemplateLiteral(["\nwidth: 10vw;\nposition: absolute;\ntop: 5vh;\nleft: 5%;\nheight: 60vh;\noverflow: scroll;\n"])));
+var ImageContainer = styled_components__WEBPACK_IMPORTED_MODULE_2__["default"].div(_templateObject4 || (_templateObject4 = _taggedTemplateLiteral(["\nwidth: 10vw;\n"])));
+var BaseImage = styled_components__WEBPACK_IMPORTED_MODULE_2__["default"].img(_templateObject5 || (_templateObject5 = _taggedTemplateLiteral(["\nwidth: 25vw;\nposition: absolute;\ntop: 5vh;\nleft: 5%;\nheight: 60vh;\nwidth: 50vw;\n"])));
 
 var ImageGallery = function ImageGallery(_ref) {
   var allImages = _ref.allImages,
@@ -2931,7 +2932,13 @@ var ImageGallery = function ImageGallery(_ref) {
     src: selectedImage
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(LeftRibbon, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(ImageContainer, null, allImages.map(function (imag) {
     return imag.map(function (im) {
-      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(Tile, {
+      return im.url === selectedImage ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(SelectedTile, {
+        onClick: function onClick() {
+          return setSelectedImage(im.url);
+        },
+        key: im.thumbnail_url,
+        src: im.thumbnail_url
+      }) : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(Tile, {
         onClick: function onClick() {
           return setSelectedImage(im.url);
         },
@@ -2961,6 +2968,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var _ImageGallery_jsx__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./ImageGallery.jsx */ "./client/src/components/overview/ImageGallery.jsx");
+/* harmony import */ var _ProductDetail_jsx__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./ProductDetail.jsx */ "./client/src/components/overview/ProductDetail.jsx");
 function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _unsupportedIterableToArray(arr) || _nonIterableSpread(); }
 
 function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
@@ -2980,6 +2988,7 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
 function _iterableToArrayLimit(arr, i) { var _i = arr == null ? null : typeof Symbol !== "undefined" && arr[Symbol.iterator] || arr["@@iterator"]; if (_i == null) return; var _arr = []; var _n = true; var _d = false; var _s, _e; try { for (_i = _i.call(arr); !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
 
 function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
+
 
 
 
@@ -3031,10 +3040,42 @@ var Overview = function Overview(props) {
     allImages: allImages,
     selectedImage: selectedImage,
     setSelectedImage: setSelectedImage
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_ProductDetail_jsx__WEBPACK_IMPORTED_MODULE_3__["default"], {
+    product: props.product
   }));
 };
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Overview);
+
+/***/ }),
+
+/***/ "./client/src/components/overview/ProductDetail.jsx":
+/*!**********************************************************!*\
+  !*** ./client/src/components/overview/ProductDetail.jsx ***!
+  \**********************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var styled_components__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! styled-components */ "./node_modules/styled-components/dist/styled-components.browser.esm.js");
+var _templateObject;
+
+function _taggedTemplateLiteral(strings, raw) { if (!raw) { raw = strings.slice(0); } return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); }
+
+
+
+var Container = styled_components__WEBPACK_IMPORTED_MODULE_1__["default"].div(_templateObject || (_templateObject = _taggedTemplateLiteral(["\n  position: relative;\n  left: 20vw;\n  top: 4vh;\n  width: 20vw;\n"])));
+
+var ProductDetail = function ProductDetail(_ref) {
+  var product = _ref.product;
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(Container, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h1", null, product.name), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h4", null, product.category), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, product.price));
+};
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (ProductDetail);
 
 /***/ }),
 
