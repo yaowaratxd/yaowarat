@@ -73,7 +73,7 @@ const ImageGallery = ({ allImages, selectedImage, setSelectedImage }) => {
 
   const renderLeftButton = () => {
     if (allImages.length > 0) {
-      return allImages[0][0].url === selectedImage ? '' : <ClickyButton onClick={handleClickLeft}>Left</ClickyButton>;
+      return allImages[0].url === selectedImage ? '' : <ClickyButton onClick={handleClickLeft}>Left</ClickyButton>;
     }
   };
   return <div>
@@ -83,8 +83,10 @@ const ImageGallery = ({ allImages, selectedImage, setSelectedImage }) => {
         <ClickyButton onClick={handleClickRight}>Right</ClickyButton>
         <LeftRibbon>
           <ImageContainer>
-          { allImages.map((imag) => imag.map((im) => im.url === selectedImage ? <SelectedTile onClick={() => setSelectedImage(im.url)} key={im.thumbnail_url} src={im.thumbnail_url} /> : <Tile onClick={() => setSelectedImage(im.url)} key={im.thumbnail_url} src={im.thumbnail_url} /> )
-          )}
+          { allImages.map((im) => im.url === selectedImage ? <SelectedTile onClick={() => setSelectedImage(im.url)} key={im.thumbnail_url} src={im.thumbnail_url} /> : <Tile onClick={() => setSelectedImage(im.url)} key={im.thumbnail_url} src={im.thumbnail_url} /> )
+          }
+          {/* { allImages.map((imag) => imag.map((im) => im.url === selectedImage ? <SelectedTile onClick={() => setSelectedImage(im.url)} key={im.thumbnail_url} src={im.thumbnail_url} /> : <Tile onClick={() => setSelectedImage(im.url)} key={im.thumbnail_url} src={im.thumbnail_url} /> )
+          )} */}
         </ImageContainer>
         </LeftRibbon>
       </div>
