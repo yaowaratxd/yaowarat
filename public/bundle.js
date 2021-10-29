@@ -5880,6 +5880,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var _ImageGallery_jsx__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./ImageGallery.jsx */ "./client/src/components/overview/ImageGallery.jsx");
 /* harmony import */ var _ProductDetail_jsx__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./ProductDetail.jsx */ "./client/src/components/overview/ProductDetail.jsx");
+/* harmony import */ var _Styles_jsx__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./Styles.jsx */ "./client/src/components/overview/Styles.jsx");
 function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _unsupportedIterableToArray(arr) || _nonIterableSpread(); }
 
 function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
@@ -5899,6 +5900,7 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
 function _iterableToArrayLimit(arr, i) { var _i = arr == null ? null : typeof Symbol !== "undefined" && arr[Symbol.iterator] || arr["@@iterator"]; if (_i == null) return; var _arr = []; var _n = true; var _d = false; var _s, _e; try { for (_i = _i.call(arr); !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
 
 function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
+
 
 
 
@@ -5930,7 +5932,17 @@ var Overview = function Overview(props) {
   var fetchImages = function fetchImages(productId, callback) {
     axios__WEBPACK_IMPORTED_MODULE_1___default().get("/api/products/".concat(productId, "/styles")).then(function (results) {
       var container = [];
-      setStyles(results.data.results);
+      var styles = [];
+
+      for (var i = 0; i < results.data.results.length; ++i) {
+        styles.push({
+          image: results.data.results[i].photos[0].thumbnail_url,
+          id: results.data.results[i].style_id
+        });
+      }
+
+      console.log(results.data.results);
+      setStyles(styles);
       callback(results.data.results);
     });
   };
@@ -5953,6 +5965,8 @@ var Overview = function Overview(props) {
     setSelectedImage: setSelectedImage
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_ProductDetail_jsx__WEBPACK_IMPORTED_MODULE_3__["default"], {
     product: props.product
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_Styles_jsx__WEBPACK_IMPORTED_MODULE_4__["default"], {
+    styles: styles
   }));
 };
 
@@ -5987,6 +6001,56 @@ var ProductDetail = function ProductDetail(_ref) {
 };
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (ProductDetail);
+
+/***/ }),
+
+/***/ "./client/src/components/overview/Styles.jsx":
+/*!***************************************************!*\
+  !*** ./client/src/components/overview/Styles.jsx ***!
+  \***************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var styled_components__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! styled-components */ "./node_modules/styled-components/dist/styled-components.browser.esm.js");
+var _templateObject, _templateObject2;
+
+function _taggedTemplateLiteral(strings, raw) { if (!raw) { raw = strings.slice(0); } return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); }
+
+
+
+var Container = styled_components__WEBPACK_IMPORTED_MODULE_1__["default"].div(_templateObject || (_templateObject = _taggedTemplateLiteral(["\nposition: relative;\nleft: 20vw;\ntop: 30vh;\n"])));
+var StyleTile = styled_components__WEBPACK_IMPORTED_MODULE_1__["default"].div(_templateObject2 || (_templateObject2 = _taggedTemplateLiteral(["\n  \nborder-radius: 50%;\nborder: 1px solid black;\n"])));
+
+var Styles = function Styles(_ref) {
+  var styles = _ref.styles;
+  // useEffect(() => {
+  //   const styleImages = [];
+  //   for (let i = 0; i < styles.length; ++i) {
+  //     styleImages.push({image: styles[i].photos[0], styleId: styles[i].style_id });
+  //     // setPrimaryStyleImages([...primaryStyleImages, {image: styles[i].photos[0], styleId: styles[i].style_id }]);
+  //   }
+  //   setStyle(styles);
+  //   setPrimaryStyleImages(styleImages);
+  // }, []);
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(Container, null, styles.map(function (image) {
+    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(StyleTile, {
+      key: image.id,
+      style: {
+        backgroundImage: "url('".concat(image.image, "')"),
+        backgroundRepeat: "no-repeat",
+        height: '50px',
+        width: '50px'
+      }
+    });
+  }));
+};
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Styles);
 
 /***/ }),
 

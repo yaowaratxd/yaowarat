@@ -4,6 +4,7 @@ import styled from 'styled-components';
 
 import ImageGallery from './ImageGallery.jsx';
 import ProductDetail from './ProductDetail.jsx';
+import Styles from './Styles.jsx';
 
 const Overview = (props) => {
   const [product, setProduct] = useState({});
@@ -14,7 +15,12 @@ const Overview = (props) => {
   const fetchImages = (productId, callback) => {
     axios.get(`/api/products/${productId}/styles`).then((results) => {
       let container = [];
-      setStyles(results.data.results);
+      let styles = [];
+      for (let i = 0; i < results.data.results.length; ++i) {
+        styles.push({image: results.data.results[i].photos[0].thumbnail_url, id: results.data.results[i].style_id });
+      }
+      console.log(results.data.results);
+      setStyles(styles);
       callback(results.data.results);
     })
   };
@@ -33,6 +39,7 @@ const Overview = (props) => {
   return <div>
     <ImageGallery allImages={allImages} selectedImage={selectedImage} setSelectedImage={setSelectedImage} />
     <ProductDetail product={props.product}/>
+    <Styles styles={styles} />
   </div>
 
 };
