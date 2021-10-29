@@ -8,12 +8,27 @@ left: 20vw;
 top: 30vh;
 `;
 
-const Styles = ({ styles }) => {
-  const [styles, setStyles] = useState(styles);
-  const [primaryStyleImages, setPrimaryStyleImages] = useState([]);
+const StyleTile = styled.div`
+border-radius: 50%;
+border: 1px solid black;
+`;
 
+const Styles = ({ styles }) => {
+
+  // useEffect(() => {
+  //   const styleImages = [];
+  //   for (let i = 0; i < styles.length; ++i) {
+  //     styleImages.push({image: styles[i].photos[0], styleId: styles[i].style_id });
+  //     // setPrimaryStyleImages([...primaryStyleImages, {image: styles[i].photos[0], styleId: styles[i].style_id }]);
+  //   }
+  //   setStyle(styles);
+  //   setPrimaryStyleImages(styleImages);
+  // }, []);
   return <Container>
-    Yo!
+    { styles.map((image) =>  <StyleTile key={image.id} style={{
+      backgroundImage: `url('${ image.image }')`,
+      height: "300px", backgroundRepeat: "no-repeat"
+    }} /> )}
   </Container>
 };
 

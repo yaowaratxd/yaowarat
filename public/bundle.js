@@ -5932,7 +5932,17 @@ var Overview = function Overview(props) {
   var fetchImages = function fetchImages(productId, callback) {
     axios__WEBPACK_IMPORTED_MODULE_1___default().get("/api/products/".concat(productId, "/styles")).then(function (results) {
       var container = [];
-      setStyles(results.data.results);
+      var styles = [];
+
+      for (var i = 0; i < results.data.results.length; ++i) {
+        styles.push({
+          image: results.data.results[i].photos[0].thumbnail_url,
+          id: results.data.results[i].style_id
+        });
+      }
+
+      console.log(results.data.results);
+      setStyles(styles);
       callback(results.data.results);
     });
   };
@@ -5998,9 +6008,48 @@ var ProductDetail = function ProductDetail(_ref) {
 /*!***************************************************!*\
   !*** ./client/src/components/overview/Styles.jsx ***!
   \***************************************************/
-/***/ (() => {
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-throw new Error("Module build failed (from ./node_modules/babel-loader/lib/index.js):\nSyntaxError: /Users/antonioledoux/hackreactor/yaowarat/client/src/components/overview/Styles.jsx: Identifier 'styles' has already been declared. (11:18)\n\n\u001b[0m \u001b[90m  9 |\u001b[39m \u001b[32m`\u001b[39m\u001b[33m;\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 10 |\u001b[39m\u001b[0m\n\u001b[0m\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 11 |\u001b[39m \u001b[36mconst\u001b[39m \u001b[33mStyles\u001b[39m \u001b[33m=\u001b[39m ({ styles }) \u001b[33m=>\u001b[39m {\u001b[0m\n\u001b[0m \u001b[90m    |\u001b[39m                   \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 12 |\u001b[39m   \u001b[36mconst\u001b[39m [styles\u001b[33m,\u001b[39m setStyles] \u001b[33m=\u001b[39m useState([])\u001b[33m;\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 13 |\u001b[39m   \u001b[36mreturn\u001b[39m \u001b[33m<\u001b[39m\u001b[33mContainer\u001b[39m\u001b[33m>\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 14 |\u001b[39m     \u001b[33mYo\u001b[39m\u001b[33m!\u001b[39m\u001b[0m\n    at Object._raise (/Users/antonioledoux/hackreactor/yaowarat/node_modules/@babel/parser/lib/index.js:541:17)\n    at Object.raiseWithData (/Users/antonioledoux/hackreactor/yaowarat/node_modules/@babel/parser/lib/index.js:534:17)\n    at Object.raise (/Users/antonioledoux/hackreactor/yaowarat/node_modules/@babel/parser/lib/index.js:495:17)\n    at ScopeHandler.checkRedeclarationInScope (/Users/antonioledoux/hackreactor/yaowarat/node_modules/@babel/parser/lib/index.js:1686:12)\n    at ScopeHandler.declareName (/Users/antonioledoux/hackreactor/yaowarat/node_modules/@babel/parser/lib/index.js:1666:14)\n    at Object.checkLVal (/Users/antonioledoux/hackreactor/yaowarat/node_modules/@babel/parser/lib/index.js:10919:24)\n    at Object.checkLVal (/Users/antonioledoux/hackreactor/yaowarat/node_modules/@babel/parser/lib/index.js:10935:16)\n    at Object.checkParams (/Users/antonioledoux/hackreactor/yaowarat/node_modules/@babel/parser/lib/index.js:12615:12)\n    at Object.<anonymous> (/Users/antonioledoux/hackreactor/yaowarat/node_modules/@babel/parser/lib/index.js:12591:14)\n    at Object.parseBlockOrModuleBlockBody (/Users/antonioledoux/hackreactor/yaowarat/node_modules/@babel/parser/lib/index.js:13751:23)");
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var styled_components__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! styled-components */ "./node_modules/styled-components/dist/styled-components.browser.esm.js");
+var _templateObject, _templateObject2;
+
+function _taggedTemplateLiteral(strings, raw) { if (!raw) { raw = strings.slice(0); } return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); }
+
+
+
+var Container = styled_components__WEBPACK_IMPORTED_MODULE_1__["default"].div(_templateObject || (_templateObject = _taggedTemplateLiteral(["\nposition: relative;\nleft: 20vw;\ntop: 30vh;\n"])));
+var StyleTile = styled_components__WEBPACK_IMPORTED_MODULE_1__["default"].div(_templateObject2 || (_templateObject2 = _taggedTemplateLiteral(["\nborder-radius: 50%;\nborder: 1px solid black;\n"])));
+
+var Styles = function Styles(_ref) {
+  var styles = _ref.styles;
+  // useEffect(() => {
+  //   const styleImages = [];
+  //   for (let i = 0; i < styles.length; ++i) {
+  //     styleImages.push({image: styles[i].photos[0], styleId: styles[i].style_id });
+  //     // setPrimaryStyleImages([...primaryStyleImages, {image: styles[i].photos[0], styleId: styles[i].style_id }]);
+  //   }
+  //   setStyle(styles);
+  //   setPrimaryStyleImages(styleImages);
+  // }, []);
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(Container, null, styles.map(function (image) {
+    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(StyleTile, {
+      key: image.id,
+      style: {
+        backgroundImage: "url('".concat(image.image, "')"),
+        height: "300px",
+        backgroundRepeat: "no-repeat"
+      }
+    });
+  }));
+};
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Styles);
 
 /***/ }),
 
