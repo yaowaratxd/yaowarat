@@ -6024,7 +6024,7 @@ function _taggedTemplateLiteral(strings, raw) { if (!raw) { raw = strings.slice(
 
 
 var Container = styled_components__WEBPACK_IMPORTED_MODULE_1__["default"].div(_templateObject || (_templateObject = _taggedTemplateLiteral(["\nposition: relative;\nleft: 20vw;\ntop: 30vh;\n"])));
-var StyleTile = styled_components__WEBPACK_IMPORTED_MODULE_1__["default"].div(_templateObject2 || (_templateObject2 = _taggedTemplateLiteral(["\nborder-radius: 50%;\nborder: 1px solid black;\n"])));
+var StyleTile = styled_components__WEBPACK_IMPORTED_MODULE_1__["default"].div(_templateObject2 || (_templateObject2 = _taggedTemplateLiteral(["\n  \nborder-radius: 50%;\nborder: 1px solid black;\n"])));
 
 var Styles = function Styles(_ref) {
   var styles = _ref.styles;
@@ -6042,8 +6042,9 @@ var Styles = function Styles(_ref) {
       key: image.id,
       style: {
         backgroundImage: "url('".concat(image.image, "')"),
-        height: "300px",
-        backgroundRepeat: "no-repeat"
+        backgroundRepeat: "no-repeat",
+        height: '50px',
+        width: '50px'
       }
     });
   }));

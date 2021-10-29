@@ -9,6 +9,7 @@ top: 30vh;
 `;
 
 const StyleTile = styled.div`
+  
 border-radius: 50%;
 border: 1px solid black;
 `;
@@ -27,7 +28,7 @@ const Styles = ({ styles }) => {
   return <Container>
     { styles.map((image) =>  <StyleTile key={image.id} style={{
       backgroundImage: `url('${ image.image }')`,
-      height: "300px", backgroundRepeat: "no-repeat"
+      backgroundRepeat: "no-repeat", height: '50px', width: '50px'
     }} /> )}
   </Container>
 };
