@@ -2214,57 +2214,79 @@ var OneRelatedProduct = /*#__PURE__*/function (_React$Component) {
 
     _this = _super.call(this, props);
     _this.state = {
-      thisBookExtra: {}
+      thisProductExtra: {},
+      thisProductReview: {},
+      thisProductRating: {}
     };
     _this.getStyles = _this.getStyles.bind(_assertThisInitialized(_this));
+    _this.getReviews = _this.getReviews.bind(_assertThisInitialized(_this));
     return _this;
-  }
+  } // componentDidUpdate(prevProps) {
+  //   // Typical usage (don't forget to compare props):
+  //   if (!this.state.thisProductExtra.product_id) {
+  //     this.getStyles();
+  //     (console.log('something changed'))
+  //   }
+  // }
+
 
   _createClass(OneRelatedProduct, [{
-    key: "componentDidUpdate",
-    value: function componentDidUpdate(prevProps) {
-      // Typical usage (don't forget to compare props):
-      if (!this.state.thisBookExtra.product_id) {
-        this.getStyles();
-        console.log('something changed');
-      }
+    key: "componentDidMount",
+    value: function componentDidMount() {
+      this.getStyles();
+      this.getReviews();
     }
   }, {
     key: "getStyles",
     value: function getStyles() {
       var _this2 = this;
 
-      // console.log('invoked')
       axios__WEBPACK_IMPORTED_MODULE_1___default().get("https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfe/products/".concat(this.props.product.id, "/styles"), {
         headers: {
           authorization: "".concat((_config_js__WEBPACK_IMPORTED_MODULE_2___default().TOKEN))
         }
       }).then(function (response) {
         _this2.setState({
-          thisBookExtra: response.data
+          thisProductExtra: response.data
         }); // console.log('thisbook\n', response)
 
-      }); // .then(console.log(this.state.thisBookExtra));
+      }); // .then(console.log(this.state.thisProductExtra));
+    }
+  }, {
+    key: "getReviews",
+    value: function getReviews() {
+      var _this3 = this;
+
+      axios__WEBPACK_IMPORTED_MODULE_1___default().get("https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfe/reviews/meta/?product_id=37311", {
+        headers: {
+          authorization: "".concat((_config_js__WEBPACK_IMPORTED_MODULE_2___default().TOKEN))
+        }
+      }).then(function (response) {
+        _this3.setState({
+          thisProductRating: response.data
+        });
+      });
     }
   }, {
     key: "render",
     value: function render() {
+      console.log(this.state.thisProductRating.ratings);
       var picImage = 'https://freesvg.org/img/Image-Not-Found.png';
 
-      if (this.state.thisBookExtra.product_id) {
-        if (this.state.thisBookExtra.results[0].photos[0].thumbnail_url) {
-          picImage = this.state.thisBookExtra.results[0].photos[0].thumbnail_url;
+      if (this.state.thisProductExtra.product_id) {
+        if (this.state.thisProductExtra.results[0].photos[0].thumbnail_url) {
+          picImage = this.state.thisProductExtra.results[0].photos[0].thumbnail_url;
         }
 
-        ;
-        console.log(picImage);
+        ; // console.log(picImage)
+
         return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("li", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, "Product category: ", this.props.product.category, " "), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, "Product name: ", this.props.product.name), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("img", {
           src: "".concat(picImage),
           width: "100",
           height: "100"
-        }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, "Price (default, needs updating) ", this.props.product.default_price), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, "Star rating: where does rating info come from?"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("br", null));
+        }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, "Price (default, needs conditional updating) ", this.props.product.default_price), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, "Star rating: this.state.thisProductRating.ratings"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("br", null));
       } else {
-        return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("li", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, "Product category: ", this.props.product.category, " "), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, "Product name: ", this.props.product.name), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, "Price (default, needs updating) ", this.props.product.default_price), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, "Star rating: where does rating info come from?"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, "no extra deets"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("br", null));
+        return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("li", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, "Product category: ", this.props.product.category, " "), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, "Product name: ", this.props.product.name), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, "Price (default, needs updating) ", this.props.product.default_price), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, "Star rating: this.state.thisProductRating.ratings.1"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, "no extra deets"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("br", null));
       }
     }
   }]);
