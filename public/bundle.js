@@ -5940,7 +5940,8 @@ var Overview = function Overview(props) {
       for (var i = 0; i < results.data.results.length; ++i) {
         styles.push({
           image: results.data.results[i].photos[0].thumbnail_url,
-          id: results.data.results[i].style_id
+          id: results.data.results[i].style_id,
+          url: results.data.results[i].photos[0].url
         });
       }
 
@@ -6040,7 +6041,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var styled_components__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! styled-components */ "./node_modules/styled-components/dist/styled-components.browser.esm.js");
-var _templateObject, _templateObject2;
+var _templateObject, _templateObject2, _templateObject3;
 
 function _taggedTemplateLiteral(strings, raw) { if (!raw) { raw = strings.slice(0); } return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); }
 
@@ -6048,25 +6049,44 @@ function _taggedTemplateLiteral(strings, raw) { if (!raw) { raw = strings.slice(
 
 var Container = styled_components__WEBPACK_IMPORTED_MODULE_1__["default"].div(_templateObject || (_templateObject = _taggedTemplateLiteral(["\nposition: relative;\nleft: 20vw;\ntop: 10vh;\ndisplay: flex;\nflex-wrap: true;\n"])));
 var StyleTile = styled_components__WEBPACK_IMPORTED_MODULE_1__["default"].div(_templateObject2 || (_templateObject2 = _taggedTemplateLiteral(["\nheight: 50px;\nwidth: 50px;\nborder-radius: 50%;\nborder: 1px solid black;\n"])));
+var SelectedStyleTile = styled_components__WEBPACK_IMPORTED_MODULE_1__["default"].div(_templateObject3 || (_templateObject3 = _taggedTemplateLiteral(["\nheight: 50px;\nwidth: 50px;\nborder-radius: 50%;\nborder: 3px solid rebeccapurple;\n"])));
 
 var Styles = function Styles(_ref) {
   var styles = _ref.styles,
-      setSelectedStyle = _ref.setSelectedStyle;
+      setSelectedStyle = _ref.setSelectedStyle,
+      selectedImage = _ref.selectedImage;
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(Container, null, styles.map(function (image) {
-    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(StyleTile, {
-      key: image.id
-    }, "  ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("img", {
-      onClick: function onClick() {
-        return setSelectedStyle(image.image);
-      },
-      key: image.id,
-      src: image.image,
-      style: {
-        height: '50px',
-        width: '50px',
-        borderRadius: '50%'
-      }
-    }), " ");
+    if (image.url === selectedImage) {
+      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(SelectedStyleTile, {
+        key: image.id
+      }, "  ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("img", {
+        onClick: function onClick() {
+          return setSelectedStyle(image.image);
+        },
+        key: image.id,
+        src: image.image,
+        style: {
+          height: '50px',
+          width: '50px',
+          borderRadius: '50%'
+        }
+      }), " ");
+    } else {
+      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(StyleTile, {
+        key: image.id
+      }, "  ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("img", {
+        onClick: function onClick() {
+          return setSelectedStyle(image.image);
+        },
+        key: image.id,
+        src: image.image,
+        style: {
+          height: '50px',
+          width: '50px',
+          borderRadius: '50%'
+        }
+      }), " ");
+    }
   }));
 };
 

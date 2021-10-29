@@ -16,11 +16,24 @@ width: 50px;
 border-radius: 50%;
 border: 1px solid black;
 `;
+const SelectedStyleTile = styled.div`
+height: 50px;
+width: 50px;
+border-radius: 50%;
+border: 3px solid rebeccapurple;
+`;
 
-const Styles = ({ styles, setSelectedStyle }) => {
+const Styles = ({ styles, setSelectedStyle, selectedImage }) => {
 
   return <Container>
-    { styles.map((image) =>  <StyleTile key={image.id}>  <img onClick={() => setSelectedStyle(image.image)} key={image.id} src={image.image} style={{height: '50px', width: '50px', borderRadius: '50%'}}/> </StyleTile> )}
+    { styles.map((image) =>  {
+      if (image.url === selectedImage) {
+        return <SelectedStyleTile key={image.id}>  <img onClick={() => setSelectedStyle(image.image)} key={image.id} src={image.image} style={{height: '50px', width: '50px', borderRadius: '50%'}}/> </SelectedStyleTile>
+      } else {
+        return     <StyleTile key={image.id}>  <img onClick={() => setSelectedStyle(image.image)} key={image.id} src={image.image} style={{height: '50px', width: '50px', borderRadius: '50%'}}/> </StyleTile>
+      }
+    }
+    )}
   </Container>
 };
 
