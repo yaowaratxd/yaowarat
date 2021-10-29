@@ -1,16 +1,17 @@
+/* eslint-disable react/destructuring-assignment */
 import React from 'react';
 import axios from 'axios';
 import config from '/config.js';
 
-import RelatedProductDetails from './RelatedProductDetails.jsx';
 
 class OneRelatedProduct extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       thisProductExtra: {},
-      thisProductReview: {},
+      // thisProductReview: {},
       thisProductRating: {},
+
     };
     this.getStyles = this.getStyles.bind(this);
     this.getReviews = this.getReviews.bind(this);
@@ -37,59 +38,57 @@ class OneRelatedProduct extends React.Component {
     })
       .then((response) => {
         this.setState({thisProductExtra: response.data});
-        // console.log('thisbook\n', response)
-      })
-      // .then(console.log(this.state.thisProductExtra));
+      });
   }
 
   getReviews() {
-    axios.get(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfe/reviews/meta/?product_id=37311`, {
+    axios.get(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfe/reviews/meta/?product_id=${this.props.product.id}`, {
       headers: {
         authorization: `${config.TOKEN}`,
       },
     })
-    .then((response) => {
-      this.setState({thisProductRating: response.data})
-    })
+      .then((response) => {
+        this.setState({ thisProductRating: response.data })
+      });
   }
 
+  getRatingScore() {
+    var reviewTotalScore = 0;
+    var totalReviews = 0;
+    if (JSON.stringify(this.state.thisProductRating.ratings) !== '{}') {
+      for (var key in this.state.thisProductRating.ratings) {
+        reviewTotalScore += (parseInt([key]) * parseInt(this.state.thisProductRating.ratings[key]));
+        totalReviews += parseInt(this.state.thisProductRating.ratings[key])
+      }
+      return (Math.round((reviewTotalScore / totalReviews) * 4) / 4).toFixed(2);
+    }
+    return 'Be the first to rate this product!';
+  }
 
-
-  render () {
-    console.log(this.state.thisProductRating.ratings)
+  render() {
     var picImage = 'https://freesvg.org/img/Image-Not-Found.png';
-    if(this.state.thisProductExtra.product_id) {
+    var productRating = 'Be the first to provide a rating!';
+    if (this.state.thisProductRating.ratings) {
+      productRating = this.getRatingScore();
+    };
+    // console.log(this.state.thisProductExtra);
+    if (this.state.thisProductExtra.product_id) {
       if (this.state.thisProductExtra.results[0].photos[0].thumbnail_url) {
         picImage = this.state.thisProductExtra.results[0].photos[0].thumbnail_url;
       };
-      // console.log(picImage)
-      return (
-        <li>
-          <div>Product category: {this.props.product.category} </div>
-          <div>Product name: {this.props.product.name}</div>
-          <img src={`${picImage}`} width="100" height="100"/>
-          <div>Price (default, needs conditional updating) {this.props.product.default_price}</div>
-          <div>Star rating: this.state.thisProductRating.ratings</div>
-
-          <br />
-        </li>
-      )
-    } else {
-      return (
-        <li>
-          <div>Product category: {this.props.product.category} </div>
-          <div>Product name: {this.props.product.name}</div>
-          <div>Price (default, needs updating) {this.props.product.default_price}</div>
-          <div>Star rating: this.state.thisProductRating.ratings.1</div>
-          <div>
-            no extra deets
-          </div>
-          <br />
-        </li>
-      )
-
-
     }
+    // console.log('picimage: ', picImage)
+    return (
+      <li class="related">
+        <div>Product category: {this.props.product.category} </div>
+        <div>Product name: {this.props.product.name}</div>
+        <img src={`${picImage}`} width="100" height="100"/>
+        <div>Price (default, needs conditional updating) {this.props.product.default_price}</div>
+        <div>Star rating: {productRating}</div>
+
+        <br />
+      </li>
+    );
   }
 }
 
