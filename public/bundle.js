@@ -5802,30 +5802,30 @@ var ImageGallery = function ImageGallery(_ref) {
       setSelectedImage = _ref.setSelectedImage;
 
   var handleClickLeft = function handleClickLeft() {
-    for (var i = 0; i < allImages.length; ++i) {
-      for (var j = 0; j < allImages[i].length; ++j) {
-        if (allImages[i][j].url === selectedImage) {
-          if (j === 0) {
-            return;
-          } else {
-            setSelectedImage(allImages[i][j - 1].url);
-          }
+    // for (let i = 0; i < allImages.length; ++i) {
+    for (var j = 0; j < allImages.length; ++j) {
+      if (allImages[j].url === selectedImage) {
+        if (j === 0) {
+          return;
+        } else {
+          setSelectedImage(allImages[j - 1].url);
         }
-      }
+      } // }
+
     }
   };
 
   var handleClickRight = function handleClickRight() {
-    for (var i = 0; i < allImages.length; ++i) {
-      for (var j = 0; j < allImages[i].length; ++j) {
-        if (allImages[i][j].url === selectedImage) {
-          if (j === allImages[i][j].length) {
-            return;
-          } else {
-            setSelectedImage(allImages[i][j + 1].url);
-          }
+    // for (let i = 0; i < allImages.length; ++i) {
+    for (var j = 0; j < allImages.length; ++j) {
+      if (allImages[j].url === selectedImage) {
+        if (j === allImages[j].length) {
+          return;
+        } else {
+          setSelectedImage(allImages[j + 1].url);
         }
-      }
+      } // }
+
     }
   };
 
@@ -5954,7 +5954,6 @@ var Overview = function Overview(props) {
       for (var j = 0; j < totalImages[i].length; ++j) {
         if (totalImages[i][j].thumbnail_url === styleUrl) {
           setAllImages(totalImages[i]);
-          console.log(totalImages[i][0]);
           setSelectedImage(totalImages[i][0].url);
           return;
         }
@@ -5970,8 +5969,8 @@ var Overview = function Overview(props) {
         temp = [].concat(_toConsumableArray(temp), [stylings[i]['photos']]);
       }
 
-      setAllImages(temp);
-      setSelectedImage(temp[0].url);
+      setAllImages(temp[0]);
+      setSelectedImage(temp[0][0].url);
       var allHolder = [];
 
       for (var _i2 = 0; _i2 < stylings.length; ++_i2) {

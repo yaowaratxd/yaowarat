@@ -45,29 +45,29 @@ color: rebeccapurple;
 const ImageGallery = ({ allImages, selectedImage, setSelectedImage }) => {
 
   const handleClickLeft = () => {
-    for (let i = 0; i < allImages.length; ++i) {
-      for (let j = 0; j < allImages[i].length; ++j) {
-        if (allImages[i][j].url === selectedImage) {
+    // for (let i = 0; i < allImages.length; ++i) {
+      for (let j = 0; j < allImages.length; ++j) {
+        if (allImages[j].url === selectedImage) {
           if (j === 0) {
             return;
           } else {
-            setSelectedImage(allImages[i][j-1].url);
+            setSelectedImage(allImages[j-1].url);
           }
         }
-      }
+      // }
     }
   };
   const handleClickRight = () => {
-    for (let i = 0; i < allImages.length; ++i) {
-      for (let j = 0; j < allImages[i].length; ++j) {
-        if (allImages[i][j].url === selectedImage) {
-          if (j === allImages[i][j].length) {
+    // for (let i = 0; i < allImages.length; ++i) {
+      for (let j = 0; j < allImages.length; ++j) {
+        if (allImages[j].url === selectedImage) {
+          if (j === allImages[j].length) {
             return;
           } else {
-            setSelectedImage(allImages[i][j + 1].url);
+            setSelectedImage(allImages[j + 1].url);
           }
         }
-      }
+      // }
     }
   };
 

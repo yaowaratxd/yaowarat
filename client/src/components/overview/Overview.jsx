@@ -30,7 +30,6 @@ const Overview = (props) => {
       for (let j = 0; j < totalImages[i].length; ++j) {
         if (totalImages[i][j].thumbnail_url === styleUrl) {
           setAllImages(totalImages[i]);
-          console.log(totalImages[i][0])
           setSelectedImage(totalImages[i][0].url);
           return;
         }
@@ -44,8 +43,8 @@ const Overview = (props) => {
       for (let i = 0; i < 1; ++i) {
       temp = [...temp, stylings[i]['photos']];
       }
-      setAllImages(temp);
-      setSelectedImage(temp[0].url);
+      setAllImages(temp[0]);
+      setSelectedImage(temp[0][0].url);
       let allHolder = [];
       for (let i = 0; i < stylings.length; ++i) {
       allHolder = [...allHolder, stylings[i]['photos']];
