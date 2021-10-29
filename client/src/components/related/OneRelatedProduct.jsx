@@ -13,8 +13,17 @@ class OneRelatedProduct extends React.Component {
     this.getStyles = this.getStyles.bind(this);
   }
 
+  componentDidUpdate(prevProps) {
+    // Typical usage (don't forget to compare props):
+    if (!this.state.thisBookExtra.product_id) {
+      this.getStyles();
+      (console.log('something changed'))
+    }
+  }
+
   getStyles() {
-    axios.get(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfe/products/${props.product.id}/styles`, {
+    // console.log('invoked')
+    axios.get(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfe/products/${this.props.product.id}/styles`, {
       headers: {
         authorization: `${config.TOKEN}`,
       },
@@ -22,21 +31,46 @@ class OneRelatedProduct extends React.Component {
       .then((response) => {
         this.setState({thisBookExtra: response.data});
         // console.log('thisbook\n', response)
-      });
+      })
+      // .then(console.log(this.state.thisBookExtra));
   }
 
 
+
   render () {
-    return (
-      <li>
-        <div>Product category: {this.props.product.category} </div>
-        <div>Product name: {this.props.product.name}</div>
-        <div>Price (default, needs updating) {this.props.product.default_price}</div>
-        <div>Star rating: where does rating info come from?</div>
-        <div><RelatedProductDetails extra={this.state.thisBookExtra} /></div>
-        <br />
-      </li>
-    )
+    var picImage = 'https://freesvg.org/img/Image-Not-Found.png';
+    if(this.state.thisBookExtra.product_id) {
+      if (this.state.thisBookExtra.results[0].photos[0].thumbnail_url) {
+        picImage = this.state.thisBookExtra.results[0].photos[0].thumbnail_url
+      };
+      console.log(picImage)
+      return (
+        <li>
+          <div>Product category: {this.props.product.category} </div>
+          <div>Product name: {this.props.product.name}</div>
+          <img src={`${picImage}`} width="100" height="100"/>
+          <div>Price (default, needs updating) {this.props.product.default_price}</div>
+          <div>Star rating: where does rating info come from?</div>
+
+          <br />
+        </li>
+      )
+    } else {
+      return (
+        <li>
+          <div>Product category: {this.props.product.category} </div>
+          <div>Product name: {this.props.product.name}</div>
+          <div>Price (default, needs updating) {this.props.product.default_price}</div>
+          <div>Star rating: where does rating info come from?</div>
+          <div>
+            no extra deets
+          </div>
+          <br />
+        </li>
+      )
+
+
+    }
   }
 }
 

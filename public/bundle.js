@@ -2221,11 +2221,21 @@ var OneRelatedProduct = /*#__PURE__*/function (_React$Component) {
   }
 
   _createClass(OneRelatedProduct, [{
+    key: "componentDidUpdate",
+    value: function componentDidUpdate(prevProps) {
+      // Typical usage (don't forget to compare props):
+      if (!this.state.thisBookExtra.product_id) {
+        this.getStyles();
+        console.log('something changed');
+      }
+    }
+  }, {
     key: "getStyles",
     value: function getStyles() {
       var _this2 = this;
 
-      axios__WEBPACK_IMPORTED_MODULE_1___default().get("https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfe/products/".concat(props.product.id, "/styles"), {
+      // console.log('invoked')
+      axios__WEBPACK_IMPORTED_MODULE_1___default().get("https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfe/products/".concat(this.props.product.id, "/styles"), {
         headers: {
           authorization: "".concat((_config_js__WEBPACK_IMPORTED_MODULE_2___default().TOKEN))
         }
@@ -2234,14 +2244,28 @@ var OneRelatedProduct = /*#__PURE__*/function (_React$Component) {
           thisBookExtra: response.data
         }); // console.log('thisbook\n', response)
 
-      });
+      }); // .then(console.log(this.state.thisBookExtra));
     }
   }, {
     key: "render",
     value: function render() {
-      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("li", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, "Product category: ", this.props.product.category, " "), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, "Product name: ", this.props.product.name), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, "Price (default, needs updating) ", this.props.product.default_price), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, "Star rating: where does rating info come from?"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_RelatedProductDetails_jsx__WEBPACK_IMPORTED_MODULE_3__["default"], {
-        extra: this.state.thisBookExtra
-      })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("br", null));
+      var picImage = 'https://freesvg.org/img/Image-Not-Found.png';
+
+      if (this.state.thisBookExtra.product_id) {
+        if (this.state.thisBookExtra.results[0].photos[0].thumbnail_url) {
+          picImage = this.state.thisBookExtra.results[0].photos[0].thumbnail_url;
+        }
+
+        ;
+        console.log(picImage);
+        return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("li", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, "Product category: ", this.props.product.category, " "), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, "Product name: ", this.props.product.name), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("img", {
+          src: "".concat(picImage),
+          width: "100",
+          height: "100"
+        }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, "Price (default, needs updating) ", this.props.product.default_price), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, "Star rating: where does rating info come from?"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("br", null));
+      } else {
+        return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("li", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, "Product category: ", this.props.product.category, " "), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, "Product name: ", this.props.product.name), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, "Price (default, needs updating) ", this.props.product.default_price), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, "Star rating: where does rating info come from?"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, "no extra deets"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("br", null));
+      }
     }
   }]);
 
@@ -2266,12 +2290,12 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 
 
-function OneRelatedProduct(props) {
-  // console.log('ORP props received', props);
-  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, "props.extra.results");
+function RelatedProductDetails(props) {
+  // console.log(props.details)
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, "props.details");
 }
 
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (OneRelatedProduct);
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (RelatedProductDetails);
 
 /***/ }),
 
@@ -2332,9 +2356,11 @@ var Related = /*#__PURE__*/function (_React$Component) {
     _this = _super.call(this, props);
     _this.state = {
       currentBook: placeholder,
-      relatedProducts: []
+      relatedProducts: [],
+      additionalProductDetails: []
     };
-    _this.getRelated = _this.getRelated.bind(_assertThisInitialized(_this));
+    _this.getRelated = _this.getRelated.bind(_assertThisInitialized(_this)); // this.getAdditionalDetails = this.getAdditionalDetails.bind(this);
+
     return _this;
   }
 
@@ -2359,7 +2385,8 @@ var Related = /*#__PURE__*/function (_React$Component) {
         });
       }).then(function () {
         for (var i = 0; i < _this2.state.relatedProductsKey.length; i++) {
-          _this2.getBook(_this2.state.relatedProductsKey[i]);
+          _this2.getBook(_this2.state.relatedProductsKey[i]); // this.getAdditionalDetails(this.state.relatedProductsKey[i])
+
         }
       });
     }
@@ -2377,10 +2404,29 @@ var Related = /*#__PURE__*/function (_React$Component) {
           relatedProducts: _this3.state.relatedProducts.concat(results.data)
         });
       });
-    }
+    } // getAdditionalDetails(bookID) {
+    //   // console.log('invoked')
+    //   axios.get(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfe/products/${bookID}/styles`, {
+    //     headers: {
+    //       authorization: `${config.TOKEN}`,
+    //     },
+    //   })
+    //     .then((response) => {
+    //       this.setState({ additionalProductDetails: this.state.additionalProductDetails.concat(response.data)});
+    //       // console.log('thisbook\n', response)
+    //     })
+    //     // .then(console.log(this.state.thisBookExtra));
+    // }
+
   }, {
     key: "render",
     value: function render() {
+      var fullBookDetails = []; // for (var i = 0; i < this.state.relatedProducts.length; i++) {
+      //   fullBookDetails.push(this.state.relatedProducts[i]);
+      //   fullBookDetails.push(this.state.additionalProductDetails[i]);
+      // }
+      // console.log(fullBookDetails)
+
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, "current product selected: ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("em", null, this.state.currentBook.name), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("ul", null, this.state.relatedProducts.map(function (oneProduct) {
         return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_OneRelatedProduct_jsx__WEBPACK_IMPORTED_MODULE_3__["default"], {
           product: oneProduct

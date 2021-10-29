@@ -10,8 +10,10 @@ class Related extends React.Component {
     this.state = {
       currentBook: placeholder,
       relatedProducts: [],
+      additionalProductDetails: [],
     };
     this.getRelated = this.getRelated.bind(this);
+    // this.getAdditionalDetails = this.getAdditionalDetails.bind(this);
 
   }
 
@@ -30,6 +32,7 @@ class Related extends React.Component {
       .then(() => {
         for (var i = 0; i < this.state.relatedProductsKey.length; i++) {
           this.getBook(this.state.relatedProductsKey[i]);
+          // this.getAdditionalDetails(this.state.relatedProductsKey[i])
         }
       });
   }
@@ -45,11 +48,28 @@ class Related extends React.Component {
       });
   }
 
-
-
+  // getAdditionalDetails(bookID) {
+  //   // console.log('invoked')
+  //   axios.get(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfe/products/${bookID}/styles`, {
+  //     headers: {
+  //       authorization: `${config.TOKEN}`,
+  //     },
+  //   })
+  //     .then((response) => {
+  //       this.setState({ additionalProductDetails: this.state.additionalProductDetails.concat(response.data)});
+  //       // console.log('thisbook\n', response)
+  //     })
+  //     // .then(console.log(this.state.thisBookExtra));
+  // }
 
 
   render() {
+    var fullBookDetails = [];
+    // for (var i = 0; i < this.state.relatedProducts.length; i++) {
+    //   fullBookDetails.push(this.state.relatedProducts[i]);
+    //   fullBookDetails.push(this.state.additionalProductDetails[i]);
+    // }
+    // console.log(fullBookDetails)
     return (
       <div>current product selected: <em>{this.state.currentBook.name}</em>
         <ul>

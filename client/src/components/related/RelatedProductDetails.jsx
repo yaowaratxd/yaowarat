@@ -1,10 +1,12 @@
 import React from 'react';
 
-function OneRelatedProduct (props) {
-  // console.log('ORP props received', props);
+function RelatedProductDetails (props) {
+  // console.log(props.details)
   return (
-    <div>props.extra.results</div>
+  <div>
+    props.details
+  </div>
   )
 }
 
-export default OneRelatedProduct;
+export default RelatedProductDetails
