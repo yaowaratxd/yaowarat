@@ -5880,6 +5880,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var _ImageGallery_jsx__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./ImageGallery.jsx */ "./client/src/components/overview/ImageGallery.jsx");
 /* harmony import */ var _ProductDetail_jsx__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./ProductDetail.jsx */ "./client/src/components/overview/ProductDetail.jsx");
+/* harmony import */ var _Styles_jsx__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./Styles.jsx */ "./client/src/components/overview/Styles.jsx");
 function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _unsupportedIterableToArray(arr) || _nonIterableSpread(); }
 
 function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
@@ -5899,6 +5900,7 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
 function _iterableToArrayLimit(arr, i) { var _i = arr == null ? null : typeof Symbol !== "undefined" && arr[Symbol.iterator] || arr["@@iterator"]; if (_i == null) return; var _arr = []; var _n = true; var _d = false; var _s, _e; try { for (_i = _i.call(arr); !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
 
 function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
+
 
 
 
@@ -5953,6 +5955,8 @@ var Overview = function Overview(props) {
     setSelectedImage: setSelectedImage
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_ProductDetail_jsx__WEBPACK_IMPORTED_MODULE_3__["default"], {
     product: props.product
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_Styles_jsx__WEBPACK_IMPORTED_MODULE_4__["default"], {
+    styles: styles
   }));
 };
 
@@ -5987,6 +5991,16 @@ var ProductDetail = function ProductDetail(_ref) {
 };
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (ProductDetail);
+
+/***/ }),
+
+/***/ "./client/src/components/overview/Styles.jsx":
+/*!***************************************************!*\
+  !*** ./client/src/components/overview/Styles.jsx ***!
+  \***************************************************/
+/***/ (() => {
+
+throw new Error("Module build failed (from ./node_modules/babel-loader/lib/index.js):\nSyntaxError: /Users/antonioledoux/hackreactor/yaowarat/client/src/components/overview/Styles.jsx: Identifier 'styles' has already been declared. (11:18)\n\n\u001b[0m \u001b[90m  9 |\u001b[39m \u001b[32m`\u001b[39m\u001b[33m;\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 10 |\u001b[39m\u001b[0m\n\u001b[0m\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 11 |\u001b[39m \u001b[36mconst\u001b[39m \u001b[33mStyles\u001b[39m \u001b[33m=\u001b[39m ({ styles }) \u001b[33m=>\u001b[39m {\u001b[0m\n\u001b[0m \u001b[90m    |\u001b[39m                   \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 12 |\u001b[39m   \u001b[36mconst\u001b[39m [styles\u001b[33m,\u001b[39m setStyles] \u001b[33m=\u001b[39m useState([])\u001b[33m;\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 13 |\u001b[39m   \u001b[36mreturn\u001b[39m \u001b[33m<\u001b[39m\u001b[33mContainer\u001b[39m\u001b[33m>\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 14 |\u001b[39m     \u001b[33mYo\u001b[39m\u001b[33m!\u001b[39m\u001b[0m\n    at Object._raise (/Users/antonioledoux/hackreactor/yaowarat/node_modules/@babel/parser/lib/index.js:541:17)\n    at Object.raiseWithData (/Users/antonioledoux/hackreactor/yaowarat/node_modules/@babel/parser/lib/index.js:534:17)\n    at Object.raise (/Users/antonioledoux/hackreactor/yaowarat/node_modules/@babel/parser/lib/index.js:495:17)\n    at ScopeHandler.checkRedeclarationInScope (/Users/antonioledoux/hackreactor/yaowarat/node_modules/@babel/parser/lib/index.js:1686:12)\n    at ScopeHandler.declareName (/Users/antonioledoux/hackreactor/yaowarat/node_modules/@babel/parser/lib/index.js:1666:14)\n    at Object.checkLVal (/Users/antonioledoux/hackreactor/yaowarat/node_modules/@babel/parser/lib/index.js:10919:24)\n    at Object.checkLVal (/Users/antonioledoux/hackreactor/yaowarat/node_modules/@babel/parser/lib/index.js:10935:16)\n    at Object.checkParams (/Users/antonioledoux/hackreactor/yaowarat/node_modules/@babel/parser/lib/index.js:12615:12)\n    at Object.<anonymous> (/Users/antonioledoux/hackreactor/yaowarat/node_modules/@babel/parser/lib/index.js:12591:14)\n    at Object.parseBlockOrModuleBlockBody (/Users/antonioledoux/hackreactor/yaowarat/node_modules/@babel/parser/lib/index.js:13751:23)");
 
 /***/ }),
 
