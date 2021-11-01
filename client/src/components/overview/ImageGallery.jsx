@@ -44,30 +44,30 @@ color: rebeccapurple;
 
 const ImageGallery = ({ allImages, selectedImage, setSelectedImage }) => {
   const handleClickLeft = () => {
-    // for (let i = 0; i < allImages.length; ++i) {
+    for (let i = 0; i < allImages.length; ++i) {
       for (let j = 0; j < allImages.length; ++j) {
-        if (allImages[j].url === selectedImage) {
-          if (j === 0) {
+        if (allImages[i][j].url === selectedImage.url) {
+          if ([i] === 0 && j === [0]) {
             return;
           } else {
-            setSelectedImage(allImages[j-1].url);
-          }
-        }
-      // }
-    }
-  };
-  const handleClickRight = () => {
-    // for (let i = 0; i < allImages.length; ++i) {
-      for (let j = 0; j < allImages.length; ++j) {
-        if (allImages[j].url === selectedImage) {
-          if (j === allImages[j].length) {
-            return;
-          } else {
-            setSelectedImage(allImages[j + 1].url);
+            setSelectedImage({url: allImages[i][j-1].url, id: allImages[j-1].url});
           }
         }
       }
-    // }
+    }
+  };
+  const handleClickRight = () => {
+    for (let i = 0; i < allImages.length; ++i) {
+      for (let j = 0; j < allImages.length; ++j) {
+        if (allImages[i][j].url === selectedImage.url) {
+          if (i === allImages[i].length && j === allImages[i][j].length) {
+            return;
+          } else {
+            setSelectedImage({url: allImages[i][j + 1].url, id: allImages[i][j + 1].id });
+          }
+        }
+      }
+    }
   };
 
   const renderLeftButton = () => {

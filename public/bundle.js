@@ -5802,31 +5802,35 @@ var ImageGallery = function ImageGallery(_ref) {
       setSelectedImage = _ref.setSelectedImage;
 
   var handleClickLeft = function handleClickLeft() {
-    // for (let i = 0; i < allImages.length; ++i) {
-    for (var j = 0; j < allImages.length; ++j) {
-      if (allImages[j].url === selectedImage) {
-        if (j === 0) {
-          return;
-        } else {
-          setSelectedImage(allImages[j - 1].url);
+    for (var i = 0; i < allImages.length; ++i) {
+      for (var j = 0; j < allImages.length; ++j) {
+        if (allImages[i][j].url === selectedImage.url) {
+          if ([i] === 0 && 0) {} else {
+            setSelectedImage({
+              url: allImages[i][j - 1].url,
+              id: allImages[j - 1].url
+            });
+          }
         }
-      } // }
-
+      }
     }
   };
 
   var handleClickRight = function handleClickRight() {
-    // for (let i = 0; i < allImages.length; ++i) {
-    for (var j = 0; j < allImages.length; ++j) {
-      if (allImages[j].url === selectedImage) {
-        if (j === allImages[j].length) {
-          return;
-        } else {
-          setSelectedImage(allImages[j + 1].url);
+    for (var i = 0; i < allImages.length; ++i) {
+      for (var j = 0; j < allImages.length; ++j) {
+        if (allImages[i][j].url === selectedImage.url) {
+          if (i === allImages[i].length && j === allImages[i][j].length) {
+            return;
+          } else {
+            setSelectedImage({
+              url: allImages[i][j + 1].url,
+              id: allImages[i][j + 1].id
+            });
+          }
         }
       }
-    } // }
-
+    }
   };
 
   var renderLeftButton = function renderLeftButton() {
