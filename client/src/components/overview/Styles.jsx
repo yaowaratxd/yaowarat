@@ -24,21 +24,20 @@ border: 3px solid rebeccapurple;
 `;
 
 const Styles = ({ styles, setSelectedStyle, selectedImage }) => {
-  const [skus, setSkus] = useState({});
-
+  console.log(styles);
   return <Container>
     { styles.map((image) =>  {
-      if (image.url === selectedImage) {
-        return <SelectedStyleTile key={image.id}>  <img onClick={() => setSelectedStyle(image.image)} key={image.id} src={image.image} style={{height: '55px', width: '55px', borderRadius: '50%'}}/> </SelectedStyleTile>
+      if (image.url === selectedImage.url ) {
+        return <SelectedStyleTile key={image.id}>  <img onClick={() => setSelectedStyle({url: image.image, id: image.id})} key={image.id} src={image.image} style={{height: '55px', width: '55px', borderRadius: '50%'}}/> </SelectedStyleTile>
       } else {
-        return     <StyleTile key={image.id}>  <img onClick={() => setSelectedStyle(image.image)} key={image.id} src={image.image} style={{height: '50px', width: '50px', borderRadius: '50%'}}/> </StyleTile>
+        return <StyleTile key={image.id}>  <img onClick={() => setSelectedStyle({url: image.image, id: image.id })} key={image.id} src={image.image} style={{height: '50px', width: '50px', borderRadius: '50%'}}/> </StyleTile>
       }
     }
     )}
     <select>
     { styles.map((image) =>  {
       let placeholder = [];
-      if (image.url === selectedImage) {
+      if (image.url === selectedImage.url) {
         for (let key in image.skus) {
           placeholder.push(<option key={key} value={image.skus[key].size}>{ image.skus[key].size }</option>);
         }
@@ -50,7 +49,7 @@ const Styles = ({ styles, setSelectedStyle, selectedImage }) => {
     <select>
     { styles.map((image) =>  {
       let placeholder = [];
-      if (image.url === selectedImage) {
+      if (image.url === selectedImage.url) {
         for (let key in image.skus) {
           placeholder.push(<option key={key} value={image.skus[key].quantity}>{ image.skus[key].quantity }</option>);
         }

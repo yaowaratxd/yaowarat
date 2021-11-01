@@ -20,6 +20,7 @@ const Overview = (props) => {
       for (let i = 0; i < results.data.results.length; ++i) {
         styles.push({image: results.data.results[i].photos[0].thumbnail_url, id: results.data.results[i].style_id, url: results.data.results[i].photos[0].url, skus: results.data.results[i].skus });
       }
+      console.log(styles);
       setStyles(styles);
       callback(results.data.results);
     })
@@ -28,9 +29,9 @@ const Overview = (props) => {
   const setSelectedStyle = (styleUrl) => {
     for (let i = 0; i < totalImages.length; ++i) {
       for (let j = 0; j < totalImages[i].length; ++j) {
-        if (totalImages[i][j].thumbnail_url === styleUrl) {
+        if (totalImages[i][j].thumbnail_url === styleUrl.url) {
           setAllImages(totalImages[i]);
-          setSelectedImage(totalImages[i][0].url);
+          setSelectedImage({ url: totalImages[i][0].url, id: totalImages[i][0].id });
           return;
         }
       }
@@ -39,12 +40,14 @@ const Overview = (props) => {
 
   useEffect(() => {
     fetchImages(props.product.id, (stylings) => {
+
       let temp = [];
       for (let i = 0; i < 1; ++i) {
       temp = [...temp, stylings[i]['photos']];
       }
       setAllImages(temp[0]);
-      setSelectedImage(temp[0][0].url);
+      setSelectedImage({ url: temp[0][0].url, id: temp[0][0].id });
+      console.log(temp[0][0]);
       let allHolder = [];
       for (let i = 0; i < stylings.length; ++i) {
       allHolder = [...allHolder, stylings[i]['photos']];
@@ -54,7 +57,7 @@ const Overview = (props) => {
   }, []);
 
   return <div>
-    <ImageGallery allImages={allImages} selectedImage={selectedImage} setSelectedImage={setSelectedImage} />
+    <ImageGallery allImages={totalImages} selectedImage={selectedImage} setSelectedImage={setSelectedImage} />
     <ProductDetail product={props.product}/>
     <Styles styles={styles} selectedImage={selectedImage} setSelectedStyle={setSelectedStyle} />
   </div>
