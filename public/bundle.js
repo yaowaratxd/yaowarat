@@ -5941,7 +5941,8 @@ var Overview = function Overview(props) {
         styles.push({
           image: results.data.results[i].photos[0].thumbnail_url,
           id: results.data.results[i].style_id,
-          url: results.data.results[i].photos[0].url
+          url: results.data.results[i].photos[0].url,
+          skus: results.data.results[i].skus
         });
       }
 
@@ -6049,12 +6050,13 @@ function _taggedTemplateLiteral(strings, raw) { if (!raw) { raw = strings.slice(
 
 var Container = styled_components__WEBPACK_IMPORTED_MODULE_1__["default"].div(_templateObject || (_templateObject = _taggedTemplateLiteral(["\nposition: relative;\nleft: 20vw;\ntop: 10vh;\ndisplay: flex;\nflex-wrap: true;\n"])));
 var StyleTile = styled_components__WEBPACK_IMPORTED_MODULE_1__["default"].div(_templateObject2 || (_templateObject2 = _taggedTemplateLiteral(["\nheight: 50px;\nwidth: 50px;\nborder-radius: 50%;\nborder: 1px solid black;\n"])));
-var SelectedStyleTile = styled_components__WEBPACK_IMPORTED_MODULE_1__["default"].div(_templateObject3 || (_templateObject3 = _taggedTemplateLiteral(["\nheight: 50px;\nwidth: 50px;\nborder-radius: 50%;\nborder: 3px solid rebeccapurple;\n"])));
+var SelectedStyleTile = styled_components__WEBPACK_IMPORTED_MODULE_1__["default"].div(_templateObject3 || (_templateObject3 = _taggedTemplateLiteral(["\nheight: 55px;\nwidth: 55px;\nborder-radius: 50%;\nborder: 3px solid rebeccapurple;\n"])));
 
 var Styles = function Styles(_ref) {
   var styles = _ref.styles,
       setSelectedStyle = _ref.setSelectedStyle,
       selectedImage = _ref.selectedImage;
+  console.log(styles);
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(Container, null, styles.map(function (image) {
     if (image.url === selectedImage) {
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(SelectedStyleTile, {
@@ -6066,8 +6068,8 @@ var Styles = function Styles(_ref) {
         key: image.id,
         src: image.image,
         style: {
-          height: '50px',
-          width: '50px',
+          height: '55px',
+          width: '55px',
           borderRadius: '50%'
         }
       }), " ");

@@ -17,18 +17,18 @@ border-radius: 50%;
 border: 1px solid black;
 `;
 const SelectedStyleTile = styled.div`
-height: 50px;
-width: 50px;
+height: 55px;
+width: 55px;
 border-radius: 50%;
 border: 3px solid rebeccapurple;
 `;
 
 const Styles = ({ styles, setSelectedStyle, selectedImage }) => {
-
+  console.log(styles);
   return <Container>
     { styles.map((image) =>  {
       if (image.url === selectedImage) {
-        return <SelectedStyleTile key={image.id}>  <img onClick={() => setSelectedStyle(image.image)} key={image.id} src={image.image} style={{height: '50px', width: '50px', borderRadius: '50%'}}/> </SelectedStyleTile>
+        return <SelectedStyleTile key={image.id}>  <img onClick={() => setSelectedStyle(image.image)} key={image.id} src={image.image} style={{height: '55px', width: '55px', borderRadius: '50%'}}/> </SelectedStyleTile>
       } else {
         return     <StyleTile key={image.id}>  <img onClick={() => setSelectedStyle(image.image)} key={image.id} src={image.image} style={{height: '50px', width: '50px', borderRadius: '50%'}}/> </StyleTile>
       }
