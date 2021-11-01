@@ -24,7 +24,8 @@ border: 3px solid rebeccapurple;
 `;
 
 const Styles = ({ styles, setSelectedStyle, selectedImage }) => {
-  console.log(styles);
+  const [skus, setSkus] = useState({});
+
   return <Container>
     { styles.map((image) =>  {
       if (image.url === selectedImage) {
@@ -34,6 +35,30 @@ const Styles = ({ styles, setSelectedStyle, selectedImage }) => {
       }
     }
     )}
+    <select>
+    { styles.map((image) =>  {
+      let placeholder = [];
+      if (image.url === selectedImage) {
+        for (let key in image.skus) {
+          placeholder.push(<option key={key} value={image.skus[key].size}>{ image.skus[key].size }</option>);
+        }
+      }
+      return placeholder;
+    }
+    )}
+    </select>
+    <select>
+    { styles.map((image) =>  {
+      let placeholder = [];
+      if (image.url === selectedImage) {
+        for (let key in image.skus) {
+          placeholder.push(<option key={key} value={image.skus[key].quantity}>{ image.skus[key].quantity }</option>);
+        }
+      }
+      return placeholder;
+    }
+    )}
+    </select>
   </Container>
 };
 
