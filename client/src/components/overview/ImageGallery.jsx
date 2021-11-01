@@ -47,9 +47,12 @@ const ImageGallery = ({ allImages, selectedImage, setSelectedImage }) => {
     for (let i = 0; i < allImages.length; ++i) {
       for (let j = 0; j < allImages[i].length; ++j) {
         if (allImages[i][j].url === selectedImage.url) {
-          if ([i] === 0 && j === [0]) {
+          if (i === 0 && j === 0) {
             return;
-          } else {
+          } else if (j === 0 && i > 0) {
+            setSelectedImage({url: allImages[i-1][allImages[i].length - 1].url, id: allImages[i-1][allImages[i].length - 1].id });
+          }
+          else {
             setSelectedImage({url: allImages[i][j-1].url, id: allImages[j-1].url});
           }
         }

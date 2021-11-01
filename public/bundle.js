@@ -5805,7 +5805,14 @@ var ImageGallery = function ImageGallery(_ref) {
     for (var i = 0; i < allImages.length; ++i) {
       for (var j = 0; j < allImages[i].length; ++j) {
         if (allImages[i][j].url === selectedImage.url) {
-          if ([i] === 0 && 0) {} else {
+          if (i === 0 && j === 0) {
+            return;
+          } else if (j === 0 && i > 0) {
+            setSelectedImage({
+              url: allImages[i - 1][allImages[i].length - 1].url,
+              id: allImages[i - 1][allImages[i].length - 1].id
+            });
+          } else {
             setSelectedImage({
               url: allImages[i][j - 1].url,
               id: allImages[j - 1].url
@@ -6125,7 +6132,9 @@ var Styles = function Styles(_ref) {
         borderRadius: '50%'
       }
     }), " "); // }
-  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(Container, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("select", null, styles.map(function (image) {
+  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(Container, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("select", {
+    id: "size"
+  }, styles.map(function (image) {
     var placeholder = [];
 
     for (var i = 0; i < image.photos.length; ++i) {
@@ -6145,11 +6154,17 @@ var Styles = function Styles(_ref) {
 
     for (var i = 0; i < image.photos.length; ++i) {
       if (image.photos[i].url === selectedImage.url) {
+        // for (let i =0; i < image.skus)
         for (var key in image.skus) {
+          // console.log(document.getElementById('size').value);
           placeholder.push( /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("option", {
             key: key,
             value: image.skus[key].quantity
-          }, image.skus[key].quantity));
+          }, image.skus[key].quantity)); // if (image.skus[key].size === document.getElementById('size').value) {
+          //   for (let i = 1; i < image.skus[key].quantity; ++i) {
+          //     placeholder.push(<option key={key, i} value={i}> { i } </option>)
+          //   }
+          // }
         }
       }
     }
@@ -6161,6 +6176,9 @@ var Styles = function Styles(_ref) {
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Styles); // style={{
 //   backgroundImage: `url('${ image.image }')`,
 //   backgroundRepeat: "no-repeat", height: '50px', width: '50px'
+// }
+// for (let i = 1; i <= selectedSize; ++i) {
+//   placeholder.push(<option key={i} value={i}>{ i }</option>);
 // }
 
 /***/ }),

@@ -42,11 +42,12 @@ const Styles = ({ styles, setSelectedStyle, selectedImage }) => {
     )}
     </Container>
     <Container>
-    <select>
+    <select id='size'>
     { styles.map((image) =>  {
       let placeholder = [];
       for (let i = 0; i < image.photos.length; ++i) {
         if (image.photos[i].url === selectedImage.url) {
+
           for (let key in image.skus) {
             placeholder.push(<option key={key} value={image.skus[key].size}>{ image.skus[key].size }</option>);
           }
@@ -61,8 +62,15 @@ const Styles = ({ styles, setSelectedStyle, selectedImage }) => {
       let placeholder = [];
       for (let i = 0; i < image.photos.length; ++i) {
         if (image.photos[i].url === selectedImage.url) {
-        for (let key in image.skus) {
+          // for (let i =0; i < image.skus)
+          for (let key in image.skus) {
+          // console.log(document.getElementById('size').value);
           placeholder.push(<option key={key} value={image.skus[key].quantity}>{ image.skus[key].quantity }</option>);
+          // if (image.skus[key].size === document.getElementById('size').value) {
+          //   for (let i = 1; i < image.skus[key].quantity; ++i) {
+          //     placeholder.push(<option key={key, i} value={i}> { i } </option>)
+          //   }
+          // }
           }
         }
       }
@@ -79,4 +87,8 @@ export default Styles;
 // style={{
 //   backgroundImage: `url('${ image.image }')`,
 //   backgroundRepeat: "no-repeat", height: '50px', width: '50px'
+// }
+
+// for (let i = 1; i <= selectedSize; ++i) {
+//   placeholder.push(<option key={i} value={i}>{ i }</option>);
 // }
