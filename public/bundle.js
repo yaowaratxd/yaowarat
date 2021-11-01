@@ -5803,7 +5803,7 @@ var ImageGallery = function ImageGallery(_ref) {
 
   var handleClickLeft = function handleClickLeft() {
     for (var i = 0; i < allImages.length; ++i) {
-      for (var j = 0; j < allImages.length; ++j) {
+      for (var j = 0; j < allImages[i].length; ++j) {
         if (allImages[i][j].url === selectedImage.url) {
           if ([i] === 0 && 0) {} else {
             setSelectedImage({
@@ -5818,10 +5818,15 @@ var ImageGallery = function ImageGallery(_ref) {
 
   var handleClickRight = function handleClickRight() {
     for (var i = 0; i < allImages.length; ++i) {
-      for (var j = 0; j < allImages.length; ++j) {
+      for (var j = 0; j < allImages[i].length; ++j) {
         if (allImages[i][j].url === selectedImage.url) {
-          if (i === allImages[i].length && j === allImages[i][j].length) {
-            return;
+          console.log(j, allImages[i].length);
+
+          if (j === allImages[i].length - 1) {
+            setSelectedImage({
+              url: allImages[i + 1][0].url,
+              id: allImages[i + 1][0].id
+            });
           } else {
             setSelectedImage({
               url: allImages[i][j + 1].url,
