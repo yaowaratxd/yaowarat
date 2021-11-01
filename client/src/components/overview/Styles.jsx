@@ -27,19 +27,26 @@ const Styles = ({ styles, setSelectedStyle, selectedImage }) => {
   console.log(styles);
   return <Container>
     { styles.map((image) =>  {
-      if (image.url === selectedImage.url ) {
-        return <SelectedStyleTile key={image.id}>  <img onClick={() => setSelectedStyle({url: image.image, id: image.id})} key={image.id} src={image.image} style={{height: '55px', width: '55px', borderRadius: '50%'}}/> </SelectedStyleTile>
-      } else {
-        return <StyleTile key={image.id}>  <img onClick={() => setSelectedStyle({url: image.image, id: image.id })} key={image.id} src={image.image} style={{height: '50px', width: '50px', borderRadius: '50%'}}/> </StyleTile>
+      for (let i = 0; i < image.photos.length; ++i) {
+        if (image.photos[i].thumbnail_url === selectedImage.url || image.photos[i].url === selectedImage.url) {
+          return <SelectedStyleTile key={image.id}>  <img onClick={() => setSelectedStyle({url: image.image, id: image.id})} key={image.id} src={image.image} style={{height: '55px', width: '55px', borderRadius: '50%'}}/> </SelectedStyleTile>
+        }
       }
+      // if (image.url === selectedImage.url ) {
+      //   return <SelectedStyleTile key={image.id}>  <img onClick={() => setSelectedStyle({url: image.image, id: image.id})} key={image.id} src={image.image} style={{height: '55px', width: '55px', borderRadius: '50%'}}/> </SelectedStyleTile>
+      // } else {
+        return <StyleTile key={image.id}>  <img onClick={() => setSelectedStyle({url: image.image, id: image.id })} key={image.id} src={image.image} style={{height: '50px', width: '50px', borderRadius: '50%'}}/> </StyleTile>
+      // }
     }
     )}
     <select>
     { styles.map((image) =>  {
       let placeholder = [];
-      if (image.url === selectedImage.url) {
-        for (let key in image.skus) {
-          placeholder.push(<option key={key} value={image.skus[key].size}>{ image.skus[key].size }</option>);
+      for (let i = 0; i < image.photos.length; ++i) {
+        if (image.photos[i].url === selectedImage.url) {
+          for (let key in image.skus) {
+            placeholder.push(<option key={key} value={image.skus[key].size}>{ image.skus[key].size }</option>);
+          }
         }
       }
       return placeholder;
@@ -49,9 +56,11 @@ const Styles = ({ styles, setSelectedStyle, selectedImage }) => {
     <select>
     { styles.map((image) =>  {
       let placeholder = [];
-      if (image.url === selectedImage.url) {
+      for (let i = 0; i < image.photos.length; ++i) {
+        if (image.photos[i].url === selectedImage.url) {
         for (let key in image.skus) {
           placeholder.push(<option key={key} value={image.skus[key].quantity}>{ image.skus[key].quantity }</option>);
+          }
         }
       }
       return placeholder;

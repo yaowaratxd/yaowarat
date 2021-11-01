@@ -5954,11 +5954,11 @@ var Overview = function Overview(props) {
           image: results.data.results[i].photos[0].thumbnail_url,
           id: results.data.results[i].style_id,
           url: results.data.results[i].photos[0].url,
-          skus: results.data.results[i].skus
+          skus: results.data.results[i].skus,
+          photos: results.data.results[i].photos
         });
       }
 
-      console.log(styles);
       setStyles(styles);
       callback(results.data.results);
     });
@@ -5990,9 +5990,8 @@ var Overview = function Overview(props) {
       setAllImages(temp[0]);
       setSelectedImage({
         url: temp[0][0].url,
-        id: temp[0][0].id
+        id: stylings[0].id
       });
-      console.log(temp[0][0]);
       var allHolder = [];
 
       for (var _i2 = 0; _i2 < stylings.length; ++_i2) {
@@ -6078,52 +6077,59 @@ var Styles = function Styles(_ref) {
       selectedImage = _ref.selectedImage;
   console.log(styles);
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(Container, null, styles.map(function (image) {
-    if (image.url === selectedImage.url) {
-      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(SelectedStyleTile, {
-        key: image.id
-      }, "  ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("img", {
-        onClick: function onClick() {
-          return setSelectedStyle({
-            url: image.image,
-            id: image.id
-          });
-        },
-        key: image.id,
-        src: image.image,
-        style: {
-          height: '55px',
-          width: '55px',
-          borderRadius: '50%'
-        }
-      }), " ");
-    } else {
-      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(StyleTile, {
-        key: image.id
-      }, "  ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("img", {
-        onClick: function onClick() {
-          return setSelectedStyle({
-            url: image.image,
-            id: image.id
-          });
-        },
-        key: image.id,
-        src: image.image,
-        style: {
-          height: '50px',
-          width: '50px',
-          borderRadius: '50%'
-        }
-      }), " ");
-    }
+    for (var i = 0; i < image.photos.length; ++i) {
+      if (image.photos[i].thumbnail_url === selectedImage.url || image.photos[i].url === selectedImage.url) {
+        return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(SelectedStyleTile, {
+          key: image.id
+        }, "  ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("img", {
+          onClick: function onClick() {
+            return setSelectedStyle({
+              url: image.image,
+              id: image.id
+            });
+          },
+          key: image.id,
+          src: image.image,
+          style: {
+            height: '55px',
+            width: '55px',
+            borderRadius: '50%'
+          }
+        }), " ");
+      }
+    } // if (image.url === selectedImage.url ) {
+    //   return <SelectedStyleTile key={image.id}>  <img onClick={() => setSelectedStyle({url: image.image, id: image.id})} key={image.id} src={image.image} style={{height: '55px', width: '55px', borderRadius: '50%'}}/> </SelectedStyleTile>
+    // } else {
+
+
+    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(StyleTile, {
+      key: image.id
+    }, "  ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("img", {
+      onClick: function onClick() {
+        return setSelectedStyle({
+          url: image.image,
+          id: image.id
+        });
+      },
+      key: image.id,
+      src: image.image,
+      style: {
+        height: '50px',
+        width: '50px',
+        borderRadius: '50%'
+      }
+    }), " "); // }
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("select", null, styles.map(function (image) {
     var placeholder = [];
 
-    if (image.url === selectedImage.url) {
-      for (var key in image.skus) {
-        placeholder.push( /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("option", {
-          key: key,
-          value: image.skus[key].size
-        }, image.skus[key].size));
+    for (var i = 0; i < image.photos.length; ++i) {
+      if (image.photos[i].url === selectedImage.url) {
+        for (var key in image.skus) {
+          placeholder.push( /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("option", {
+            key: key,
+            value: image.skus[key].size
+          }, image.skus[key].size));
+        }
       }
     }
 
@@ -6131,12 +6137,14 @@ var Styles = function Styles(_ref) {
   })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("select", null, styles.map(function (image) {
     var placeholder = [];
 
-    if (image.url === selectedImage.url) {
-      for (var key in image.skus) {
-        placeholder.push( /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("option", {
-          key: key,
-          value: image.skus[key].quantity
-        }, image.skus[key].quantity));
+    for (var i = 0; i < image.photos.length; ++i) {
+      if (image.photos[i].url === selectedImage.url) {
+        for (var key in image.skus) {
+          placeholder.push( /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("option", {
+            key: key,
+            value: image.skus[key].quantity
+          }, image.skus[key].quantity));
+        }
       }
     }
 

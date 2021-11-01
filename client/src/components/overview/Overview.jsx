@@ -18,9 +18,8 @@ const Overview = (props) => {
       let container = [];
       let styles = [];
       for (let i = 0; i < results.data.results.length; ++i) {
-        styles.push({image: results.data.results[i].photos[0].thumbnail_url, id: results.data.results[i].style_id, url: results.data.results[i].photos[0].url, skus: results.data.results[i].skus });
+        styles.push({image: results.data.results[i].photos[0].thumbnail_url, id: results.data.results[i].style_id, url: results.data.results[i].photos[0].url, skus: results.data.results[i].skus, photos: results.data.results[i].photos });
       }
-      console.log(styles);
       setStyles(styles);
       callback(results.data.results);
     })
@@ -40,14 +39,12 @@ const Overview = (props) => {
 
   useEffect(() => {
     fetchImages(props.product.id, (stylings) => {
-
       let temp = [];
       for (let i = 0; i < 1; ++i) {
       temp = [...temp, stylings[i]['photos']];
       }
       setAllImages(temp[0]);
-      setSelectedImage({ url: temp[0][0].url, id: temp[0][0].id });
-      console.log(temp[0][0]);
+      setSelectedImage({ url: temp[0][0].url, id: stylings[0].id });
       let allHolder = [];
       for (let i = 0; i < stylings.length; ++i) {
       allHolder = [...allHolder, stylings[i]['photos']];
