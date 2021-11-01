@@ -1,7 +1,8 @@
 import React from 'react';
 import axios from 'axios';
 import config from '/config.js';
-import OneRelatedProduct from './OneRelatedProduct.jsx'
+import OneRelatedProduct from './OneRelatedProduct.jsx';
+import OneOutfit from './OneOutfitProduct.jsx';
 
 
 class Related extends React.Component {
@@ -11,10 +12,11 @@ class Related extends React.Component {
       currentBook: placeholder,
       relatedProducts: [],
       additionalProductDetails: [],
+      outfitProducts: [], //move up to app most likely
     };
     this.getRelated = this.getRelated.bind(this);
-    // this.getAdditionalDetails = this.getAdditionalDetails.bind(this);
-
+    this.addToOutfitList = this.addToOutfitList.bind(this);
+    this.removeFromOutfitList = this.removeFromOutfitList.bind(this);
   }
 
   componentDidMount() {
@@ -22,7 +24,6 @@ class Related extends React.Component {
   }
 
   getRelated() {
-    // console.log('get fired');
     axios.get(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfe/products/${this.state.currentBook.id}/related`, {
       headers: {
         authorization: `${config.TOKEN}`,
@@ -32,13 +33,12 @@ class Related extends React.Component {
       .then(() => {
         for (var i = 0; i < this.state.relatedProductsKey.length; i++) {
           this.getBook(this.state.relatedProductsKey[i]);
-          // this.getAdditionalDetails(this.state.relatedProductsKey[i])
         }
       });
   }
 
-  getBook(bookID) {
-    axios.get(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfe/products/${bookID}/`, {
+  getBook(productID) {
+    axios.get(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfe/products/${productID}/`, {
       headers: {
         authorization: `${config.TOKEN}`,
       },
@@ -48,39 +48,35 @@ class Related extends React.Component {
       });
   }
 
-  // getAdditionalDetails(bookID) {
-  //   // console.log('invoked')
-  //   axios.get(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfe/products/${bookID}/styles`, {
-  //     headers: {
-  //       authorization: `${config.TOKEN}`,
-  //     },
-  //   })
-  //     .then((response) => {
-  //       this.setState({ additionalProductDetails: this.state.additionalProductDetails.concat(response.data)});
-  //       // console.log('thisbook\n', response)
-  //     })
-  //     // .then(console.log(this.state.thisBookExtra));
-  // }
-
-
-  render() {
-    var fullBookDetails = [];
-    // for (var i = 0; i < this.state.relatedProducts.length; i++) {
-    //   fullBookDetails.push(this.state.relatedProducts[i]);
-    //   fullBookDetails.push(this.state.additionalProductDetails[i]);
-    // }
-    // console.log(fullBookDetails)
-    return (
-      <div>current product selected: <em>{this.state.currentBook.name}</em>
-        <ul>
-          {this.state.relatedProducts.map( function(oneProduct) {
-            return <OneRelatedProduct product={oneProduct} />
-          })}
-        </ul>
-      </div>
-    )
+  addToOutfitList(product) {
+    this.setState({ outfitProducts: this.state.outfitProducts.concat(product) });
   }
 
+  removeFromOutfitList (product) {
+    console.log(product);
+  }
+
+  render() {
+    // var fullOutfitDetails = [];
+    return (
+      <div>
+        <div className="related products">current product selected: <em>{this.state.currentBook.name}</em>
+          <ul>
+            {this.state.relatedProducts.map((oneProduct) => {
+              return <OneRelatedProduct product={oneProduct} setOutfit={this.addToOutfitList} />
+            })}
+          </ul>
+        </div>
+        <div className="outfit products">customer favorite outfit list
+          <ul>
+            {this.state.outfitProducts.map((oneProduct) => {
+                return <OneOutfit product={oneProduct} removeOutfit={this.removeFromOutfitList} />
+            })}
+          </ul>
+        </div>
+      </div>
+    );
+  }
 }
 
 

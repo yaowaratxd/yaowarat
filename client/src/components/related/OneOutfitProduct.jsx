@@ -1,10 +1,8 @@
-/* eslint-disable react/destructuring-assignment */
 import React from 'react';
 import axios from 'axios';
 import config from '/config.js';
 
-
-class OneRelatedProduct extends React.Component {
+class OneOutfit extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -72,7 +70,7 @@ class OneRelatedProduct extends React.Component {
 
     return (
       <li className="related">
-        <button onClick={ () =>   {this.props.setOutfit(this.props.product)}     }> add to list </button>
+        <button onClick={ () =>   {this.props.removeOutfit(this.props.product)}     }> take away </button>
         <div>Product category: {this.props.product.category} </div>
         <div>Product name: {this.props.product.name}</div>
         <img src={`${picImage}`} width="100" height="100"/>
@@ -85,4 +83,4 @@ class OneRelatedProduct extends React.Component {
   }
 }
 
-export default OneRelatedProduct;
+export default OneOutfit;

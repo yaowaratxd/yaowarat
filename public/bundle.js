@@ -8,8 +8,9 @@
 /***/ ((module) => {
 
 module.exports = {
-  TOKEN: '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',
+  TOKEN: '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',
 };
+
 
 /***/ }),
 
@@ -2158,6 +2159,161 @@ module.exports = {
 
 /***/ }),
 
+/***/ "./client/src/components/related/OneOutfitProduct.jsx":
+/*!************************************************************!*\
+  !*** ./client/src/components/related/OneOutfitProduct.jsx ***!
+  \************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _config_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../config.js */ "./config.js");
+/* harmony import */ var _config_js__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_config_js__WEBPACK_IMPORTED_MODULE_2__);
+function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+function _createSuper(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct(); return function _createSuperInternal() { var Super = _getPrototypeOf(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn(this, result); }; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } else if (call !== void 0) { throw new TypeError("Derived constructors may only return object or undefined"); } return _assertThisInitialized(self); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); return true; } catch (e) { return false; } }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+
+
+
+
+var OneOutfit = /*#__PURE__*/function (_React$Component) {
+  _inherits(OneOutfit, _React$Component);
+
+  var _super = _createSuper(OneOutfit);
+
+  function OneOutfit(props) {
+    var _this;
+
+    _classCallCheck(this, OneOutfit);
+
+    _this = _super.call(this, props);
+    _this.state = {
+      thisProductExtra: {},
+      thisProductRating: {},
+      isFavorited: false
+    };
+    _this.getStyles = _this.getStyles.bind(_assertThisInitialized(_this));
+    _this.getReviews = _this.getReviews.bind(_assertThisInitialized(_this));
+    return _this;
+  }
+
+  _createClass(OneOutfit, [{
+    key: "componentDidMount",
+    value: function componentDidMount() {
+      this.getStyles();
+      this.getReviews();
+    }
+  }, {
+    key: "getStyles",
+    value: function getStyles() {
+      var _this2 = this;
+
+      axios__WEBPACK_IMPORTED_MODULE_1___default().get("https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfe/products/".concat(this.props.product.id, "/styles"), {
+        headers: {
+          authorization: "".concat((_config_js__WEBPACK_IMPORTED_MODULE_2___default().TOKEN))
+        }
+      }).then(function (response) {
+        _this2.setState({
+          thisProductExtra: response.data
+        });
+      });
+    }
+  }, {
+    key: "getReviews",
+    value: function getReviews() {
+      var _this3 = this;
+
+      axios__WEBPACK_IMPORTED_MODULE_1___default().get("https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfe/reviews/meta/?product_id=".concat(this.props.product.id), {
+        headers: {
+          authorization: "".concat((_config_js__WEBPACK_IMPORTED_MODULE_2___default().TOKEN))
+        }
+      }).then(function (response) {
+        _this3.setState({
+          thisProductRating: response.data
+        });
+      });
+    }
+  }, {
+    key: "getRatingScore",
+    value: function getRatingScore() {
+      var reviewTotalScore = 0;
+      var totalReviews = 0;
+
+      if (JSON.stringify(this.state.thisProductRating.ratings) !== '{}') {
+        for (var key in this.state.thisProductRating.ratings) {
+          reviewTotalScore += parseInt([key]) * parseInt(this.state.thisProductRating.ratings[key]);
+          totalReviews += parseInt(this.state.thisProductRating.ratings[key]);
+        }
+
+        return (Math.round(reviewTotalScore / totalReviews * 4) / 4).toFixed(2);
+      }
+
+      return 'Be the first to rate this product!';
+    }
+  }, {
+    key: "render",
+    value: function render() {
+      var _this4 = this;
+
+      var picImage = 'https://freesvg.org/img/Image-Not-Found.png';
+      var productRating = 'Be the first to provide a rating!';
+
+      if (this.state.thisProductRating.ratings) {
+        productRating = this.getRatingScore();
+      }
+
+      if (this.state.thisProductExtra.product_id) {
+        if (this.state.thisProductExtra.results[0].photos[0].thumbnail_url) {
+          picImage = this.state.thisProductExtra.results[0].photos[0].thumbnail_url;
+        }
+      }
+
+      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("li", {
+        className: "related"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", {
+        onClick: function onClick() {
+          _this4.props.removeOutfit(_this4.props.product);
+        }
+      }, " take away "), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, "Product category: ", this.props.product.category, " "), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, "Product name: ", this.props.product.name), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("img", {
+        src: "".concat(picImage),
+        width: "100",
+        height: "100"
+      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, "Price (default, needs conditional updating) ", this.props.product.default_price), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, "Star rating: ", productRating), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("br", null));
+    }
+  }]);
+
+  return OneOutfit;
+}(react__WEBPACK_IMPORTED_MODULE_0__.Component);
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (OneOutfit);
+
+/***/ }),
+
 /***/ "./client/src/components/related/OneRelatedProduct.jsx":
 /*!*************************************************************!*\
   !*** ./client/src/components/related/OneRelatedProduct.jsx ***!
@@ -2214,20 +2370,13 @@ var OneRelatedProduct = /*#__PURE__*/function (_React$Component) {
     _this = _super.call(this, props);
     _this.state = {
       thisProductExtra: {},
-      // thisProductReview: {},
-      thisProductRating: {}
+      thisProductRating: {},
+      isFavorited: false
     };
     _this.getStyles = _this.getStyles.bind(_assertThisInitialized(_this));
     _this.getReviews = _this.getReviews.bind(_assertThisInitialized(_this));
     return _this;
-  } // componentDidUpdate(prevProps) {
-  //   // Typical usage (don't forget to compare props):
-  //   if (!this.state.thisProductExtra.product_id) {
-  //     this.getStyles();
-  //     (console.log('something changed'))
-  //   }
-  // }
-
+  }
 
   _createClass(OneRelatedProduct, [{
     key: "componentDidMount",
@@ -2285,6 +2434,8 @@ var OneRelatedProduct = /*#__PURE__*/function (_React$Component) {
   }, {
     key: "render",
     value: function render() {
+      var _this4 = this;
+
       var picImage = 'https://freesvg.org/img/Image-Not-Found.png';
       var productRating = 'Be the first to provide a rating!';
 
@@ -2292,20 +2443,19 @@ var OneRelatedProduct = /*#__PURE__*/function (_React$Component) {
         productRating = this.getRatingScore();
       }
 
-      ; // console.log(this.state.thisProductExtra);
-
       if (this.state.thisProductExtra.product_id) {
         if (this.state.thisProductExtra.results[0].photos[0].thumbnail_url) {
           picImage = this.state.thisProductExtra.results[0].photos[0].thumbnail_url;
         }
-
-        ;
-      } // console.log('picimage: ', picImage)
-
+      }
 
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("li", {
-        "class": "related"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, "Product category: ", this.props.product.category, " "), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, "Product name: ", this.props.product.name), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("img", {
+        className: "related"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", {
+        onClick: function onClick() {
+          _this4.props.setOutfit(_this4.props.product);
+        }
+      }, " add to list "), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, "Product category: ", this.props.product.category, " "), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, "Product name: ", this.props.product.name), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("img", {
         src: "".concat(picImage),
         width: "100",
         height: "100"
@@ -2337,6 +2487,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _config_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../config.js */ "./config.js");
 /* harmony import */ var _config_js__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_config_js__WEBPACK_IMPORTED_MODULE_2__);
 /* harmony import */ var _OneRelatedProduct_jsx__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./OneRelatedProduct.jsx */ "./client/src/components/related/OneRelatedProduct.jsx");
+/* harmony import */ var _OneOutfitProduct_jsx__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./OneOutfitProduct.jsx */ "./client/src/components/related/OneOutfitProduct.jsx");
 function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -2364,6 +2515,7 @@ function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.g
 
 
 
+
 var Related = /*#__PURE__*/function (_React$Component) {
   _inherits(Related, _React$Component);
 
@@ -2378,10 +2530,13 @@ var Related = /*#__PURE__*/function (_React$Component) {
     _this.state = {
       currentBook: placeholder,
       relatedProducts: [],
-      additionalProductDetails: []
-    };
-    _this.getRelated = _this.getRelated.bind(_assertThisInitialized(_this)); // this.getAdditionalDetails = this.getAdditionalDetails.bind(this);
+      additionalProductDetails: [],
+      outfitProducts: [] //move up to app most likely
 
+    };
+    _this.getRelated = _this.getRelated.bind(_assertThisInitialized(_this));
+    _this.addToOutfitList = _this.addToOutfitList.bind(_assertThisInitialized(_this));
+    _this.removeFromOutfitList = _this.removeFromOutfitList.bind(_assertThisInitialized(_this));
     return _this;
   }
 
@@ -2395,7 +2550,6 @@ var Related = /*#__PURE__*/function (_React$Component) {
     value: function getRelated() {
       var _this2 = this;
 
-      // console.log('get fired');
       axios__WEBPACK_IMPORTED_MODULE_1___default().get("https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfe/products/".concat(this.state.currentBook.id, "/related"), {
         headers: {
           authorization: "".concat((_config_js__WEBPACK_IMPORTED_MODULE_2___default().TOKEN))
@@ -2406,17 +2560,16 @@ var Related = /*#__PURE__*/function (_React$Component) {
         });
       }).then(function () {
         for (var i = 0; i < _this2.state.relatedProductsKey.length; i++) {
-          _this2.getBook(_this2.state.relatedProductsKey[i]); // this.getAdditionalDetails(this.state.relatedProductsKey[i])
-
+          _this2.getBook(_this2.state.relatedProductsKey[i]);
         }
       });
     }
   }, {
     key: "getBook",
-    value: function getBook(bookID) {
+    value: function getBook(productID) {
       var _this3 = this;
 
-      axios__WEBPACK_IMPORTED_MODULE_1___default().get("https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfe/products/".concat(bookID, "/"), {
+      axios__WEBPACK_IMPORTED_MODULE_1___default().get("https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfe/products/".concat(productID, "/"), {
         headers: {
           authorization: "".concat((_config_js__WEBPACK_IMPORTED_MODULE_2___default().TOKEN))
         }
@@ -2425,34 +2578,40 @@ var Related = /*#__PURE__*/function (_React$Component) {
           relatedProducts: _this3.state.relatedProducts.concat(results.data)
         });
       });
-    } // getAdditionalDetails(bookID) {
-    //   // console.log('invoked')
-    //   axios.get(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfe/products/${bookID}/styles`, {
-    //     headers: {
-    //       authorization: `${config.TOKEN}`,
-    //     },
-    //   })
-    //     .then((response) => {
-    //       this.setState({ additionalProductDetails: this.state.additionalProductDetails.concat(response.data)});
-    //       // console.log('thisbook\n', response)
-    //     })
-    //     // .then(console.log(this.state.thisBookExtra));
-    // }
-
+    }
+  }, {
+    key: "addToOutfitList",
+    value: function addToOutfitList(product) {
+      this.setState({
+        outfitProducts: this.state.outfitProducts.concat(product)
+      });
+    }
+  }, {
+    key: "removeFromOutfitList",
+    value: function removeFromOutfitList(product) {
+      console.log(product);
+    }
   }, {
     key: "render",
     value: function render() {
-      var fullBookDetails = []; // for (var i = 0; i < this.state.relatedProducts.length; i++) {
-      //   fullBookDetails.push(this.state.relatedProducts[i]);
-      //   fullBookDetails.push(this.state.additionalProductDetails[i]);
-      // }
-      // console.log(fullBookDetails)
+      var _this4 = this;
 
-      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, "current product selected: ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("em", null, this.state.currentBook.name), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("ul", null, this.state.relatedProducts.map(function (oneProduct) {
+      // var fullOutfitDetails = [];
+      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+        className: "related products"
+      }, "current product selected: ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("em", null, this.state.currentBook.name), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("ul", null, this.state.relatedProducts.map(function (oneProduct) {
         return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_OneRelatedProduct_jsx__WEBPACK_IMPORTED_MODULE_3__["default"], {
-          product: oneProduct
+          product: oneProduct,
+          setOutfit: _this4.addToOutfitList
         });
-      })));
+      }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+        className: "outfit products"
+      }, "customer favorite outfit list", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("ul", null, this.state.outfitProducts.map(function (oneProduct) {
+        return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_OneOutfitProduct_jsx__WEBPACK_IMPORTED_MODULE_4__["default"], {
+          product: oneProduct,
+          removeOutfit: _this4.removeFromOutfitList
+        });
+      }))));
     }
   }]);
 
