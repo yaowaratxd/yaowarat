@@ -4,11 +4,12 @@ import ReactDOM from 'react-dom';
 import styled from 'styled-components';
 
 import Overview from './components/overview/Overview.jsx';
+import Reviews from './components/reviews/Reviews.jsx';
 import sampleData from './sampleData.json'
 
 // import './index.css';
 
-const Root =  styled.div`
+const Root = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
@@ -20,7 +21,8 @@ const App = () => {
   const [allThings, setAllThings] = useState(sampleData);
   return (
     <Root>
-      <Overview product={allThings[0]}/>
+      {/* <Overview product={allThings[0]} /> */}
+      <Reviews />
     </Root>
   );
 };

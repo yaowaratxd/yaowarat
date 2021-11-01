@@ -1,0 +1,14 @@
+
+
+#mainContainer {
+  width: 80vw;
+}
+
+.reviewContainer {
+  display: flex;
+  border: solid black 2px;
+}
+
+/* .tile {
+  background-color: blue;
+} */
