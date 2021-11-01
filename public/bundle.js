@@ -5820,8 +5820,6 @@ var ImageGallery = function ImageGallery(_ref) {
     for (var i = 0; i < allImages.length; ++i) {
       for (var j = 0; j < allImages[i].length; ++j) {
         if (allImages[i][j].url === selectedImage.url) {
-          console.log(j, allImages[i].length);
-
           if (j === allImages[i].length - 1) {
             setSelectedImage({
               url: allImages[i + 1][0].url,
@@ -6084,8 +6082,7 @@ var Styles = function Styles(_ref) {
   var styles = _ref.styles,
       setSelectedStyle = _ref.setSelectedStyle,
       selectedImage = _ref.selectedImage;
-  console.log(styles);
-  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(Container, null, styles.map(function (image) {
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(Container, null, styles.map(function (image) {
     for (var i = 0; i < image.photos.length; ++i) {
       if (image.photos[i].thumbnail_url === selectedImage.url || image.photos[i].url === selectedImage.url) {
         return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(SelectedStyleTile, {
@@ -6128,7 +6125,7 @@ var Styles = function Styles(_ref) {
         borderRadius: '50%'
       }
     }), " "); // }
-  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("select", null, styles.map(function (image) {
+  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(Container, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("select", null, styles.map(function (image) {
     var placeholder = [];
 
     for (var i = 0; i < image.photos.length; ++i) {
@@ -6158,7 +6155,7 @@ var Styles = function Styles(_ref) {
     }
 
     return placeholder;
-  })));
+  }))));
 };
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Styles); // style={{

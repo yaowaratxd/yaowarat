@@ -60,7 +60,6 @@ const ImageGallery = ({ allImages, selectedImage, setSelectedImage }) => {
     for (let i = 0; i < allImages.length; ++i) {
       for (let j = 0; j < allImages[i].length; ++j) {
         if (allImages[i][j].url === selectedImage.url) {
-          console.log(j, allImages[i].length);
           if (j === allImages[i].length - 1) {
             setSelectedImage({url: allImages[i + 1][0].url, id: allImages[i + 1][0].id });
           } else {

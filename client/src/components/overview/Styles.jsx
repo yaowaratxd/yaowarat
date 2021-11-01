@@ -24,8 +24,9 @@ border: 3px solid rebeccapurple;
 `;
 
 const Styles = ({ styles, setSelectedStyle, selectedImage }) => {
-  console.log(styles);
-  return <Container>
+
+  return <div>
+  <Container>
     { styles.map((image) =>  {
       for (let i = 0; i < image.photos.length; ++i) {
         if (image.photos[i].thumbnail_url === selectedImage.url || image.photos[i].url === selectedImage.url) {
@@ -39,6 +40,8 @@ const Styles = ({ styles, setSelectedStyle, selectedImage }) => {
       // }
     }
     )}
+    </Container>
+    <Container>
     <select>
     { styles.map((image) =>  {
       let placeholder = [];
@@ -68,6 +71,7 @@ const Styles = ({ styles, setSelectedStyle, selectedImage }) => {
     )}
     </select>
   </Container>
+  </div>
 };
 
 export default Styles;
