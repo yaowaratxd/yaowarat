@@ -6,9 +6,15 @@
 
 .reviewContainer {
   display: flex;
+  justify-content: space-around;
   border: solid black 2px;
+  width: 60vw;
 }
 
-/* .tile {
-  background-color: blue;
-} */
+.reviewOverview {
+  border: solid lightskyblue 2px;
+}
+
+.tile {
+  border: solid lightcoral 2px;
+}

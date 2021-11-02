@@ -22,7 +22,7 @@ const App = () => {
   return (
     <Root>
       {/* <Overview product={allThings[0]} /> */}
-      <Reviews />
+      <Reviews product={allThings[0]} />
     </Root>
   );
 };
