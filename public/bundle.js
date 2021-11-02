@@ -6104,7 +6104,7 @@ var ReviewList = function ReviewList(props) {
     // console.log('To be shown is greater then length');
     return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
       className: "container"
-    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h4", null, "Reviews"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_ReviewTiles_jsx__WEBPACK_IMPORTED_MODULE_1__["default"], {
+    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h5", null, props.reviews.length, " reviews, sorted by relevance"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_ReviewTiles_jsx__WEBPACK_IMPORTED_MODULE_1__["default"], {
       reviews: props.reviews,
       reviewsShown: props.reviewsShown
     }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", {
@@ -6114,7 +6114,7 @@ var ReviewList = function ReviewList(props) {
   } else {
     return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
       className: "container"
-    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h4", null, "Reviews"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_ReviewTiles_jsx__WEBPACK_IMPORTED_MODULE_1__["default"], {
+    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h5", null, props.reviews.length, " reviews, sorted by relevance"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_ReviewTiles_jsx__WEBPACK_IMPORTED_MODULE_1__["default"], {
       reviews: props.reviews,
       reviewsShown: props.reviewsShown
     }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", {
