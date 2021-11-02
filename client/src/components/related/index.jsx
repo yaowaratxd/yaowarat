@@ -1,15 +1,15 @@
 import React from 'react';
 import axios from 'axios';
-import config from '/config.js';
+import config2 from '/config2.js';
 import OneRelatedProduct from './OneRelatedProduct.jsx';
 import OneOutfit from './OneOutfitProduct.jsx';
-
+import AddCurrentItem from './AddCurrentItem.jsx';
 
 class Related extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      currentBook: placeholder,
+      currentProduct: placeholder,
       relatedProducts: [],
       additionalProductDetails: [],
       outfitProducts: [], //move up to app most likely
@@ -24,23 +24,23 @@ class Related extends React.Component {
   }
 
   getRelated() {
-    axios.get(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfe/products/${this.state.currentBook.id}/related`, {
+    axios.get(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfe/products/${this.state.currentProduct.id}/related`, {
       headers: {
-        authorization: `${config.TOKEN}`,
+        authorization: `${config2.TOKEN}`,
       },
     })
       .then((results) => { this.setState({relatedProductsKey: results.data}); })
       .then(() => {
         for (var i = 0; i < this.state.relatedProductsKey.length; i++) {
-          this.getBook(this.state.relatedProductsKey[i]);
+          this.getProduct(this.state.relatedProductsKey[i]);
         }
       });
   }
 
-  getBook(productID) {
+  getProduct(productID) {
     axios.get(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfe/products/${productID}/`, {
       headers: {
-        authorization: `${config.TOKEN}`,
+        authorization: `${config2.TOKEN}`,
       },
     })
       .then((results) => {
@@ -49,18 +49,25 @@ class Related extends React.Component {
   }
 
   addToOutfitList(product) {
-    this.setState({ outfitProducts: this.state.outfitProducts.concat(product) });
+    // this.setState({ outfitProducts: this.state.outfitProducts.concat(product) });
+    this.setState( (state) => {
+      return {outfitProducts: state.outfitProducts.concat(product)}
+    }   );
   }
 
   removeFromOutfitList (product) {
-    console.log(product);
+    const stringed = JSON.stringify(product);
+    // console.log('removing: ', stringed);
+    this.setState ((state) => {
+      return {outfitProducts: state.outfitProducts.filter((product) => JSON.stringify(product) !== stringed)};
+    });///
   }
 
   render() {
     // var fullOutfitDetails = [];
     return (
       <div>
-        <div className="related products">current product selected: <em>{this.state.currentBook.name}</em>
+        <div className="related products">current product selected: <em>{this.state.currentProduct.name}</em>
           <ul>
             {this.state.relatedProducts.map((oneProduct) => {
               return <OneRelatedProduct product={oneProduct} setOutfit={this.addToOutfitList} />
@@ -68,6 +75,7 @@ class Related extends React.Component {
           </ul>
         </div>
         <div className="outfit products">customer favorite outfit list
+          <div> <AddCurrentItem setOutfit={this.addToOutfitList} currentProduct={this.state.currentProduct}/> </div>
           <ul>
             {this.state.outfitProducts.map((oneProduct) => {
                 return <OneOutfit product={oneProduct} removeOutfit={this.removeFromOutfitList} />

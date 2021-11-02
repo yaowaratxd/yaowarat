@@ -1,7 +1,7 @@
 /* eslint-disable react/destructuring-assignment */
 import React from 'react';
 import axios from 'axios';
-import config from '/config.js';
+import config2 from '/config2.js';
 
 
 class OneRelatedProduct extends React.Component {
@@ -22,10 +22,12 @@ class OneRelatedProduct extends React.Component {
     this.getReviews();
   }
 
+
+
   getStyles() {
     axios.get(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfe/products/${this.props.product.id}/styles`, {
       headers: {
-        authorization: `${config.TOKEN}`,
+        authorization: `${config2.TOKEN}`,
       },
     })
       .then((response) => {
@@ -36,7 +38,7 @@ class OneRelatedProduct extends React.Component {
   getReviews() {
     axios.get(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfe/reviews/meta/?product_id=${this.props.product.id}`, {
       headers: {
-        authorization: `${config.TOKEN}`,
+        authorization: `${config2.TOKEN}`,
       },
     })
       .then((response) => {
@@ -72,10 +74,10 @@ class OneRelatedProduct extends React.Component {
 
     return (
       <li className="related">
-        <button onClick={ () =>   {this.props.setOutfit(this.props.product)}     }> add to list </button>
+        <button onClick={() => {this.props.setOutfit(this.props.product)}} class="toggle" class="fa fa-star"> add to list </button>
         <div>Product category: {this.props.product.category} </div>
         <div>Product name: {this.props.product.name}</div>
-        <img src={`${picImage}`} width="100" height="100"/>
+        <img src={`${picImage}`} height="250px" width="200px"/>
         <div>Price (default, needs conditional updating) {this.props.product.default_price}</div>
         <div>Star rating: {productRating}</div>
 
