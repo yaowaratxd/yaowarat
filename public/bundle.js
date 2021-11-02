@@ -6173,7 +6173,7 @@ var ReviewTiles = function ReviewTiles(props) {
 }; // new Date("2019-01-06T23:29:35.000Z")
 // .toLocaleDateString({},
 //   {timeZone:"UTC",month:"long", day:"2-digit", year:"numeric"}
-//   )
+//   );
 
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (ReviewTiles);
