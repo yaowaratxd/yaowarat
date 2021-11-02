@@ -6101,6 +6101,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var styled_components__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! styled-components */ "./node_modules/styled-components/dist/styled-components.browser.esm.js");
+var _templateObject;
+
 function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
 
 function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
@@ -6113,7 +6116,11 @@ function _iterableToArrayLimit(arr, i) { var _i = arr == null ? null : typeof Sy
 
 function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
+function _taggedTemplateLiteral(strings, raw) { if (!raw) { raw = strings.slice(0); } return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); }
 
+
+
+var SelectEle = styled_components__WEBPACK_IMPORTED_MODULE_1__["default"].select(_templateObject || (_templateObject = _taggedTemplateLiteral(["\nwidth: 100px;\nheight: 45px;\nmargin-right: 40px;\nmargin-top: 20px;\n"])));
 
 var QuantityDropDown = function QuantityDropDown(_ref) {
   var quantity = _ref.quantity;
@@ -6133,7 +6140,7 @@ var QuantityDropDown = function QuantityDropDown(_ref) {
     ;
     setSelections(results);
   }, [quantity]);
-  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("select", null, selections.map(function (size) {
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(SelectEle, null, selections.map(function (size) {
     return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("option", {
       key: size,
       vale: size
@@ -6159,7 +6166,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var _QuantityDropDown_jsx__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./QuantityDropDown.jsx */ "./client/src/components/overview/QuantityDropDown.jsx");
 /* harmony import */ var styled_components__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! styled-components */ "./node_modules/styled-components/dist/styled-components.browser.esm.js");
-var _templateObject, _templateObject2, _templateObject3;
+var _templateObject, _templateObject2, _templateObject3, _templateObject4;
 
 function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
 
@@ -6181,6 +6188,7 @@ function _taggedTemplateLiteral(strings, raw) { if (!raw) { raw = strings.slice(
 var Container = styled_components__WEBPACK_IMPORTED_MODULE_2__["default"].div(_templateObject || (_templateObject = _taggedTemplateLiteral(["\nposition: relative;\nleft: 20vw;\ntop: 10vh;\ndisplay: flex;\nflex-wrap: true;\n"])));
 var StyleTile = styled_components__WEBPACK_IMPORTED_MODULE_2__["default"].div(_templateObject2 || (_templateObject2 = _taggedTemplateLiteral(["\nheight: 50px;\nwidth: 50px;\nborder-radius: 50%;\nborder: 1px solid black;\n"])));
 var SelectedStyleTile = styled_components__WEBPACK_IMPORTED_MODULE_2__["default"].div(_templateObject3 || (_templateObject3 = _taggedTemplateLiteral(["\nheight: 55px;\nwidth: 55px;\nborder-radius: 50%;\nborder: 3px solid rebeccapurple;\n"])));
+var SelectEle = styled_components__WEBPACK_IMPORTED_MODULE_2__["default"].select(_templateObject4 || (_templateObject4 = _taggedTemplateLiteral(["\nwidth: 100px;\nheight: 45px;\nmargin-right: 40px;\nmargin-top: 20px;\n"])));
 
 var Styles = function Styles(_ref) {
   var styles = _ref.styles,
@@ -6285,7 +6293,7 @@ var Styles = function Styles(_ref) {
         borderRadius: '50%'
       }
     }), " "); // }
-  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(Container, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("select", {
+  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(Container, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(SelectEle, {
     id: "size",
     onChange: function onChange(event) {
       return handleChange(event);

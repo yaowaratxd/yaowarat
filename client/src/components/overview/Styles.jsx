@@ -24,6 +24,13 @@ border-radius: 50%;
 border: 3px solid rebeccapurple;
 `;
 
+const SelectEle = styled.select`
+width: 100px;
+height: 45px;
+margin-right: 40px;
+margin-top: 20px;
+`;
+
 const Styles = ({ styles, setSelectedStyle, selectedImage }) => {
   const [selected, setSelected] = useState('');
   const [quantity, setQuantity] = useState(7);
@@ -82,7 +89,7 @@ const Styles = ({ styles, setSelectedStyle, selectedImage }) => {
     )}
     </Container>
     <Container>
-    <select id='size' onChange={(event) => handleChange(event)}>
+    <SelectEle id='size' onChange={(event) => handleChange(event)}>
     { styles.map((image) =>  {
       let placeholder = [];
       for (let i = 0; i < image.photos.length; ++i) {
@@ -96,7 +103,7 @@ const Styles = ({ styles, setSelectedStyle, selectedImage }) => {
       return placeholder;
     }
     )}
-    </select>
+    </SelectEle>
     <QuantityDropDown quantity={quantity} />
     {/* <select> */}
     {/* { styles.map((image) =>  {
