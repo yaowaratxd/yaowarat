@@ -28,21 +28,8 @@ const Styles = ({ styles, setSelectedStyle, selectedImage }) => {
   const [selected, setSelected] = useState('');
   const [quantity, setQuantity] = useState(7);
 
-  useEffect(() => {
-    // createQuantitySelector();
-  }, [selected]);
-
-  const createQuantitySelector = () => {
-    let results = [];
-    for (let i = 1; i <= q; ++i) {
-      results.push(<option key={i} value={i}> { i } </option>);
-    }
-    return results;
-  };
-
-  const handleChange = (event) => {
-    setSelected(event.target.value);
-    const quant = styles.filter(style => {
+  const setQ = () => {
+    styles.filter(style => {
       for (let i = 0; i < style.photos.length; ++i) {
         if (style.photos[i].url === selectedImage.url) {
           let useThis;
@@ -58,8 +45,25 @@ const Styles = ({ styles, setSelectedStyle, selectedImage }) => {
           }
         }
       }
-
     })
+  };
+  useEffect(() => {
+    // createQuantitySelector();
+    setQ();
+  }, [selected, quantity]);
+
+  const createQuantitySelector = () => {
+    let results = [];
+    for (let i = 1; i <= q; ++i) {
+      results.push(<option key={i} value={i}> { i } </option>);
+    }
+    return results;
+  };
+
+
+  const handleChange = (event) => {
+    setSelected(event.target.value);
+    setQ();
   };
   return <div>
   <Container>

@@ -28,12 +28,19 @@ const ImageContainer = styled.div`
 width: 10vw;
 `;
 const BaseImage = styled.img`
-width: 25vw;
+width: 40vw;
 position: absolute;
 top: 5vh;
 left: 5%;
 height: 60vh;
-width: 50vw;
+`;
+const BaseImageExpanded = styled.img`
+width: 70vw;
+position: absolute;
+top: 5vh;
+left: 5%;
+height: 60vh;
+z-index: 2;
 `;
 
 const ClickyButton = styled.button`
@@ -43,6 +50,8 @@ color: rebeccapurple;
 `;
 
 const ImageGallery = ({ allImages, selectedImage, setSelectedImage }) => {
+  const [expandedImage, setExpandedImage] = useState(false);
+
   const handleClickLeft = () => {
     for (let i = 0; i < allImages.length; ++i) {
       for (let j = 0; j < allImages[i].length; ++j) {
@@ -73,6 +82,10 @@ const ImageGallery = ({ allImages, selectedImage, setSelectedImage }) => {
     }
   };
 
+  const changeExpansion = () => {
+    setExpandedImage(!expandedImage);
+  };
+
   const renderLeftButton = () => {
     if (allImages.length > 0) {
       return allImages[0].url === selectedImage ? '' : <ClickyButton onClick={handleClickLeft}>Left</ClickyButton>;
@@ -81,8 +94,9 @@ const ImageGallery = ({ allImages, selectedImage, setSelectedImage }) => {
   return <div>
     <div>
   { renderLeftButton() }
-        <BaseImage src={selectedImage.url} />
+        { expandedImage ? <BaseImageExpanded src={selectedImage.url} /> : <BaseImage src={selectedImage.url} /> }
         <ClickyButton onClick={handleClickRight}>Right</ClickyButton>
+        <ClickyButton onClick={changeExpansion}> Expand</ClickyButton>
         <LeftRibbon>
           <ImageContainer>
           {/* { allImages.map((im) => im.url === selectedImage ? <SelectedTile onClick={() => setSelectedImage(im.url)} key={im.thumbnail_url} src={im.thumbnail_url} /> : <Tile onClick={() => setSelectedImage(im.url)} key={im.thumbnail_url} src={im.thumbnail_url} /> )
