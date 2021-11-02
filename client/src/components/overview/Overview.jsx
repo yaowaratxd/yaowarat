@@ -53,7 +53,7 @@ const Overview = (props) => {
     });
   }, []);
 
-  return <div>
+  return <div >
     <ImageGallery allImages={totalImages} selectedImage={selectedImage} setSelectedImage={setSelectedImage} />
     <ProductDetail product={props.product}/>
     <Styles styles={styles} selectedImage={selectedImage} setSelectedStyle={setSelectedStyle} />
@@ -62,3 +62,5 @@ const Overview = (props) => {
 };
 
 export default Overview;
+
+// style={{ width: '80vw' }}

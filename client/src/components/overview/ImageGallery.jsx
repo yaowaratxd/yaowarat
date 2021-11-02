@@ -23,6 +23,7 @@ top: 5vh;
 left: 5%;
 height: 60vh;
 overflow: scroll;
+z-index: 2;
 `;
 const ImageContainer = styled.div`
 width: 10vw;
@@ -47,6 +48,15 @@ const ClickyButton = styled.button`
 background-color: Transparent;
 border: none;
 color: rebeccapurple;
+`;
+const ExpandClickyButton = styled.button`
+background-color: Transparent;
+border: none;
+color: rebeccapurple;
+position: relative;
+right: 5vw;
+top: 5vh;
+z-index: 2;
 `;
 
 const ImageGallery = ({ allImages, selectedImage, setSelectedImage }) => {
@@ -96,7 +106,7 @@ const ImageGallery = ({ allImages, selectedImage, setSelectedImage }) => {
   { renderLeftButton() }
         { expandedImage ? <BaseImageExpanded src={selectedImage.url} /> : <BaseImage src={selectedImage.url} /> }
         <ClickyButton onClick={handleClickRight}>Right</ClickyButton>
-        <ClickyButton onClick={changeExpansion}> Expand</ClickyButton>
+        <ExpandClickyButton onClick={changeExpansion}> Expand</ExpandClickyButton>
         <LeftRibbon>
           <ImageContainer>
           {/* { allImages.map((im) => im.url === selectedImage ? <SelectedTile onClick={() => setSelectedImage(im.url)} key={im.thumbnail_url} src={im.thumbnail_url} /> : <Tile onClick={() => setSelectedImage(im.url)} key={im.thumbnail_url} src={im.thumbnail_url} /> )
