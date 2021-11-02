@@ -6101,7 +6101,8 @@ var ReviewList = function ReviewList(props) {
     return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
       className: "container"
     }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h4", null, "Reviews"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_ReviewTiles_jsx__WEBPACK_IMPORTED_MODULE_1__["default"], {
-      reviews: props.reviews
+      reviews: props.reviews,
+      reviewsShown: props.reviewsShown
     }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", {
       type: "button",
       onClick: props.readMore
@@ -6157,7 +6158,7 @@ var ReviewTiles = function ReviewTiles(props) {
   if (props.reviews === undefined) {
     return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, null);
   } else {
-    return props.reviews.map(function (review, index) {
+    var tiles = props.reviews.map(function (review, index) {
       var date = new Date("".concat(review.date.slice(0, 10))).toLocaleDateString({}, {
         timeZone: 'UTC',
         month: 'long',
@@ -6169,12 +6170,16 @@ var ReviewTiles = function ReviewTiles(props) {
         key: index
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, "Rating: ", review.rating), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, "Date: ", date), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, "header: ", review.summary), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, "Body: ", review.body), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, "Helpful?: ", review.helpfulness), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, "UserName: ", review.reviewer_name), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, "Response: ", review.response), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, "Recommended: ", review.recommended));
     });
-  }
-}; // new Date("2019-01-06T23:29:35.000Z")
-// .toLocaleDateString({},
-//   {timeZone:"UTC",month:"long", day:"2-digit", year:"numeric"}
-//   );
+    console.log('These are how many reviews should be shown', props.reviewsShown);
+    var render = [];
 
+    for (var i = 0; i < props.reviewsShown; i++) {
+      render.push(tiles[i]);
+    }
+
+    return render;
+  }
+};
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (ReviewTiles);
 
@@ -6236,7 +6241,8 @@ var Review = /*#__PURE__*/function (_React$Component) {
     _this = _super.call(this, props);
     _this.state = {
       product: _this.props.product,
-      reviews: {}
+      reviews: {},
+      reviewsShown: 2
     };
     _this.readMore = _this.readMore.bind(_assertThisInitialized(_this));
     return _this;
@@ -6262,11 +6268,11 @@ var Review = /*#__PURE__*/function (_React$Component) {
     key: "readMore",
     value: function readMore(event) {
       console.log('Read More was clicked!');
-    }
-  }, {
-    key: "test",
-    value: function test() {
-      console.log(this.state.reviews);
+      var count = this.state.reviewsShown;
+      count += 2;
+      this.setState({
+        reviewsShown: count
+      });
     }
   }, {
     key: "render",
@@ -6279,7 +6285,7 @@ var Review = /*#__PURE__*/function (_React$Component) {
         className: "reviewList",
         readMore: this.readMore,
         reviews: this.state.reviews,
-        test: this.test()
+        reviewsShown: this.state.reviewsShown
       }));
     }
   }]);

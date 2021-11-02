@@ -10,7 +10,7 @@ const ReviewList = (props) => {
     return (
       < div className="container" >
         <h4>Reviews</h4>
-        < ReviewTiles reviews={props.reviews} />
+        < ReviewTiles reviews={props.reviews} reviewsShown={props.reviewsShown} />
         <button type="button" onClick={props.readMore}>Read More</button>
       </div >
     );

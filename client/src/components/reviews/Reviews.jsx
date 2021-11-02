@@ -9,7 +9,8 @@ class Review extends React.Component {
     super(props);
     this.state = {
       product: this.props.product,
-      reviews: {}
+      reviews: {},
+      reviewsShown: 2
     };
     this.readMore = this.readMore.bind(this);
   }
@@ -29,18 +30,16 @@ class Review extends React.Component {
 
   readMore(event) {
     console.log('Read More was clicked!');
-
-  }
-
-  test() {
-    console.log(this.state.reviews);
+    var count = this.state.reviewsShown;
+    count += 2;
+    this.setState({ reviewsShown: count });
   }
 
   render() {
     return (
       <div className="reviewContainer">
         <ReviewOverview className="reviewOverview" />
-        <ReviewList className="reviewList" readMore={this.readMore} reviews={this.state.reviews} test={this.test()} />
+        <ReviewList className="reviewList" readMore={this.readMore} reviews={this.state.reviews} reviewsShown={this.state.reviewsShown} />
       </div>
     );
   }

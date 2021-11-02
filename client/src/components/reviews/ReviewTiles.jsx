@@ -4,7 +4,7 @@ const ReviewTiles = (props) => {
   if (props.reviews === undefined) {
     return <></>
   } else {
-    return props.reviews.map((review, index) => {
+    var tiles = props.reviews.map((review, index) => {
       var date = new Date(`${review.date.slice(0, 10)}`).toLocaleDateString({}, { timeZone: 'UTC', month: 'long', day: '2-digit', year: 'numeric' })
 
       return (
@@ -20,13 +20,15 @@ const ReviewTiles = (props) => {
         </div>
       );
     });
+    console.log('These are how many reviews should be shown', props.reviewsShown);
+    var render = [];
+    for (var i = 0; i < props.reviewsShown; i++) {
+      render.push(tiles[i]);
+    }
+    return render;
   }
 
 };
-// new Date("2019-01-06T23:29:35.000Z")
-// .toLocaleDateString({},
-//   {timeZone:"UTC",month:"long", day:"2-digit", year:"numeric"}
-//   );
 
 
 export default ReviewTiles;
