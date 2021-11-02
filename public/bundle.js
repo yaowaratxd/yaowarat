@@ -6093,10 +6093,24 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var ReviewList = function ReviewList(props) {
-  console.log(props);
+  console.log('Reviews Length: ', props.reviews.length);
+  console.log('Reviews to Show: ', props.reviewsShown);
 
-  if (!Array.isArray(props.reviews)) {
-    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, null);
+  if (!Array.isArray(props.reviews) || props.reviews.length === 0) {
+    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "container"
+    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h4", null, "Reviews"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, "There are no reviews. Go ahead and add one!"));
+  } else if (props.reviewsShown >= props.reviews.length) {
+    // console.log('To be shown is greater then length');
+    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "container"
+    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h4", null, "Reviews"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_ReviewTiles_jsx__WEBPACK_IMPORTED_MODULE_1__["default"], {
+      reviews: props.reviews,
+      reviewsShown: props.reviewsShown
+    }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", {
+      type: "button",
+      onClick: props.writeReview
+    }, "Submit Review"));
   } else {
     return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
       className: "container"
@@ -6106,7 +6120,10 @@ var ReviewList = function ReviewList(props) {
     }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", {
       type: "button",
       onClick: props.readMore
-    }, "Read More"));
+    }, "Read More"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", {
+      type: "button",
+      onClick: props.writeReview
+    }, "Submit Review"));
   }
 };
 
@@ -6170,14 +6187,18 @@ var ReviewTiles = function ReviewTiles(props) {
         key: index
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, "Rating: ", review.rating), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, "Date: ", date), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, "header: ", review.summary), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, "Body: ", review.body), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, "Helpful?: ", review.helpfulness), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, "UserName: ", review.reviewer_name), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, "Response: ", review.response), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, "Recommended: ", review.recommended));
     });
-    console.log('These are how many reviews should be shown', props.reviewsShown);
-    var render = [];
 
-    for (var i = 0; i < props.reviewsShown; i++) {
-      render.push(tiles[i]);
+    if (props.reviewsShown >= props.reviews.length) {
+      return tiles;
+    } else {
+      var render = [];
+
+      for (var i = 0; i < props.reviewsShown; i++) {
+        render.push(tiles[i]);
+      }
+
+      return render;
     }
-
-    return render;
   }
 };
 
@@ -6245,6 +6266,7 @@ var Review = /*#__PURE__*/function (_React$Component) {
       reviewsShown: 2
     };
     _this.readMore = _this.readMore.bind(_assertThisInitialized(_this));
+    _this.writeReview = _this.writeReview.bind(_assertThisInitialized(_this));
     return _this;
   }
 
@@ -6253,7 +6275,7 @@ var Review = /*#__PURE__*/function (_React$Component) {
     value: function componentDidMount() {
       var _this2 = this;
 
-      console.log('Component did mount');
+      // console.log('Component did mount');
       axios__WEBPACK_IMPORTED_MODULE_1___default().get("/api/reviews/".concat(this.state.product.id)).then(function (response) {
         // console.log(response.data);
         _this2.setState({
@@ -6267,12 +6289,17 @@ var Review = /*#__PURE__*/function (_React$Component) {
   }, {
     key: "readMore",
     value: function readMore(event) {
-      console.log('Read More was clicked!');
+      // console.log('Read More was clicked!');
       var count = this.state.reviewsShown;
       count += 2;
       this.setState({
         reviewsShown: count
       });
+    }
+  }, {
+    key: "writeReview",
+    value: function writeReview(event) {
+      console.log('Write Review was clicked!');
     }
   }, {
     key: "render",
@@ -6284,6 +6311,7 @@ var Review = /*#__PURE__*/function (_React$Component) {
       }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_ReviewList_jsx__WEBPACK_IMPORTED_MODULE_2__["default"], {
         className: "reviewList",
         readMore: this.readMore,
+        writeReview: this.writeReview,
         reviews: this.state.reviews,
         reviewsShown: this.state.reviewsShown
       }));

@@ -20,14 +20,17 @@ const ReviewTiles = (props) => {
         </div>
       );
     });
-    console.log('These are how many reviews should be shown', props.reviewsShown);
-    var render = [];
-    for (var i = 0; i < props.reviewsShown; i++) {
-      render.push(tiles[i]);
-    }
-    return render;
-  }
 
+    if (props.reviewsShown >= props.reviews.length) {
+      return tiles;
+    } else {
+      var render = [];
+      for (var i = 0; i < props.reviewsShown; i++) {
+        render.push(tiles[i]);
+      }
+      return render;
+    }
+  }
 };
 
 

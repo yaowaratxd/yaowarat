@@ -13,10 +13,11 @@ class Review extends React.Component {
       reviewsShown: 2
     };
     this.readMore = this.readMore.bind(this);
+    this.writeReview = this.writeReview.bind(this);
   }
 
   componentDidMount() {
-    console.log('Component did mount');
+    // console.log('Component did mount');
     axios.get(`/api/reviews/${this.state.product.id}`)
       .then((response) => {
         // console.log(response.data);
@@ -29,17 +30,21 @@ class Review extends React.Component {
   // 37311
 
   readMore(event) {
-    console.log('Read More was clicked!');
+    // console.log('Read More was clicked!');
     var count = this.state.reviewsShown;
     count += 2;
     this.setState({ reviewsShown: count });
+  }
+
+  writeReview(event) {
+    console.log('Write Review was clicked!');
   }
 
   render() {
     return (
       <div className="reviewContainer">
         <ReviewOverview className="reviewOverview" />
-        <ReviewList className="reviewList" readMore={this.readMore} reviews={this.state.reviews} reviewsShown={this.state.reviewsShown} />
+        <ReviewList className="reviewList" readMore={this.readMore} writeReview={this.writeReview} reviews={this.state.reviews} reviewsShown={this.state.reviewsShown} />
       </div>
     );
   }

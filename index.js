@@ -22,7 +22,7 @@ app.get('/api/products/:productId/styles', async (req, res) => {
 });
 
 app.get('/api/reviews/:product_id', async (req, res) => {
-  console.log('This is the request paramaters', req.params.product_id);
+  // console.log('This is the request paramaters', req.params.product_id);
   const result = await axios.get(`${baseURL}/reviews/?product_id=${req.params.product_id}`);
   res.status(200).json({
     status: 'sucess',
