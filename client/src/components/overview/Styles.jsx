@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 
+import QuantityDropDown from './QuantityDropDown.jsx';
 import styled from 'styled-components';
 
 const Container = styled.div`
@@ -24,7 +25,42 @@ border: 3px solid rebeccapurple;
 `;
 
 const Styles = ({ styles, setSelectedStyle, selectedImage }) => {
+  const [selected, setSelected] = useState('');
+  const [quantity, setQuantity] = useState(7);
 
+  useEffect(() => {
+    // createQuantitySelector();
+  }, [selected]);
+
+  const createQuantitySelector = () => {
+    let results = [];
+    for (let i = 1; i <= q; ++i) {
+      results.push(<option key={i} value={i}> { i } </option>);
+    }
+    return results;
+  };
+
+  const handleChange = (event) => {
+    setSelected(event.target.value);
+    const quant = styles.filter(style => {
+      for (let i = 0; i < style.photos.length; ++i) {
+        if (style.photos[i].url === selectedImage.url) {
+          let useThis;
+          for (let key in style.skus) {
+            if (!selected) {
+              useThis = 'XS';
+            } else {
+              useThis = selected;
+            }
+            if (style.skus[key].size === useThis) {
+              setQuantity(style.skus[key].quantity);
+            }
+          }
+        }
+      }
+
+    })
+  };
   return <div>
   <Container>
     { styles.map((image) =>  {
@@ -42,7 +78,7 @@ const Styles = ({ styles, setSelectedStyle, selectedImage }) => {
     )}
     </Container>
     <Container>
-    <select id='size'>
+    <select id='size' onChange={(event) => handleChange(event)}>
     { styles.map((image) =>  {
       let placeholder = [];
       for (let i = 0; i < image.photos.length; ++i) {
@@ -57,8 +93,9 @@ const Styles = ({ styles, setSelectedStyle, selectedImage }) => {
     }
     )}
     </select>
-    <select>
-    { styles.map((image) =>  {
+    <QuantityDropDown quantity={quantity} />
+    {/* <select> */}
+    {/* { styles.map((image) =>  {
       let placeholder = [];
       for (let i = 0; i < image.photos.length; ++i) {
         if (image.photos[i].url === selectedImage.url) {
@@ -76,8 +113,8 @@ const Styles = ({ styles, setSelectedStyle, selectedImage }) => {
       }
       return placeholder;
     }
-    )}
-    </select>
+    )} */}
+    {/* </select> */}
   </Container>
   </div>
 };
