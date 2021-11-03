@@ -99,7 +99,13 @@ const ImageGallery = ({ allImages, selectedImage, setSelectedImage, styles, setS
 
   const renderLeftButton = () => {
     if (allImages.length > 0) {
-      return allImages[0].url === selectedImage ? '' : <ClickyButton onClick={handleClickLeft}>Left</ClickyButton>;
+      return allImages[0][0].url === selectedImage.url ? '' : <ClickyButton onClick={handleClickLeft}>Left</ClickyButton>;
+    }
+  };
+  const renderRightButton = () => {
+    let len = allImages.length - 1
+    if (allImages.length > 0) {
+      return allImages[len][allImages[len].length - 1].url === selectedImage.url ? '' : <ClickyButton onClick={handleClickRight}>Right</ClickyButton>;
     }
   };
 
@@ -126,7 +132,9 @@ const ImageGallery = ({ allImages, selectedImage, setSelectedImage, styles, setS
     <div>
   { renderLeftButton() }
         { expandedImage ? <BaseImageExpanded src={selectedImage.url} /> : <BaseImage src={selectedImage.url} /> }
-        <ClickyButton onClick={handleClickRight}>Right</ClickyButton>
+        {/* <ClickyButton onClick={handleClickRight}>Right</ClickyButton>
+         */}
+        { renderRightButton() }
         <ExpandClickyButton onClick={changeExpansion}> Expand</ExpandClickyButton>
         <LeftRibbon>
           <ImageContainer>

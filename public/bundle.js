@@ -5940,9 +5940,19 @@ var ImageGallery = function ImageGallery(_ref) {
 
   var renderLeftButton = function renderLeftButton() {
     if (allImages.length > 0) {
-      return allImages[0].url === selectedImage ? '' : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(ClickyButton, {
+      return allImages[0][0].url === selectedImage.url ? '' : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(ClickyButton, {
         onClick: handleClickLeft
       }, "Left");
+    }
+  };
+
+  var renderRightButton = function renderRightButton() {
+    var len = allImages.length - 1;
+
+    if (allImages.length > 0) {
+      return allImages[len][allImages[len].length - 1].url === selectedImage.url ? '' : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(ClickyButton, {
+        onClick: handleClickRight
+      }, "Right");
     }
   };
 
@@ -5980,9 +5990,7 @@ var ImageGallery = function ImageGallery(_ref) {
     src: selectedImage.url
   }) : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(BaseImage, {
     src: selectedImage.url
-  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(ClickyButton, {
-    onClick: handleClickRight
-  }, "Right"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(ExpandClickyButton, {
+  }), renderRightButton(), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(ExpandClickyButton, {
     onClick: changeExpansion
   }, " Expand"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(LeftRibbon, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(ImageContainer, null, allImages.map(function (imag) {
     return imag.map(function (im) {
