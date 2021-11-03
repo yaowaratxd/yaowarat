@@ -9,6 +9,7 @@ width:  10vw;
 border: 1px solid black;
 margin-bottom: 5px;
 `;
+
 const SelectedTile = styled.img`
 height: 10vh;
 width:  10vw;

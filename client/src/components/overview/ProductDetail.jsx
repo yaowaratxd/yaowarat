@@ -9,7 +9,8 @@ const Container = styled.div`
 `;
 
 
-const ProductDetail = ({ product }) => {
+const ProductDetail = ({ product, selectedImage, styles }) => {
+  console.log(selectedImage);
   return <Container>
     <h1>{ product.name }</h1>
     <h4>{ product.category }</h4>

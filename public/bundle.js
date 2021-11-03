@@ -5996,7 +5996,8 @@ var Overview = function Overview(props) {
           id: results.data.results[i].style_id,
           url: results.data.results[i].photos[0].url,
           skus: results.data.results[i].skus,
-          photos: results.data.results[i].photos
+          photos: results.data.results[i].photos,
+          salePrice: results.data.results[i].sale_price
         });
       }
 
@@ -6031,7 +6032,7 @@ var Overview = function Overview(props) {
       setAllImages(temp[0]);
       setSelectedImage({
         url: temp[0][0].url,
-        id: stylings[0].id
+        id: stylings[0].style_id
       });
       var allHolder = [];
 
@@ -6047,7 +6048,9 @@ var Overview = function Overview(props) {
     selectedImage: selectedImage,
     setSelectedImage: setSelectedImage
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_ProductDetail_jsx__WEBPACK_IMPORTED_MODULE_3__["default"], {
-    product: props.product
+    product: props.product,
+    styles: styles,
+    selectedImage: selectedImage
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_Styles_jsx__WEBPACK_IMPORTED_MODULE_4__["default"], {
     styles: styles,
     selectedImage: selectedImage,
@@ -6081,7 +6084,10 @@ function _taggedTemplateLiteral(strings, raw) { if (!raw) { raw = strings.slice(
 var Container = styled_components__WEBPACK_IMPORTED_MODULE_1__["default"].div(_templateObject || (_templateObject = _taggedTemplateLiteral(["\n  position: relative;\n  left: 20vw;\n  top: 4vh;\n  width: 20vw;\n"])));
 
 var ProductDetail = function ProductDetail(_ref) {
-  var product = _ref.product;
+  var product = _ref.product,
+      selectedImage = _ref.selectedImage,
+      styles = _ref.styles;
+  console.log(selectedImage);
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(Container, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h1", null, product.name), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h4", null, product.category), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, product.default_price));
 };
 
