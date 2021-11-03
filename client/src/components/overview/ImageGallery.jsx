@@ -60,7 +60,7 @@ top: 5vh;
 z-index: 2;
 `;
 
-const ImageGallery = ({ allImages, selectedImage, setSelectedImage }) => {
+const ImageGallery = ({ allImages, selectedImage, setSelectedImage, styles }) => {
   const [expandedImage, setExpandedImage] = useState(false);
 
   const handleClickLeft = () => {
@@ -70,10 +70,10 @@ const ImageGallery = ({ allImages, selectedImage, setSelectedImage }) => {
           if (i === 0 && j === 0) {
             return;
           } else if (j === 0 && i > 0) {
-            setSelectedImage({url: allImages[i-1][allImages[i].length - 1].url, id: allImages[i-1][allImages[i].length - 1].id });
+            setSelectedImage({url: allImages[i-1][allImages[i].length - 1].url, id: allImages[i-1][allImages[i].length - 1].id, salePrice: allImages[i-1][allImages[i].length - 1].salePrice });
           }
           else {
-            setSelectedImage({url: allImages[i][j-1].url, id: allImages[j-1].url});
+            setSelectedImage({url: allImages[i][j-1].url, id: allImages[j-1].id, salePrice: allImages[j-1].salePrice });
           }
         }
       }
@@ -84,9 +84,9 @@ const ImageGallery = ({ allImages, selectedImage, setSelectedImage }) => {
       for (let j = 0; j < allImages[i].length; ++j) {
         if (allImages[i][j].url === selectedImage.url) {
           if (j === allImages[i].length - 1) {
-            setSelectedImage({url: allImages[i + 1][0].url, id: allImages[i + 1][0].id });
+            setSelectedImage({url: allImages[i + 1][0].url, id: allImages[i + 1][0].id, salePrice: allImages[i + 1][0].salePrice });
           } else {
-            setSelectedImage({url: allImages[i][j + 1].url, id: allImages[i][j + 1].id });
+            setSelectedImage({url: allImages[i][j + 1].url, id: allImages[i][j + 1].id, salePrice: allImages[i][j + 1].salePrice });
           }
         }
       }
@@ -102,6 +102,19 @@ const ImageGallery = ({ allImages, selectedImage, setSelectedImage }) => {
       return allImages[0].url === selectedImage ? '' : <ClickyButton onClick={handleClickLeft}>Left</ClickyButton>;
     }
   };
+
+  const saveDiscount = () => {
+    let id, salePrice;
+    for (let i = 0; i < styles.length; ++i) {
+      for (let j = 0; j < styles[i].photos.length; ++j) {
+        if (styles[i].photos[j].url === selectedImage.url || styles[i].photos[j].thumbnail_url === selectedImage.url) {
+          id = styles[i].id;
+          salePrice = styles[i].salePrice;
+        }
+      }
+    }
+    return { id, salePrice}
+  }
   return <div>
     <div>
   { renderLeftButton() }
@@ -112,7 +125,7 @@ const ImageGallery = ({ allImages, selectedImage, setSelectedImage }) => {
           <ImageContainer>
           {/* { allImages.map((im) => im.url === selectedImage ? <SelectedTile onClick={() => setSelectedImage(im.url)} key={im.thumbnail_url} src={im.thumbnail_url} /> : <Tile onClick={() => setSelectedImage(im.url)} key={im.thumbnail_url} src={im.thumbnail_url} /> )
           } */}
-          { allImages.map((imag) => imag.map((im) => im.url === selectedImage.url ? <SelectedTile onClick={() => setSelectedImage({ url: im.url, id: im.id })} key={im.thumbnail_url} src={im.thumbnail_url} /> : <Tile onClick={() => setSelectedImage({ url: im.url, id: im.id })} key={im.thumbnail_url} src={im.thumbnail_url} /> )
+          { allImages.map((imag) => imag.map((im) => im.url === selectedImage.url ? <SelectedTile onClick={() => setSelectedImage(Object.assign({ url: im.url, id: im.id }, saveDiscount())) } key={im.thumbnail_url} src={im.thumbnail_url} /> : <Tile onClick={() => setSelectedImage(Object.assign({ url: im.url, id: im.id }, saveDiscount()))} key={im.thumbnail_url} src={im.thumbnail_url} /> )
           )}
         </ImageContainer>
         </LeftRibbon>

@@ -5813,7 +5813,8 @@ var ExpandClickyButton = styled_components__WEBPACK_IMPORTED_MODULE_3__["default
 var ImageGallery = function ImageGallery(_ref) {
   var allImages = _ref.allImages,
       selectedImage = _ref.selectedImage,
-      setSelectedImage = _ref.setSelectedImage;
+      setSelectedImage = _ref.setSelectedImage,
+      styles = _ref.styles;
 
   var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false),
       _useState2 = _slicedToArray(_useState, 2),
@@ -5829,12 +5830,14 @@ var ImageGallery = function ImageGallery(_ref) {
           } else if (j === 0 && i > 0) {
             setSelectedImage({
               url: allImages[i - 1][allImages[i].length - 1].url,
-              id: allImages[i - 1][allImages[i].length - 1].id
+              id: allImages[i - 1][allImages[i].length - 1].id,
+              salePrice: allImages[i - 1][allImages[i].length - 1].salePrice
             });
           } else {
             setSelectedImage({
               url: allImages[i][j - 1].url,
-              id: allImages[j - 1].url
+              id: allImages[j - 1].id,
+              salePrice: allImages[j - 1].salePrice
             });
           }
         }
@@ -5849,12 +5852,14 @@ var ImageGallery = function ImageGallery(_ref) {
           if (j === allImages[i].length - 1) {
             setSelectedImage({
               url: allImages[i + 1][0].url,
-              id: allImages[i + 1][0].id
+              id: allImages[i + 1][0].id,
+              salePrice: allImages[i + 1][0].salePrice
             });
           } else {
             setSelectedImage({
               url: allImages[i][j + 1].url,
-              id: allImages[i][j + 1].id
+              id: allImages[i][j + 1].id,
+              salePrice: allImages[i][j + 1].salePrice
             });
           }
         }
@@ -5874,6 +5879,24 @@ var ImageGallery = function ImageGallery(_ref) {
     }
   };
 
+  var saveDiscount = function saveDiscount() {
+    var id, salePrice;
+
+    for (var i = 0; i < styles.length; ++i) {
+      for (var j = 0; j < styles[i].photos.length; ++j) {
+        if (styles[i].photos[j].url === selectedImage.url || styles[i].photos[j].thumbnail_url === selectedImage.url) {
+          id = styles[i].id;
+          salePrice = styles[i].salePrice;
+        }
+      }
+    }
+
+    return {
+      id: id,
+      salePrice: salePrice
+    };
+  };
+
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, renderLeftButton(), expandedImage ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(BaseImageExpanded, {
     src: selectedImage.url
   }) : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(BaseImage, {
@@ -5886,19 +5909,19 @@ var ImageGallery = function ImageGallery(_ref) {
     return imag.map(function (im) {
       return im.url === selectedImage.url ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(SelectedTile, {
         onClick: function onClick() {
-          return setSelectedImage({
+          return setSelectedImage(Object.assign({
             url: im.url,
             id: im.id
-          });
+          }, saveDiscount()));
         },
         key: im.thumbnail_url,
         src: im.thumbnail_url
       }) : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(Tile, {
         onClick: function onClick() {
-          return setSelectedImage({
+          return setSelectedImage(Object.assign({
             url: im.url,
             id: im.id
-          });
+          }, saveDiscount()));
         },
         key: im.thumbnail_url,
         src: im.thumbnail_url
@@ -6011,9 +6034,20 @@ var Overview = function Overview(props) {
       for (var j = 0; j < totalImages[i].length; ++j) {
         if (totalImages[i][j].thumbnail_url === styleUrl.url) {
           setAllImages(totalImages[i]);
+          var newId = void 0,
+              salePrice = void 0;
+
+          for (var _i2 = 0; _i2 < styles.length; ++_i2) {
+            if (styles[_i2].image === styleUrl.url) {
+              newId = styles[_i2].id;
+              salePrice = styles[_i2].salePrice;
+            }
+          }
+
           setSelectedImage({
             url: totalImages[i][0].url,
-            id: totalImages[i][0].id
+            id: newId,
+            salePrice: salePrice
           });
           return;
         }
@@ -6032,18 +6066,20 @@ var Overview = function Overview(props) {
       setAllImages(temp[0]);
       setSelectedImage({
         url: temp[0][0].url,
-        id: stylings[0].style_id
+        id: stylings[0].style_id,
+        salePrice: stylings[0].sale_price
       });
       var allHolder = [];
 
-      for (var _i2 = 0; _i2 < stylings.length; ++_i2) {
-        allHolder = [].concat(_toConsumableArray(allHolder), [stylings[_i2]['photos']]);
+      for (var _i3 = 0; _i3 < stylings.length; ++_i3) {
+        allHolder = [].concat(_toConsumableArray(allHolder), [stylings[_i3]['photos']]);
       }
 
       setTotalImages(allHolder);
     });
   }, []);
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_ImageGallery_jsx__WEBPACK_IMPORTED_MODULE_2__["default"], {
+    styles: styles,
     allImages: totalImages,
     selectedImage: selectedImage,
     setSelectedImage: setSelectedImage
@@ -6075,20 +6111,22 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var styled_components__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! styled-components */ "./node_modules/styled-components/dist/styled-components.browser.esm.js");
-var _templateObject;
+var _templateObject, _templateObject2;
 
 function _taggedTemplateLiteral(strings, raw) { if (!raw) { raw = strings.slice(0); } return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); }
 
 
 
 var Container = styled_components__WEBPACK_IMPORTED_MODULE_1__["default"].div(_templateObject || (_templateObject = _taggedTemplateLiteral(["\n  position: relative;\n  left: 20vw;\n  top: 4vh;\n  width: 20vw;\n"])));
+var NewPrice = styled_components__WEBPACK_IMPORTED_MODULE_1__["default"].span(_templateObject2 || (_templateObject2 = _taggedTemplateLiteral(["\ncolor: red;\ntext-decoration: line-through;\n"])));
 
 var ProductDetail = function ProductDetail(_ref) {
   var product = _ref.product,
       selectedImage = _ref.selectedImage,
       styles = _ref.styles;
   console.log(selectedImage);
-  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(Container, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h1", null, product.name), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h4", null, product.category), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, product.default_price));
+  var renderPrice = selectedImage.salePrice ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, " ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(NewPrice, null, " ", product.default_price, " "), " ", selectedImage.salePrice, " ") : product.default_price;
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(Container, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h1", null, product.name), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h4", null, product.category), renderPrice);
 };
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (ProductDetail);

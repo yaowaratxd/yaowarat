@@ -30,7 +30,14 @@ const Overview = (props) => {
       for (let j = 0; j < totalImages[i].length; ++j) {
         if (totalImages[i][j].thumbnail_url === styleUrl.url) {
           setAllImages(totalImages[i]);
-          setSelectedImage({ url: totalImages[i][0].url, id: totalImages[i][0].id });
+          let newId, salePrice;
+          for (let i = 0; i < styles.length; ++i) {
+            if (styles[i].image === styleUrl.url) {
+              newId = styles[i].id;
+              salePrice = styles[i].salePrice;
+            }
+          }
+          setSelectedImage({ url: totalImages[i][0].url, id: newId, salePrice });
           return;
         }
       }
@@ -44,7 +51,7 @@ const Overview = (props) => {
       temp = [...temp, stylings[i]['photos']];
       }
       setAllImages(temp[0]);
-      setSelectedImage({ url: temp[0][0].url, id: stylings[0].style_id });
+      setSelectedImage({ url: temp[0][0].url, id: stylings[0].style_id, salePrice: stylings[0].sale_price });
       let allHolder = [];
       for (let i = 0; i < stylings.length; ++i) {
       allHolder = [...allHolder, stylings[i]['photos']];
@@ -54,7 +61,7 @@ const Overview = (props) => {
   }, []);
 
   return <div >
-    <ImageGallery allImages={totalImages} selectedImage={selectedImage} setSelectedImage={setSelectedImage} />
+    <ImageGallery styles={styles} allImages={totalImages} selectedImage={selectedImage} setSelectedImage={setSelectedImage} />
     <ProductDetail product={props.product} styles={styles} selectedImage={selectedImage} />
     <Styles styles={styles} selectedImage={selectedImage} setSelectedStyle={setSelectedStyle} />
   </div>
