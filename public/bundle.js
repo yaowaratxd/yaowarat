@@ -6093,18 +6093,29 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var ReviewList = function ReviewList(props) {
-  console.log('Reviews Length: ', props.reviews.length);
-  console.log('Reviews to Show: ', props.reviewsShown);
-
+  // console.log('Reviews Length: ', props.reviews.length);
+  // console.log('Reviews to Show: ', props.reviewsShown);
   if (!Array.isArray(props.reviews) || props.reviews.length === 0) {
     return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
       className: "container"
-    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h4", null, "Reviews"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, "There are no reviews. Go ahead and add one!"));
+    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h4", null, "Reviews"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, "There are no reviews. Go ahead and add one!"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", {
+      type: "button",
+      onClick: props.writeReview
+    }, "Submit Review"));
   } else if (props.reviewsShown >= props.reviews.length) {
     // console.log('To be shown is greater then length');
     return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
       className: "container"
-    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h5", null, props.reviews.length, " reviews, sorted by relevance"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_ReviewTiles_jsx__WEBPACK_IMPORTED_MODULE_1__["default"], {
+    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h5", null, props.reviews.length, " reviews, sorted by ", " ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("label", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("select", {
+      value: props.sortType,
+      onChange: props.sort
+    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("option", {
+      value: "relevant"
+    }, "Relevant"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("option", {
+      value: "newest"
+    }, "Newest"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("option", {
+      value: "helpful"
+    }, "Helpful")))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_ReviewTiles_jsx__WEBPACK_IMPORTED_MODULE_1__["default"], {
       reviews: props.reviews,
       reviewsShown: props.reviewsShown
     }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", {
@@ -6114,7 +6125,16 @@ var ReviewList = function ReviewList(props) {
   } else {
     return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
       className: "container"
-    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h5", null, props.reviews.length, " reviews, sorted by relevance"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_ReviewTiles_jsx__WEBPACK_IMPORTED_MODULE_1__["default"], {
+    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h5", null, props.reviews.length, " reviews, sorted by ", " ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("label", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("select", {
+      value: props.sortType,
+      onChange: props.sort
+    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("option", {
+      value: "relevant"
+    }, "Relevant"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("option", {
+      value: "newest"
+    }, "Newest"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("option", {
+      value: "helpful"
+    }, "Helpful")))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_ReviewTiles_jsx__WEBPACK_IMPORTED_MODULE_1__["default"], {
       reviews: props.reviews,
       reviewsShown: props.reviewsShown
     }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", {
@@ -6263,10 +6283,12 @@ var Review = /*#__PURE__*/function (_React$Component) {
     _this.state = {
       product: _this.props.product,
       reviews: {},
-      reviewsShown: 2
+      reviewsShown: 2,
+      sort: 'relevant'
     };
     _this.readMore = _this.readMore.bind(_assertThisInitialized(_this));
     _this.writeReview = _this.writeReview.bind(_assertThisInitialized(_this));
+    _this.sort = _this.sort.bind(_assertThisInitialized(_this));
     return _this;
   }
 
@@ -6275,14 +6297,13 @@ var Review = /*#__PURE__*/function (_React$Component) {
     value: function componentDidMount() {
       var _this2 = this;
 
-      // console.log('Component did mount');
-      axios__WEBPACK_IMPORTED_MODULE_1___default().get("/api/reviews/".concat(this.state.product.id)).then(function (response) {
-        // console.log(response.data);
+      axios__WEBPACK_IMPORTED_MODULE_1___default().get("/api/reviews/".concat(this.state.sort, "/").concat(this.state.product.id)).then(function (response) {
         _this2.setState({
           reviews: response.data.results
         });
       })["catch"](function (err) {
         console.log('There was an Error');
+        console.log(err);
       });
     } // 37311
 
@@ -6302,6 +6323,28 @@ var Review = /*#__PURE__*/function (_React$Component) {
       console.log('Write Review was clicked!');
     }
   }, {
+    key: "sort",
+    value: function sort(event) {
+      var _this3 = this;
+
+      // console.log('Sort was Changed!');
+      this.setState({
+        sort: event.target.value
+      }, function () {
+        axios__WEBPACK_IMPORTED_MODULE_1___default().get("/api/reviews/".concat(_this3.state.sort, "/").concat(_this3.state.product.id)).then(function (response) {
+          _this3.setState({
+            reviews: response.data.results
+          });
+
+          for (var i = 0; i < response.data.results.length; i++) {} // console.log(`The reviews have been sorted by ${this.state.sort}`);
+
+        })["catch"](function (err) {
+          console.log('There was an Error');
+          console.log(err);
+        });
+      });
+    }
+  }, {
     key: "render",
     value: function render() {
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
@@ -6313,7 +6356,9 @@ var Review = /*#__PURE__*/function (_React$Component) {
         readMore: this.readMore,
         writeReview: this.writeReview,
         reviews: this.state.reviews,
-        reviewsShown: this.state.reviewsShown
+        reviewsShown: this.state.reviewsShown,
+        sort: this.sort,
+        sortType: this.state.sort
       }));
     }
   }]);
@@ -6322,6 +6367,21 @@ var Review = /*#__PURE__*/function (_React$Component) {
 }(react__WEBPACK_IMPORTED_MODULE_0__.Component);
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Review);
+/**
+ * Star average function
+ * getRatingScore() {
+    var reviewTotalScore = 0;
+    var totalReviews = 0;
+    if (JSON.stringify(this.state.thisProductRating.ratings) !== '{}') {
+      for (var key in this.state.thisProductRating.ratings) {
+        reviewTotalScore += (parseInt([key]) * parseInt(this.state.thisProductRating.ratings[key]));
+        totalReviews += parseInt(this.state.thisProductRating.ratings[key])
+      }
+      return (Math.round((reviewTotalScore / totalReviews) * 4) / 4).toFixed(2);
+    }
+    return 'Be the first to rate this product!';
+  }
+ */
 
 /***/ }),
 
@@ -37469,7 +37529,7 @@ var App = function App() {
       setAllThings = _useState4[1];
 
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(Root, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_components_reviews_Reviews_jsx__WEBPACK_IMPORTED_MODULE_3__["default"], {
-    product: allThings[0]
+    product: allThings[3]
   }));
 };
 
