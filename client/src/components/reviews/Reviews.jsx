@@ -42,15 +42,10 @@ class Review extends React.Component {
   }
 
   sort(event) {
-    // console.log('Sort was Changed!');
     this.setState({ sort: event.target.value }, () => {
       axios.get(`/api/reviews/${this.state.sort}/${this.state.product.id}`)
         .then((response) => {
           this.setState({ reviews: response.data.results });
-          for (var i = 0; i < response.data.results.length; i++) {
-
-          }
-          // console.log(`The reviews have been sorted by ${this.state.sort}`);
         })
         .catch((err) => {
           console.log('There was an Error');
@@ -63,7 +58,7 @@ class Review extends React.Component {
   render() {
     return (
       <div className="reviewContainer">
-        <ReviewOverview className="reviewOverview" />
+        <ReviewOverview className="reviewOverview" reviews={this.state.reviews} />
         <ReviewList className="reviewList" readMore={this.readMore} writeReview={this.writeReview} reviews={this.state.reviews} reviewsShown={this.state.reviewsShown} sort={this.sort} sortType={this.state.sort} />
       </div>
     );
