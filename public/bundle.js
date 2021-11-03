@@ -5765,6 +5765,72 @@ module.exports = {
 
 /***/ }),
 
+/***/ "./client/src/components/overview/AddToCart.jsx":
+/*!******************************************************!*\
+  !*** ./client/src/components/overview/AddToCart.jsx ***!
+  \******************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var styled_components__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! styled-components */ "./node_modules/styled-components/dist/styled-components.browser.esm.js");
+var _templateObject, _templateObject2;
+
+function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
+
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+
+function _iterableToArrayLimit(arr, i) { var _i = arr == null ? null : typeof Symbol !== "undefined" && arr[Symbol.iterator] || arr["@@iterator"]; if (_i == null) return; var _arr = []; var _n = true; var _d = false; var _s, _e; try { for (_i = _i.call(arr); !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
+
+function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
+
+function _taggedTemplateLiteral(strings, raw) { if (!raw) { raw = strings.slice(0); } return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); }
+
+
+
+var AddButton = styled_components__WEBPACK_IMPORTED_MODULE_1__["default"].button(_templateObject || (_templateObject = _taggedTemplateLiteral(["\nwidth: 100px;\nheight: 45px;\nbackground-color: Transparent;\nmargin-right: 40px;\nmargin-top: 20px;\n"])));
+var Container = styled_components__WEBPACK_IMPORTED_MODULE_1__["default"].div(_templateObject2 || (_templateObject2 = _taggedTemplateLiteral(["\nposition: relative;\nleft: 20vw;\ntop: 10vh;\ndisplay: flex;\nflex-wrap: true;\n"])));
+
+var AddToCart = function AddToCart(props) {
+  var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false),
+      _useState2 = _slicedToArray(_useState, 2),
+      addCart = _useState2[0],
+      setAddCart = _useState2[1];
+
+  var _useState3 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)('+'),
+      _useState4 = _slicedToArray(_useState3, 2),
+      display = _useState4[0],
+      setDisplay = _useState4[1];
+
+  var handleFav = function handleFav() {
+    if (display === '+') {
+      setDisplay('<3');
+    } else {
+      setDisplay('+');
+    }
+  };
+
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(Container, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(AddButton, {
+    onClick: function onClick() {
+      return setAddCart(!addCart);
+    }
+  }, addCart ? 'Remove From Cart' : 'Add To Cart'), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(AddButton, {
+    onClick: handleFav
+  }, display));
+};
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (AddToCart);
+
+/***/ }),
+
 /***/ "./client/src/components/overview/ImageGallery.jsx":
 /*!*********************************************************!*\
   !*** ./client/src/components/overview/ImageGallery.jsx ***!
@@ -5814,7 +5880,8 @@ var ImageGallery = function ImageGallery(_ref) {
   var allImages = _ref.allImages,
       selectedImage = _ref.selectedImage,
       setSelectedImage = _ref.setSelectedImage,
-      styles = _ref.styles;
+      styles = _ref.styles,
+      setSelectedStyle = _ref.setSelectedStyle;
 
   var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false),
       _useState2 = _slicedToArray(_useState, 2),
@@ -5828,17 +5895,17 @@ var ImageGallery = function ImageGallery(_ref) {
           if (i === 0 && j === 0) {
             return;
           } else if (j === 0 && i > 0) {
-            setSelectedImage({
+            setSelectedImage(Object.assign({
               url: allImages[i - 1][allImages[i].length - 1].url,
               id: allImages[i - 1][allImages[i].length - 1].id,
               salePrice: allImages[i - 1][allImages[i].length - 1].salePrice
-            });
+            }, saveDiscount()));
           } else {
-            setSelectedImage({
+            setSelectedImage(Object.assign({
               url: allImages[i][j - 1].url,
               id: allImages[j - 1].id,
               salePrice: allImages[j - 1].salePrice
-            });
+            }, saveDiscount()));
           }
         }
       }
@@ -5850,17 +5917,17 @@ var ImageGallery = function ImageGallery(_ref) {
       for (var j = 0; j < allImages[i].length; ++j) {
         if (allImages[i][j].url === selectedImage.url) {
           if (j === allImages[i].length - 1) {
-            setSelectedImage({
+            setSelectedImage(Object.assign({
               url: allImages[i + 1][0].url,
               id: allImages[i + 1][0].id,
               salePrice: allImages[i + 1][0].salePrice
-            });
+            }, saveDiscount()));
           } else {
-            setSelectedImage({
+            setSelectedImage(Object.assign({
               url: allImages[i][j + 1].url,
               id: allImages[i][j + 1].id,
               salePrice: allImages[i][j + 1].salePrice
-            });
+            }, saveDiscount()));
           }
         }
       }
@@ -5877,6 +5944,18 @@ var ImageGallery = function ImageGallery(_ref) {
         onClick: handleClickLeft
       }, "Left");
     }
+  };
+
+  var handleTileClick = function handleTileClick(_ref2) {
+    var url = _ref2.url,
+        id = _ref2.id,
+        thumbnail = _ref2.thumbnail;
+    var obj = Object.assign({
+      url: url,
+      id: id
+    }, saveDiscount()); // console.log(obj);
+
+    setSelectedImage(obj); // setSelectedStyle(Object.assign({ url: thumbnail, image: url }, saveDiscount()));
   };
 
   var saveDiscount = function saveDiscount() {
@@ -5909,19 +5988,21 @@ var ImageGallery = function ImageGallery(_ref) {
     return imag.map(function (im) {
       return im.url === selectedImage.url ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(SelectedTile, {
         onClick: function onClick() {
-          return setSelectedImage(Object.assign({
+          return handleTileClick({
             url: im.url,
-            id: im.id
-          }, saveDiscount()));
+            id: im.id,
+            thumbnail: im.thumbnail_url
+          });
         },
         key: im.thumbnail_url,
         src: im.thumbnail_url
       }) : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(Tile, {
         onClick: function onClick() {
-          return setSelectedImage(Object.assign({
+          return handleTileClick({
             url: im.url,
-            id: im.id
-          }, saveDiscount()));
+            id: im.id,
+            thumbnail: im.thumbnail_url
+          });
         },
         key: im.thumbnail_url,
         src: im.thumbnail_url
@@ -5955,6 +6036,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _ImageGallery_jsx__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./ImageGallery.jsx */ "./client/src/components/overview/ImageGallery.jsx");
 /* harmony import */ var _ProductDetail_jsx__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./ProductDetail.jsx */ "./client/src/components/overview/ProductDetail.jsx");
 /* harmony import */ var _Styles_jsx__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./Styles.jsx */ "./client/src/components/overview/Styles.jsx");
+/* harmony import */ var _AddToCart_jsx__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./AddToCart.jsx */ "./client/src/components/overview/AddToCart.jsx");
 function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _unsupportedIterableToArray(arr) || _nonIterableSpread(); }
 
 function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
@@ -5974,6 +6056,7 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
 function _iterableToArrayLimit(arr, i) { var _i = arr == null ? null : typeof Symbol !== "undefined" && arr[Symbol.iterator] || arr["@@iterator"]; if (_i == null) return; var _arr = []; var _n = true; var _d = false; var _s, _e; try { for (_i = _i.call(arr); !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
 
 function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
+
 
 
 
@@ -6079,6 +6162,7 @@ var Overview = function Overview(props) {
     });
   }, []);
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_ImageGallery_jsx__WEBPACK_IMPORTED_MODULE_2__["default"], {
+    setSelectedStyle: setSelectedStyle,
     styles: styles,
     allImages: totalImages,
     selectedImage: selectedImage,
@@ -6091,7 +6175,7 @@ var Overview = function Overview(props) {
     styles: styles,
     selectedImage: selectedImage,
     setSelectedStyle: setSelectedStyle
-  }));
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_AddToCart_jsx__WEBPACK_IMPORTED_MODULE_5__["default"], null));
 };
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Overview); // style={{ width: '80vw' }}
@@ -6124,7 +6208,6 @@ var ProductDetail = function ProductDetail(_ref) {
   var product = _ref.product,
       selectedImage = _ref.selectedImage,
       styles = _ref.styles;
-  console.log(selectedImage);
   var renderPrice = selectedImage.salePrice ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, " ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(NewPrice, null, " ", product.default_price, " "), " ", selectedImage.salePrice, " ") : product.default_price;
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(Container, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h1", null, product.name), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h4", null, product.category), renderPrice);
 };

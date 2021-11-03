@@ -60,7 +60,7 @@ top: 5vh;
 z-index: 2;
 `;
 
-const ImageGallery = ({ allImages, selectedImage, setSelectedImage, styles }) => {
+const ImageGallery = ({ allImages, selectedImage, setSelectedImage, styles, setSelectedStyle }) => {
   const [expandedImage, setExpandedImage] = useState(false);
 
   const handleClickLeft = () => {
@@ -70,10 +70,10 @@ const ImageGallery = ({ allImages, selectedImage, setSelectedImage, styles }) =>
           if (i === 0 && j === 0) {
             return;
           } else if (j === 0 && i > 0) {
-            setSelectedImage({url: allImages[i-1][allImages[i].length - 1].url, id: allImages[i-1][allImages[i].length - 1].id, salePrice: allImages[i-1][allImages[i].length - 1].salePrice });
+            setSelectedImage(Object.assign({url: allImages[i-1][allImages[i].length - 1].url, id: allImages[i-1][allImages[i].length - 1].id, salePrice: allImages[i-1][allImages[i].length - 1].salePrice }, saveDiscount()));
           }
           else {
-            setSelectedImage({url: allImages[i][j-1].url, id: allImages[j-1].id, salePrice: allImages[j-1].salePrice });
+            setSelectedImage(Object.assign({url: allImages[i][j-1].url, id: allImages[j-1].id, salePrice: allImages[j-1].salePrice }, saveDiscount()));
           }
         }
       }
@@ -84,9 +84,9 @@ const ImageGallery = ({ allImages, selectedImage, setSelectedImage, styles }) =>
       for (let j = 0; j < allImages[i].length; ++j) {
         if (allImages[i][j].url === selectedImage.url) {
           if (j === allImages[i].length - 1) {
-            setSelectedImage({url: allImages[i + 1][0].url, id: allImages[i + 1][0].id, salePrice: allImages[i + 1][0].salePrice });
+            setSelectedImage(Object.assign({url: allImages[i + 1][0].url, id: allImages[i + 1][0].id, salePrice: allImages[i + 1][0].salePrice }, saveDiscount()));
           } else {
-            setSelectedImage({url: allImages[i][j + 1].url, id: allImages[i][j + 1].id, salePrice: allImages[i][j + 1].salePrice });
+            setSelectedImage(Object.assign({url: allImages[i][j + 1].url, id: allImages[i][j + 1].id, salePrice: allImages[i][j + 1].salePrice }, saveDiscount()));
           }
         }
       }
@@ -103,6 +103,13 @@ const ImageGallery = ({ allImages, selectedImage, setSelectedImage, styles }) =>
     }
   };
 
+  const handleTileClick = ({ url, id, thumbnail }) => {
+    const obj = Object.assign({ url, id }, saveDiscount());
+    // console.log(obj);
+    setSelectedImage(obj);
+    // setSelectedStyle(Object.assign({ url: thumbnail, image: url }, saveDiscount()));
+  };
+
   const saveDiscount = () => {
     let id, salePrice;
     for (let i = 0; i < styles.length; ++i) {
@@ -113,7 +120,7 @@ const ImageGallery = ({ allImages, selectedImage, setSelectedImage, styles }) =>
         }
       }
     }
-    return { id, salePrice}
+    return { id, salePrice }
   }
   return <div>
     <div>
@@ -125,7 +132,7 @@ const ImageGallery = ({ allImages, selectedImage, setSelectedImage, styles }) =>
           <ImageContainer>
           {/* { allImages.map((im) => im.url === selectedImage ? <SelectedTile onClick={() => setSelectedImage(im.url)} key={im.thumbnail_url} src={im.thumbnail_url} /> : <Tile onClick={() => setSelectedImage(im.url)} key={im.thumbnail_url} src={im.thumbnail_url} /> )
           } */}
-          { allImages.map((imag) => imag.map((im) => im.url === selectedImage.url ? <SelectedTile onClick={() => setSelectedImage(Object.assign({ url: im.url, id: im.id }, saveDiscount())) } key={im.thumbnail_url} src={im.thumbnail_url} /> : <Tile onClick={() => setSelectedImage(Object.assign({ url: im.url, id: im.id }, saveDiscount()))} key={im.thumbnail_url} src={im.thumbnail_url} /> )
+          { allImages.map((imag) => imag.map((im) => im.url === selectedImage.url ? <SelectedTile onClick={() => handleTileClick({ url: im.url, id: im.id, thumbnail: im.thumbnail_url })} key={im.thumbnail_url} src={im.thumbnail_url} /> : <Tile onClick={() => handleTileClick({ url: im.url, id: im.id, thumbnail: im.thumbnail_url  })} key={im.thumbnail_url} src={im.thumbnail_url} /> )
           )}
         </ImageContainer>
         </LeftRibbon>

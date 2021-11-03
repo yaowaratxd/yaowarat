@@ -14,7 +14,6 @@ text-decoration: line-through;
 `;
 
 const ProductDetail = ({ product, selectedImage, styles }) => {
-  console.log(selectedImage);
   const renderPrice =  selectedImage.salePrice ? <div> <NewPrice> {product.default_price} </NewPrice> { selectedImage.salePrice } </div> : product.default_price;
   return <Container>
     <h1>{ product.name }</h1>

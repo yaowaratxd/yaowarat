@@ -5,6 +5,7 @@ import styled from 'styled-components';
 import ImageGallery from './ImageGallery.jsx';
 import ProductDetail from './ProductDetail.jsx';
 import Styles from './Styles.jsx';
+import AddToCart from './AddToCart.jsx';
 
 const Overview = (props) => {
   const [product, setProduct] = useState({});
@@ -61,9 +62,10 @@ const Overview = (props) => {
   }, []);
 
   return <div >
-    <ImageGallery styles={styles} allImages={totalImages} selectedImage={selectedImage} setSelectedImage={setSelectedImage} />
+    <ImageGallery setSelectedStyle={setSelectedStyle} styles={styles} allImages={totalImages} selectedImage={selectedImage} setSelectedImage={setSelectedImage} />
     <ProductDetail product={props.product} styles={styles} selectedImage={selectedImage} />
     <Styles styles={styles} selectedImage={selectedImage} setSelectedStyle={setSelectedStyle} />
+    <AddToCart />
   </div>
 
 };
