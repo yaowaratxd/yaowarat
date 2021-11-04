@@ -19,7 +19,7 @@ const Overview = (props) => {
       let container = [];
       let styles = [];
       for (let i = 0; i < results.data.results.length; ++i) {
-        styles.push({image: results.data.results[i].photos[0].thumbnail_url, id: results.data.results[i].style_id, url: results.data.results[i].photos[0].url, skus: results.data.results[i].skus, photos: results.data.results[i].photos, salePrice: results.data.results[i].sale_price });
+        styles.push({image: results.data.results[i].photos[0].thumbnail_url, id: results.data.results[i].style_id, url: results.data.results[i].photos[0].url, skus: results.data.results[i].skus, photos: results.data.results[i].photos, salePrice: results.data.results[i].sale_price, name: results.data.results[i].name });
       }
       setStyles(styles);
       callback(results.data.results);
@@ -65,7 +65,6 @@ const Overview = (props) => {
     <ImageGallery setSelectedStyle={setSelectedStyle} styles={styles} allImages={totalImages} selectedImage={selectedImage} setSelectedImage={setSelectedImage} />
     <ProductDetail product={props.product} styles={styles} selectedImage={selectedImage} />
     <Styles styles={styles} selectedImage={selectedImage} setSelectedStyle={setSelectedStyle} />
-    <AddToCart />
   </div>
 
 };

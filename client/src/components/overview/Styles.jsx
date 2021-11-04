@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 
 import QuantityDropDown from './QuantityDropDown.jsx';
+import AddToCart from './AddToCart.jsx';
 import styled from 'styled-components';
 
 const Container = styled.div`
@@ -11,15 +12,26 @@ display: flex;
 flex-wrap: true;
 `;
 
+const StyleIconCotainer = styled.div`
+position: relative;
+left: 20vw;
+top: 10vh;
+width: 25vw;
+display: flex;
+flex-wrap: wrap;
+`;
+
 const StyleTile = styled.div`
 height: 50px;
 width: 50px;
+margin: .3vw;
 border-radius: 50%;
 border: 1px solid black;
 `;
 const SelectedStyleTile = styled.div`
 height: 55px;
 width: 55px;
+margin: .3vw;
 border-radius: 50%;
 border: 3px solid rebeccapurple;
 `;
@@ -34,6 +46,7 @@ margin-top: 20px;
 const Styles = ({ styles, setSelectedStyle, selectedImage }) => {
   const [selected, setSelected] = useState('');
   const [quantity, setQuantity] = useState(7);
+  const [name, setName] = useState('');
 
   const setQ = () => {
     styles.filter(style => {
@@ -48,6 +61,7 @@ const Styles = ({ styles, setSelectedStyle, selectedImage }) => {
             }
             if (style.skus[key].size === useThis) {
               setQuantity(style.skus[key].quantity);
+              getName();
             }
           }
         }
@@ -57,7 +71,8 @@ const Styles = ({ styles, setSelectedStyle, selectedImage }) => {
   useEffect(() => {
     // createQuantitySelector();
     setQ();
-  }, [selected, quantity]);
+    getName();
+  }, [selected, quantity, name, selectedImage]);
 
   const createQuantitySelector = () => {
     let results = [];
@@ -67,29 +82,48 @@ const Styles = ({ styles, setSelectedStyle, selectedImage }) => {
     return results;
   };
 
+  const getName = () => {
+    styles.filter((style) => {
+      if (style.id === selectedImage.id) {
+        setName(style.name)
+      }
+    })
+  };
+
 
   const handleChange = (event) => {
     setSelected(event.target.value);
     setQ();
+    getName();
+  };
+  const handleChangeImage = (url, id) => {
+    setSelectedStyle({url, id});
+    getName();
   };
   return <div>
-  <Container>
+    <Container>
+  <h1>{ name }</h1>
+    </Container>
+    <StyleIconCotainer>
+  {/* <Container> */}
     { styles.map((image) =>  {
       for (let i = 0; i < image.photos.length; ++i) {
         if (image.photos[i].thumbnail_url === selectedImage.url || image.photos[i].url === selectedImage.url) {
-          return <SelectedStyleTile key={image.id}>  <img onClick={() => setSelectedStyle({url: image.image, id: image.id})} key={image.id} src={image.image} style={{height: '55px', width: '55px', borderRadius: '50%'}}/> </SelectedStyleTile>
+          return <SelectedStyleTile key={image.id}>  <img onClick={() => handleChangeImage(image.image, image.id)} key={image.id} src={image.image} style={{height: '55px', width: '55px', borderRadius: '50%'}}/> </SelectedStyleTile>
         }
       }
       // if (image.url === selectedImage.url ) {
       //   return <SelectedStyleTile key={image.id}>  <img onClick={() => setSelectedStyle({url: image.image, id: image.id})} key={image.id} src={image.image} style={{height: '55px', width: '55px', borderRadius: '50%'}}/> </SelectedStyleTile>
       // } else {
-        return <StyleTile key={image.id}>  <img onClick={() => setSelectedStyle({url: image.image, id: image.id })} key={image.id} src={image.image} style={{height: '50px', width: '50px', borderRadius: '50%'}}/> </StyleTile>
+        return <StyleTile key={image.id}>  <img onClick={() => handleChangeImage(image.image, image.id)} key={image.id} src={image.image} style={{height: '50px', width: '50px', borderRadius: '50%'}}/> </StyleTile>
       // }
     }
     )}
-    </Container>
+    {/* </Container> */}
+    </StyleIconCotainer>
     <Container>
     <SelectEle id='size' onChange={(event) => handleChange(event)}>
+    <option key={'--'} value={''}> Select Size </option>
     { styles.map((image) =>  {
       let placeholder = [];
       for (let i = 0; i < image.photos.length; ++i) {
@@ -104,28 +138,7 @@ const Styles = ({ styles, setSelectedStyle, selectedImage }) => {
     }
     )}
     </SelectEle>
-    <QuantityDropDown quantity={quantity} />
-    {/* <select> */}
-    {/* { styles.map((image) =>  {
-      let placeholder = [];
-      for (let i = 0; i < image.photos.length; ++i) {
-        if (image.photos[i].url === selectedImage.url) {
-          // for (let i =0; i < image.skus)
-          for (let key in image.skus) {
-          // console.log(document.getElementById('size').value);
-          placeholder.push(<option key={key} value={image.skus[key].quantity}>{ image.skus[key].quantity }</option>);
-          // if (image.skus[key].size === document.getElementById('size').value) {
-          //   for (let i = 1; i < image.skus[key].quantity; ++i) {
-          //     placeholder.push(<option key={key, i} value={i}> { i } </option>)
-          //   }
-          // }
-          }
-        }
-      }
-      return placeholder;
-    }
-    )} */}
-    {/* </select> */}
+    <AddToCart quantity={quantity} />
   </Container>
   </div>
 };

@@ -14,13 +14,29 @@ axios.defaults.headers.common['Authorization'] = AUTH_TOKEN;
 
 const baseURL = 'https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfe';
 
-app.get('/api/products/:productId/styles', async (req, res) => {
+const catchAsync = (fn) => {
+  return (req, res, next) => {
+    fn(req, res, next).catch(next);
+  };
+};
+
+app.get('/api/products/:productId/styles', catchAsync(async (req, res) => {
   const result = await axios.get(`${baseURL}/products/${req.params.productId}/styles`);
   res.status(200).json({
     status: 'success',
     results: result.data.results
   })
-});
+}));
+//meta?product_id=${req.params.productId}
+
+app.get('/api/reviews/meta/:productId', catchAsync(async (req, res) => {
+  const results = await axios.get(`${baseURL}/reviews/meta/?product_id=${req.params.productId}`);
+  console.log(results.data.ratings);
+  res.status(200).json({
+    status: 'success',
+    ratings: results.data.ratings
+  })
+}));
 
 app.listen(port, () => {
   console.log(`Express server listening on port ${port}`);

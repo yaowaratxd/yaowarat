@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 
 import styled from 'styled-components';
+import QuantityDropDown from './QuantityDropDown.jsx';
 
 const AddButton = styled.button`
 width: 100px;
@@ -17,7 +18,7 @@ display: flex;
 flex-wrap: true;
 `;
 
-const AddToCart = (props) => {
+const AddToCart = ({ quantity }) => {
   const [addCart, setAddCart] = useState(false);
   const [display, setDisplay] = useState('+');
 
@@ -29,6 +30,7 @@ const AddToCart = (props) => {
     }
   };
  return <Container>
+   <QuantityDropDown quantity={quantity} />
   <AddButton onClick={() => setAddCart(!addCart)}>{ addCart ? 'Remove From Cart' : 'Add To Cart'}</AddButton>
   <AddButton onClick={handleFav}>{ display }</AddButton>
  </Container>

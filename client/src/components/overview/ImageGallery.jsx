@@ -4,15 +4,15 @@ import styled from 'styled-components';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 const Tile = styled.img`
-height: 10vh;
-width:  10vw;
+height: 7vh;
+width:  7vw;
 border: 1px solid black;
 margin-bottom: 5px;
 `;
 
 const SelectedTile = styled.img`
-height: 10vh;
-width:  10vw;
+height: 7vh;
+width:  7vw;
 border: 1px solid black;
 border-bottom: 6px solid rebeccapurple;
 margin-bottom: 5px;
@@ -35,6 +35,7 @@ position: absolute;
 top: 5vh;
 left: 5%;
 height: 60vh;
+cursor: zoom-in;
 `;
 const BaseImageExpanded = styled.img`
 width: 70vw;
@@ -43,6 +44,7 @@ top: 5vh;
 left: 5%;
 height: 60vh;
 z-index: 2;
+cursor: zoom-out;
 `;
 
 const ClickyButton = styled.button`
@@ -131,7 +133,7 @@ const ImageGallery = ({ allImages, selectedImage, setSelectedImage, styles, setS
   return <div>
     <div>
   { renderLeftButton() }
-        { expandedImage ? <BaseImageExpanded src={selectedImage.url} /> : <BaseImage src={selectedImage.url} /> }
+        { expandedImage ? <BaseImageExpanded onClick={changeExpansion} src={selectedImage.url} /> : <BaseImage onClick={changeExpansion} src={selectedImage.url} /> }
         {/* <ClickyButton onClick={handleClickRight}>Right</ClickyButton>
          */}
         { renderRightButton() }
