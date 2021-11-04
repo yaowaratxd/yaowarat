@@ -1,7 +1,7 @@
 /* eslint-disable react/sort-comp */
 import React from 'react';
 import axios from 'axios';
-import config2 from '/config2.js';
+import config2 from '/github.config.js';
 import styled from 'styled-components';
 import OneRelatedProduct from './OneRelatedProduct.jsx';
 import OneOutfit from './OneOutfitProduct.jsx';
@@ -37,7 +37,8 @@ class Related extends React.Component {
         for (var i = 0; i < this.state.relatedProductsKey.length; i++) {
           this.getProduct(this.state.relatedProductsKey[i]);
         }
-      });
+      })
+      .catch(err => console.log(err));
   }
 
   getProduct(productID) {
@@ -45,10 +46,11 @@ class Related extends React.Component {
       headers: {
         authorization: `${config2.TOKEN}`,
       },
-    })
+      })
       .then((results) => {
         this.setState({ relatedProducts: this.state.relatedProducts.concat(results.data) });
-      });
+      })
+      .catch(err => console.log(err));
   }
 
   addToOutfitList(product) {

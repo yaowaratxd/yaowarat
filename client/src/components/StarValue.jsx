@@ -8,6 +8,8 @@ const Stars = (props) => {
   const halfStar = '/client/src/resources/graphics/halfstar.png';
   const quarterStar = '/client/src/resources/graphics/onequarterstar.png';
   const emptyStar = '/client/src/resources/graphics/emptystar.png';
+  // /home/pjjpb/hackreactor/yaowarat/client/src/resources/graphics/emptystar.png
+  // client/src/resources/graphics/emptystar.png
 
   const starArray = [emptyStar, emptyStar, emptyStar, emptyStar, emptyStar];
 

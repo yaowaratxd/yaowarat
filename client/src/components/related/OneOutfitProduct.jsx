@@ -1,6 +1,6 @@
 import React from 'react';
 import axios from 'axios';
-import config2 from '/config2.js';
+import config2 from '/github.config.js';
 
 class OneOutfit extends React.Component {
   constructor(props) {

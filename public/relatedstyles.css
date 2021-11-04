@@ -1,0 +1,95 @@
+#related {
+  position: relative;
+  z-index: 999;
+  font-size: large;
+}
+
+.app {
+  height: 4em;
+  width: 10em;
+  background: lightblue;
+  overflow: hidden;
+}
+
+.relatedproducts {
+  display: flex;
+  grid-template-columns: 300px 300px 300px 300px 300px;
+  /* grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); */
+  grid-template-rows: 600px;
+  justify-items: stretch;
+  justify-content: center;
+  align-items: center;
+  overflow-wrap: normal;
+  column-gap: 10px
+}
+
+.onerelated {
+  justify-self: center;
+  text-align: left;
+  font-size: 18px;
+  border-style: solid;
+  padding: 5px;
+  align-self: stretch;
+  background-color: silver;
+  justify-content: center;
+
+}
+
+.outfitproducts {
+  display: flex;
+  grid-template-columns: 300px 300px 300px 300px 300px;
+  /* grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); */
+  grid-template-rows: 600px;
+  justify-items: stretch;
+  align-items: center;
+  overflow-wrap: normal;
+}
+
+.oneoutfit {
+  justify-self: center;
+  text-align: left;
+  font-size: 18px;
+  border-style: solid;
+  padding: 5px;
+  align-self: stretch;
+  background-color: silver;
+}
+
+
+.modal {
+  background-color: rgba(0,0,0,0.5);
+  position: fixed;
+  height: 100%;
+  width: 100%;
+  top: 0;
+  left: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: xx-large;
+}
+
+table {
+  border-collapse: collapse;
+  border: 2px solid rgb(200,200,200);
+  letter-spacing: 1px;
+  font-size: 0.8rem;
+  background-color: rgb(255, 255, 255);
+}
+
+td, th {
+  border: 1px solid rgb(190,190,190);
+  padding: 10px 20px;
+}
+
+th {
+  background-color: rgb(255, 255, 255);
+}
+
+td {
+  text-align: center;
+}
+
+#comparebutton {
+  align-items: flex-end;
+}

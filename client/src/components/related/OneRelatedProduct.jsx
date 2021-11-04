@@ -2,7 +2,7 @@
 /* eslint-disable react/destructuring-assignment */
 import React from 'react';
 import axios from 'axios';
-import config2 from '/config2.js';
+import config2 from '/github.config.js';
 import Comparing from './CompareModal.jsx'
 import Stars from '../StarValue.jsx';
 
