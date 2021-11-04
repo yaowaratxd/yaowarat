@@ -47,6 +47,7 @@ const Styles = ({ styles, setSelectedStyle, selectedImage }) => {
   const [selected, setSelected] = useState('');
   const [quantity, setQuantity] = useState(7);
   const [name, setName] = useState('');
+  const [hasSize, setHasSize] = useState(false);
 
   const setQ = () => {
     styles.filter(style => {
@@ -95,6 +96,7 @@ const Styles = ({ styles, setSelectedStyle, selectedImage }) => {
     setSelected(event.target.value);
     setQ();
     getName();
+    setHasSize(true);
   };
   const handleChangeImage = (url, id) => {
     setSelectedStyle({url, id});
@@ -138,7 +140,7 @@ const Styles = ({ styles, setSelectedStyle, selectedImage }) => {
     }
     )}
     </SelectEle>
-    <AddToCart quantity={quantity} />
+    <AddToCart hasSize={hasSize} quantity={quantity} />
   </Container>
   </div>
 };

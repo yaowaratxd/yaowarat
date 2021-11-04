@@ -9,7 +9,7 @@ margin-right: 40px;
 margin-top: 20px;
 `;
 
-const QuantityDropDown = ({ quantity }) => {
+const QuantityDropDown = ({ quantity, hasSize }) => {
   const [selections, setSelections] = useState(['-']);
 
   useEffect(() => {
@@ -22,7 +22,7 @@ const QuantityDropDown = ({ quantity }) => {
   }, [quantity])
 
   return <SelectEle>
-    <option key={'--'} value={''}> - </option>
+    { hasSize ? '' : <option key={'--'} value={''}> - </option>}
     { selections.map((size) => <option key={size} value={size}>{ size }</option>)}
   </SelectEle>
 };

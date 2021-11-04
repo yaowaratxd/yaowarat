@@ -5802,7 +5802,8 @@ var AddButton = styled_components__WEBPACK_IMPORTED_MODULE_2__["default"].button
 var Container = styled_components__WEBPACK_IMPORTED_MODULE_2__["default"].div(_templateObject2 || (_templateObject2 = _taggedTemplateLiteral(["\nposition: relative;\nleft: 20vw;\ntop: 10vh;\ndisplay: flex;\nflex-wrap: true;\n"])));
 
 var AddToCart = function AddToCart(_ref) {
-  var quantity = _ref.quantity;
+  var quantity = _ref.quantity,
+      hasSize = _ref.hasSize;
 
   var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false),
       _useState2 = _slicedToArray(_useState, 2),
@@ -5823,6 +5824,7 @@ var AddToCart = function AddToCart(_ref) {
   };
 
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(Container, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_QuantityDropDown_jsx__WEBPACK_IMPORTED_MODULE_1__["default"], {
+    hasSize: hasSize,
     quantity: quantity
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(AddButton, {
     onClick: function onClick() {
@@ -6309,7 +6311,8 @@ function _taggedTemplateLiteral(strings, raw) { if (!raw) { raw = strings.slice(
 var SelectEle = styled_components__WEBPACK_IMPORTED_MODULE_1__["default"].select(_templateObject || (_templateObject = _taggedTemplateLiteral(["\nwidth: 100px;\nheight: 45px;\nmargin-right: 40px;\nmargin-top: 20px;\n"])));
 
 var QuantityDropDown = function QuantityDropDown(_ref) {
-  var quantity = _ref.quantity;
+  var quantity = _ref.quantity,
+      hasSize = _ref.hasSize;
 
   var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(['-']),
       _useState2 = _slicedToArray(_useState, 2),
@@ -6327,7 +6330,7 @@ var QuantityDropDown = function QuantityDropDown(_ref) {
     ;
     setSelections(results);
   }, [quantity]);
-  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(SelectEle, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("option", {
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(SelectEle, null, hasSize ? '' : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("option", {
     key: '--',
     value: ''
   }, " - "), selections.map(function (size) {
@@ -6403,6 +6406,11 @@ var Styles = function Styles(_ref) {
       name = _useState6[0],
       setName = _useState6[1];
 
+  var _useState7 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false),
+      _useState8 = _slicedToArray(_useState7, 2),
+      hasSize = _useState8[0],
+      setHasSize = _useState8[1];
+
   var setQ = function setQ() {
     styles.filter(function (style) {
       for (var i = 0; i < style.photos.length; ++i) {
@@ -6457,6 +6465,7 @@ var Styles = function Styles(_ref) {
     setSelected(event.target.value);
     setQ();
     getName();
+    setHasSize(true);
   };
 
   var handleChangeImage = function handleChangeImage(url, id) {
@@ -6528,6 +6537,7 @@ var Styles = function Styles(_ref) {
 
     return placeholder;
   })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_AddToCart_jsx__WEBPACK_IMPORTED_MODULE_2__["default"], {
+    hasSize: hasSize,
     quantity: quantity
   })));
 };

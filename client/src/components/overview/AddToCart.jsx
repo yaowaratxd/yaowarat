@@ -18,7 +18,7 @@ display: flex;
 flex-wrap: true;
 `;
 
-const AddToCart = ({ quantity }) => {
+const AddToCart = ({ quantity, hasSize }) => {
   const [addCart, setAddCart] = useState(false);
   const [display, setDisplay] = useState('+');
 
@@ -30,7 +30,7 @@ const AddToCart = ({ quantity }) => {
     }
   };
  return <Container>
-   <QuantityDropDown quantity={quantity} />
+   <QuantityDropDown hasSize={hasSize} quantity={quantity} />
   <AddButton onClick={() => setAddCart(!addCart)}>{ addCart ? 'Remove From Cart' : 'Add To Cart'}</AddButton>
   <AddButton onClick={handleFav}>{ display }</AddButton>
  </Container>
