@@ -6246,6 +6246,11 @@ var ProductDetail = function ProductDetail(_ref) {
       ratings = _useState2[0],
       setRatings = _useState2[1];
 
+  var _useState3 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(0),
+      _useState4 = _slicedToArray(_useState3, 2),
+      reviewTotal = _useState4[0],
+      setReviewTotal = _useState4[1];
+
   (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
     axios__WEBPACK_IMPORTED_MODULE_1___default().get("/api/reviews/meta/".concat(product.id)).then(function (res) {
       var count = 0;
@@ -6257,10 +6262,13 @@ var ProductDetail = function ProductDetail(_ref) {
       }
 
       setRatings((total / count).toFixed(2));
+      axios__WEBPACK_IMPORTED_MODULE_1___default().get("/api/reviews/".concat(product.id)).then(function (res) {
+        setReviewTotal(res.data.quantity);
+      });
     });
   }, [selectedImage, product]);
   var renderPrice = selectedImage.salePrice ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, " ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(NewPrice, null, " ", product.default_price, " "), " ", selectedImage.salePrice, " ") : product.default_price;
-  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(Container, null, ratings, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h1", null, product.name), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h4", null, product.category), renderPrice);
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(Container, null, ratings, " - click here to see all ", reviewTotal, " reviews...", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h1", null, product.name), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h4", null, product.category), renderPrice);
 };
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (ProductDetail);

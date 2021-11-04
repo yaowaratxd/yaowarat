@@ -37,6 +37,15 @@ app.get('/api/reviews/meta/:productId', catchAsync(async (req, res) => {
     ratings: results.data.ratings
   })
 }));
+app.get('/api/reviews/:productId', catchAsync(async (req, res) => {
+  const results = await axios.get(`${baseURL}/reviews/?product_id=${req.params.productId}`);
+  console.log(results.data);
+  res.status(200).json({
+    status: 'success',
+    ratings: results.data.results,
+    quantity: results.data.count,
+  })
+}));
 
 app.listen(port, () => {
   console.log(`Express server listening on port ${port}`);
