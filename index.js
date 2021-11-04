@@ -31,7 +31,6 @@ app.get('/api/products/:productId/styles', catchAsync(async (req, res) => {
 
 app.get('/api/reviews/meta/:productId', catchAsync(async (req, res) => {
   const results = await axios.get(`${baseURL}/reviews/meta/?product_id=${req.params.productId}`);
-  console.log(results.data.ratings);
   res.status(200).json({
     status: 'success',
     ratings: results.data.ratings
@@ -39,7 +38,6 @@ app.get('/api/reviews/meta/:productId', catchAsync(async (req, res) => {
 }));
 app.get('/api/reviews/:productId', catchAsync(async (req, res) => {
   const results = await axios.get(`${baseURL}/reviews/?product_id=${req.params.productId}`);
-  console.log(results.data);
   res.status(200).json({
     status: 'success',
     ratings: results.data.results,
