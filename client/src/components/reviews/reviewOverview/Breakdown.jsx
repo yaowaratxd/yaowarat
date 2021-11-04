@@ -1,6 +1,18 @@
 import React from 'react';
 
-const Breakdown = (props) => {
+const Breakdown = ({ reviews }) => {
+  var ratings = [];
+  if (reviews.length === 0) {
+    console.log('No Reviews');
+  } else {
+    for (var i = 0; i < reviews.length; i++) {
+      var cReview = reviews[i];
+      ratings.push(cReview.rating);
+    }
+
+  }
+
+
   return (
     <div className="breakdown">
       <p>Breakdown</p>

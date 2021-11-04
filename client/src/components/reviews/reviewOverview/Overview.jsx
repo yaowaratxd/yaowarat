@@ -39,7 +39,7 @@ class Overview extends React.Component {
       <div className="reviewOverview">
         <h4>Ratings & Reviews</h4>
         <StarRating avg={this.Average} />
-        <Breakdown />
+        <Breakdown reviews={this.props.reviews} />
         <p>Recommended</p>
         <p>Characteristics</p>
       </div>

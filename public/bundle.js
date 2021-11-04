@@ -6305,7 +6305,19 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 
 
-var Breakdown = function Breakdown(props) {
+var Breakdown = function Breakdown(_ref) {
+  var reviews = _ref.reviews;
+  var ratings = [];
+
+  if (reviews.length === 0) {
+    console.log('No Reviews');
+  } else {
+    for (var i = 0; i < reviews.length; i++) {
+      var cReview = reviews[i];
+      ratings.push(cReview.rating);
+    }
+  }
+
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
     className: "breakdown"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, "Breakdown"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", {
@@ -6422,7 +6434,9 @@ var Overview = /*#__PURE__*/function (_React$Component) {
         className: "reviewOverview"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h4", null, "Ratings & Reviews"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_StarRating_jsx__WEBPACK_IMPORTED_MODULE_2__["default"], {
         avg: this.Average
-      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_Breakdown_jsx__WEBPACK_IMPORTED_MODULE_1__["default"], null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, "Recommended"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, "Characteristics"));
+      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_Breakdown_jsx__WEBPACK_IMPORTED_MODULE_1__["default"], {
+        reviews: this.props.reviews
+      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, "Recommended"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, "Characteristics"));
     }
   }]);
 
