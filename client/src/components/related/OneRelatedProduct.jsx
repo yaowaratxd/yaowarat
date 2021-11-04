@@ -102,7 +102,7 @@ class OneRelatedProduct extends React.Component {
                 <tr>
                   <td>This should come from parent</td>
                   <td>Star Rating</td>
-                  <td>{this.getRatingScore()}</td>
+                  <td><Stars rating={this.getRatingScore()} /></td>
                 </tr>
                 <tr>
                   <td>{this.props.originalProduct.category}</td>
