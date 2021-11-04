@@ -2159,6 +2159,66 @@ module.exports = {
 
 /***/ }),
 
+/***/ "./client/src/components/StarValue.jsx":
+/*!*********************************************!*\
+  !*** ./client/src/components/StarValue.jsx ***!
+  \*********************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+
+
+var Stars = function Stars(props) {
+  var value = props.rating;
+  var fullStar = '/client/src/resources/graphics/fullstar.png';
+  var threeQuarterStar = '/client/src/resources/graphics/threequarterstar.png';
+  var halfStar = '/client/src/resources/graphics/halfstar.png';
+  var quarterStar = '/client/src/resources/graphics/onequarterstar.png';
+  var emptyStar = '/client/src/resources/graphics/emptystar.png';
+  var starArray = [emptyStar, emptyStar, emptyStar, emptyStar, emptyStar];
+  var remainingRating = value - Math.floor(value);
+  var fullStars = 0;
+
+  for (var i = 0; i < 5; i++) {
+    if (i <= Math.floor(value) - 1) {
+      starArray[i] = fullStar;
+      fullStars = i;
+    }
+  }
+
+  if (value - Math.floor(value) !== 0) {
+    if (remainingRating === 0.75) {
+      starArray[fullStars + 1] = threeQuarterStar;
+    }
+
+    if (remainingRating === 0.50) {
+      starArray[fullStars + 1] = halfStar;
+    }
+
+    if (remainingRating === 0.25) {
+      starArray[fullStars + 1] = quarterStar;
+    }
+  }
+
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, starArray.map(function (star) {
+    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("img", {
+      src: star,
+      height: "20px",
+      width: "20px",
+      alt: "rating stars"
+    });
+  }));
+};
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Stars);
+
+/***/ }),
+
 /***/ "./client/src/components/related/AddCurrentItem.jsx":
 /*!**********************************************************!*\
   !*** ./client/src/components/related/AddCurrentItem.jsx ***!
@@ -2176,7 +2236,7 @@ __webpack_require__.r(__webpack_exports__);
 function AddThisItem(props) {
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("span", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("img", {
     src: "https://upload.wikimedia.org/wikipedia/commons/thumb/0/03/Plus_sign_font_awesome.svg/1024px-Plus_sign_font_awesome.svg.png",
-    height: "250px",
+    height: "200px",
     width: "200px",
     onClick: function onClick() {
       props.setOutfit(props.currentProduct);
@@ -2185,6 +2245,84 @@ function AddThisItem(props) {
 }
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (AddThisItem);
+
+/***/ }),
+
+/***/ "./client/src/components/related/CompareModal.jsx":
+/*!********************************************************!*\
+  !*** ./client/src/components/related/CompareModal.jsx ***!
+  \********************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-dom */ "./node_modules/react-dom/index.js");
+function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+function _createSuper(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct(); return function _createSuperInternal() { var Super = _getPrototypeOf(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn(this, result); }; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } else if (call !== void 0) { throw new TypeError("Derived constructors may only return object or undefined"); } return _assertThisInitialized(self); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); return true; } catch (e) { return false; } }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+
+
+var related = document.getElementById('related');
+
+var CompareModal = /*#__PURE__*/function (_React$Component) {
+  _inherits(CompareModal, _React$Component);
+
+  var _super = _createSuper(CompareModal);
+
+  function CompareModal(props) {
+    var _this;
+
+    _classCallCheck(this, CompareModal);
+
+    _this = _super.call(this, props);
+    _this.state = {};
+    return _this;
+  }
+
+  _createClass(CompareModal, [{
+    key: "componentDidMount",
+    value: function componentDidMount() {
+      console.log(this.props.children); // related.appendChild(document.createElement('div'));
+    } // componentWillUnmount() {
+    //   related.removeChild(document.getElementById('modal2'));
+    // }
+
+  }, {
+    key: "render",
+    value: function render() {
+      return !this.props.children ? null : /*#__PURE__*/react_dom__WEBPACK_IMPORTED_MODULE_1__.createPortal( // Any valid React child: JSX, strings, arrays, etc.
+      this.props.children, // A DOM element
+      document.getElementById('related'));
+    }
+  }]);
+
+  return CompareModal;
+}(react__WEBPACK_IMPORTED_MODULE_0__.Component);
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (CompareModal);
 
 /***/ }),
 
@@ -2286,16 +2424,7 @@ var OneOutfit = /*#__PURE__*/function (_React$Component) {
           thisProductRating: response.data
         });
       });
-    } // componentDidUpdate(prevProps, prevState) {
-    //   if (this.props.product.id !== parseInt(this.state.thisProductExtra.product_id)) {
-    //     console.log('not the same');
-    //     console.log(this.props.product.id);
-    //     console.log(this.state.thisProductExtra.product_id);
-    //     // this.getStyles()
-    //     // this.getRatingScore();
-    //   }
-    // }
-
+    }
   }, {
     key: "getRatingScore",
     value: function getRatingScore() {
@@ -2318,7 +2447,7 @@ var OneOutfit = /*#__PURE__*/function (_React$Component) {
     value: function render() {
       var _this4 = this;
 
-      var picImage = 'https://freesvg.org/img/Image-Not-Found.png';
+      var picImage = 'https://upload.wikimedia.org/wikipedia/commons/thumb/7/7c/X-circle.svg/1024px-X-circle.svg.png';
       var productRating = 'Be the first to provide a rating!';
 
       if (this.state.thisProductRating.ratings) {
@@ -2331,17 +2460,19 @@ var OneOutfit = /*#__PURE__*/function (_React$Component) {
         }
       }
 
-      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("li", {
-        className: "related"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", {
-        onClick: function onClick() {
-          _this4.props.removeOutfit(_this4.props.product);
-        }
-      }, " take away "), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, "Product category: ", this.props.product.category, " "), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, "Product name: ", this.props.product.name), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("img", {
+      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+        className: "oneoutfit"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("img", {
         src: "".concat(picImage),
         height: "250px",
         width: "200px"
-      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, "Price (default, needs conditional updating) ", this.props.product.default_price), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, "Star rating: ", productRating), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("br", null));
+      }), " ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", {
+        onClick: function onClick() {
+          _this4.props.removeOutfit(_this4.props.product);
+        },
+        type: "button",
+        id: "outfitbutton"
+      }, " Remove "), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, "Product category: ", this.props.product.category, " "), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, "Product name: ", this.props.product.name), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, "Price: (default,updating) ", this.props.product.default_price), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, "Star rating: ", productRating), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("br", null));
     }
   }]);
 
@@ -2368,9 +2499,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var _config2_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../config2.js */ "./config2.js");
 /* harmony import */ var _config2_js__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_config2_js__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _CompareModal_jsx__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./CompareModal.jsx */ "./client/src/components/related/CompareModal.jsx");
+/* harmony import */ var _StarValue_jsx__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../StarValue.jsx */ "./client/src/components/StarValue.jsx");
 function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
-
-function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -2392,7 +2523,11 @@ function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Re
 
 function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
 
+/* eslint-disable react/sort-comp */
+
 /* eslint-disable react/destructuring-assignment */
+
+
 
 
 
@@ -2411,10 +2546,15 @@ var OneRelatedProduct = /*#__PURE__*/function (_React$Component) {
     _this.state = {
       thisProductExtra: {},
       thisProductRating: {},
-      isFavorited: false
+      showModal: false,
+      mainProductRating: {} // could be done at main index level and passed down along with item
+
     };
     _this.getStyles = _this.getStyles.bind(_assertThisInitialized(_this));
     _this.getReviews = _this.getReviews.bind(_assertThisInitialized(_this));
+    _this.compareProducts = _this.compareProducts.bind(_assertThisInitialized(_this));
+    _this.handleShowModal = _this.handleShowModal.bind(_assertThisInitialized(_this));
+    _this.handleHideModal = _this.handleHideModal.bind(_assertThisInitialized(_this));
     return _this;
   }
 
@@ -2453,6 +2593,30 @@ var OneRelatedProduct = /*#__PURE__*/function (_React$Component) {
           thisProductRating: response.data
         });
       });
+    } // getMainProductReviews() {
+    //   axios.get(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfe/reviews/meta/?product_id=${this.props.originalProduct.id}`, {
+    //     headers: {
+    //       authorization: `${config2.TOKEN}`,
+    //     },
+    //   })
+    //     .then((response) => {
+    //       this.setState({ mainProductRating: response.data });
+    //     });
+    // }
+
+  }, {
+    key: "handleShowModal",
+    value: function handleShowModal() {
+      this.setState({
+        showModal: true
+      });
+    }
+  }, {
+    key: "handleHideModal",
+    value: function handleHideModal() {
+      this.setState({
+        showModal: false
+      });
     }
   }, {
     key: "getRatingScore",
@@ -2472,11 +2636,33 @@ var OneRelatedProduct = /*#__PURE__*/function (_React$Component) {
       return 'Be the first to rate this product!';
     }
   }, {
+    key: "compareProducts",
+    value: function compareProducts(selectedProduct) {
+      console.log(selectedProduct);
+      this.handleShowModal();
+    }
+  }, {
     key: "render",
     value: function render() {
       var _this4 = this;
 
-      var picImage = 'https://freesvg.org/img/Image-Not-Found.png';
+      var modal = this.state.showModal ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_CompareModal_jsx__WEBPACK_IMPORTED_MODULE_3__["default"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+        className: "modal",
+        id: "modal2"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("table", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("tbody", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("tr", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("th", {
+        scope: "col"
+      }, "Page Product"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("th", {
+        scope: "col"
+      }, "Features"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("th", {
+        scope: "col"
+      }, "Selected Comparison")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("tr", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("td", null, "This should come from parent"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("td", null, "Star Rating"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("td", null, this.getRatingScore())), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("tr", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("td", null, this.props.originalProduct.category), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("td", null, "Product Category"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("td", null, this.props.product.category)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("tr", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("td", null, this.props.originalProduct.name), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("td", null, "Product Title"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("td", null, this.props.product.name)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("tr", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("td", null, this.props.originalProduct.default_price), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("td", null, "Price"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("td", null, this.props.product.default_price)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("tr", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("td", null, this.props.originalProduct.description), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("td", null, "Product Overview"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("td", null, this.props.product.description))))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", {
+        onClick: function onClick() {
+          return _this4.setState({
+            showModal: false
+          });
+        }
+      }, "Hide comparison"))) : null;
+      var picImage = 'https://upload.wikimedia.org/wikipedia/commons/thumb/7/7c/X-circle.svg/1024px-X-circle.svg.png';
       var productRating = 'Be the first to provide a rating!';
 
       if (this.state.thisProductRating.ratings) {
@@ -2489,18 +2675,21 @@ var OneRelatedProduct = /*#__PURE__*/function (_React$Component) {
         }
       }
 
-      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("li", {
-        className: "related"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", _defineProperty({
-        onClick: function onClick() {
-          _this4.props.setOutfit(_this4.props.product);
-        },
-        "class": "toggle"
-      }, "class", "fa fa-star"), " add to list "), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, "Product category: ", this.props.product.category, " "), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, "Product name: ", this.props.product.name), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("img", {
+      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+        className: "onerelated"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("img", {
         src: "".concat(picImage),
         height: "250px",
-        width: "200px"
-      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, "Price (default, needs conditional updating) ", this.props.product.default_price), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, "Star rating: ", productRating), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("br", null));
+        width: "200px",
+        alt: "product"
+      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", {
+        onClick: this.compareProducts,
+        className: "fa fa-star",
+        type: "button",
+        id: "comparebutton"
+      }, " "), modal, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, "Product category:", this.props.product.category, " ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("br", null)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, "Product name:", this.props.product.name, " ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("br", null)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, "Price (default):", this.props.product.default_price, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("br", null)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, "Star rating:", productRating), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, this.props.comparison), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_StarValue_jsx__WEBPACK_IMPORTED_MODULE_4__["default"], {
+        rating: productRating
+      }));
     }
   }]);
 
@@ -2552,6 +2741,8 @@ function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Re
 
 function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
 
+/* eslint-disable react/sort-comp */
+
 
 
 
@@ -2573,13 +2764,14 @@ var Related = /*#__PURE__*/function (_React$Component) {
     _this.state = {
       currentProduct: placeholder,
       relatedProducts: [],
-      additionalProductDetails: [],
+      // additionalProductDetails: [],
       outfitProducts: [] //move up to app most likely
 
     };
     _this.getRelated = _this.getRelated.bind(_assertThisInitialized(_this));
     _this.addToOutfitList = _this.addToOutfitList.bind(_assertThisInitialized(_this));
     _this.removeFromOutfitList = _this.removeFromOutfitList.bind(_assertThisInitialized(_this));
+    _this.compareProducts = _this.compareProducts.bind(_assertThisInitialized(_this));
     return _this;
   }
 
@@ -2643,27 +2835,33 @@ var Related = /*#__PURE__*/function (_React$Component) {
             return JSON.stringify(product) !== stringed;
           })
         };
-      }); ///
+      });
+    } // for handling the modal compare option
+
+  }, {
+    key: "compareProducts",
+    value: function compareProducts(selectedProduct) {
+      console.log(selectedProduct);
+      this.handleShowModal();
     }
   }, {
     key: "render",
     value: function render() {
       var _this4 = this;
 
-      // var fullOutfitDetails = [];
-      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-        className: "related products"
-      }, "current product selected: ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("em", null, this.state.currentProduct.name), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("ul", null, this.state.relatedProducts.map(function (oneProduct) {
+      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h3", null, "current product selected: ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("em", null, this.state.currentProduct.name)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("ul", {
+        className: "relatedproducts"
+      }, this.state.relatedProducts.map(function (oneProduct) {
         return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_OneRelatedProduct_jsx__WEBPACK_IMPORTED_MODULE_3__["default"], {
           product: oneProduct,
-          setOutfit: _this4.addToOutfitList
+          originalProduct: _this4.state.currentProduct
         });
-      }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-        className: "outfit products"
-      }, "customer favorite outfit list", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, " ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_AddCurrentItem_jsx__WEBPACK_IMPORTED_MODULE_5__["default"], {
+      }))), "Your outfit list:", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("ul", {
+        className: "outfitproducts"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, " ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_AddCurrentItem_jsx__WEBPACK_IMPORTED_MODULE_5__["default"], {
         setOutfit: this.addToOutfitList,
         currentProduct: this.state.currentProduct
-      }), " "), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("ul", null, this.state.outfitProducts.map(function (oneProduct) {
+      }), " "), this.state.outfitProducts.map(function (oneProduct) {
         return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_OneOutfitProduct_jsx__WEBPACK_IMPORTED_MODULE_4__["default"], {
           product: oneProduct,
           removeOutfit: _this4.removeFromOutfitList
@@ -2677,15 +2875,15 @@ var Related = /*#__PURE__*/function (_React$Component) {
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Related);
 var placeholder = {
-  'id': 37311,
-  'campus': 'hr-rfe',
-  'name': 'Camo Onesie',
-  'slogan': 'Blend in to your crowd',
-  'description': 'The So Fatigues will wake you up and fit you in. This high energy camo will have you blending in to even the wildest surroundings.',
-  'category': 'Jackets',
-  'default_price': '140.00',
-  'created_at': '2021-08-13T14:37:33.145Z',
-  'updated_at': '2021-08-13T14:37:33.145Z'
+  "id": 37313,
+  "campus": "hr-rfe",
+  "name": "Morning Joggers",
+  "slogan": "Make yourself a morning person",
+  "description": "Whether you're a morning person or not.  Whether you're gym bound or not.  Everyone looks good in joggers.",
+  "category": "Pants",
+  "default_price": "40.00",
+  "created_at": "2021-08-13T14:37:33.145Z",
+  "updated_at": "2021-08-13T14:37:33.145Z"
 };
 
 /***/ }),

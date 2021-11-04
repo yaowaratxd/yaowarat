@@ -42,21 +42,13 @@ class OneOutfit extends React.Component {
       });
   }
 
-  // componentDidUpdate(prevProps, prevState) {
-  //   if (this.props.product.id !== parseInt(this.state.thisProductExtra.product_id)) {
-  //     console.log('not the same');
-  //     console.log(this.props.product.id);
-  //     console.log(this.state.thisProductExtra.product_id);
-  //     // this.getStyles()
-  //     // this.getRatingScore();
-  //   }
-  // }
+
 
 
 
   getRatingScore() {
-    var reviewTotalScore = 0;
-    var totalReviews = 0;
+    let reviewTotalScore = 0;
+    let totalReviews = 0;
     if (JSON.stringify(this.state.thisProductRating.ratings) !== '{}') {
       for (var key in this.state.thisProductRating.ratings) {
         reviewTotalScore += (parseInt([key]) * parseInt(this.state.thisProductRating.ratings[key]));
@@ -68,8 +60,8 @@ class OneOutfit extends React.Component {
   }
 
   render() {
-    var picImage = 'https://freesvg.org/img/Image-Not-Found.png';
-    var productRating = 'Be the first to provide a rating!';
+    let picImage = 'https://upload.wikimedia.org/wikipedia/commons/thumb/7/7c/X-circle.svg/1024px-X-circle.svg.png';
+    let productRating = 'Be the first to provide a rating!';
     if (this.state.thisProductRating.ratings) {
       productRating = this.getRatingScore();
     }
@@ -81,16 +73,16 @@ class OneOutfit extends React.Component {
     }
 
     return (
-      <li className="related">
-        <button onClick={ () => {this.props.removeOutfit(this.props.product)} }> take away </button>
+      <div className="oneoutfit">
+        <img src={`${picImage}`} height="250px" width="200px"/> <br/>
+        <button onClick={ () => {this.props.removeOutfit(this.props.product)} } type="button" id="outfitbutton"> Remove </button>
         <div>Product category: {this.props.product.category} </div>
         <div>Product name: {this.props.product.name}</div>
-        <img src={`${picImage}`} height="250px" width="200px"/>
-        <div>Price (default, needs conditional updating) {this.props.product.default_price}</div>
+        <div>Price: (default,updating) {this.props.product.default_price}</div>
         <div>Star rating: {productRating}</div>
 
         <br />
-      </li>
+      </div>
     );
   }
 }

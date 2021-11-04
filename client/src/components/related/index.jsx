@@ -1,6 +1,8 @@
+/* eslint-disable react/sort-comp */
 import React from 'react';
 import axios from 'axios';
 import config2 from '/config2.js';
+import styled from 'styled-components';
 import OneRelatedProduct from './OneRelatedProduct.jsx';
 import OneOutfit from './OneOutfitProduct.jsx';
 import AddCurrentItem from './AddCurrentItem.jsx';
@@ -11,12 +13,13 @@ class Related extends React.Component {
     this.state = {
       currentProduct: placeholder,
       relatedProducts: [],
-      additionalProductDetails: [],
+      // additionalProductDetails: [],
       outfitProducts: [], //move up to app most likely
     };
     this.getRelated = this.getRelated.bind(this);
     this.addToOutfitList = this.addToOutfitList.bind(this);
     this.removeFromOutfitList = this.removeFromOutfitList.bind(this);
+    this.compareProducts = this.compareProducts.bind(this);
   }
 
   componentDidMount() {
@@ -44,39 +47,47 @@ class Related extends React.Component {
       },
     })
       .then((results) => {
-        this.setState({ relatedProducts: this.state.relatedProducts.concat(results.data)});
+        this.setState({ relatedProducts: this.state.relatedProducts.concat(results.data) });
       });
   }
 
   addToOutfitList(product) {
     // this.setState({ outfitProducts: this.state.outfitProducts.concat(product) });
-    this.setState( (state) => {
-      return {outfitProducts: state.outfitProducts.concat(product)}
-    }   );
+    this.setState((state) => ({ outfitProducts: state.outfitProducts.concat(product) }));
   }
 
-  removeFromOutfitList (product) {
+  removeFromOutfitList(product) {
     const stringed = JSON.stringify(product);
     // console.log('removing: ', stringed);
-    this.setState ((state) => {
-      return {outfitProducts: state.outfitProducts.filter((product) => JSON.stringify(product) !== stringed)};
-    });///
+    this.setState((state) => (
+      {
+        outfitProducts: state.outfitProducts.filter(
+          (product) => JSON.stringify(product) !== stringed,
+        ),
+      }));
+  }
+
+  // for handling the modal compare option
+  compareProducts(selectedProduct) {
+    console.log(selectedProduct);
+    this.handleShowModal();
   }
 
   render() {
-    // var fullOutfitDetails = [];
     return (
       <div>
-        <div className="related products">current product selected: <em>{this.state.currentProduct.name}</em>
-          <ul>
+        <h3>current product selected: <em>{this.state.currentProduct.name}</em></h3>
+        <div>
+          <ul className="relatedproducts">
             {this.state.relatedProducts.map((oneProduct) => {
-              return <OneRelatedProduct product={oneProduct} setOutfit={this.addToOutfitList} />
+              return <OneRelatedProduct product={oneProduct} originalProduct={this.state.currentProduct}/>
             })}
           </ul>
         </div>
-        <div className="outfit products">customer favorite outfit list
+        Your outfit list:
+        <div>
+          <ul className="outfitproducts">
           <div> <AddCurrentItem setOutfit={this.addToOutfitList} currentProduct={this.state.currentProduct}/> </div>
-          <ul>
             {this.state.outfitProducts.map((oneProduct) => {
                 return <OneOutfit product={oneProduct} removeOutfit={this.removeFromOutfitList} />
             })}
@@ -87,21 +98,16 @@ class Related extends React.Component {
   }
 }
 
-
-
 export default Related;
 
-
-
-
 const placeholder = {
-  'id': 37311,
-  'campus': 'hr-rfe',
-  'name': 'Camo Onesie',
-  'slogan': 'Blend in to your crowd',
-  'description': 'The So Fatigues will wake you up and fit you in. This high energy camo will have you blending in to even the wildest surroundings.',
-  'category': 'Jackets',
-  'default_price': '140.00',
-  'created_at': '2021-08-13T14:37:33.145Z',
-  'updated_at': '2021-08-13T14:37:33.145Z'
+  "id": 37313,
+  "campus": "hr-rfe",
+  "name": "Morning Joggers",
+  "slogan": "Make yourself a morning person",
+  "description": "Whether you're a morning person or not.  Whether you're gym bound or not.  Everyone looks good in joggers.",
+  "category": "Pants",
+  "default_price": "40.00",
+  "created_at": "2021-08-13T14:37:33.145Z",
+  "updated_at": "2021-08-13T14:37:33.145Z"
 };
