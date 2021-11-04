@@ -16,6 +16,7 @@ class Review extends React.Component {
     this.readMore = this.readMore.bind(this);
     this.writeReview = this.writeReview.bind(this);
     this.sort = this.sort.bind(this);
+    this.helpfulButton = this.helpfulButton.bind(this);
   }
 
   componentDidMount() {
@@ -52,14 +53,17 @@ class Review extends React.Component {
           console.log(err);
         })
     });
+  }
 
+  helpfulButton() {
+    console.log('"Yes" was clicked');
   }
 
   render() {
     return (
       <div className="reviewContainer">
         <ReviewOverview className="reviewOverview" reviews={this.state.reviews} />
-        <ReviewList className="reviewList" readMore={this.readMore} writeReview={this.writeReview} reviews={this.state.reviews} reviewsShown={this.state.reviewsShown} sort={this.sort} sortType={this.state.sort} />
+        <ReviewList className="reviewList" readMore={this.readMore} writeReview={this.writeReview} reviews={this.state.reviews} reviewsShown={this.state.reviewsShown} sort={this.sort} sortType={this.state.sort} helpfulButton={this.helpfulButton} />
       </div>
     );
   }

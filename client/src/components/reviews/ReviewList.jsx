@@ -1,10 +1,8 @@
 import React from 'react';
 
-import ReviewTiles from './ReviewTiles.jsx';
+import ReviewTiles from './tileComponents/ReviewTiles.jsx';
 
 const ReviewList = (props) => {
-  // console.log('Reviews Length: ', props.reviews.length);
-  // console.log('Reviews to Show: ', props.reviewsShown);
   if (!Array.isArray(props.reviews) || props.reviews.length === 0) {
     return (
       < div className="container" >
@@ -14,7 +12,6 @@ const ReviewList = (props) => {
       </div >
     );
   } else if (props.reviewsShown >= props.reviews.length) {
-    // console.log('To be shown is greater then length');
     return (
       < div className="container" >
         <h5>{props.reviews.length} reviews, sorted by {" "}
@@ -25,7 +22,7 @@ const ReviewList = (props) => {
               <option value="helpful">Helpful</option>
             </select>
           </label></h5>
-        < ReviewTiles reviews={props.reviews} reviewsShown={props.reviewsShown} />
+        < ReviewTiles reviews={props.reviews} reviewsShown={props.reviewsShown} helpfulButton={props.helpfulButton} />
         <button type="button" onClick={props.writeReview}>Submit Review</button>
       </div >
     );
@@ -40,7 +37,7 @@ const ReviewList = (props) => {
               <option value="helpful">Helpful</option>
             </select>
           </label></h5>
-        < ReviewTiles reviews={props.reviews} reviewsShown={props.reviewsShown} />
+        < ReviewTiles reviews={props.reviews} reviewsShown={props.reviewsShown} helpfulButton={props.helpfulButton} />
         <button type="button" onClick={props.readMore}>Read More</button>
         <button type="button" onClick={props.writeReview}>Submit Review</button>
       </div >

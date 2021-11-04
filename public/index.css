@@ -23,3 +23,12 @@
 .container {
   overflow-y: scroll;
 }
+
+.header {
+  font-weight: bold;
+}
+
+/* .helpfulbutton {
+  background: none;
+  border: none;
+} */
