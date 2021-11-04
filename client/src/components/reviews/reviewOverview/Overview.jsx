@@ -3,7 +3,7 @@ import React from 'react';
 import Breakdown from './Breakdown.jsx';
 import StarRating from './StarRating.jsx';
 
-class ReviewOverview extends React.Component {
+class Overview extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -47,4 +47,4 @@ class ReviewOverview extends React.Component {
   }
 }
 
-export default ReviewOverview;
+export default Overview;

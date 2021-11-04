@@ -4,14 +4,13 @@ import Helpfulness from './Helpfulness.jsx';
 import Response from './Response.jsx';
 
 const ReviewTiles = (props) => {
-  console.log('This is the reviewtiles props outside the map function', props);
   const reviews = props.reviews;
   if (reviews === undefined) {
     return <></>
   } else {
     var tiles = reviews.map((review, index) => {
       if (index === 0) {
-        // console.log(review);
+        console.log(review);
       }
 
       var date = new Date(`${review.date.slice(0, 10)}`).toLocaleDateString({}, { timeZone: 'UTC', month: 'long', day: '2-digit', year: 'numeric' })
@@ -23,6 +22,7 @@ const ReviewTiles = (props) => {
         header = header.substring(0, 60);
         header += '...';
       }
+
       /*
       if (body.length < 50) {
         console.log('Review was to small: ', body.length);
@@ -33,6 +33,7 @@ const ReviewTiles = (props) => {
         return (<></>);
       }
       */
+
       return (
         <div className="tile" key={index}>
           <p>Rating: {review.rating}</p>

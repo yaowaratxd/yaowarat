@@ -6054,28 +6054,6 @@ var Styles = function Styles(_ref) {
 
 /***/ }),
 
-/***/ "./client/src/components/reviews/Breakdown.jsx":
-/*!*****************************************************!*\
-  !*** ./client/src/components/reviews/Breakdown.jsx ***!
-  \*****************************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
-/* harmony export */ });
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-
-
-var Breakdown = function Breakdown(props) {
-  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, "Breakdown");
-};
-
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Breakdown);
-
-/***/ }),
-
 /***/ "./client/src/components/reviews/ReviewList.jsx":
 /*!******************************************************!*\
   !*** ./client/src/components/reviews/ReviewList.jsx ***!
@@ -6150,114 +6128,6 @@ var ReviewList = function ReviewList(props) {
 
 /***/ }),
 
-/***/ "./client/src/components/reviews/ReviewOverview.jsx":
-/*!**********************************************************!*\
-  !*** ./client/src/components/reviews/ReviewOverview.jsx ***!
-  \**********************************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
-/* harmony export */ });
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var _Breakdown_jsx__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Breakdown.jsx */ "./client/src/components/reviews/Breakdown.jsx");
-/* harmony import */ var _StarRating_jsx__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./StarRating.jsx */ "./client/src/components/reviews/StarRating.jsx");
-function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
-
-function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
-
-function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
-
-function _createSuper(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct(); return function _createSuperInternal() { var Super = _getPrototypeOf(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn(this, result); }; }
-
-function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } else if (call !== void 0) { throw new TypeError("Derived constructors may only return object or undefined"); } return _assertThisInitialized(self); }
-
-function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
-
-function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); return true; } catch (e) { return false; } }
-
-function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
-
-
-
-
-
-var ReviewOverview = /*#__PURE__*/function (_React$Component) {
-  _inherits(ReviewOverview, _React$Component);
-
-  var _super = _createSuper(ReviewOverview);
-
-  function ReviewOverview(props) {
-    var _this;
-
-    _classCallCheck(this, ReviewOverview);
-
-    _this = _super.call(this, props);
-    _this.state = {
-      reviews: []
-    };
-    _this.Average = _this.Average.bind(_assertThisInitialized(_this));
-    return _this;
-  }
-
-  _createClass(ReviewOverview, [{
-    key: "componentDidMount",
-    value: function componentDidMount() {
-      this.setState({
-        reviews: this.props.reviews
-      });
-    }
-  }, {
-    key: "Average",
-    value: function Average() {
-      var reviews = this.props.reviews;
-      var ratings = [];
-
-      if (reviews.length === 0) {
-        return 'No Reviews';
-      }
-
-      for (var i = 0; i < reviews.length; i++) {
-        ratings.push(reviews[i].rating);
-      }
-
-      var avg = ratings[0];
-
-      for (var i = 1; i < ratings.length; i++) {
-        avg += ratings[i];
-      } // avg = avg / reviews.length;
-
-
-      avg = (Math.round(avg / reviews.length * 4) / 4).toFixed(2); // console.log('This is the avg: ', avg)
-
-      return avg;
-    }
-  }, {
-    key: "render",
-    value: function render() {
-      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-        className: "reviewOverview"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h4", null, "Ratings & Reviews"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_StarRating_jsx__WEBPACK_IMPORTED_MODULE_2__["default"], {
-        avg: this.Average
-      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_Breakdown_jsx__WEBPACK_IMPORTED_MODULE_1__["default"], null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, "Recommended"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, "Characteristics"));
-    }
-  }]);
-
-  return ReviewOverview;
-}(react__WEBPACK_IMPORTED_MODULE_0__.Component);
-
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (ReviewOverview);
-
-/***/ }),
-
 /***/ "./client/src/components/reviews/Reviews.jsx":
 /*!***************************************************!*\
   !*** ./client/src/components/reviews/Reviews.jsx ***!
@@ -6273,7 +6143,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var _ReviewList_jsx__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./ReviewList.jsx */ "./client/src/components/reviews/ReviewList.jsx");
-/* harmony import */ var _ReviewOverview_jsx__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./ReviewOverview.jsx */ "./client/src/components/reviews/ReviewOverview.jsx");
+/* harmony import */ var _reviewOverview_Overview_jsx__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./reviewOverview/Overview.jsx */ "./client/src/components/reviews/reviewOverview/Overview.jsx");
 function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -6383,7 +6253,7 @@ var Review = /*#__PURE__*/function (_React$Component) {
     value: function render() {
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
         className: "reviewContainer"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_ReviewOverview_jsx__WEBPACK_IMPORTED_MODULE_3__["default"], {
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_reviewOverview_Overview_jsx__WEBPACK_IMPORTED_MODULE_3__["default"], {
         className: "reviewOverview",
         reviews: this.state.reviews
       }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_ReviewList_jsx__WEBPACK_IMPORTED_MODULE_2__["default"], {
@@ -6421,10 +6291,152 @@ var Review = /*#__PURE__*/function (_React$Component) {
 
 /***/ }),
 
-/***/ "./client/src/components/reviews/StarRating.jsx":
-/*!******************************************************!*\
-  !*** ./client/src/components/reviews/StarRating.jsx ***!
-  \******************************************************/
+/***/ "./client/src/components/reviews/reviewOverview/Breakdown.jsx":
+/*!********************************************************************!*\
+  !*** ./client/src/components/reviews/reviewOverview/Breakdown.jsx ***!
+  \********************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+
+
+var Breakdown = function Breakdown(props) {
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+    className: "breakdown"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, "Breakdown"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", {
+    className: "underline"
+  }, "5 Star"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", {
+    className: "underline"
+  }, "4 Star"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", {
+    className: "underline"
+  }, "3 Star"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", {
+    className: "underline"
+  }, "2 Star"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", {
+    className: "underline"
+  }, "1 Star"));
+};
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Breakdown);
+
+/***/ }),
+
+/***/ "./client/src/components/reviews/reviewOverview/Overview.jsx":
+/*!*******************************************************************!*\
+  !*** ./client/src/components/reviews/reviewOverview/Overview.jsx ***!
+  \*******************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var _Breakdown_jsx__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Breakdown.jsx */ "./client/src/components/reviews/reviewOverview/Breakdown.jsx");
+/* harmony import */ var _StarRating_jsx__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./StarRating.jsx */ "./client/src/components/reviews/reviewOverview/StarRating.jsx");
+function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+function _createSuper(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct(); return function _createSuperInternal() { var Super = _getPrototypeOf(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn(this, result); }; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } else if (call !== void 0) { throw new TypeError("Derived constructors may only return object or undefined"); } return _assertThisInitialized(self); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); return true; } catch (e) { return false; } }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+
+
+
+
+var Overview = /*#__PURE__*/function (_React$Component) {
+  _inherits(Overview, _React$Component);
+
+  var _super = _createSuper(Overview);
+
+  function Overview(props) {
+    var _this;
+
+    _classCallCheck(this, Overview);
+
+    _this = _super.call(this, props);
+    _this.state = {
+      reviews: []
+    };
+    _this.Average = _this.Average.bind(_assertThisInitialized(_this));
+    return _this;
+  }
+
+  _createClass(Overview, [{
+    key: "componentDidMount",
+    value: function componentDidMount() {
+      this.setState({
+        reviews: this.props.reviews
+      });
+    }
+  }, {
+    key: "Average",
+    value: function Average() {
+      var reviews = this.props.reviews;
+      var ratings = [];
+
+      if (reviews.length === 0) {
+        return 'No Reviews';
+      }
+
+      for (var i = 0; i < reviews.length; i++) {
+        ratings.push(reviews[i].rating);
+      }
+
+      var avg = ratings[0];
+
+      for (var i = 1; i < ratings.length; i++) {
+        avg += ratings[i];
+      } // avg = avg / reviews.length;
+
+
+      avg = (Math.round(avg / reviews.length * 4) / 4).toFixed(2); // console.log('This is the avg: ', avg)
+
+      return avg;
+    }
+  }, {
+    key: "render",
+    value: function render() {
+      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+        className: "reviewOverview"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h4", null, "Ratings & Reviews"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_StarRating_jsx__WEBPACK_IMPORTED_MODULE_2__["default"], {
+        avg: this.Average
+      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_Breakdown_jsx__WEBPACK_IMPORTED_MODULE_1__["default"], null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, "Recommended"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, "Characteristics"));
+    }
+  }]);
+
+  return Overview;
+}(react__WEBPACK_IMPORTED_MODULE_0__.Component);
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Overview);
+
+/***/ }),
+
+/***/ "./client/src/components/reviews/reviewOverview/StarRating.jsx":
+/*!*********************************************************************!*\
+  !*** ./client/src/components/reviews/reviewOverview/StarRating.jsx ***!
+  \*********************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -6462,7 +6474,6 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var Helpfulness = function Helpfulness(props) {
-  console.log(props);
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, "Was this review helpful?", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", {
     className: "helpfulbutton",
     onClick: props.helpfulButton
@@ -6524,14 +6535,14 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var ReviewTiles = function ReviewTiles(props) {
-  console.log('This is the reviewtiles props outside the map function', props);
   var reviews = props.reviews;
 
   if (reviews === undefined) {
     return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, null);
   } else {
     var tiles = reviews.map(function (review, index) {
-      if (index === 0) {// console.log(review);
+      if (index === 0) {
+        console.log(review);
       }
 
       var date = new Date("".concat(review.date.slice(0, 10))).toLocaleDateString({}, {

@@ -2,7 +2,7 @@ import React from 'react';
 import axios from 'axios';
 
 import ReviewList from './ReviewList.jsx';
-import ReviewOverview from './ReviewOverview.jsx';
+import Overview from './reviewOverview/Overview.jsx';
 
 class Review extends React.Component {
   constructor(props) {
@@ -62,7 +62,7 @@ class Review extends React.Component {
   render() {
     return (
       <div className="reviewContainer">
-        <ReviewOverview className="reviewOverview" reviews={this.state.reviews} />
+        <Overview className="reviewOverview" reviews={this.state.reviews} />
         <ReviewList className="reviewList" readMore={this.readMore} writeReview={this.writeReview} reviews={this.state.reviews} reviewsShown={this.state.reviewsShown} sort={this.sort} sortType={this.state.sort} helpfulButton={this.helpfulButton} />
       </div>
     );
