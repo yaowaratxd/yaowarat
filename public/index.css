@@ -28,7 +28,8 @@
   font-weight: bold;
 }
 
-/* .helpfulbutton {
+.helpfulbutton {
   background: none;
   border: none;
-} */
+  text-decoration: underline;
+}

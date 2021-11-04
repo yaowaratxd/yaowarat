@@ -6464,9 +6464,14 @@ __webpack_require__.r(__webpack_exports__);
 var Helpfulness = function Helpfulness(props) {
   console.log(props);
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, "Was this review helpful?", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", {
-    className: "helpfulbutton"
-  }, "Yes"), "(", props.review.helpfulness, ")");
-};
+    className: "helpfulbutton",
+    onClick: props.helpfulButton
+  }, " ", "Yes", " "), "(", props.review.helpfulness, ")", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", {
+    className: "helpfulbutton",
+    onClick: props.helpfulButton
+  }, " ", "No", " "));
+}; // Note: When either button is clicked both should be disabled and the results should be saved
+
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Helpfulness);
 
