@@ -20,7 +20,9 @@
 .tile {
   border: solid lightcoral 2px;
   border-radius: 4px;
-  width: 60vw;
+  width: 40vw;
+  margin-top: 2%;
+  margin-bottom: 2%;
 }
 
 .container {
@@ -39,4 +41,22 @@
 
 .underline {
   text-decoration: underline;
+}
+
+/* Review Bars */
+
+.basebar {
+  height: 20;
+  width: 80%;
+  background-color: #e0e0de;
+  border-radius: 50;
+  margin: 50;
+}
+
+.filledbar {
+  height: 100%;
+  width: 60%;
+  background-color: lightgreen;
+  border-radius: inherit;
+  text-align: right;
 }

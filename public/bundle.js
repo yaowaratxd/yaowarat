@@ -6303,6 +6303,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var _StarBar_jsx__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./StarBar.jsx */ "./client/src/components/reviews/reviewOverview/StarBar.jsx");
+
 
 
 var Breakdown = function Breakdown(_ref) {
@@ -6316,21 +6318,53 @@ var Breakdown = function Breakdown(_ref) {
       var cReview = reviews[i];
       ratings.push(cReview.rating);
     }
+
+    var starCount = {
+      '5': 0,
+      '4': 0,
+      '3': 0,
+      '2': 0,
+      '1': 0
+    };
+
+    for (var j = 0; j < ratings.length; j++) {
+      if (ratings[j] === 5) {
+        starCount['5']++;
+      } else if (ratings[j] === 4) {
+        starCount['4']++;
+      } else if (ratings[j] === 3) {
+        starCount['3']++;
+      } else if (ratings[j] === 2) {
+        starCount['2']++;
+      } else if (ratings[j] === 1) {
+        starCount['1']++;
+      }
+    }
   }
 
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
     className: "breakdown"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, "Breakdown"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", {
     className: "underline"
-  }, "5 Star"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", {
+  }, "5 Star"), " ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_StarBar_jsx__WEBPACK_IMPORTED_MODULE_1__["default"], {
+    reviews: reviews
+  }), " ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, starCount['5']), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", {
     className: "underline"
-  }, "4 Star"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", {
+  }, "4 Star"), " ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_StarBar_jsx__WEBPACK_IMPORTED_MODULE_1__["default"], {
+    reviews: reviews
+  }), " ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, starCount['4']), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", {
     className: "underline"
-  }, "3 Star"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", {
+  }, "3 Star"), " ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_StarBar_jsx__WEBPACK_IMPORTED_MODULE_1__["default"], {
+    reviews: reviews
+  }), " ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, starCount['3']), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", {
     className: "underline"
-  }, "2 Star"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", {
+  }, "2 Star"), " ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_StarBar_jsx__WEBPACK_IMPORTED_MODULE_1__["default"], {
+    reviews: reviews
+  }), " ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, starCount['2']), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", {
     className: "underline"
-  }, "1 Star"));
+  }, "1 Star"), " ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_StarBar_jsx__WEBPACK_IMPORTED_MODULE_1__["default"], {
+    reviews: reviews
+  }), " ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, starCount['1']));
 };
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Breakdown);
@@ -6444,6 +6478,34 @@ var Overview = /*#__PURE__*/function (_React$Component) {
 }(react__WEBPACK_IMPORTED_MODULE_0__.Component);
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Overview);
+
+/***/ }),
+
+/***/ "./client/src/components/reviews/reviewOverview/StarBar.jsx":
+/*!******************************************************************!*\
+  !*** ./client/src/components/reviews/reviewOverview/StarBar.jsx ***!
+  \******************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+
+
+var StarBar = function StarBar(_ref) {
+  var reviews = _ref.reviews;
+  console.log('This is the Star Bar');
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+    className: "basebar"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+    className: "filledbar"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("span", null, "_")));
+};
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (StarBar);
 
 /***/ }),
 
