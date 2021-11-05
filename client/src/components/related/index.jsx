@@ -1,7 +1,6 @@
 /* eslint-disable react/sort-comp */
 import React from 'react';
 import axios from 'axios';
-import config2 from '/github.config.js';
 import styled from 'styled-components';
 import OneRelatedProduct from './OneRelatedProduct.jsx';
 import OneOutfit from './OneOutfitProduct.jsx';
@@ -13,7 +12,6 @@ class Related extends React.Component {
     this.state = {
       // currentProduct: placeholder,// convert to a prop
       relatedProducts: [],
-      // additionalProductDetails: [],
       outfitProducts: [], //move up to app most likely
     };
     this.getRelated = this.getRelated.bind(this);
@@ -27,11 +25,7 @@ class Related extends React.Component {
   }
 
   getRelated() {
-    axios.get(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfe/products/${this.props.currentProduct.id}/related`, {
-      headers: {
-        authorization: `${config2.TOKEN}`,
-      },
-    })
+    axios.get(`/products/${this.props.currentProduct.id}/related`)
       .then((results) => { this.setState({relatedProductsKey: results.data}); })
       .then(() => {
         for (var i = 0; i < this.state.relatedProductsKey.length; i++) {
@@ -42,11 +36,7 @@ class Related extends React.Component {
   }
 
   getProduct(productID) {
-    axios.get(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfe/products/${productID}/`, {
-      headers: {
-        authorization: `${config2.TOKEN}`,
-      },
-      })
+    axios.get(`/products/${productID}/`)
       .then((results) => {
         this.setState({ relatedProducts: this.state.relatedProducts.concat(results.data) });
       })

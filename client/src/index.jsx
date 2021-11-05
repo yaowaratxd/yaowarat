@@ -26,24 +26,10 @@ const App = () => {
       <Overview product={allThings[0]}/>
     </Root> */}
 
-      <h3>Ratings and Reviews</h3>
-      <br/>
-      <br/>
-      <br/>
-      <br/>
-      <br/>
-      <br/>
-      <br/>
-      <br/>
-      <br/>
-      <br/>
-      <br/>
-      <br/>
-      <br/>
-      <br/>
-      <br/>
-      <h3>Questions and Answers</h3>
-      <h2><Related currentProduct={allThings[0]}/></h2>
+    <h3>Ratings and Reviews</h3>
+
+    <h3>Questions and Answers</h3>
+    <h2><Related currentProduct={allThings[0]}/></h2>
     </div>
   );
 };

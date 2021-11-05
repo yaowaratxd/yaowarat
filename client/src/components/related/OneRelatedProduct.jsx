@@ -2,7 +2,6 @@
 /* eslint-disable react/destructuring-assignment */
 import React from 'react';
 import axios from 'axios';
-import config2 from '/github.config.js';
 import Comparing from './CompareModal.jsx'
 import Stars from '../StarValue.jsx';
 
@@ -29,26 +28,47 @@ class OneRelatedProduct extends React.Component {
   }
 
   getStyles() {
-    axios.get(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfe/products/${this.props.product.id}/styles`, {
-      headers: {
-        authorization: `${config2.TOKEN}`,
-      },
-    })
+    axios.get(`/api/products/${this.props.product.id}/styles`)
       .then((response) => {
-        this.setState({ thisProductExtra: response.data });
-      });
+        // console.log(response.data.results)
+        this.setState({ thisProductExtra: response.data.results });
+      })
+      .catch(err => console.log(err));
   }
 
+
+  // getStyles() {
+  //   axios.get(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfe/products/${this.props.product.id}/styles`, {
+  //     headers: {
+  //       authorization: `${config2.TOKEN}`,
+  //     },
+  //   })
+  //     .then((response) => {
+  //       console.log(response.data)
+  //       this.setState({ thisProductExtra: response.data });
+  //     });
+  // }
+
   getReviews() {
-    axios.get(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfe/reviews/meta/?product_id=${this.props.product.id}`, {
-      headers: {
-        authorization: `${config2.TOKEN}`,
-      },
-    })
+    axios.get(`/reviews/meta/${this.props.product.id}`)
       .then((response) => {
         this.setState({ thisProductRating: response.data });
-      });
+      })
+      .catch(err => console.log(err));
   }
+
+  // getReviews() {
+  //   axios.get(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfe/reviews/meta/?product_id=${this.props.product.id}`, {
+  //     headers: {
+  //       authorization: `${config2.TOKEN}`,
+  //     },
+  //   })
+  //     .then((response) => {
+  //       this.setState({ thisProductRating: response.data });
+  //     })
+  //     .catch(err => console.log(err));
+  // }
+
 
   // getMainProductReviews() {
   //   axios.get(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfe/reviews/meta/?product_id=${this.props.originalProduct.id}`, {
@@ -138,9 +158,9 @@ class OneRelatedProduct extends React.Component {
       productRating = this.getRatingScore();
     }
 
-    if (this.state.thisProductExtra.product_id) {
-      if (this.state.thisProductExtra.results[0].photos[0].thumbnail_url) {
-        picImage = this.state.thisProductExtra.results[0].photos[0].thumbnail_url;
+    if (this.state.thisProductExtra[0]) {
+      if (this.state.thisProductExtra[0].photos[0].thumbnail_url) {
+        picImage = this.state.thisProductExtra[0].photos[0].thumbnail_url;
       }
     }
 

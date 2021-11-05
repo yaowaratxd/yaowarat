@@ -3,11 +3,11 @@ import React from 'react';
 const Stars = (props) => {
   const value = props.rating;
 
-  const fullStar = 'public/graphics/fullstar.png';
-  const threeQuarterStar = '/public/graphics/threequarterstar.png';
-  const halfStar = '/public/graphics/halfstar.png';
-  const quarterStar = '/public/graphics/onequarterstar.png';
-  const emptyStar = 'public/graphics/emptystar.png';
+  const fullStar = 'public/fullstar.png';
+  const threeQuarterStar = '/public/threequarterstar.png';
+  const halfStar = '/public/halfstar.png';
+  const quarterStar = '/public/onequarterstar.png';
+  const emptyStar = '/public/emptystar.png';
   // /home/pjjpb/hackreactor/yaowarat/public/resources/graphics/emptystar.png
   // public/graphics/emptystar.png
 
