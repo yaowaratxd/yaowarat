@@ -2,8 +2,9 @@ import React from 'react';
 
 import StarBar from './StarBar.jsx';
 
-const Breakdown = ({ reviews }) => {
+const Breakdown = ({ reviews, starFilter }) => {
   var ratings = [];
+  var starCount = { '5': 0, '4': 0, '3': 0, '2': 0, '1': 0, };
   if (reviews.length === 0) {
     console.log('No Reviews');
   } else {
@@ -12,7 +13,6 @@ const Breakdown = ({ reviews }) => {
       ratings.push(cReview.rating);
     }
 
-    var starCount = { '5': 0, '4': 0, '3': 0, '2': 0, '1': 0, };
     for (var j = 0; j < ratings.length; j++) {
       if (ratings[j] === 5) {
         starCount['5']++;
@@ -33,19 +33,19 @@ const Breakdown = ({ reviews }) => {
     <div className="breakdown">
       <p>Breakdown</p>
 
-      <p className="underline">5 Star</p>
+      <p className="underline" onClick={starFilter}>5 Star</p>
       <StarBar reviews={reviews} starCount={starCount['5']} />
 
-      <p className="underline">4 Star</p>
+      <p className="underline" onClick={starFilter}>4 Star</p>
       <StarBar reviews={reviews} starCount={starCount['4']} />
 
-      <p className="underline">3 Star</p>
+      <p className="underline" onClick={starFilter}>3 Star</p>
       <StarBar reviews={reviews} starCount={starCount['3']} />
 
-      <p className="underline">2 Star</p>
+      <p className="underline" onClick={starFilter}>2 Star</p>
       <StarBar reviews={reviews} starCount={starCount['2']} />
 
-      <p className="underline">1 Star </p>
+      <p className="underline" onClick={starFilter}>1 Star </p>
       <StarBar reviews={reviews} starCount={starCount['1']} />
 
     </div>

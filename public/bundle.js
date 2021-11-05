@@ -6192,6 +6192,7 @@ var Review = /*#__PURE__*/function (_React$Component) {
     _this.writeReview = _this.writeReview.bind(_assertThisInitialized(_this));
     _this.sort = _this.sort.bind(_assertThisInitialized(_this));
     _this.helpfulButton = _this.helpfulButton.bind(_assertThisInitialized(_this));
+    _this.starFilter = _this.starFilter.bind(_assertThisInitialized(_this));
     return _this;
   }
 
@@ -6249,13 +6250,19 @@ var Review = /*#__PURE__*/function (_React$Component) {
       console.log('"Yes" was clicked');
     }
   }, {
+    key: "starFilter",
+    value: function starFilter() {
+      console.log('A star was clicked!');
+    }
+  }, {
     key: "render",
     value: function render() {
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
         className: "reviewContainer"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_reviewOverview_Overview_jsx__WEBPACK_IMPORTED_MODULE_3__["default"], {
         className: "reviewOverview",
-        reviews: this.state.reviews
+        reviews: this.state.reviews,
+        starFilter: this.starFilter
       }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_ReviewList_jsx__WEBPACK_IMPORTED_MODULE_2__["default"], {
         className: "reviewList",
         readMore: this.readMore,
@@ -6308,8 +6315,16 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var Breakdown = function Breakdown(_ref) {
-  var reviews = _ref.reviews;
+  var reviews = _ref.reviews,
+      starFilter = _ref.starFilter;
   var ratings = [];
+  var starCount = {
+    '5': 0,
+    '4': 0,
+    '3': 0,
+    '2': 0,
+    '1': 0
+  };
 
   if (reviews.length === 0) {
     console.log('No Reviews');
@@ -6318,14 +6333,6 @@ var Breakdown = function Breakdown(_ref) {
       var cReview = reviews[i];
       ratings.push(cReview.rating);
     }
-
-    var starCount = {
-      '5': 0,
-      '4': 0,
-      '3': 0,
-      '2': 0,
-      '1': 0
-    };
 
     for (var j = 0; j < ratings.length; j++) {
       if (ratings[j] === 5) {
@@ -6345,27 +6352,32 @@ var Breakdown = function Breakdown(_ref) {
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
     className: "breakdown"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, "Breakdown"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", {
-    className: "underline"
+    className: "underline",
+    onClick: starFilter
   }, "5 Star"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_StarBar_jsx__WEBPACK_IMPORTED_MODULE_1__["default"], {
     reviews: reviews,
     starCount: starCount['5']
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", {
-    className: "underline"
+    className: "underline",
+    onClick: starFilter
   }, "4 Star"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_StarBar_jsx__WEBPACK_IMPORTED_MODULE_1__["default"], {
     reviews: reviews,
     starCount: starCount['4']
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", {
-    className: "underline"
+    className: "underline",
+    onClick: starFilter
   }, "3 Star"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_StarBar_jsx__WEBPACK_IMPORTED_MODULE_1__["default"], {
     reviews: reviews,
     starCount: starCount['3']
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", {
-    className: "underline"
+    className: "underline",
+    onClick: starFilter
   }, "2 Star"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_StarBar_jsx__WEBPACK_IMPORTED_MODULE_1__["default"], {
     reviews: reviews,
     starCount: starCount['2']
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", {
-    className: "underline"
+    className: "underline",
+    onClick: starFilter
   }, "1 Star "), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_StarBar_jsx__WEBPACK_IMPORTED_MODULE_1__["default"], {
     reviews: reviews,
     starCount: starCount['1']
@@ -6474,7 +6486,8 @@ var Overview = /*#__PURE__*/function (_React$Component) {
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h4", null, "Ratings & Reviews"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_StarRating_jsx__WEBPACK_IMPORTED_MODULE_2__["default"], {
         avg: this.Average
       }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_Breakdown_jsx__WEBPACK_IMPORTED_MODULE_1__["default"], {
-        reviews: this.props.reviews
+        reviews: this.props.reviews,
+        starFilter: this.props.starFilter
       }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, "Recommended"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, "Characteristics"));
     }
   }]);
@@ -6503,7 +6516,7 @@ __webpack_require__.r(__webpack_exports__);
 var StarBar = function StarBar(_ref) {
   var reviews = _ref.reviews,
       starCount = _ref.starCount;
-  var count = reviews.length;
+  var count = reviews.length ? reviews.length : 1;
   var votes = starCount;
   var filled = 100 * (votes / count); // console.log(filled);
 

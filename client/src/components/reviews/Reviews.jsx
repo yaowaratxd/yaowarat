@@ -17,6 +17,7 @@ class Review extends React.Component {
     this.writeReview = this.writeReview.bind(this);
     this.sort = this.sort.bind(this);
     this.helpfulButton = this.helpfulButton.bind(this);
+    this.starFilter = this.starFilter.bind(this);
   }
 
   componentDidMount() {
@@ -59,10 +60,14 @@ class Review extends React.Component {
     console.log('"Yes" was clicked');
   }
 
+  starFilter() {
+    console.log('A star was clicked!');
+  }
+
   render() {
     return (
       <div className="reviewContainer">
-        <Overview className="reviewOverview" reviews={this.state.reviews} />
+        <Overview className="reviewOverview" reviews={this.state.reviews} starFilter={this.starFilter} />
         <ReviewList className="reviewList" readMore={this.readMore} writeReview={this.writeReview} reviews={this.state.reviews} reviewsShown={this.state.reviewsShown} sort={this.sort} sortType={this.state.sort} helpfulButton={this.helpfulButton} />
       </div>
     );
