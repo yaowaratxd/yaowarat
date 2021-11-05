@@ -25,10 +25,11 @@ class OneOutfit extends React.Component {
       headers: {
         authorization: `${config2.TOKEN}`,
       },
-    })
+      })
       .then((response) => {
         this.setState({ thisProductExtra: response.data });
-      });
+      })
+      .catch(err => console.log(err));
   }
 
   getReviews() {
@@ -36,10 +37,11 @@ class OneOutfit extends React.Component {
       headers: {
         authorization: `${config2.TOKEN}`,
       },
-    })
+      })
       .then((response) => {
         this.setState({ thisProductRating: response.data });
-      });
+      })
+      .catch(err => console.log(err));
   }
 
 

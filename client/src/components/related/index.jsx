@@ -11,7 +11,7 @@ class Related extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      currentProduct: placeholder,
+      // currentProduct: placeholder,// convert to a prop
       relatedProducts: [],
       // additionalProductDetails: [],
       outfitProducts: [], //move up to app most likely
@@ -27,7 +27,7 @@ class Related extends React.Component {
   }
 
   getRelated() {
-    axios.get(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfe/products/${this.state.currentProduct.id}/related`, {
+    axios.get(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfe/products/${this.props.currentProduct.id}/related`, {
       headers: {
         authorization: `${config2.TOKEN}`,
       },
@@ -78,18 +78,18 @@ class Related extends React.Component {
   render() {
     return (
       <div>
-        <h3>current product selected: <em>{this.state.currentProduct.name}</em></h3>
+        <h3>current product selected: <em>{this.props.currentProduct.name}</em></h3>
         <div>
           <ul className="relatedproducts">
             {this.state.relatedProducts.map((oneProduct) => {
-              return <OneRelatedProduct product={oneProduct} originalProduct={this.state.currentProduct}/>
+              return <OneRelatedProduct product={oneProduct} originalProduct={this.props.currentProduct}/>
             })}
           </ul>
         </div>
         Your outfit list:
         <div>
           <ul className="outfitproducts">
-          <div> <AddCurrentItem setOutfit={this.addToOutfitList} currentProduct={this.state.currentProduct}/> </div>
+          <div> <AddCurrentItem setOutfit={this.addToOutfitList} currentProduct={this.props.currentProduct}/> </div>
             {this.state.outfitProducts.map((oneProduct) => {
                 return <OneOutfit product={oneProduct} removeOutfit={this.removeFromOutfitList} />
             })}

@@ -22,6 +22,9 @@ app.get('/api/products/:productId/styles', async (req, res) => {
   })
 });
 
+
+
+
 app.listen(port, () => {
   console.log(`Express server listening on port ${port}`);
 });

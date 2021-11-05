@@ -3,13 +3,13 @@ import React from 'react';
 const Stars = (props) => {
   const value = props.rating;
 
-  const fullStar = '/client/src/resources/graphics/fullstar.png';
-  const threeQuarterStar = '/client/src/resources/graphics/threequarterstar.png';
-  const halfStar = '/client/src/resources/graphics/halfstar.png';
-  const quarterStar = '/client/src/resources/graphics/onequarterstar.png';
-  const emptyStar = '/client/src/resources/graphics/emptystar.png';
-  // /home/pjjpb/hackreactor/yaowarat/client/src/resources/graphics/emptystar.png
-  // client/src/resources/graphics/emptystar.png
+  const fullStar = 'public/graphics/fullstar.png';
+  const threeQuarterStar = '/public/graphics/threequarterstar.png';
+  const halfStar = '/public/graphics/halfstar.png';
+  const quarterStar = '/public/graphics/onequarterstar.png';
+  const emptyStar = 'public/graphics/emptystar.png';
+  // /home/pjjpb/hackreactor/yaowarat/public/resources/graphics/emptystar.png
+  // public/graphics/emptystar.png
 
   const starArray = [emptyStar, emptyStar, emptyStar, emptyStar, emptyStar];
 

@@ -43,7 +43,7 @@ const App = () => {
       <br/>
       <br/>
       <h3>Questions and Answers</h3>
-      <h2><Related /></h2>
+      <h2><Related currentProduct={allThings[0]}/></h2>
     </div>
   );
 };
