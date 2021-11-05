@@ -6204,7 +6204,7 @@ var Overview = function Overview(props) {
     styles: styles,
     selectedImage: selectedImage,
     setSelectedStyle: setSelectedStyle
-  }));
+  }), props.product.slogan ? props.product.slogan : '', props.product.description ? props.product.description : '');
 };
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Overview); // style={{ width: '80vw' }}

@@ -60,11 +60,12 @@ const Overview = (props) => {
       setTotalImages(allHolder);
     });
   }, []);
-
   return <div >
     <ImageGallery setSelectedStyle={setSelectedStyle} styles={styles} allImages={totalImages} selectedImage={selectedImage} setSelectedImage={setSelectedImage} />
     <ProductDetail product={props.product} styles={styles} selectedImage={selectedImage} />
     <Styles styles={styles} selectedImage={selectedImage} setSelectedStyle={setSelectedStyle} />
+    { props.product.slogan ? props.product.slogan : '' }
+    { props.product.description ? props.product.description : '' }
   </div>
 
 };
