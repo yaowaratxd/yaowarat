@@ -5799,7 +5799,7 @@ function _taggedTemplateLiteral(strings, raw) { if (!raw) { raw = strings.slice(
 
 
 var AddButton = styled_components__WEBPACK_IMPORTED_MODULE_2__["default"].button(_templateObject || (_templateObject = _taggedTemplateLiteral(["\nwidth: 100px;\nheight: 45px;\nbackground-color: Transparent;\nmargin-right: 40px;\nmargin-top: 20px;\n"])));
-var Container = styled_components__WEBPACK_IMPORTED_MODULE_2__["default"].div(_templateObject2 || (_templateObject2 = _taggedTemplateLiteral(["\nposition: relative;\nleft: 20vw;\ntop: 10vh;\ndisplay: flex;\nflex-wrap: true;\n"])));
+var Container = styled_components__WEBPACK_IMPORTED_MODULE_2__["default"].div(_templateObject2 || (_templateObject2 = _taggedTemplateLiteral(["\nposition: relative;\ndisplay: flex;\nflex-wrap: true;\n"])));
 
 var AddToCart = function AddToCart(_ref) {
   var quantity = _ref.quantity,
@@ -5823,12 +5823,21 @@ var AddToCart = function AddToCart(_ref) {
     }
   };
 
+  var handleAddToCart = function handleAddToCart() {
+    if (!hasSize) {
+      alert('You must pick a size!');
+      return;
+    }
+
+    setAddCart(!addCart);
+  };
+
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(Container, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_QuantityDropDown_jsx__WEBPACK_IMPORTED_MODULE_1__["default"], {
     hasSize: hasSize,
     quantity: quantity
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(AddButton, {
     onClick: function onClick() {
-      return setAddCart(!addCart);
+      return handleAddToCart();
     }
   }, addCart ? 'Remove From Cart' : 'Add To Cart'), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(AddButton, {
     onClick: handleFav
@@ -6005,6 +6014,7 @@ var ImageGallery = function ImageGallery(_ref) {
   }, " Expand"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(LeftRibbon, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(ImageContainer, null, allImages.map(function (imag) {
     return imag.map(function (im) {
       return im.url === selectedImage.url ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(SelectedTile, {
+        id: "selectedTile",
         onClick: function onClick() {
           return handleTileClick({
             url: im.url,
@@ -6270,7 +6280,7 @@ var ProductDetail = function ProductDetail(_ref) {
     });
   }, [selectedImage, product]);
   var renderPrice = selectedImage.salePrice ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, " ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(NewPrice, null, " ", product.default_price, " "), " ", selectedImage.salePrice, " ") : product.default_price;
-  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(Container, null, ratings, " - click here to see all ", reviewTotal, " reviews...", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h1", null, product.name), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h4", null, product.category), renderPrice);
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(Container, null, ratings !== 'NaN' ? "".concat(ratings, "  - click here to see all ").concat(reviewTotal, " reviews...") : '', /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h1", null, product.name), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h4", null, product.category), renderPrice);
 };
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (ProductDetail);
@@ -6469,6 +6479,7 @@ var Styles = function Styles(_ref) {
   };
 
   var handleChangeImage = function handleChangeImage(url, id) {
+    document.getElementById('selectedTile').scrollIntoView();
     setSelectedStyle({
       url: url,
       id: id

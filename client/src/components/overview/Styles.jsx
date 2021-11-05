@@ -99,6 +99,7 @@ const Styles = ({ styles, setSelectedStyle, selectedImage }) => {
     setHasSize(true);
   };
   const handleChangeImage = (url, id) => {
+    document.getElementById('selectedTile').scrollIntoView();
     setSelectedStyle({url, id});
     getName();
   };

@@ -142,7 +142,7 @@ const ImageGallery = ({ allImages, selectedImage, setSelectedImage, styles, setS
           <ImageContainer>
           {/* { allImages.map((im) => im.url === selectedImage ? <SelectedTile onClick={() => setSelectedImage(im.url)} key={im.thumbnail_url} src={im.thumbnail_url} /> : <Tile onClick={() => setSelectedImage(im.url)} key={im.thumbnail_url} src={im.thumbnail_url} /> )
           } */}
-          { allImages.map((imag) => imag.map((im) => im.url === selectedImage.url ? <SelectedTile onClick={() => handleTileClick({ url: im.url, id: im.id, thumbnail: im.thumbnail_url })} key={im.thumbnail_url} src={im.thumbnail_url} /> : <Tile onClick={() => handleTileClick({ url: im.url, id: im.id, thumbnail: im.thumbnail_url  })} key={im.thumbnail_url} src={im.thumbnail_url} /> )
+          { allImages.map((imag) => imag.map((im) => im.url === selectedImage.url ? <SelectedTile id='selectedTile' onClick={() => handleTileClick({ url: im.url, id: im.id, thumbnail: im.thumbnail_url })} key={im.thumbnail_url} src={im.thumbnail_url} /> : <Tile onClick={() => handleTileClick({ url: im.url, id: im.id, thumbnail: im.thumbnail_url  })} key={im.thumbnail_url} src={im.thumbnail_url} /> )
           )}
         </ImageContainer>
         </LeftRibbon>
