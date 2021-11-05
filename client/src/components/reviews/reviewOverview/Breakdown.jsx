@@ -32,11 +32,22 @@ const Breakdown = ({ reviews }) => {
   return (
     <div className="breakdown">
       <p>Breakdown</p>
-      <p className="underline">5 Star</p> <StarBar reviews={reviews} /> <p>{starCount['5']}</p>
-      <p className="underline">4 Star</p> <StarBar reviews={reviews} /> <p>{starCount['4']}</p>
-      <p className="underline">3 Star</p> <StarBar reviews={reviews} /> <p>{starCount['3']}</p>
-      <p className="underline">2 Star</p> <StarBar reviews={reviews} /> <p>{starCount['2']}</p>
-      <p className="underline">1 Star</p> <StarBar reviews={reviews} /> <p>{starCount['1']}</p>
+
+      <p className="underline">5 Star</p>
+      <StarBar reviews={reviews} starCount={starCount['5']} />
+
+      <p className="underline">4 Star</p>
+      <StarBar reviews={reviews} starCount={starCount['4']} />
+
+      <p className="underline">3 Star</p>
+      <StarBar reviews={reviews} starCount={starCount['3']} />
+
+      <p className="underline">2 Star</p>
+      <StarBar reviews={reviews} starCount={starCount['2']} />
+
+      <p className="underline">1 Star </p>
+      <StarBar reviews={reviews} starCount={starCount['1']} />
+
     </div>
 
   );

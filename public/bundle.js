@@ -6346,25 +6346,30 @@ var Breakdown = function Breakdown(_ref) {
     className: "breakdown"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, "Breakdown"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", {
     className: "underline"
-  }, "5 Star"), " ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_StarBar_jsx__WEBPACK_IMPORTED_MODULE_1__["default"], {
-    reviews: reviews
-  }), " ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, starCount['5']), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", {
+  }, "5 Star"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_StarBar_jsx__WEBPACK_IMPORTED_MODULE_1__["default"], {
+    reviews: reviews,
+    starCount: starCount['5']
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", {
     className: "underline"
-  }, "4 Star"), " ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_StarBar_jsx__WEBPACK_IMPORTED_MODULE_1__["default"], {
-    reviews: reviews
-  }), " ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, starCount['4']), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", {
+  }, "4 Star"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_StarBar_jsx__WEBPACK_IMPORTED_MODULE_1__["default"], {
+    reviews: reviews,
+    starCount: starCount['4']
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", {
     className: "underline"
-  }, "3 Star"), " ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_StarBar_jsx__WEBPACK_IMPORTED_MODULE_1__["default"], {
-    reviews: reviews
-  }), " ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, starCount['3']), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", {
+  }, "3 Star"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_StarBar_jsx__WEBPACK_IMPORTED_MODULE_1__["default"], {
+    reviews: reviews,
+    starCount: starCount['3']
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", {
     className: "underline"
-  }, "2 Star"), " ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_StarBar_jsx__WEBPACK_IMPORTED_MODULE_1__["default"], {
-    reviews: reviews
-  }), " ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, starCount['2']), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", {
+  }, "2 Star"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_StarBar_jsx__WEBPACK_IMPORTED_MODULE_1__["default"], {
+    reviews: reviews,
+    starCount: starCount['2']
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", {
     className: "underline"
-  }, "1 Star"), " ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_StarBar_jsx__WEBPACK_IMPORTED_MODULE_1__["default"], {
-    reviews: reviews
-  }), " ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, starCount['1']));
+  }, "1 Star "), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_StarBar_jsx__WEBPACK_IMPORTED_MODULE_1__["default"], {
+    reviews: reviews,
+    starCount: starCount['1']
+  }));
 };
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Breakdown);
@@ -6496,13 +6501,21 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var StarBar = function StarBar(_ref) {
-  var reviews = _ref.reviews;
-  console.log('This is the Star Bar');
+  var reviews = _ref.reviews,
+      starCount = _ref.starCount;
+  var count = reviews.length;
+  var votes = starCount;
+  var filled = 100 * (votes / count); // console.log(filled);
+
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
     className: "basebar"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-    className: "filledbar"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("span", null, "_")));
+    className: "filledbar",
+    style: {
+      'backgroundColor': 'lightgreen',
+      'width': filled + '%'
+    }
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("span", null, votes)));
 };
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (StarBar);
@@ -6524,11 +6537,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var StarRating = function StarRating(props) {
-  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h3", null, props.avg()), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("span", {
-    className: "material-icons"
-  }, "star"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("span", {
-    className: "material-icons"
-  }, "star_border"));
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h3", null, props.avg()));
 };
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (StarRating);
