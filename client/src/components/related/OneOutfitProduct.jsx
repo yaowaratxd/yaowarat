@@ -69,7 +69,7 @@ class OneOutfit extends React.Component {
     return (
       <div className="oneoutfit">
         <img src={`${picImage}`} height="250px" width="200px"/> <br/>
-        <button onClick={ () => {this.props.removeOutfit(this.props.product)} } type="button" id="outfitbutton"> Remove </button>
+        <button onClick={ () => {this.props.removeOutfit(this.props.product)} } type="button" id="outfitbutton"> {String.fromCodePoint( 0x2715)} </button>
         <div>Product category: {this.props.product.category} </div>
         <div>Product name: {this.props.product.name}</div>
         <div>Price: (default,updating) {this.props.product.default_price}</div>

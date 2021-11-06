@@ -5781,11 +5781,11 @@ __webpack_require__.r(__webpack_exports__);
 
 var Stars = function Stars(props) {
   var value = props.rating;
-  var fullStar = 'public/fullstar.png';
-  var threeQuarterStar = '/public/threequarterstar.png';
-  var halfStar = '/public/halfstar.png';
-  var quarterStar = '/public/onequarterstar.png';
-  var emptyStar = '/public/emptystar.png'; // /home/pjjpb/hackreactor/yaowarat/public/resources/graphics/emptystar.png
+  var fullStar = '/yaowarat/public/graphics/fullstar.png';
+  var threeQuarterStar = '/yaowarat/public/graphics/threequarterstar.png';
+  var halfStar = '/yaowarat/public/graphics/halfstar.png';
+  var quarterStar = '/yaowarat/public/graphics/onequarterstar.png';
+  var emptyStar = '/yaowarat/public/graphics/emptystar.png'; // /home/pjjpb/hackreactor/yaowarat/public/resources/graphics/emptystar.png
   // public/graphics/emptystar.png
 
   var starArray = [emptyStar, emptyStar, emptyStar, emptyStar, emptyStar];
@@ -5811,15 +5811,14 @@ var Stars = function Stars(props) {
     if (remainingRating === 0.25) {
       starArray[fullStars + 1] = quarterStar;
     }
-  }
+  } // console.log(starArray)
 
-  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, starArray.map(function (star) {
-    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("img", {
-      src: star,
-      height: "20px",
-      width: "20px",
-      alt: "rating stars"
-    });
+
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("img", {
+    src: "/public/graphics/emptystar.png",
+    height: "20px",
+    width: "20px",
+    alt: "rating stars"
   }));
 };
 
@@ -6054,8 +6053,9 @@ var _templateObject;
 function _taggedTemplateLiteral(strings, raw) { if (!raw) { raw = strings.slice(0); } return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); }
 
 
+ // position: relative;
 
-var Container = styled_components__WEBPACK_IMPORTED_MODULE_1__["default"].div(_templateObject || (_templateObject = _taggedTemplateLiteral(["\n  position: relative;\n  left: 20vw;\n  top: 4vh;\n  width: 20vw;\n"])));
+var Container = styled_components__WEBPACK_IMPORTED_MODULE_1__["default"].div(_templateObject || (_templateObject = _taggedTemplateLiteral(["\n  left: 20vw;\n  top: 4vh;\n  width: 20vw;\n"])));
 
 var ProductDetail = function ProductDetail(_ref) {
   var product = _ref.product;
@@ -6084,9 +6084,10 @@ var _templateObject, _templateObject2;
 function _taggedTemplateLiteral(strings, raw) { if (!raw) { raw = strings.slice(0); } return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); }
 
 
+ // position: relative;
 
-var Container = styled_components__WEBPACK_IMPORTED_MODULE_1__["default"].div(_templateObject || (_templateObject = _taggedTemplateLiteral(["\nposition: relative;\nleft: 20vw;\ntop: 30vh;\n"])));
-var StyleTile = styled_components__WEBPACK_IMPORTED_MODULE_1__["default"].div(_templateObject2 || (_templateObject2 = _taggedTemplateLiteral(["\n  \nborder-radius: 50%;\nborder: 1px solid black;\n"])));
+var Container = styled_components__WEBPACK_IMPORTED_MODULE_1__["default"].div(_templateObject || (_templateObject = _taggedTemplateLiteral(["\nleft: 20vw;\ntop: 30vh;\n"])));
+var StyleTile = styled_components__WEBPACK_IMPORTED_MODULE_1__["default"].div(_templateObject2 || (_templateObject2 = _taggedTemplateLiteral(["\n\nborder-radius: 50%;\nborder: 1px solid black;\n"])));
 
 var Styles = function Styles(_ref) {
   var styles = _ref.styles;
@@ -6363,7 +6364,7 @@ var OneOutfit = /*#__PURE__*/function (_React$Component) {
         },
         type: "button",
         id: "outfitbutton"
-      }, " Remove "), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, "Product category: ", this.props.product.category, " "), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, "Product name: ", this.props.product.name), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, "Price: (default,updating) ", this.props.product.default_price), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, "Star rating: ", productRating), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("br", null));
+      }, " ", String.fromCodePoint(0x2715), " "), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, "Product category: ", this.props.product.category, " "), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, "Product name: ", this.props.product.name), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, "Price: (default,updating) ", this.props.product.default_price), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, "Star rating: ", productRating), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("br", null));
     }
   }]);
 
@@ -6453,6 +6454,15 @@ var OneRelatedProduct = /*#__PURE__*/function (_React$Component) {
       this.getReviews();
     }
   }, {
+    key: "componentDidUpdate",
+    value: function componentDidUpdate(prevProps) {
+      if (prevProps.product !== this.props.product) {
+        console.log('should update');
+        this.getStyles();
+        this.getReviews();
+      }
+    }
+  }, {
     key: "getStyles",
     value: function getStyles() {
       var _this2 = this;
@@ -6465,18 +6475,7 @@ var OneRelatedProduct = /*#__PURE__*/function (_React$Component) {
       })["catch"](function (err) {
         return console.log(err);
       });
-    } // getStyles() {
-    //   axios.get(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfe/products/${this.props.product.id}/styles`, {
-    //     headers: {
-    //       authorization: `${config2.TOKEN}`,
-    //     },
-    //   })
-    //     .then((response) => {
-    //       console.log(response.data)
-    //       this.setState({ thisProductExtra: response.data });
-    //     });
-    // }
-
+    }
   }, {
     key: "getReviews",
     value: function getReviews() {
@@ -6489,28 +6488,7 @@ var OneRelatedProduct = /*#__PURE__*/function (_React$Component) {
       })["catch"](function (err) {
         return console.log(err);
       });
-    } // getReviews() {
-    //   axios.get(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfe/reviews/meta/?product_id=${this.props.product.id}`, {
-    //     headers: {
-    //       authorization: `${config2.TOKEN}`,
-    //     },
-    //   })
-    //     .then((response) => {
-    //       this.setState({ thisProductRating: response.data });
-    //     })
-    //     .catch(err => console.log(err));
-    // }
-    // getMainProductReviews() {
-    //   axios.get(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfe/reviews/meta/?product_id=${this.props.originalProduct.id}`, {
-    //     headers: {
-    //       authorization: `${config2.TOKEN}`,
-    //     },
-    //   })
-    //     .then((response) => {
-    //       this.setState({ mainProductRating: response.data });
-    //     });
-    // }
-
+    }
   }, {
     key: "handleShowModal",
     value: function handleShowModal() {
@@ -6585,7 +6563,8 @@ var OneRelatedProduct = /*#__PURE__*/function (_React$Component) {
       }
 
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-        className: "onerelated"
+        className: "onerelated",
+        href: ""
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("img", {
         src: "".concat(picImage),
         height: "250px",
@@ -6648,6 +6627,8 @@ function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Re
 
 function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
 
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
 /* eslint-disable react/sort-comp */
 
 
@@ -6667,16 +6648,41 @@ var Related = /*#__PURE__*/function (_React$Component) {
     _classCallCheck(this, Related);
 
     _this = _super.call(this, props);
+
+    _defineProperty(_assertThisInitialized(_this), "handleNav", function (direction) {
+      // console.log(this.navRef.current.scrollLeft)
+      if (direction === 'left') {
+        _this.setState(function (state) {
+          return {
+            left: state.left - 1,
+            right: state.right - 1
+          };
+        }); // this.navRef ? (this.navRef.current.scrollLeft -= 200) : null;
+
+      } else {
+        //   // this.navRef ? (this.navRef.current.scrollLeft += 200) : null;
+        _this.setState(function (state) {
+          return {
+            left: state.left + 1,
+            right: state.right + 1
+          };
+        });
+      }
+    });
+
     _this.state = {
       // currentProduct: placeholder,// convert to a prop
       relatedProducts: [],
-      outfitProducts: [] //move up to app most likely
-
+      outfitProducts: [],
+      //move up to app most likely
+      left: 0,
+      right: 2
     };
     _this.getRelated = _this.getRelated.bind(_assertThisInitialized(_this));
     _this.addToOutfitList = _this.addToOutfitList.bind(_assertThisInitialized(_this));
     _this.removeFromOutfitList = _this.removeFromOutfitList.bind(_assertThisInitialized(_this));
     _this.compareProducts = _this.compareProducts.bind(_assertThisInitialized(_this));
+    _this.navRef = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createRef();
     return _this;
   }
 
@@ -6718,7 +6724,14 @@ var Related = /*#__PURE__*/function (_React$Component) {
   }, {
     key: "addToOutfitList",
     value: function addToOutfitList(product) {
-      // this.setState({ outfitProducts: this.state.outfitProducts.concat(product) });
+      for (var i = 0; i < this.state.outfitProducts.length; i++) {
+        console.log('this product id:', product.id, 'is already on outfit list');
+
+        if (this.state.outfitProducts[i].id === product.id) {
+          return;
+        }
+      }
+
       this.setState(function (state) {
         return {
           outfitProducts: state.outfitProducts.concat(product)
@@ -6750,14 +6763,33 @@ var Related = /*#__PURE__*/function (_React$Component) {
     value: function render() {
       var _this4 = this;
 
-      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h3", null, "current product selected: ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("em", null, this.props.currentProduct.name)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("ul", {
+      var scroll = function scroll(scrollOffset) {
+        ref.current.scrollLeft += scrollOffset;
+      };
+
+      var relatedSlice = this.state.relatedProducts.slice(this.state.left, this.state.right); // console.log(relatedSlice)
+
+      var leftButton = this.state.left === 0 ? null : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", {
+        id: "scrollarrow",
+        onClick: function onClick() {
+          return _this4.handleNav('left');
+        }
+      }, String.fromCodePoint(129152));
+      var rightButton = this.state.right === this.state.relatedProducts.length ? null : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", {
+        id: "scrollarrow",
+        onClick: function onClick() {
+          return _this4.handleNav('right');
+        }
+      }, String.fromCodePoint(129154));
+      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h3", null, "current product selected: ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("em", null, this.props.currentProduct.name), " "), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("ul", {
         className: "relatedproducts"
-      }, this.state.relatedProducts.map(function (oneProduct) {
+      }, leftButton, relatedSlice.map(function (oneProduct) {
         return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_OneRelatedProduct_jsx__WEBPACK_IMPORTED_MODULE_2__["default"], {
           product: oneProduct,
-          originalProduct: _this4.props.currentProduct
+          originalProduct: _this4.props.currentProduct,
+          ref: _this4.navRef
         });
-      }))), "Your outfit list:", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("ul", {
+      }), rightButton)), "Your outfit list:", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("ul", {
         className: "outfitproducts"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, " ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_AddCurrentItem_jsx__WEBPACK_IMPORTED_MODULE_4__["default"], {
         setOutfit: this.addToOutfitList,
@@ -37932,9 +37964,17 @@ var App = function App() {
       allThings = _useState4[0],
       setAllThings = _useState4[1];
 
-  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h3", null, "Ratings and Reviews"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h3", null, "Questions and Answers"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h2", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_components_related_index_jsx__WEBPACK_IMPORTED_MODULE_2__["default"], {
-    currentProduct: allThings[0]
-  })));
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+    className: "widget"
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+    className: "widget"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h3", null, "Ratings and Reviews")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+    className: "widget"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h3", null, "Questions and Answers")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+    className: "widget"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h3", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_components_related_index_jsx__WEBPACK_IMPORTED_MODULE_2__["default"], {
+    currentProduct: allThings[2]
+  }))));
 };
 
 react_dom__WEBPACK_IMPORTED_MODULE_1__.render( /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(App, null), document.getElementById('root'));

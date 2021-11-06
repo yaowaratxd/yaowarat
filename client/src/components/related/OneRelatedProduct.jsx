@@ -27,6 +27,14 @@ class OneRelatedProduct extends React.Component {
     this.getReviews();
   }
 
+  componentDidUpdate(prevProps) {
+    if (prevProps.product !== this.props.product) {
+      console.log('should update')
+      this.getStyles();
+      this.getReviews();
+    }
+  }
+
   getStyles() {
     axios.get(`/api/products/${this.props.product.id}/styles`)
       .then((response) => {
@@ -36,19 +44,6 @@ class OneRelatedProduct extends React.Component {
       .catch(err => console.log(err));
   }
 
-
-  // getStyles() {
-  //   axios.get(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfe/products/${this.props.product.id}/styles`, {
-  //     headers: {
-  //       authorization: `${config2.TOKEN}`,
-  //     },
-  //   })
-  //     .then((response) => {
-  //       console.log(response.data)
-  //       this.setState({ thisProductExtra: response.data });
-  //     });
-  // }
-
   getReviews() {
     axios.get(`/reviews/meta/${this.props.product.id}`)
       .then((response) => {
@@ -56,30 +51,6 @@ class OneRelatedProduct extends React.Component {
       })
       .catch(err => console.log(err));
   }
-
-  // getReviews() {
-  //   axios.get(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfe/reviews/meta/?product_id=${this.props.product.id}`, {
-  //     headers: {
-  //       authorization: `${config2.TOKEN}`,
-  //     },
-  //   })
-  //     .then((response) => {
-  //       this.setState({ thisProductRating: response.data });
-  //     })
-  //     .catch(err => console.log(err));
-  // }
-
-
-  // getMainProductReviews() {
-  //   axios.get(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfe/reviews/meta/?product_id=${this.props.originalProduct.id}`, {
-  //     headers: {
-  //       authorization: `${config2.TOKEN}`,
-  //     },
-  //   })
-  //     .then((response) => {
-  //       this.setState({ mainProductRating: response.data });
-  //     });
-  // }
 
   handleShowModal() {
     this.setState({ showModal: true });
@@ -165,7 +136,7 @@ class OneRelatedProduct extends React.Component {
     }
 
     return (
-      <div className="onerelated">
+      <div className="onerelated" href="">
         <img src={`${picImage}`} height="250px" width="200px" alt="product" />
         <br/>
         <button onClick={this.compareProducts} className="fa fa-star" type="button" id="comparebutton"> </button>

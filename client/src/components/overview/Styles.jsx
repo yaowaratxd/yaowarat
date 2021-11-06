@@ -2,14 +2,14 @@ import React, { useState, useEffect } from 'react';
 
 import styled from 'styled-components';
 
+// position: relative;
 const Container = styled.div`
-position: relative;
 left: 20vw;
 top: 30vh;
 `;
 
 const StyleTile = styled.div`
-  
+
 border-radius: 50%;
 border: 1px solid black;
 `;

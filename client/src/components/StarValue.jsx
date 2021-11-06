@@ -3,11 +3,11 @@ import React from 'react';
 const Stars = (props) => {
   const value = props.rating;
 
-  const fullStar = 'public/fullstar.png';
-  const threeQuarterStar = '/public/threequarterstar.png';
-  const halfStar = '/public/halfstar.png';
-  const quarterStar = '/public/onequarterstar.png';
-  const emptyStar = '/public/emptystar.png';
+  const fullStar = '/yaowarat/public/graphics/fullstar.png';
+  const threeQuarterStar = '/yaowarat/public/graphics/threequarterstar.png';
+  const halfStar = '/yaowarat/public/graphics/halfstar.png';
+  const quarterStar = '/yaowarat/public/graphics/onequarterstar.png';
+  const emptyStar = '/yaowarat/public/graphics/emptystar.png';
   // /home/pjjpb/hackreactor/yaowarat/public/resources/graphics/emptystar.png
   // public/graphics/emptystar.png
 
@@ -35,10 +35,11 @@ const Stars = (props) => {
       starArray[fullStars + 1] = quarterStar;
     }
   }
-
+  // console.log(starArray)
   return (
     <div>
-      {starArray.map((star) => <img src={star} height="20px" width="20px" alt="rating stars" />)}
+      <img src='/public/graphics/emptystar.png' height="20px" width="20px" alt="rating stars" />
+      {/* {starArray.map((star) => <img src={star} height="20px" width="20px" alt="rating stars" />)} */}
     </div>
   );
 };

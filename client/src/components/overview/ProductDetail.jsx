@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
 
+// position: relative;
 const Container = styled.div`
-  position: relative;
   left: 20vw;
   top: 4vh;
   width: 20vw;

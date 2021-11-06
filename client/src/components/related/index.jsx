@@ -13,11 +13,14 @@ class Related extends React.Component {
       // currentProduct: placeholder,// convert to a prop
       relatedProducts: [],
       outfitProducts: [], //move up to app most likely
-    };
+      left: 0,
+      right: 2,
+      };
     this.getRelated = this.getRelated.bind(this);
     this.addToOutfitList = this.addToOutfitList.bind(this);
     this.removeFromOutfitList = this.removeFromOutfitList.bind(this);
     this.compareProducts = this.compareProducts.bind(this);
+    this.navRef = React.createRef();
   }
 
   componentDidMount() {
@@ -44,9 +47,15 @@ class Related extends React.Component {
   }
 
   addToOutfitList(product) {
-    // this.setState({ outfitProducts: this.state.outfitProducts.concat(product) });
-    this.setState((state) => ({ outfitProducts: state.outfitProducts.concat(product) }));
-  }
+    for (var i = 0; i < this.state.outfitProducts.length; i++) {
+      console.log('this product id:', product.id, 'is already on outfit list')
+      if (this.state.outfitProducts[i].id === product.id) {
+        return;
+        }
+      }
+      this.setState((state) => ({ outfitProducts: state.outfitProducts.concat(product) }));
+    }
+
 
   removeFromOutfitList(product) {
     const stringed = JSON.stringify(product);
@@ -65,15 +74,42 @@ class Related extends React.Component {
     this.handleShowModal();
   }
 
+  handleNav = (direction) => {
+    // console.log(this.navRef.current.scrollLeft)
+    if (direction === 'left') {
+      this.setState((state) => (
+        {
+        left: state.left - 1,
+        right : state.right - 1,
+      }))
+      // this.navRef ? (this.navRef.current.scrollLeft -= 200) : null;
+    } else {
+    //   // this.navRef ? (this.navRef.current.scrollLeft += 200) : null;
+      this.setState( state => ({
+        left : state.left + 1,
+        right : state.right + 1,
+    }))
+    }
+  }
+
   render() {
+    const scroll = (scrollOffset) => {
+      ref.current.scrollLeft += scrollOffset;
+    };
+    let relatedSlice = this.state.relatedProducts.slice(this.state.left, this.state.right)
+    // console.log(relatedSlice)
+    const leftButton = (this.state.left === 0) ? null : <button id="scrollarrow" onClick={() => this.handleNav('left')}>{String.fromCodePoint(129152, )}</button>
+    const rightButton = (this.state.right === this.state.relatedProducts.length) ? null : <button id="scrollarrow" onClick={() => this.handleNav('right')}>{String.fromCodePoint( 129154)}</button>
     return (
       <div>
-        <h3>current product selected: <em>{this.props.currentProduct.name}</em></h3>
+        <h3>current product selected: <em>{this.props.currentProduct.name}</em> </h3>
         <div>
           <ul className="relatedproducts">
-            {this.state.relatedProducts.map((oneProduct) => {
-              return <OneRelatedProduct product={oneProduct} originalProduct={this.props.currentProduct}/>
+            {leftButton}
+            {relatedSlice.map((oneProduct) => {
+              return <OneRelatedProduct product={oneProduct} originalProduct={this.props.currentProduct} ref={this.navRef}/>
             })}
+            {rightButton}
           </ul>
         </div>
         Your outfit list:

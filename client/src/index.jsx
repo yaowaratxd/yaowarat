@@ -22,14 +22,22 @@ const App = () => {
   const [allThings, setAllThings] = useState(sampleData);
   return (
     <div>
-    {/* <Root>
-      <Overview product={allThings[0]}/>
-    </Root> */}
+      <div className="widget">
+        {/* <Root>
+          <Overview product={allThings[0]}/>
+        </Root> */}
+      </div>
+      <div className="widget">
+        <h3>Ratings and Reviews</h3>
+      </div>
+      <div className="widget">
+        <h3>Questions and Answers</h3>
+      </div>
+      <div className="widget">
+        <h3><Related currentProduct={allThings[2]}/></h3>
+      </div>
 
-    <h3>Ratings and Reviews</h3>
 
-    <h3>Questions and Answers</h3>
-    <h2><Related currentProduct={allThings[0]}/></h2>
     </div>
   );
 };
