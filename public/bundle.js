@@ -5781,11 +5781,11 @@ __webpack_require__.r(__webpack_exports__);
 
 var Stars = function Stars(props) {
   var value = props.rating;
-  var fullStar = '/yaowarat/public/graphics/fullstar.png';
-  var threeQuarterStar = '/yaowarat/public/graphics/threequarterstar.png';
-  var halfStar = '/yaowarat/public/graphics/halfstar.png';
-  var quarterStar = '/yaowarat/public/graphics/onequarterstar.png';
-  var emptyStar = '/yaowarat/public/graphics/emptystar.png'; // /home/pjjpb/hackreactor/yaowarat/public/resources/graphics/emptystar.png
+  var fullStar = '/graphics/fullstar.png';
+  var threeQuarterStar = '/graphics/threequarterstar.png';
+  var halfStar = '/graphics/halfstar.png';
+  var quarterStar = '/graphics/onequarterstar.png';
+  var emptyStar = '/graphics/emptystar.png'; // /home/pjjpb/hackreactor/yaowarat/public/resources/graphics/emptystar.png
   // public/graphics/emptystar.png
 
   var starArray = [emptyStar, emptyStar, emptyStar, emptyStar, emptyStar];
@@ -5814,11 +5814,13 @@ var Stars = function Stars(props) {
   } // console.log(starArray)
 
 
-  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("img", {
-    src: "/public/graphics/emptystar.png",
-    height: "20px",
-    width: "20px",
-    alt: "rating stars"
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, starArray.map(function (star) {
+    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("img", {
+      src: star,
+      height: "20px",
+      width: "20px",
+      alt: "rating stars"
+    });
   }));
 };
 
