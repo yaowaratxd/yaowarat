@@ -10,8 +10,8 @@ const AUTH_TOKEN = require('./github.config.js').TOKEN;
 app.use(express.json());
 
 app.use(express.static(path.join(__dirname, '/public')));
-app.use(express.static(path.join(__dirname, '/public/graphics')));
-console.log(path.join(__dirname, '/public'))
+// app.use(express.static(path.join(__dirname, '/public/graphics')));
+// console.log(path.join(__dirname, '/public'))
 axios.defaults.headers.common['Authorization'] = AUTH_TOKEN;
 
 const baseURL = 'https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfe';
