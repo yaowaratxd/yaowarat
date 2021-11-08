@@ -4,7 +4,7 @@ import styled from 'styled-components';
 
 const Container = styled.div`
   position: relative;
-  left: 20vw;
+  left: 30vw;
   top: 4vh;
   width: 20vw;
 `;

@@ -14,6 +14,12 @@ const Root =  styled.div`
   justify-content: center;
 `;
 
+const OuterContainer = styled.div`
+display: flex;
+width: 70vw;
+left: 15vw;
+justify-content: center;
+`;
 
 const App = () => {
   const [random, setRandom] = useState('hello world');

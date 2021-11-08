@@ -64,7 +64,13 @@ const Overview = (props) => {
     <ImageGallery setSelectedStyle={setSelectedStyle} styles={styles} allImages={totalImages} selectedImage={selectedImage} setSelectedImage={setSelectedImage} />
     <ProductDetail product={props.product} styles={styles} selectedImage={selectedImage} />
     <Styles styles={styles} selectedImage={selectedImage} setSelectedStyle={setSelectedStyle} />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
     { props.product.slogan ? props.product.slogan : '' }
+    <br />
     { props.product.description ? props.product.description : '' }
   </div>
 
