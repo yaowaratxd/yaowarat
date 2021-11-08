@@ -6,11 +6,12 @@ import Related from './components/related/index.jsx';
 import styled from 'styled-components';
 
 import Overview from './components/overview/Overview.jsx';
+import Reviews from './components/reviews/Reviews.jsx';
 import sampleData from './sampleData.json'
 
 // import './index.css';
 
-const Root =  styled.div`
+const Root = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
@@ -29,7 +30,7 @@ const App = () => {
   return (
     <div>
         <Root>
-          <Overview product={allThings[0]}/>
+          <Overview product={allThings[2]}/>
         </Root>
       <div className="widget">
       </div>
@@ -43,7 +44,10 @@ const App = () => {
         <br />
         <h3><Related currentProduct={allThings[2]}/></h3>
       </div>
-
+    <Root>
+      {/* <Overview product={allThings[0]} /> */}
+      <Reviews product={allThings[2]} />
+    </Root>
 
     </div>
   );

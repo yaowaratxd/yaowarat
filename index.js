@@ -4,7 +4,6 @@ const axios = require('axios');
 
 const app = express();
 const port = 3000;
-
 const AUTH_TOKEN = require('./github.config.js').TOKEN;
 
 app.use(express.json());
@@ -70,6 +69,15 @@ app.get('/products/:productID', function (req, res) {
     })
     .catch(err => res.status(500).send(err))
 })
+app.get('/api/reviews/:sort/:product_id', async (req, res) => {
+  // console.log(req.params);
+  const result = await axios.get(`${baseURL}/reviews/?sort=${req.params.sort}&product_id=${req.params.product_id}`);
+  // ${req.params.sort}
+  res.status(200).json({
+    status: 'sucess',
+    results: result.data.results
+  })
+});
 
 
 app.listen(port, () => {
