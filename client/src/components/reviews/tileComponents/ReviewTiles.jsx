@@ -10,7 +10,7 @@ const ReviewTiles = (props) => {
   } else {
     var tiles = reviews.map((review, index) => {
       if (index === 0) {
-        console.log(review);
+        // console.log(review);
       }
 
       var date = new Date(`${review.date.slice(0, 10)}`).toLocaleDateString({}, { timeZone: 'UTC', month: 'long', day: '2-digit', year: 'numeric' })

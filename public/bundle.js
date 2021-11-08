@@ -7733,42 +7733,42 @@ var Characteristics = function Characteristics(props) {
   };
 
   if (chars === undefined) {
-    console.log('There are no Characteristics at the moment');
+    // console.log('There are no Characteristics at the moment');
     return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, "Characteristics+");
   }
 
   if (chars.Size) {
-    console.log('Size is a characteristic: ', chars.Size);
+    // console.log('Size is a characteristic: ', chars.Size);
     characteristics.size = true;
   }
 
   if (chars.Width) {
-    console.log('Width is a characteristic: ', chars.Width);
+    // console.log('Width is a characteristic: ', chars.Width);
     characteristics.width = true;
   }
 
   if (chars.Comfort) {
-    console.log('Comfort is a characteristic: ', chars.Comfort);
+    // console.log('Comfort is a characteristic: ', chars.Comfort);
     characteristics.comfort = true;
   }
 
   if (chars.Quality) {
-    console.log('Quality is a characteristic: ', chars.Quality);
+    // console.log('Quality is a characteristic: ', chars.Quality);
     characteristics.quality = true;
   }
 
   if (chars.Length) {
-    console.log('Length is a characteristic: ', chars.Length);
+    // console.log('Length is a characteristic: ', chars.Length);
     characteristics.length = true;
   }
 
   if (chars.Fit) {
-    console.log('Fit is a characteristic: ', chars.Fit);
+    // console.log('Fit is a characteristic: ', chars.Fit);
     characteristics.fit = true;
-  }
+  } // console.log('This is the characteristics that are being displayed: ', characteristics);
 
-  console.log('This is the characteristics that are being displayed: ', characteristics);
-  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, "Characteristics+"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, null));
+
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, "Characteristics"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, characteristics.size ? 'Size' : ""), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, characteristics.width ? 'Width' : ""), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, characteristics.comfort ? 'Comfort' : ""), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, characteristics.quality ? 'Quality' : ""), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, characteristics.length ? 'Length' : ""), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, characteristics.fit ? 'Fit' : ""));
 };
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Characteristics); // Size, Width, Comfort, Quality, Length, and Fit
@@ -8072,8 +8072,7 @@ var ReviewTiles = function ReviewTiles(props) {
     return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, null);
   } else {
     var tiles = reviews.map(function (review, index) {
-      if (index === 0) {
-        console.log(review);
+      if (index === 0) {// console.log(review);
       }
 
       var date = new Date("".concat(review.date.slice(0, 10))).toLocaleDateString({}, {
