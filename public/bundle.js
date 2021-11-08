@@ -7075,22 +7075,14 @@ var OneRelatedProduct = /*#__PURE__*/function (_React$Component) {
 
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
         className: "onerelated",
-        onClick: function onClick() {
-          // console.log((this.props.product))
-          _this4.props.goToProduct(_this4.props.product);
-        }
+        href: ""
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("img", {
         src: "".concat(picImage),
         height: "250px",
         width: "200px",
         alt: "product",
         onClick: function onClick() {
-<<<<<<< HEAD
-          // console.log((this.props.product))
-          _this4.props.goToProduct(_this4.props.product);
-=======
           return _this4.props.setCurrentProduct(_this4.props.product);
->>>>>>> origin/merge
         }
       }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", {
         onClick: this.compareProducts,
@@ -7214,6 +7206,17 @@ var Related = /*#__PURE__*/function (_React$Component) {
       this.getRelated();
     }
   }, {
+    key: "componentDidUpdate",
+    value: function componentDidUpdate(prevProps) {
+      if (prevProps.currentProduct !== this.props.currentProduct) {
+        console.log('should update the related products');
+        this.setState({
+          relatedProducts: []
+        });
+        this.getRelated();
+      }
+    }
+  }, {
     key: "getRelated",
     value: function getRelated() {
       var _this2 = this;
@@ -7310,8 +7313,7 @@ var Related = /*#__PURE__*/function (_React$Component) {
           setCurrentProduct: _this4.props.setCurrentProduct,
           product: oneProduct,
           originalProduct: _this4.props.currentProduct,
-          ref: _this4.navRef,
-          goToProduct: _this4.props.setCurrentProduct
+          ref: _this4.navRef
         });
       }), rightButton)), "Your outfit list:", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("ul", {
         className: "outfitproducts"
@@ -39176,11 +39178,7 @@ var App = function App() {
       allThings = _useState4[0],
       setAllThings = _useState4[1];
 
-<<<<<<< HEAD
-  var _useState5 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(allThings[2]),
-=======
   var _useState5 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(allThings[3]),
->>>>>>> origin/merge
       _useState6 = _slicedToArray(_useState5, 2),
       currentProduct = _useState6[0],
       setCurrentProduct = _useState6[1];

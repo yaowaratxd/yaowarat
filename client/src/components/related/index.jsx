@@ -27,13 +27,13 @@ class Related extends React.Component {
     this.getRelated();
   }
 
-  // componentDidUpdate(prevProps) {
-  //   if (prevProps.product !== this.props.product) {
-  //     console.log('should update')
-  //     this.getStyles();
-  //     this.getReviews();
-  //   }
-  // }
+  componentDidUpdate(prevProps) {
+    if (prevProps.currentProduct !== this.props.currentProduct) {
+      console.log('should update the related products')
+      this.setState({relatedProducts: []})
+      this.getRelated();
+    }
+  }
 
   getRelated() {
     axios.get(`/products/${this.props.currentProduct.id}/related`)
