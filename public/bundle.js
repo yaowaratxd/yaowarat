@@ -7206,6 +7206,17 @@ var Related = /*#__PURE__*/function (_React$Component) {
       this.getRelated();
     }
   }, {
+    key: "componentDidUpdate",
+    value: function componentDidUpdate(prevProps) {
+      if (prevProps.currentProduct !== this.props.currentProduct) {
+        console.log('should update the related products');
+        this.setState({
+          relatedProducts: []
+        });
+        this.getRelated();
+      }
+    }
+  }, {
     key: "getRelated",
     value: function getRelated() {
       var _this2 = this;
@@ -7963,8 +7974,7 @@ var ReviewTiles = function ReviewTiles(props) {
     return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, null);
   } else {
     var tiles = reviews.map(function (review, index) {
-      if (index === 0) {
-        console.log(review);
+      if (index === 0) {// console.log(review);
       }
 
       var date = new Date("".concat(review.date.slice(0, 10))).toLocaleDateString({}, {
