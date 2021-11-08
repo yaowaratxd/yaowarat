@@ -6309,7 +6309,7 @@ function _taggedTemplateLiteral(strings, raw) { if (!raw) { raw = strings.slice(
 
  // position: relative;
 
-var Container = styled_components__WEBPACK_IMPORTED_MODULE_2__["default"].div(_templateObject || (_templateObject = _taggedTemplateLiteral(["\n  position: relative;\n  left: 30vw;\n  top: 4vh;\n  width: 20vw;\n"])));
+var Container = styled_components__WEBPACK_IMPORTED_MODULE_2__["default"].div(_templateObject || (_templateObject = _taggedTemplateLiteral(["\n  position: relative;\n  left: 25vw;\n  top: 4vh;\n  width: 20vw;\n"])));
 var NewPrice = styled_components__WEBPACK_IMPORTED_MODULE_2__["default"].span(_templateObject2 || (_templateObject2 = _taggedTemplateLiteral(["\ncolor: red;\ntext-decoration: line-through;\n"])));
 
 var ProductDetail = function ProductDetail(_ref) {
@@ -6455,8 +6455,8 @@ function _taggedTemplateLiteral(strings, raw) { if (!raw) { raw = strings.slice(
 
  // position: relative;
 
-var Container = styled_components__WEBPACK_IMPORTED_MODULE_3__["default"].div(_templateObject || (_templateObject = _taggedTemplateLiteral(["\nposition: relative;\nleft: 30vw;\ntop: 10vh;\ndisplay: flex;\nflex-wrap: true;\n"])));
-var StyleIconCotainer = styled_components__WEBPACK_IMPORTED_MODULE_3__["default"].div(_templateObject2 || (_templateObject2 = _taggedTemplateLiteral(["\nposition: relative;\nleft: 30vw;\ntop: 10vh;\nwidth: 25vw;\ndisplay: flex;\nflex-wrap: wrap;\n"])));
+var Container = styled_components__WEBPACK_IMPORTED_MODULE_3__["default"].div(_templateObject || (_templateObject = _taggedTemplateLiteral(["\nposition: relative;\nleft: 25vw;\ntop: 10vh;\ndisplay: flex;\nflex-wrap: true;\n"])));
+var StyleIconCotainer = styled_components__WEBPACK_IMPORTED_MODULE_3__["default"].div(_templateObject2 || (_templateObject2 = _taggedTemplateLiteral(["\nposition: relative;\nleft: 25vw;\ntop: 10vh;\nwidth: 25vw;\ndisplay: flex;\nflex-wrap: wrap;\n"])));
 var StyleTile = styled_components__WEBPACK_IMPORTED_MODULE_3__["default"].div(_templateObject3 || (_templateObject3 = _taggedTemplateLiteral(["\nheight: 50px;\nwidth: 50px;\nmargin: .3vw;\nborder-radius: 50%;\nborder: 1px solid black;\n"])));
 var SelectedStyleTile = styled_components__WEBPACK_IMPORTED_MODULE_3__["default"].div(_templateObject4 || (_templateObject4 = _taggedTemplateLiteral(["\nheight: 55px;\nwidth: 55px;\nmargin: .3vw;\nborder-radius: 50%;\nborder: 3px solid rebeccapurple;\n"])));
 var SelectEle = styled_components__WEBPACK_IMPORTED_MODULE_3__["default"].select(_templateObject5 || (_templateObject5 = _taggedTemplateLiteral(["\nwidth: 100px;\nheight: 45px;\nmargin-right: 40px;\nmargin-top: 20px;\n"])));
@@ -39164,8 +39164,13 @@ var App = function App() {
       allThings = _useState4[0],
       setAllThings = _useState4[1];
 
+  var _useState5 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)({}),
+      _useState6 = _slicedToArray(_useState5, 2),
+      currentProduct = _useState6[0],
+      setCurrentProduct = _useState6[1];
+
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(Root, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_components_overview_Overview_jsx__WEBPACK_IMPORTED_MODULE_3__["default"], {
-    product: allThings[2]
+    product: currentProduct
   })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
     className: "widget"
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
@@ -39175,9 +39180,10 @@ var App = function App() {
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h3", null, "Questions and Answers")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
     className: "widget"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h3", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_components_related_index_jsx__WEBPACK_IMPORTED_MODULE_2__["default"], {
-    currentProduct: allThings[2]
+    setCurrentProduct: setCurrentProduct,
+    currentProduct: currentProduct
   }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(Root, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_components_reviews_Reviews_jsx__WEBPACK_IMPORTED_MODULE_4__["default"], {
-    product: allThings[2]
+    product: currentProduct
   })));
 };
 

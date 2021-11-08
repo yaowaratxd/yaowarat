@@ -7,7 +7,7 @@ import styled from 'styled-components';
 // position: relative;
 const Container = styled.div`
 position: relative;
-left: 30vw;
+left: 25vw;
 top: 10vh;
 display: flex;
 flex-wrap: true;
@@ -15,7 +15,7 @@ flex-wrap: true;
 
 const StyleIconCotainer = styled.div`
 position: relative;
-left: 30vw;
+left: 25vw;
 top: 10vh;
 width: 25vw;
 display: flex;

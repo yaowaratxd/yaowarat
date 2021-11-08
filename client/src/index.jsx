@@ -27,10 +27,12 @@ justify-content: center;
 const App = () => {
   const [random, setRandom] = useState('hello world');
   const [allThings, setAllThings] = useState(sampleData);
+  const [currentProduct, setCurrentProduct] = useState({});
+
   return (
     <div>
         <Root>
-          <Overview product={allThings[2]}/>
+          <Overview product={currentProduct}/>
         </Root>
       <div className="widget">
       </div>
@@ -42,11 +44,11 @@ const App = () => {
       </div>
       <div className="widget">
         <br />
-        <h3><Related currentProduct={allThings[2]}/></h3>
+        <h3><Related setCurrentProduct={setCurrentProduct} currentProduct={currentProduct}/></h3>
       </div>
     <Root>
-      {/* <Overview product={allThings[0]} /> */}
-      <Reviews product={allThings[2]} />
+      {/* <Overview product={currentProduct} /> */}
+      <Reviews product={currentProduct} />
     </Root>
 
     </div>
