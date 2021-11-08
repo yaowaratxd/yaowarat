@@ -53,7 +53,18 @@ class OneOutfit extends React.Component {
     return 'Be the first to rate this product!';
   }
 
+
+
   render() {
+    const renderPrice = function (array, object) {
+      for (var i = 0; i < array.length; i++) {
+        if (array[i].sale_price) {
+          return <div><s>{array[i].original_price}</s> Sale! <em id="saleprice">{array[i].sale_price}</em> </div>
+        }
+      }
+      return <div>{object.default_price}</div>
+    }
+    
     let picImage = 'https://upload.wikimedia.org/wikipedia/commons/thumb/7/7c/X-circle.svg/1024px-X-circle.svg.png';
     let productRating = 'Be the first to provide a rating!';
     if (this.state.thisProductRating.ratings) {
@@ -72,7 +83,7 @@ class OneOutfit extends React.Component {
         <button onClick={ () => {this.props.removeOutfit(this.props.product)} } type="button" id="outfitbutton"> {String.fromCodePoint( 0x2715)} </button>
         <div>Product category: {this.props.product.category} </div>
         <div>Product name: {this.props.product.name}</div>
-        <div>Price: (default,updating) {this.props.product.default_price}</div>
+        <div>Price: {renderPrice(this.state.thisProductExtra, this.props.product.default_price)}</div>
         <div>Star rating: {productRating}</div>
 
         <br />

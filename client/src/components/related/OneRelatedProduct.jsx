@@ -134,7 +134,18 @@ class OneRelatedProduct extends React.Component {
         picImage = this.state.thisProductExtra[0].photos[0].thumbnail_url;
       }
     }
+    
+    const renderPrice = function (array, object) {
+      for (var i = 0; i < array.length; i++) {
+        if (array[i].sale_price) {
+          return <div><s>{array[i].original_price}</s> Sale! <em id="saleprice">{array[i].sale_price}</em> </div>
+        }
+      }
+      return <div>{object.default_price}</div>
+    }
 
+
+//selectedImage.salePrice ? <div> <NewPrice> {product.default_price} </NewPrice> { selectedImage.salePrice } </div> : product.default_price;
     return (
       <div className="onerelated" href="">
         <img src={`${picImage}`} height="250px" width="200px" alt="product" onClick={() => this.props.setCurrentProduct(this.props.product)}/>
@@ -150,8 +161,7 @@ class OneRelatedProduct extends React.Component {
           {this.props.product.name} <br/>
         </div>
         <div>
-          Price (default):
-          {this.props.product.default_price}<br/>
+          Price: {renderPrice(this.state.thisProductExtra, this.props.product)}<br/>
         </div>
         <div>
           Star rating:
