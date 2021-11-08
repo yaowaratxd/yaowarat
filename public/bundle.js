@@ -6252,7 +6252,7 @@ var Overview = function Overview(props) {
 
       setTotalImages(allHolder);
     });
-  }, []);
+  }, [props.product]);
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_ImageGallery_jsx__WEBPACK_IMPORTED_MODULE_2__["default"], {
     setSelectedStyle: setSelectedStyle,
     styles: styles,
@@ -7080,7 +7080,10 @@ var OneRelatedProduct = /*#__PURE__*/function (_React$Component) {
         src: "".concat(picImage),
         height: "250px",
         width: "200px",
-        alt: "product"
+        alt: "product",
+        onClick: function onClick() {
+          return _this4.props.setCurrentProduct(_this4.props.product);
+        }
       }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", {
         onClick: this.compareProducts,
         className: "fa fa-star",
@@ -7296,6 +7299,7 @@ var Related = /*#__PURE__*/function (_React$Component) {
         className: "relatedproducts"
       }, leftButton, relatedSlice.map(function (oneProduct) {
         return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_OneRelatedProduct_jsx__WEBPACK_IMPORTED_MODULE_2__["default"], {
+          setCurrentProduct: _this4.props.setCurrentProduct,
           product: oneProduct,
           originalProduct: _this4.props.currentProduct,
           ref: _this4.navRef
@@ -39164,7 +39168,7 @@ var App = function App() {
       allThings = _useState4[0],
       setAllThings = _useState4[1];
 
-  var _useState5 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(allThings[0]),
+  var _useState5 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(allThings[3]),
       _useState6 = _slicedToArray(_useState5, 2),
       currentProduct = _useState6[0],
       setCurrentProduct = _useState6[1];
@@ -39183,7 +39187,7 @@ var App = function App() {
     setCurrentProduct: setCurrentProduct,
     currentProduct: currentProduct
   }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(Root, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_components_reviews_Reviews_jsx__WEBPACK_IMPORTED_MODULE_4__["default"], {
-    product: allThings[3]
+    product: currentProduct
   })));
 };
 
