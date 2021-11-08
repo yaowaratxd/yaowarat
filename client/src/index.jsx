@@ -28,10 +28,10 @@ const App = () => {
   const [allThings, setAllThings] = useState(sampleData);
   return (
     <div>
-      <div className="widget">
-        {/* <Root>
+        <Root>
           <Overview product={allThings[0]}/>
-        </Root> */}
+        </Root>
+      <div className="widget">
       </div>
       <div className="widget">
         <h3>Ratings and Reviews</h3>
@@ -40,6 +40,7 @@ const App = () => {
         <h3>Questions and Answers</h3>
       </div>
       <div className="widget">
+        <br />
         <h3><Related currentProduct={allThings[2]}/></h3>
       </div>
 

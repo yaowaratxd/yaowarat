@@ -69,7 +69,7 @@ const Overview = (props) => {
     <br />
     <br />
     <br />
-    { props.product.slogan ? props.product.slogan : '' }
+    { props.product.slogan && props.product.slogan.length > 0 ? props.product.slogan : '' }
     <br />
     { props.product.description ? props.product.description : '' }
   </div>
