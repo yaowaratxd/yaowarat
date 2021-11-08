@@ -47,7 +47,6 @@ const App = () => {
         <h3><Related setCurrentProduct={setCurrentProduct} currentProduct={currentProduct}/></h3>
       </div>
     <Root>
-      {/* <Overview product={currentProduct} /> */}
       <Reviews product={currentProduct} />
     </Root>
 
