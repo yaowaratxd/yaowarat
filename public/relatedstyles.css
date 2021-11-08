@@ -1,6 +1,6 @@
 #related {
-  position: relative;
-  z-index: 999;
+  position: absolute;
+  /* z-index: 999; */
   font-size: large;
 }
 
@@ -23,17 +23,33 @@
   padding: 5px;
   align-self: stretch;
   background-color: silver;
-  justify-content: center;
+  align-items: center;
   flex-grow: 1;
-  flex: none;
-  flex-basis: 300px;
+  /* flex: none; */
+  flex-basis: 250px;
   overflow:auto;
   white-space: normal;
+  align-content: center;
+  justify-content: center;
+  /* display: inline-block; */
+  /* padding: 200px; */
 }
 
-.onerelated a {
-  display: inline-block;
-  padding: 200px;
+#comparebutton {
+  position: relative;
+  bottom: 220px;
+  left: 230px;
+  z-index: 500;
+  color: yellow;
+  font-size: xx-large;
+  background-color: rgba(0,0,0,0);
+  border: none;
+  text-shadow: black;
+}
+
+#productimage {
+  border: solid;
+  border-width: 1px;
 }
 
 .outfitproducts {
@@ -54,7 +70,9 @@
 }
 
 #scrollarrow {
-  font-size: 50px;
+  font-size:xx-large;
+  background-color: rgba(0,0,0,0);
+  border: none
 }
 
 #saleprice {
@@ -95,6 +113,4 @@ td {
   text-align: center;
 }
 
-#comparebutton {
-  align-items: flex-end;
-}
+

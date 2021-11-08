@@ -101,6 +101,15 @@ class OneRelatedProduct extends React.Component {
   }
 
   render() {
+    const renderPrice = function (array, object) {
+      for (var i = 0; i < array.length; i++) {
+        if (array[i].sale_price) {
+          return <div><s>{array[i].original_price}</s> Sale! <em id="saleprice">{array[i].sale_price}</em> </div>
+        }
+      }
+      return <div>{object.default_price}</div>
+    }
+
     const modal = (this.state.showModal ? (
       <Comparing>
         <div className="modal" id="modal2">
@@ -141,7 +150,7 @@ class OneRelatedProduct extends React.Component {
             </table>
           </div>
           <button onClick={() => this.setState({ showModal: false})}>Hide comparison</button>
-       </div>
+        </div>
       </Comparing>
     ) : null);
 
@@ -157,23 +166,15 @@ class OneRelatedProduct extends React.Component {
       }
     }
 
-    const renderPrice = function (array, object) {
-      for (var i = 0; i < array.length; i++) {
-        if (array[i].sale_price) {
-          return <div><s>{array[i].original_price}</s> Sale! <em id="saleprice">{array[i].sale_price}</em> </div>
-        }
-      }
-      return <div>{object.default_price}</div>
-    }
 
     const ratingDisplay = productRating === null ? ' Be the first to leave a rating!' : <Stars rating={productRating} />
 
 //selectedImage.salePrice ? <div> <NewPrice> {product.default_price} </NewPrice> { selectedImage.salePrice } </div> : product.default_price;
     return (
       <div className="onerelated" href="">
-        <img src={`${picImage}`} height="250px" width="200px" alt="product" onClick={() => this.props.setCurrentProduct(this.props.product)}/>
+        <button onClick={this.compareProducts} type="button" id="comparebutton"><icon>{String.fromCodePoint(0x2605)}</icon> </button>
+        <img src={`${picImage}`} id="productimage" height="250px" width="225px" alt="product" onClick={() => this.props.setCurrentProduct(this.props.product)}/>
         <br/>
-        <button onClick={this.compareProducts} type="button" id="comparebutton"><i className="fa fa-star"></i> </button>
         {modal}
         <div>
           Product category:
