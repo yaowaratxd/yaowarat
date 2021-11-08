@@ -10,6 +10,8 @@ const AUTH_TOKEN = require('./github.config.js').TOKEN;
 app.use(express.json());
 
 app.use(express.static(path.join(__dirname, '/public')));
+// app.use(express.static(path.join(__dirname, '/public/graphics')));
+// console.log(path.join(__dirname, '/public'))
 axios.defaults.headers.common['Authorization'] = AUTH_TOKEN;
 
 const baseURL = 'https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfe';
@@ -44,6 +46,31 @@ app.get('/api/reviews/:productId', catchAsync(async (req, res) => {
     quantity: results.data.count,
   })
 }));
+
+app.get('/reviews/meta/:productID', function (req, res) {
+  axios.get(`${baseURL}/reviews/meta/?product_id=${req.params.productID}`)
+    .then(response => {
+      res.status(200).send(response.data);
+    })
+    .catch(err => res.status(500).send(err))
+});
+
+app.get('/products/:productID/related', function (req, res) {
+  axios.get(`${baseURL}/products/${req.params.productID}/related`)
+    .then(response => {
+      res.status(200).send(response.data);
+    })
+    .catch(err => res.status(500).send(err))
+});
+
+app.get('/products/:productID', function (req, res) {
+  axios.get(`${baseURL}/products/${req.params.productID}`)
+    .then(response => {
+      res.status(200).send(response.data);
+    })
+    .catch(err => res.status(500).send(err))
+})
+
 
 app.listen(port, () => {
   console.log(`Express server listening on port ${port}`);

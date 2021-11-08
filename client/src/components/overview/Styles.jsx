@@ -4,6 +4,7 @@ import QuantityDropDown from './QuantityDropDown.jsx';
 import AddToCart from './AddToCart.jsx';
 import styled from 'styled-components';
 
+// position: relative;
 const Container = styled.div`
 position: relative;
 left: 30vw;

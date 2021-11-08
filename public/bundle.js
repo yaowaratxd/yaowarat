@@ -5765,6 +5765,69 @@ module.exports = {
 
 /***/ }),
 
+/***/ "./client/src/components/StarValue.jsx":
+/*!*********************************************!*\
+  !*** ./client/src/components/StarValue.jsx ***!
+  \*********************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+
+
+var Stars = function Stars(props) {
+  var value = props.rating;
+  var fullStar = '/graphics/fullstar.png';
+  var threeQuarterStar = '/graphics/threequarterstar.png';
+  var halfStar = '/graphics/halfstar.png';
+  var quarterStar = '/graphics/onequarterstar.png';
+  var emptyStar = '/graphics/emptystar.png'; // /home/pjjpb/hackreactor/yaowarat/public/resources/graphics/emptystar.png
+  // public/graphics/emptystar.png
+
+  var starArray = [emptyStar, emptyStar, emptyStar, emptyStar, emptyStar];
+  var remainingRating = value - Math.floor(value);
+  var fullStars = 0;
+
+  for (var i = 0; i < 5; i++) {
+    if (i <= Math.floor(value) - 1) {
+      starArray[i] = fullStar;
+      fullStars = i;
+    }
+  }
+
+  if (value - Math.floor(value) !== 0) {
+    if (remainingRating === 0.75) {
+      starArray[fullStars + 1] = threeQuarterStar;
+    }
+
+    if (remainingRating === 0.50) {
+      starArray[fullStars + 1] = halfStar;
+    }
+
+    if (remainingRating === 0.25) {
+      starArray[fullStars + 1] = quarterStar;
+    }
+  } // console.log(starArray)
+
+
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, starArray.map(function (star) {
+    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("img", {
+      src: star,
+      height: "20px",
+      width: "20px",
+      alt: "rating stars"
+    });
+  }));
+};
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Stars);
+
+/***/ }),
+
 /***/ "./client/src/components/overview/AddToCart.jsx":
 /*!******************************************************!*\
   !*** ./client/src/components/overview/AddToCart.jsx ***!
@@ -6244,6 +6307,7 @@ function _taggedTemplateLiteral(strings, raw) { if (!raw) { raw = strings.slice(
 
 
 
+ // position: relative;
 
 var Container = styled_components__WEBPACK_IMPORTED_MODULE_2__["default"].div(_templateObject || (_templateObject = _taggedTemplateLiteral(["\n  position: relative;\n  left: 30vw;\n  top: 4vh;\n  width: 20vw;\n"])));
 var NewPrice = styled_components__WEBPACK_IMPORTED_MODULE_2__["default"].span(_templateObject2 || (_templateObject2 = _taggedTemplateLiteral(["\ncolor: red;\ntext-decoration: line-through;\n"])));
@@ -6389,6 +6453,7 @@ function _taggedTemplateLiteral(strings, raw) { if (!raw) { raw = strings.slice(
 
 
 
+ // position: relative;
 
 var Container = styled_components__WEBPACK_IMPORTED_MODULE_3__["default"].div(_templateObject || (_templateObject = _taggedTemplateLiteral(["\nposition: relative;\nleft: 30vw;\ntop: 10vh;\ndisplay: flex;\nflex-wrap: true;\n"])));
 var StyleIconCotainer = styled_components__WEBPACK_IMPORTED_MODULE_3__["default"].div(_templateObject2 || (_templateObject2 = _taggedTemplateLiteral(["\nposition: relative;\nleft: 30vw;\ntop: 10vh;\nwidth: 25vw;\ndisplay: flex;\nflex-wrap: wrap;\n"])));
@@ -6560,6 +6625,710 @@ var Styles = function Styles(_ref) {
 // for (let i = 1; i <= selectedSize; ++i) {
 //   placeholder.push(<option key={i} value={i}>{ i }</option>);
 // }
+
+/***/ }),
+
+/***/ "./client/src/components/related/AddCurrentItem.jsx":
+/*!**********************************************************!*\
+  !*** ./client/src/components/related/AddCurrentItem.jsx ***!
+  \**********************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+
+
+function AddThisItem(props) {
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("span", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("img", {
+    src: "https://upload.wikimedia.org/wikipedia/commons/thumb/0/03/Plus_sign_font_awesome.svg/1024px-Plus_sign_font_awesome.svg.png",
+    height: "200px",
+    width: "200px",
+    onClick: function onClick() {
+      props.setOutfit(props.currentProduct);
+    }
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, " Add to outfit "));
+}
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (AddThisItem);
+
+/***/ }),
+
+/***/ "./client/src/components/related/CompareModal.jsx":
+/*!********************************************************!*\
+  !*** ./client/src/components/related/CompareModal.jsx ***!
+  \********************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-dom */ "./node_modules/react-dom/index.js");
+function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+function _createSuper(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct(); return function _createSuperInternal() { var Super = _getPrototypeOf(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn(this, result); }; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } else if (call !== void 0) { throw new TypeError("Derived constructors may only return object or undefined"); } return _assertThisInitialized(self); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); return true; } catch (e) { return false; } }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+
+
+var related = document.getElementById('related');
+
+var CompareModal = /*#__PURE__*/function (_React$Component) {
+  _inherits(CompareModal, _React$Component);
+
+  var _super = _createSuper(CompareModal);
+
+  function CompareModal(props) {
+    var _this;
+
+    _classCallCheck(this, CompareModal);
+
+    _this = _super.call(this, props);
+    _this.state = {};
+    return _this;
+  }
+
+  _createClass(CompareModal, [{
+    key: "componentDidMount",
+    value: function componentDidMount() {
+      console.log(this.props.children); // related.appendChild(document.createElement('div'));
+    } // componentWillUnmount() {
+    //   related.removeChild(document.getElementById('modal2'));
+    // }
+
+  }, {
+    key: "render",
+    value: function render() {
+      return !this.props.children ? null : /*#__PURE__*/react_dom__WEBPACK_IMPORTED_MODULE_1__.createPortal( // Any valid React child: JSX, strings, arrays, etc.
+      this.props.children, // A DOM element
+      document.getElementById('related'));
+    }
+  }]);
+
+  return CompareModal;
+}(react__WEBPACK_IMPORTED_MODULE_0__.Component);
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (CompareModal);
+
+/***/ }),
+
+/***/ "./client/src/components/related/OneOutfitProduct.jsx":
+/*!************************************************************!*\
+  !*** ./client/src/components/related/OneOutfitProduct.jsx ***!
+  \************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_1__);
+function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+function _createSuper(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct(); return function _createSuperInternal() { var Super = _getPrototypeOf(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn(this, result); }; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } else if (call !== void 0) { throw new TypeError("Derived constructors may only return object or undefined"); } return _assertThisInitialized(self); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); return true; } catch (e) { return false; } }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+
+
+
+var OneOutfit = /*#__PURE__*/function (_React$Component) {
+  _inherits(OneOutfit, _React$Component);
+
+  var _super = _createSuper(OneOutfit);
+
+  function OneOutfit(props) {
+    var _this;
+
+    _classCallCheck(this, OneOutfit);
+
+    _this = _super.call(this, props);
+    _this.state = {
+      thisProductExtra: {},
+      thisProductRating: {},
+      isFavorited: false
+    };
+    _this.getStyles = _this.getStyles.bind(_assertThisInitialized(_this));
+    _this.getReviews = _this.getReviews.bind(_assertThisInitialized(_this));
+    return _this;
+  }
+
+  _createClass(OneOutfit, [{
+    key: "componentDidMount",
+    value: function componentDidMount() {
+      this.getStyles();
+      this.getReviews();
+    }
+  }, {
+    key: "getStyles",
+    value: function getStyles() {
+      var _this2 = this;
+
+      axios__WEBPACK_IMPORTED_MODULE_1___default().get("/api/products/".concat(this.props.product.id, "/styles")).then(function (response) {
+        // console.log(response.data.results)
+        _this2.setState({
+          thisProductExtra: response.data.results
+        });
+      })["catch"](function (err) {
+        return console.log(err);
+      });
+    }
+  }, {
+    key: "getReviews",
+    value: function getReviews() {
+      var _this3 = this;
+
+      axios__WEBPACK_IMPORTED_MODULE_1___default().get("/reviews/meta/".concat(this.props.product.id)).then(function (response) {
+        _this3.setState({
+          thisProductRating: response.data
+        });
+      })["catch"](function (err) {
+        return console.log(err);
+      });
+    }
+  }, {
+    key: "getRatingScore",
+    value: function getRatingScore() {
+      var reviewTotalScore = 0;
+      var totalReviews = 0;
+
+      if (JSON.stringify(this.state.thisProductRating.ratings) !== '{}') {
+        for (var key in this.state.thisProductRating.ratings) {
+          reviewTotalScore += parseInt([key]) * parseInt(this.state.thisProductRating.ratings[key]);
+          totalReviews += parseInt(this.state.thisProductRating.ratings[key]);
+        }
+
+        return (Math.round(reviewTotalScore / totalReviews * 4) / 4).toFixed(2);
+      }
+
+      return 'Be the first to rate this product!';
+    }
+  }, {
+    key: "render",
+    value: function render() {
+      var _this4 = this;
+
+      var picImage = 'https://upload.wikimedia.org/wikipedia/commons/thumb/7/7c/X-circle.svg/1024px-X-circle.svg.png';
+      var productRating = 'Be the first to provide a rating!';
+
+      if (this.state.thisProductRating.ratings) {
+        productRating = this.getRatingScore();
+      }
+
+      if (this.state.thisProductExtra[0]) {
+        if (this.state.thisProductExtra[0].photos[0].thumbnail_url) {
+          picImage = this.state.thisProductExtra[0].photos[0].thumbnail_url;
+        }
+      }
+
+      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+        className: "oneoutfit"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("img", {
+        src: "".concat(picImage),
+        height: "250px",
+        width: "200px"
+      }), " ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", {
+        onClick: function onClick() {
+          _this4.props.removeOutfit(_this4.props.product);
+        },
+        type: "button",
+        id: "outfitbutton"
+      }, " ", String.fromCodePoint(0x2715), " "), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, "Product category: ", this.props.product.category, " "), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, "Product name: ", this.props.product.name), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, "Price: (default,updating) ", this.props.product.default_price), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, "Star rating: ", productRating), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("br", null));
+    }
+  }]);
+
+  return OneOutfit;
+}(react__WEBPACK_IMPORTED_MODULE_0__.Component);
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (OneOutfit);
+
+/***/ }),
+
+/***/ "./client/src/components/related/OneRelatedProduct.jsx":
+/*!*************************************************************!*\
+  !*** ./client/src/components/related/OneRelatedProduct.jsx ***!
+  \*************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _CompareModal_jsx__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./CompareModal.jsx */ "./client/src/components/related/CompareModal.jsx");
+/* harmony import */ var _StarValue_jsx__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../StarValue.jsx */ "./client/src/components/StarValue.jsx");
+function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+function _createSuper(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct(); return function _createSuperInternal() { var Super = _getPrototypeOf(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn(this, result); }; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } else if (call !== void 0) { throw new TypeError("Derived constructors may only return object or undefined"); } return _assertThisInitialized(self); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); return true; } catch (e) { return false; } }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+/* eslint-disable react/sort-comp */
+
+/* eslint-disable react/destructuring-assignment */
+
+
+
+
+
+var OneRelatedProduct = /*#__PURE__*/function (_React$Component) {
+  _inherits(OneRelatedProduct, _React$Component);
+
+  var _super = _createSuper(OneRelatedProduct);
+
+  function OneRelatedProduct(props) {
+    var _this;
+
+    _classCallCheck(this, OneRelatedProduct);
+
+    _this = _super.call(this, props);
+    _this.state = {
+      thisProductExtra: {},
+      thisProductRating: {},
+      showModal: false,
+      mainProductRating: {} // could be done at main index level and passed down along with item
+
+    };
+    _this.getStyles = _this.getStyles.bind(_assertThisInitialized(_this));
+    _this.getReviews = _this.getReviews.bind(_assertThisInitialized(_this));
+    _this.compareProducts = _this.compareProducts.bind(_assertThisInitialized(_this));
+    _this.handleShowModal = _this.handleShowModal.bind(_assertThisInitialized(_this));
+    _this.handleHideModal = _this.handleHideModal.bind(_assertThisInitialized(_this));
+    return _this;
+  }
+
+  _createClass(OneRelatedProduct, [{
+    key: "componentDidMount",
+    value: function componentDidMount() {
+      this.getStyles();
+      this.getReviews();
+    }
+  }, {
+    key: "componentDidUpdate",
+    value: function componentDidUpdate(prevProps) {
+      if (prevProps.product !== this.props.product) {
+        console.log('should update');
+        this.getStyles();
+        this.getReviews();
+      }
+    }
+  }, {
+    key: "getStyles",
+    value: function getStyles() {
+      var _this2 = this;
+
+      axios__WEBPACK_IMPORTED_MODULE_1___default().get("/api/products/".concat(this.props.product.id, "/styles")).then(function (response) {
+        // console.log(response.data.results)
+        _this2.setState({
+          thisProductExtra: response.data.results
+        });
+      })["catch"](function (err) {
+        return console.log(err);
+      });
+    }
+  }, {
+    key: "getReviews",
+    value: function getReviews() {
+      var _this3 = this;
+
+      axios__WEBPACK_IMPORTED_MODULE_1___default().get("/reviews/meta/".concat(this.props.product.id)).then(function (response) {
+        _this3.setState({
+          thisProductRating: response.data
+        });
+      })["catch"](function (err) {
+        return console.log(err);
+      });
+    }
+  }, {
+    key: "handleShowModal",
+    value: function handleShowModal() {
+      this.setState({
+        showModal: true
+      });
+    }
+  }, {
+    key: "handleHideModal",
+    value: function handleHideModal() {
+      this.setState({
+        showModal: false
+      });
+    }
+  }, {
+    key: "getRatingScore",
+    value: function getRatingScore() {
+      var reviewTotalScore = 0;
+      var totalReviews = 0;
+
+      if (JSON.stringify(this.state.thisProductRating.ratings) !== '{}') {
+        for (var key in this.state.thisProductRating.ratings) {
+          reviewTotalScore += parseInt([key]) * parseInt(this.state.thisProductRating.ratings[key]);
+          totalReviews += parseInt(this.state.thisProductRating.ratings[key]);
+        }
+
+        return (Math.round(reviewTotalScore / totalReviews * 4) / 4).toFixed(2);
+      }
+
+      return 'Be the first to rate this product!';
+    }
+  }, {
+    key: "compareProducts",
+    value: function compareProducts(selectedProduct) {
+      console.log(selectedProduct);
+      this.handleShowModal();
+    }
+  }, {
+    key: "render",
+    value: function render() {
+      var _this4 = this;
+
+      var modal = this.state.showModal ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_CompareModal_jsx__WEBPACK_IMPORTED_MODULE_2__["default"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+        className: "modal",
+        id: "modal2"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("table", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("tbody", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("tr", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("th", {
+        scope: "col"
+      }, "Page Product"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("th", {
+        scope: "col"
+      }, "Features"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("th", {
+        scope: "col"
+      }, "Selected Comparison")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("tr", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("td", null, "This should come from parent"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("td", null, "Star Rating"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("td", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_StarValue_jsx__WEBPACK_IMPORTED_MODULE_3__["default"], {
+        rating: this.getRatingScore()
+      }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("tr", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("td", null, this.props.originalProduct.category), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("td", null, "Product Category"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("td", null, this.props.product.category)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("tr", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("td", null, this.props.originalProduct.name), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("td", null, "Product Title"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("td", null, this.props.product.name)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("tr", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("td", null, this.props.originalProduct.default_price), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("td", null, "Price"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("td", null, this.props.product.default_price)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("tr", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("td", null, this.props.originalProduct.description), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("td", null, "Product Overview"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("td", null, this.props.product.description))))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", {
+        onClick: function onClick() {
+          return _this4.setState({
+            showModal: false
+          });
+        }
+      }, "Hide comparison"))) : null;
+      var picImage = 'https://upload.wikimedia.org/wikipedia/commons/thumb/7/7c/X-circle.svg/1024px-X-circle.svg.png';
+      var productRating = 'Be the first to provide a rating!';
+
+      if (this.state.thisProductRating.ratings) {
+        productRating = this.getRatingScore();
+      }
+
+      if (this.state.thisProductExtra[0]) {
+        if (this.state.thisProductExtra[0].photos[0].thumbnail_url) {
+          picImage = this.state.thisProductExtra[0].photos[0].thumbnail_url;
+        }
+      }
+
+      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+        className: "onerelated",
+        href: ""
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("img", {
+        src: "".concat(picImage),
+        height: "250px",
+        width: "200px",
+        alt: "product"
+      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", {
+        onClick: this.compareProducts,
+        className: "fa fa-star",
+        type: "button",
+        id: "comparebutton"
+      }, " "), modal, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, "Product category:", this.props.product.category, " ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("br", null)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, "Product name:", this.props.product.name, " ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("br", null)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, "Price (default):", this.props.product.default_price, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("br", null)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, "Star rating:", productRating), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, this.props.comparison), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_StarValue_jsx__WEBPACK_IMPORTED_MODULE_3__["default"], {
+        rating: productRating
+      }));
+    }
+  }]);
+
+  return OneRelatedProduct;
+}(react__WEBPACK_IMPORTED_MODULE_0__.Component);
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (OneRelatedProduct);
+
+/***/ }),
+
+/***/ "./client/src/components/related/index.jsx":
+/*!*************************************************!*\
+  !*** ./client/src/components/related/index.jsx ***!
+  \*************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _OneRelatedProduct_jsx__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./OneRelatedProduct.jsx */ "./client/src/components/related/OneRelatedProduct.jsx");
+/* harmony import */ var _OneOutfitProduct_jsx__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./OneOutfitProduct.jsx */ "./client/src/components/related/OneOutfitProduct.jsx");
+/* harmony import */ var _AddCurrentItem_jsx__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./AddCurrentItem.jsx */ "./client/src/components/related/AddCurrentItem.jsx");
+function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+function _createSuper(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct(); return function _createSuperInternal() { var Super = _getPrototypeOf(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn(this, result); }; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } else if (call !== void 0) { throw new TypeError("Derived constructors may only return object or undefined"); } return _assertThisInitialized(self); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); return true; } catch (e) { return false; } }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+/* eslint-disable react/sort-comp */
+
+
+
+
+
+
+
+var Related = /*#__PURE__*/function (_React$Component) {
+  _inherits(Related, _React$Component);
+
+  var _super = _createSuper(Related);
+
+  function Related(props) {
+    var _this;
+
+    _classCallCheck(this, Related);
+
+    _this = _super.call(this, props);
+
+    _defineProperty(_assertThisInitialized(_this), "handleNav", function (direction) {
+      // console.log(this.navRef.current.scrollLeft)
+      if (direction === 'left') {
+        _this.setState(function (state) {
+          return {
+            left: state.left - 1,
+            right: state.right - 1
+          };
+        }); // this.navRef ? (this.navRef.current.scrollLeft -= 200) : null;
+
+      } else {
+        //   // this.navRef ? (this.navRef.current.scrollLeft += 200) : null;
+        _this.setState(function (state) {
+          return {
+            left: state.left + 1,
+            right: state.right + 1
+          };
+        });
+      }
+    });
+
+    _this.state = {
+      // currentProduct: placeholder,// convert to a prop
+      relatedProducts: [],
+      outfitProducts: [],
+      //move up to app most likely
+      left: 0,
+      right: 2
+    };
+    _this.getRelated = _this.getRelated.bind(_assertThisInitialized(_this));
+    _this.addToOutfitList = _this.addToOutfitList.bind(_assertThisInitialized(_this));
+    _this.removeFromOutfitList = _this.removeFromOutfitList.bind(_assertThisInitialized(_this));
+    _this.compareProducts = _this.compareProducts.bind(_assertThisInitialized(_this));
+    _this.navRef = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createRef();
+    return _this;
+  }
+
+  _createClass(Related, [{
+    key: "componentDidMount",
+    value: function componentDidMount() {
+      this.getRelated();
+    }
+  }, {
+    key: "getRelated",
+    value: function getRelated() {
+      var _this2 = this;
+
+      axios__WEBPACK_IMPORTED_MODULE_1___default().get("/products/".concat(this.props.currentProduct.id, "/related")).then(function (results) {
+        _this2.setState({
+          relatedProductsKey: results.data
+        });
+      }).then(function () {
+        for (var i = 0; i < _this2.state.relatedProductsKey.length; i++) {
+          _this2.getProduct(_this2.state.relatedProductsKey[i]);
+        }
+      })["catch"](function (err) {
+        return console.log(err);
+      });
+    }
+  }, {
+    key: "getProduct",
+    value: function getProduct(productID) {
+      var _this3 = this;
+
+      axios__WEBPACK_IMPORTED_MODULE_1___default().get("/products/".concat(productID, "/")).then(function (results) {
+        _this3.setState({
+          relatedProducts: _this3.state.relatedProducts.concat(results.data)
+        });
+      })["catch"](function (err) {
+        return console.log(err);
+      });
+    }
+  }, {
+    key: "addToOutfitList",
+    value: function addToOutfitList(product) {
+      for (var i = 0; i < this.state.outfitProducts.length; i++) {
+        console.log('this product id:', product.id, 'is already on outfit list');
+
+        if (this.state.outfitProducts[i].id === product.id) {
+          return;
+        }
+      }
+
+      this.setState(function (state) {
+        return {
+          outfitProducts: state.outfitProducts.concat(product)
+        };
+      });
+    }
+  }, {
+    key: "removeFromOutfitList",
+    value: function removeFromOutfitList(product) {
+      var stringed = JSON.stringify(product); // console.log('removing: ', stringed);
+
+      this.setState(function (state) {
+        return {
+          outfitProducts: state.outfitProducts.filter(function (product) {
+            return JSON.stringify(product) !== stringed;
+          })
+        };
+      });
+    } // for handling the modal compare option
+
+  }, {
+    key: "compareProducts",
+    value: function compareProducts(selectedProduct) {
+      console.log(selectedProduct);
+      this.handleShowModal();
+    }
+  }, {
+    key: "render",
+    value: function render() {
+      var _this4 = this;
+
+      var scroll = function scroll(scrollOffset) {
+        ref.current.scrollLeft += scrollOffset;
+      };
+
+      var relatedSlice = this.state.relatedProducts.slice(this.state.left, this.state.right); // console.log(relatedSlice)
+
+      var leftButton = this.state.left === 0 ? null : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", {
+        id: "scrollarrow",
+        onClick: function onClick() {
+          return _this4.handleNav('left');
+        }
+      }, String.fromCodePoint(129152));
+      var rightButton = this.state.right === this.state.relatedProducts.length ? null : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", {
+        id: "scrollarrow",
+        onClick: function onClick() {
+          return _this4.handleNav('right');
+        }
+      }, String.fromCodePoint(129154));
+      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h3", null, "current product selected: ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("em", null, this.props.currentProduct.name), " "), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("ul", {
+        className: "relatedproducts"
+      }, leftButton, relatedSlice.map(function (oneProduct) {
+        return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_OneRelatedProduct_jsx__WEBPACK_IMPORTED_MODULE_2__["default"], {
+          product: oneProduct,
+          originalProduct: _this4.props.currentProduct,
+          ref: _this4.navRef
+        });
+      }), rightButton)), "Your outfit list:", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("ul", {
+        className: "outfitproducts"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, " ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_AddCurrentItem_jsx__WEBPACK_IMPORTED_MODULE_4__["default"], {
+        setOutfit: this.addToOutfitList,
+        currentProduct: this.props.currentProduct
+      }), " "), this.state.outfitProducts.map(function (oneProduct) {
+        return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_OneOutfitProduct_jsx__WEBPACK_IMPORTED_MODULE_3__["default"], {
+          product: oneProduct,
+          removeOutfit: _this4.removeFromOutfitList
+        });
+      }))));
+    }
+  }]);
+
+  return Related;
+}(react__WEBPACK_IMPORTED_MODULE_0__.Component);
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Related);
+var placeholder = {
+  "id": 37313,
+  "campus": "hr-rfe",
+  "name": "Morning Joggers",
+  "slogan": "Make yourself a morning person",
+  "description": "Whether you're a morning person or not.  Whether you're gym bound or not.  Everyone looks good in joggers.",
+  "category": "Pants",
+  "default_price": "40.00",
+  "created_at": "2021-08-13T14:37:33.145Z",
+  "updated_at": "2021-08-13T14:37:33.145Z"
+};
 
 /***/ }),
 
@@ -37666,9 +38435,10 @@ var __webpack_exports__ = {};
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-dom */ "./node_modules/react-dom/index.js");
-/* harmony import */ var styled_components__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! styled-components */ "./node_modules/styled-components/dist/styled-components.browser.esm.js");
-/* harmony import */ var _components_overview_Overview_jsx__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./components/overview/Overview.jsx */ "./client/src/components/overview/Overview.jsx");
-/* harmony import */ var _sampleData_json__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./sampleData.json */ "./client/src/sampleData.json");
+/* harmony import */ var _components_related_index_jsx__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./components/related/index.jsx */ "./client/src/components/related/index.jsx");
+/* harmony import */ var styled_components__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! styled-components */ "./node_modules/styled-components/dist/styled-components.browser.esm.js");
+/* harmony import */ var _components_overview_Overview_jsx__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./components/overview/Overview.jsx */ "./client/src/components/overview/Overview.jsx");
+/* harmony import */ var _sampleData_json__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./sampleData.json */ "./client/src/sampleData.json");
 var _templateObject, _templateObject2;
 
 function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
@@ -37689,10 +38459,11 @@ function _taggedTemplateLiteral(strings, raw) { if (!raw) { raw = strings.slice(
 
 
 
+
  // import './index.css';
 
-var Root = styled_components__WEBPACK_IMPORTED_MODULE_4__["default"].div(_templateObject || (_templateObject = _taggedTemplateLiteral(["\n  display: flex;\n  align-items: center;\n  justify-content: center;\n"])));
-var OuterContainer = styled_components__WEBPACK_IMPORTED_MODULE_4__["default"].div(_templateObject2 || (_templateObject2 = _taggedTemplateLiteral(["\ndisplay: flex;\nwidth: 70vw;\nleft: 15vw;\njustify-content: center;\n"])));
+var Root = styled_components__WEBPACK_IMPORTED_MODULE_5__["default"].div(_templateObject || (_templateObject = _taggedTemplateLiteral(["\n  display: flex;\n  align-items: center;\n  justify-content: center;\n"])));
+var OuterContainer = styled_components__WEBPACK_IMPORTED_MODULE_5__["default"].div(_templateObject2 || (_templateObject2 = _taggedTemplateLiteral(["\ndisplay: flex;\nwidth: 70vw;\nleft: 15vw;\njustify-content: center;\n"])));
 
 var App = function App() {
   var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)('hello world'),
@@ -37700,14 +38471,22 @@ var App = function App() {
       random = _useState2[0],
       setRandom = _useState2[1];
 
-  var _useState3 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(_sampleData_json__WEBPACK_IMPORTED_MODULE_3__),
+  var _useState3 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(_sampleData_json__WEBPACK_IMPORTED_MODULE_4__),
       _useState4 = _slicedToArray(_useState3, 2),
       allThings = _useState4[0],
       setAllThings = _useState4[1];
 
-  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(Root, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_components_overview_Overview_jsx__WEBPACK_IMPORTED_MODULE_2__["default"], {
-    product: allThings[0]
-  }));
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+    className: "widget"
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+    className: "widget"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h3", null, "Ratings and Reviews")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+    className: "widget"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h3", null, "Questions and Answers")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+    className: "widget"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h3", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_components_related_index_jsx__WEBPACK_IMPORTED_MODULE_2__["default"], {
+    currentProduct: allThings[2]
+  }))));
 };
 
 react_dom__WEBPACK_IMPORTED_MODULE_1__.render( /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(App, null), document.getElementById('root'));
