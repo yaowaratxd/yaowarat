@@ -6268,7 +6268,22 @@ var Overview = function Overview(props) {
     styles: styles,
     selectedImage: selectedImage,
     setSelectedStyle: setSelectedStyle
-  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("br", null), props.product.slogan && props.product.slogan.length > 0 ? props.product.slogan : '', /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("br", null), props.product.description ? props.product.description : '');
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("br", null), props.product.slogan && props.product.slogan.length > 0 ? props.product.slogan : '', /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("br", null), props.product.description ? props.product.description : '', /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("img", {
+    src: "/graphics/facebook.png",
+    onClick: function onClick() {
+      return window.open('https://www.facebook.com/sharer/sharer.php?u=' + selectedImage.url, 'facebook-share-dialog', 'width=626,height=436');
+    }
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("img", {
+    src: "/graphics/twitter.png",
+    onClick: function onClick() {
+      return window.open('https://www.twitter.com/intent/tweet?url=' + selectedImage.url, 'twitter-share-dialog', 'width=626,height=436');
+    }
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("img", {
+    src: "/graphics/pinterest.png",
+    onClick: function onClick() {
+      return window.open('http://pinterest.com/pin/create/button/?url=' + selectedImage.url, 'pinterest-share-dialog', 'width=626,height=436');
+    }
+  }));
 };
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Overview); // style={{ width: '80vw' }}
@@ -7315,6 +7330,7 @@ var Related = /*#__PURE__*/function (_React$Component) {
         className: "relatedproducts"
       }, leftButton, relatedSlice.map(function (oneProduct) {
         return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_OneRelatedProduct_jsx__WEBPACK_IMPORTED_MODULE_2__["default"], {
+          key: oneProduct.id,
           setCurrentProduct: _this4.props.setCurrentProduct,
           product: oneProduct,
           originalProduct: _this4.props.currentProduct,
