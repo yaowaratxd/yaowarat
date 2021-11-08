@@ -5874,10 +5874,15 @@ var AddToCart = function AddToCart(_ref) {
       addCart = _useState2[0],
       setAddCart = _useState2[1];
 
-  var _useState3 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)('+'),
+  var _useState3 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(true),
       _useState4 = _slicedToArray(_useState3, 2),
-      display = _useState4[0],
-      setDisplay = _useState4[1];
+      inStock = _useState4[0],
+      setInStock = _useState4[1];
+
+  var _useState5 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)('+'),
+      _useState6 = _slicedToArray(_useState5, 2),
+      display = _useState6[0],
+      setDisplay = _useState6[1];
 
   var handleFav = function handleFav() {
     if (display === '+') {
@@ -5897,13 +5902,14 @@ var AddToCart = function AddToCart(_ref) {
   };
 
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(Container, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_QuantityDropDown_jsx__WEBPACK_IMPORTED_MODULE_1__["default"], {
+    setInStock: setInStock,
     hasSize: hasSize,
     quantity: quantity
-  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(AddButton, {
+  }), inStock ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(AddButton, {
     onClick: function onClick() {
       return handleAddToCart();
     }
-  }, addCart ? 'Remove From Cart' : 'Add To Cart'), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(AddButton, {
+  }, addCart ? 'Remove From Cart' : 'Add To Cart') : '', /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(AddButton, {
     onClick: handleFav
   }, display));
 };
@@ -5928,7 +5934,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var styled_components__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! styled-components */ "./node_modules/styled-components/dist/styled-components.browser.esm.js");
 /* harmony import */ var _fortawesome_react_fontawesome__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @fortawesome/react-fontawesome */ "./node_modules/@fortawesome/react-fontawesome/index.es.js");
-var _templateObject, _templateObject2, _templateObject3, _templateObject4, _templateObject5, _templateObject6, _templateObject7, _templateObject8;
+var _templateObject, _templateObject2, _templateObject3, _templateObject4, _templateObject5, _templateObject6, _templateObject7, _templateObject8, _templateObject9;
 
 function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
 
@@ -5953,9 +5959,10 @@ var SelectedTile = styled_components__WEBPACK_IMPORTED_MODULE_3__["default"].img
 var LeftRibbon = styled_components__WEBPACK_IMPORTED_MODULE_3__["default"].div(_templateObject3 || (_templateObject3 = _taggedTemplateLiteral(["\nwidth: 10vw;\nposition: absolute;\ntop: 5vh;\nleft: 5%;\nheight: 60vh;\noverflow: scroll;\nz-index: 2;\n"])));
 var ImageContainer = styled_components__WEBPACK_IMPORTED_MODULE_3__["default"].div(_templateObject4 || (_templateObject4 = _taggedTemplateLiteral(["\nwidth: 10vw;\n"])));
 var BaseImage = styled_components__WEBPACK_IMPORTED_MODULE_3__["default"].img(_templateObject5 || (_templateObject5 = _taggedTemplateLiteral(["\nwidth: 40vw;\nposition: absolute;\ntop: 5vh;\nleft: 5%;\nheight: 60vh;\ncursor: zoom-in;\n"])));
-var BaseImageExpanded = styled_components__WEBPACK_IMPORTED_MODULE_3__["default"].img(_templateObject6 || (_templateObject6 = _taggedTemplateLiteral(["\nwidth: 70vw;\nposition: absolute;\ntop: 5vh;\nleft: 5%;\nheight: 60vh;\nz-index: 2;\ncursor: zoom-out;\n"])));
-var ClickyButton = styled_components__WEBPACK_IMPORTED_MODULE_3__["default"].button(_templateObject7 || (_templateObject7 = _taggedTemplateLiteral(["\nbackground-color: Transparent;\nborder: none;\ncolor: rebeccapurple;\n"])));
-var ExpandClickyButton = styled_components__WEBPACK_IMPORTED_MODULE_3__["default"].button(_templateObject8 || (_templateObject8 = _taggedTemplateLiteral(["\nbackground-color: Transparent;\nborder: none;\ncolor: rebeccapurple;\nposition: relative;\nright: 5vw;\ntop: 5vh;\nz-index: 2;\n"])));
+var BaseImageExpanded = styled_components__WEBPACK_IMPORTED_MODULE_3__["default"].img(_templateObject6 || (_templateObject6 = _taggedTemplateLiteral(["\nwidth: 70vw;\nposition: absolute;\ntop: 5vh;\nleft: 5%;\nheight: 60vh;\nz-index: 2;\ncursor: zoom-in;\n"])));
+var BaseImageExploded = styled_components__WEBPACK_IMPORTED_MODULE_3__["default"].img(_templateObject7 || (_templateObject7 = _taggedTemplateLiteral(["\nwidth: 250%;\nheight: 250%;\noverflow: scroll;\nz-index: 4;\ncursor: zoom-out;\n"])));
+var ClickyButton = styled_components__WEBPACK_IMPORTED_MODULE_3__["default"].button(_templateObject8 || (_templateObject8 = _taggedTemplateLiteral(["\nbackground-color: Transparent;\nborder: none;\ncolor: rebeccapurple;\n"])));
+var ExpandClickyButton = styled_components__WEBPACK_IMPORTED_MODULE_3__["default"].button(_templateObject9 || (_templateObject9 = _taggedTemplateLiteral(["\nbackground-color: Transparent;\nborder: none;\ncolor: rebeccapurple;\nposition: relative;\nright: 5vw;\ntop: 5vh;\nz-index: 2;\n"])));
 
 var ImageGallery = function ImageGallery(_ref) {
   var allImages = _ref.allImages,
@@ -5964,7 +5971,7 @@ var ImageGallery = function ImageGallery(_ref) {
       styles = _ref.styles,
       setSelectedStyle = _ref.setSelectedStyle;
 
-  var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false),
+  var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(0),
       _useState2 = _slicedToArray(_useState, 2),
       expandedImage = _useState2[0],
       setExpandedImage = _useState2[1];
@@ -6016,14 +6023,20 @@ var ImageGallery = function ImageGallery(_ref) {
   };
 
   var changeExpansion = function changeExpansion() {
-    setExpandedImage(!expandedImage);
+    if (expandedImage === 0) {
+      setExpandedImage(1);
+    } else if (expandedImage === 1) {
+      setExpandedImage(2);
+    } else {
+      setExpandedImage(0);
+    }
   };
 
   var renderLeftButton = function renderLeftButton() {
     if (allImages.length > 0) {
       return allImages[0][0].url === selectedImage.url ? '' : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(ClickyButton, {
         onClick: handleClickLeft
-      }, "Left");
+      }, "\u276E");
     }
   };
 
@@ -6033,7 +6046,7 @@ var ImageGallery = function ImageGallery(_ref) {
     if (allImages.length > 0) {
       return allImages[len][allImages[len].length - 1].url === selectedImage.url ? '' : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(ClickyButton, {
         onClick: handleClickRight
-      }, "Right");
+      }, "\u276F");
     }
   };
 
@@ -6067,10 +6080,13 @@ var ImageGallery = function ImageGallery(_ref) {
     };
   };
 
-  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, renderLeftButton(), expandedImage ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(BaseImageExpanded, {
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, renderLeftButton(), expandedImage === 0 ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(BaseImage, {
     onClick: changeExpansion,
     src: selectedImage.url
-  }) : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(BaseImage, {
+  }) : expandedImage === 1 ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(BaseImageExpanded, {
+    onClick: changeExpansion,
+    src: selectedImage.url
+  }) : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(BaseImageExploded, {
     onClick: changeExpansion,
     src: selectedImage.url
   }), renderRightButton(), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(ExpandClickyButton, {
@@ -6271,7 +6287,7 @@ var Overview = function Overview(props) {
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("br", null), props.product.slogan && props.product.slogan.length > 0 ? props.product.slogan : '', /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("br", null), props.product.description ? props.product.description : '', /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("img", {
     src: "/graphics/facebook.png",
     onClick: function onClick() {
-      return window.open('https://www.facebook.com/sharer/sharer.php?u=' + selectedImage.url, 'facebook-share-dialog', 'width=626,height=436');
+      return window.open("https://www.facebook.com/sharer/sharer.php?u=".concat(selectedImage.url), 'facebook-share-dialog', 'width=626,height=436');
     }
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("img", {
     src: "/graphics/twitter.png",
@@ -6406,7 +6422,8 @@ var SelectEle = styled_components__WEBPACK_IMPORTED_MODULE_1__["default"].select
 
 var QuantityDropDown = function QuantityDropDown(_ref) {
   var quantity = _ref.quantity,
-      hasSize = _ref.hasSize;
+      hasSize = _ref.hasSize,
+      setInStock = _ref.setInStock;
 
   var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(['-']),
       _useState2 = _slicedToArray(_useState, 2),
@@ -6422,6 +6439,13 @@ var QuantityDropDown = function QuantityDropDown(_ref) {
     }
 
     ;
+
+    if (results.length === 0) {
+      setInStock(false);
+    } else {
+      setInStock(true);
+    }
+
     setSelections(results);
   }, [quantity]);
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(SelectEle, null, hasSize ? '' : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("option", {
