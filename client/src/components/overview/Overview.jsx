@@ -59,7 +59,7 @@ const Overview = (props) => {
       }
       setTotalImages(allHolder);
     });
-  }, []);
+  }, [props.product]);
   return <div >
     <ImageGallery setSelectedStyle={setSelectedStyle} styles={styles} allImages={totalImages} selectedImage={selectedImage} setSelectedImage={setSelectedImage} />
     <ProductDetail product={props.product} styles={styles} selectedImage={selectedImage} />

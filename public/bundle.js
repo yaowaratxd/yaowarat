@@ -6252,7 +6252,7 @@ var Overview = function Overview(props) {
 
       setTotalImages(allHolder);
     });
-  }, []);
+  }, [props.product]);
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_ImageGallery_jsx__WEBPACK_IMPORTED_MODULE_2__["default"], {
     setSelectedStyle: setSelectedStyle,
     styles: styles,
@@ -7075,12 +7075,19 @@ var OneRelatedProduct = /*#__PURE__*/function (_React$Component) {
 
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
         className: "onerelated",
-        href: ""
+        onClick: function onClick() {
+          // console.log((this.props.product))
+          _this4.props.goToProduct(_this4.props.product);
+        }
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("img", {
         src: "".concat(picImage),
         height: "250px",
         width: "200px",
-        alt: "product"
+        alt: "product",
+        onClick: function onClick() {
+          // console.log((this.props.product))
+          _this4.props.goToProduct(_this4.props.product);
+        }
       }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", {
         onClick: this.compareProducts,
         className: "fa fa-star",
@@ -7298,7 +7305,8 @@ var Related = /*#__PURE__*/function (_React$Component) {
         return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_OneRelatedProduct_jsx__WEBPACK_IMPORTED_MODULE_2__["default"], {
           product: oneProduct,
           originalProduct: _this4.props.currentProduct,
-          ref: _this4.navRef
+          ref: _this4.navRef,
+          goToProduct: _this4.props.setCurrentProduct
         });
       }), rightButton)), "Your outfit list:", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("ul", {
         className: "outfitproducts"
@@ -7959,8 +7967,7 @@ var ReviewTiles = function ReviewTiles(props) {
     return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, null);
   } else {
     var tiles = reviews.map(function (review, index) {
-      if (index === 0) {
-        console.log(review);
+      if (index === 0) {// console.log(review);
       }
 
       var date = new Date("".concat(review.date.slice(0, 10))).toLocaleDateString({}, {
@@ -39164,7 +39171,7 @@ var App = function App() {
       allThings = _useState4[0],
       setAllThings = _useState4[1];
 
-  var _useState5 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)({}),
+  var _useState5 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(allThings[2]),
       _useState6 = _slicedToArray(_useState5, 2),
       currentProduct = _useState6[0],
       setCurrentProduct = _useState6[1];

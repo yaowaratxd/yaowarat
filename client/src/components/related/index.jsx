@@ -107,7 +107,7 @@ class Related extends React.Component {
           <ul className="relatedproducts">
             {leftButton}
             {relatedSlice.map((oneProduct) => {
-              return <OneRelatedProduct product={oneProduct} originalProduct={this.props.currentProduct} ref={this.navRef}/>
+              return <OneRelatedProduct product={oneProduct} originalProduct={this.props.currentProduct} ref={this.navRef} goToProduct={this.props.setCurrentProduct} />
             })}
             {rightButton}
           </ul>
