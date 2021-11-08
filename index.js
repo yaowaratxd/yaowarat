@@ -70,13 +70,24 @@ app.get('/products/:productID', function (req, res) {
     .catch(err => res.status(500).send(err))
 })
 app.get('/api/reviews/:sort/:product_id', async (req, res) => {
-  // console.log(req.params);
+  // console.log('A Review request was called');
   const result = await axios.get(`${baseURL}/reviews/?sort=${req.params.sort}&product_id=${req.params.product_id}`);
   // ${req.params.sort}
   res.status(200).json({
     status: 'sucess',
     results: result.data.results
   })
+});
+
+// Fetch Reviews Metadata
+app.get('/reviews/meta/:product_id', async (req, res) => {
+  console.log('Metadata Get Request recieved! Product Id: ', req.params.product_id);
+  const result = await axios.get(`${baseURL}/reviews/meta/?product_id=${req.params.product_id}`);
+  // console.log(result.data);
+  res.status(200).json({
+    status: 'sucess',
+    results: result.data
+  });
 });
 
 
