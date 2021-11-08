@@ -35,7 +35,7 @@ const Stars = (props) => {
       starArray[fullStars + 1] = quarterStar;
     }
   }
-  // console.log(starArray)
+
   return (
     <div>
       {starArray.map((star, i) => <img key={i} src={star} height="20px" width="20px" alt="rating stars" />)}

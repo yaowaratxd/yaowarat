@@ -106,8 +106,8 @@ class Related extends React.Component {
     };
     let relatedSlice = this.state.relatedProducts.slice(this.state.left, this.state.right)
     // console.log(relatedSlice)
-    const leftButton = (this.state.left === 0) ? null : <button id="scrollarrow" onClick={() => this.handleNav('left')}>{String.fromCodePoint(129152, )}</button>
-    const rightButton = (this.state.right === this.state.relatedProducts.length) ? null : <button id="scrollarrow" onClick={() => this.handleNav('right')}>{String.fromCodePoint( 129154)}</button>
+    const leftButton = (this.state.left === 0) ? null : <button id="scrollarrow" onClick={() => this.handleNav('left')}>{String.fromCodePoint(129152)}</button>
+    const rightButton = (this.state.right === this.state.relatedProducts.length) ? null : <button id="scrollarrow" onClick={() => this.handleNav('right')}>{String.fromCodePoint(129154)}</button>
     return (
       <div>
         <h3>current product selected: <em>{this.props.currentProduct.name}</em> </h3>

@@ -46,10 +46,9 @@ const App = () => {
         <br />
         <h3><Related setCurrentProduct={setCurrentProduct} currentProduct={currentProduct} /></h3>
       </div>
-      <Root>
-        {/* <Overview product={currentProduct} /> */}
-        <Reviews product={currentProduct} />
-      </Root>
+    <Root>
+      <Reviews product={currentProduct} />
+    </Root>
 
     </div>
   );

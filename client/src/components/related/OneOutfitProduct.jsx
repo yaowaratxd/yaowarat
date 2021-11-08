@@ -58,7 +58,7 @@ class OneOutfit extends React.Component {
       }
       return (Math.round((reviewTotalScore / totalReviews) * 4) / 4).toFixed(2);
     }
-    return 'Be the first to rate this product!';
+    return null;
   }
 
 
@@ -85,6 +85,8 @@ class OneOutfit extends React.Component {
       }
     }
 
+    const ratingDisplay = productRating === null ? ' Be the first to leave a rating!' : <Stars rating={productRating} />
+
     return (
       <div className="oneoutfit">
         <img src={`${picImage}`} height="250px" width="200px"/> <br/>
@@ -94,7 +96,7 @@ class OneOutfit extends React.Component {
         <div>Price: {renderPrice(this.state.thisProductExtra, this.props.product.default_price)}</div>
         <div>
           Rating:
-         <Stars rating={productRating} />
+         {ratingDisplay}
         </div>
 
         <br />

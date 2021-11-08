@@ -79,7 +79,7 @@ class OneRelatedProduct extends React.Component {
       }
       return (Math.round((reviewTotalScore / totalReviews) * 4) / 4).toFixed(2);
     }
-    return 'Be the first to rate this product!';
+    return null;
   }
 
   getOriginalRating() {
@@ -166,13 +166,14 @@ class OneRelatedProduct extends React.Component {
       return <div>{object.default_price}</div>
     }
 
+    const ratingDisplay = productRating === null ? ' Be the first to leave a rating!' : <Stars rating={productRating} />
 
 //selectedImage.salePrice ? <div> <NewPrice> {product.default_price} </NewPrice> { selectedImage.salePrice } </div> : product.default_price;
     return (
       <div className="onerelated" href="">
         <img src={`${picImage}`} height="250px" width="200px" alt="product" onClick={() => this.props.setCurrentProduct(this.props.product)}/>
         <br/>
-        <button onClick={this.compareProducts} className="fa fa-star" type="button" id="comparebutton"> </button>
+        <button onClick={this.compareProducts} type="button" id="comparebutton"><i className="fa fa-star"></i> </button>
         {modal}
         <div>
           Product category:
@@ -187,7 +188,7 @@ class OneRelatedProduct extends React.Component {
         </div>
         <div>
           Rating:
-         <Stars rating={productRating} />
+         {ratingDisplay}
         </div>
         <div>{this.props.comparison}</div>
 
