@@ -7085,8 +7085,12 @@ var OneRelatedProduct = /*#__PURE__*/function (_React$Component) {
         width: "200px",
         alt: "product",
         onClick: function onClick() {
+<<<<<<< HEAD
           // console.log((this.props.product))
           _this4.props.goToProduct(_this4.props.product);
+=======
+          return _this4.props.setCurrentProduct(_this4.props.product);
+>>>>>>> origin/merge
         }
       }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", {
         onClick: this.compareProducts,
@@ -7303,6 +7307,7 @@ var Related = /*#__PURE__*/function (_React$Component) {
         className: "relatedproducts"
       }, leftButton, relatedSlice.map(function (oneProduct) {
         return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_OneRelatedProduct_jsx__WEBPACK_IMPORTED_MODULE_2__["default"], {
+          setCurrentProduct: _this4.props.setCurrentProduct,
           product: oneProduct,
           originalProduct: _this4.props.currentProduct,
           ref: _this4.navRef,
@@ -39171,7 +39176,11 @@ var App = function App() {
       allThings = _useState4[0],
       setAllThings = _useState4[1];
 
+<<<<<<< HEAD
   var _useState5 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(allThings[2]),
+=======
+  var _useState5 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(allThings[3]),
+>>>>>>> origin/merge
       _useState6 = _slicedToArray(_useState5, 2),
       currentProduct = _useState6[0],
       setCurrentProduct = _useState6[1];
