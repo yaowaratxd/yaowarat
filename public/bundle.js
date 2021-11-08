@@ -39210,7 +39210,7 @@ var App = function App() {
       allThings = _useState4[0],
       setAllThings = _useState4[1];
 
-  var _useState5 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(allThings[0]),
+  var _useState5 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(allThings[3]),
       _useState6 = _slicedToArray(_useState5, 2),
       currentProduct = _useState6[0],
       setCurrentProduct = _useState6[1];

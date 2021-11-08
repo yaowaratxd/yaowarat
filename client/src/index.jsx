@@ -27,7 +27,7 @@ justify-content: center;
 const App = () => {
   const [random, setRandom] = useState('hello world');
   const [allThings, setAllThings] = useState(sampleData);
-  const [currentProduct, setCurrentProduct] = useState(allThings[0]);
+  const [currentProduct, setCurrentProduct] = useState(allThings[3]);
 
   return (
     <div>
