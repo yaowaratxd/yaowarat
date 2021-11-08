@@ -3,6 +3,7 @@ import React from 'react';
 import Breakdown from './Breakdown.jsx';
 import StarRating from './StarRating.jsx';
 import Recommended from './Recommended.jsx';
+import Characteristics from './Characteristics.jsx';
 
 class Overview extends React.Component {
   constructor(props) {
@@ -42,7 +43,7 @@ class Overview extends React.Component {
         <StarRating avg={this.Average} />
         <Breakdown reviews={this.props.reviews} starFilter={this.props.starFilter} />
         <Recommended reviews={this.props.reviews} />
-        <p>Characteristics</p>
+        <Characteristics meta={this.props.meta} />
       </div>
     );
   }

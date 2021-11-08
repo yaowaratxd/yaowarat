@@ -31,9 +31,9 @@ const App = () => {
 
   return (
     <div>
-        <Root>
-          <Overview product={currentProduct}/>
-        </Root>
+      <Root>
+        <Overview product={currentProduct} />
+      </Root>
       <div className="widget">
       </div>
       <div className="widget">
@@ -44,12 +44,12 @@ const App = () => {
       </div>
       <div className="widget">
         <br />
-        <h3><Related setCurrentProduct={setCurrentProduct} currentProduct={currentProduct}/></h3>
+        <h3><Related setCurrentProduct={setCurrentProduct} currentProduct={currentProduct} /></h3>
       </div>
-    <Root>
-      {/* <Overview product={currentProduct} /> */}
-      <Reviews product={currentProduct} />
-    </Root>
+      <Root>
+        {/* <Overview product={currentProduct} /> */}
+        <Reviews product={currentProduct} />
+      </Root>
 
     </div>
   );
