@@ -19,6 +19,7 @@ const Root = styled.div`
 const App = () => {
   const [random, setRandom] = useState('hello world');
   const [allThings, setAllThings] = useState(sampleData);
+  // console.log('This is the product details', allThings[3]);
   return (
     <Root>
       {/* <Overview product={allThings[0]} /> */}
