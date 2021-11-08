@@ -44,23 +44,141 @@ const Characteristics = (props) => {
   }
   // console.log('This is the characteristics that are being displayed: ', characteristics);
 
+  const size = () => {
+    return (
+      <div>
+        <p>Size</p>
+        <div className="charbar">
+          <div className="bar"><span>.</span></div>
+          <div className="bar"><span>.</span></div>
+          <div className="bar"><span>.</span></div>
+        </div>
+        <div className="charkey">
+          <p>Too Small</p>
+          <p>Perfect</p>
+          <p>Too Large</p>
+        </div>
+      </div>
+
+    );
+  };
+
+
+  const width = () => {
+    return (
+      <div>
+        <p>Width</p>
+        <div className="charbar">
+          <div className="bar"><span>.</span></div>
+          <div className="bar"><span>.</span></div>
+          <div className="bar"><span>.</span></div>
+        </div>
+        <div className="charkey">
+          <p>Too Small</p>
+          <p>Perfect</p>
+          <p>Too Large</p>
+        </div>
+      </div>
+
+    );
+  };
+
+
+  const comfort = () => {
+    return (
+      <div>
+        <p>Comfort</p>
+        <div className="charbar">
+          <div className="bar"><span>.</span></div>
+          <div className="bar"><span>.</span></div>
+          <div className="bar"><span>.</span></div>
+        </div>
+        <div className="charkey">
+          <p>Poor</p>
+          <p>Fine</p>
+          <p>Great!</p>
+        </div>
+      </div>
+
+    );
+  };
+
+
+  const quality = () => {
+    return (
+      <div>
+        <p>Quality</p>
+        <div className="charbar">
+          <div className="bar"><span>.</span></div>
+          <div className="bar"><span>.</span></div>
+          <div className="bar"><span>.</span></div>
+        </div>
+        <div className="charkey">
+          <p>Poor</p>
+          <p>Fine</p>
+          <p>Great!</p>
+        </div>
+      </div>
+
+    );
+  };
+
+
+  const length = () => {
+    return (
+      <div>
+        <p>Length</p>
+        <div className="charbar">
+          <div className="bar"><span>.</span></div>
+          <div className="bar"><span>.</span></div>
+          <div className="bar"><span>.</span></div>
+        </div>
+        <div className="charkey">
+          <p>Too Small</p>
+          <p>Perfect</p>
+          <p>Too Large</p>
+        </div>
+      </div>
+
+    );
+  };
+
+
+  const fit = () => {
+    return (
+      <div>
+        <p>Fit</p>
+        <div className="charbar">
+          <div className="bar"><span>.</span></div>
+          <div className="bar"><span>.</span></div>
+          <div className="bar"><span>.</span></div>
+        </div>
+        <div className="charkey">
+          <p>Too Small</p>
+          <p>Perfect</p>
+          <p>Too Big</p>
+        </div>
+      </div>
+
+    );
+  };
 
 
 
   return (
-    <>
-      <p>Characteristics</p>
-      <p>{characteristics.size ? 'Size' : ""}</p>
-      <p>{characteristics.width ? 'Width' : ""}</p>
-      <p>{characteristics.comfort ? 'Comfort' : ""}</p>
-      <p>{characteristics.quality ? 'Quality' : ""}</p>
-      <p>{characteristics.length ? 'Length' : ""}</p>
-      <p>{characteristics.fit ? 'Fit' : ""}</p>
-    </>
+    <div className="Characteristics">
+      <>{String.fromCodePoint(0x25BC)}</>
+      <>{characteristics.size ? size() : <></>}</>
+      <>{characteristics.width ? width() : <></>}</>
+      <>{characteristics.comfort ? comfort() : <></>}</>
+      <>{characteristics.quality ? quality() : <></>}</>
+      <>{characteristics.length ? length() : <></>}</>
+      <>{characteristics.fit ? fit() : <></>}</>
+    </div>
   )
 };
 
 export default Characteristics;
 
-
+// <>{String.fromCodePoint(0x25BC)}</>
 // Size, Width, Comfort, Quality, Length, and Fit
