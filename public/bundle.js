@@ -6802,6 +6802,15 @@ var OneOutfit = /*#__PURE__*/function (_React$Component) {
       this.getReviews();
     }
   }, {
+    key: "componentDidUpdate",
+    value: function componentDidUpdate(prevProps) {
+      if (prevProps.product !== this.props.product) {
+        console.log('should update');
+        this.getStyles();
+        this.getReviews();
+      }
+    }
+  }, {
     key: "getStyles",
     value: function getStyles() {
       var _this2 = this;

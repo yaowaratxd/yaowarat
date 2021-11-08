@@ -19,6 +19,14 @@ class OneOutfit extends React.Component {
     this.getReviews();
   }
 
+  componentDidUpdate(prevProps) {
+    if (prevProps.product !== this.props.product) {
+      console.log('should update')
+      this.getStyles();
+      this.getReviews();
+    }
+  }
+
   getStyles() {
     axios.get(`/api/products/${this.props.product.id}/styles`)
       .then((response) => {
@@ -64,7 +72,7 @@ class OneOutfit extends React.Component {
       }
       return <div>{object.default_price}</div>
     }
-    
+
     let picImage = 'https://upload.wikimedia.org/wikipedia/commons/thumb/7/7c/X-circle.svg/1024px-X-circle.svg.png';
     let productRating = 'Be the first to provide a rating!';
     if (this.state.thisProductRating.ratings) {
