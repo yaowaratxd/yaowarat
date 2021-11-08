@@ -72,6 +72,13 @@ const Overview = (props) => {
     { props.product.slogan && props.product.slogan.length > 0 ? props.product.slogan : '' }
     <br />
     { props.product.description ? props.product.description : '' }
+    <br />
+    <img src='/graphics/facebook.png' onClick={() => window.open(`https://www.facebook.com/sharer/sharer.php?u=${selectedImage.url}`, 'facebook-share-dialog', 'width=626,height=436') } />
+    {/* <img src='/graphics/facebook.png' onClick={() => window.open('https://www.facebook.com/sharer/sharer.php?u='+encodeURIComponent(location.href),'facebook-share-dialog', 'width=626,height=436') } /> */}
+    <img src='/graphics/twitter.png' onClick={() => window.open('https://www.twitter.com/intent/tweet?url='+selectedImage.url,'twitter-share-dialog', 'width=626,height=436') } />
+    <img src='/graphics/pinterest.png' onClick={() => window.open('http://pinterest.com/pin/create/button/?url='+selectedImage.url,'pinterest-share-dialog', 'width=626,height=436') } />
+
+
   </div>
 
 };
