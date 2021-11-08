@@ -70,7 +70,7 @@ app.get('/products/:productID', function (req, res) {
     .catch(err => res.status(500).send(err))
 })
 app.get('/api/reviews/:sort/:product_id', async (req, res) => {
-  console.log('A Review request was called');
+  // console.log('A Review request was called');
   const result = await axios.get(`${baseURL}/reviews/?sort=${req.params.sort}&product_id=${req.params.product_id}`);
   // ${req.params.sort}
   res.status(200).json({

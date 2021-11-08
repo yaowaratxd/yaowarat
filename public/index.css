@@ -8,13 +8,13 @@
   display: flex;
   justify-content: space-around;
   border: solid black 2px;
-  width: 70vw;
+  width: 90vw;
   height: 100vh;
 }
 
 .reviewOverview {
   border: solid lightskyblue 2px;
-  width: 25vw;
+  width: 40vw;
 }
 
 .tile {
@@ -43,20 +43,32 @@
   text-decoration: underline;
 }
 
+.star {
+  display: flex;
+}
+
 /* Review Bars */
 
-.basebar {
-  height: 20;
+
+.barcontainer {
   width: 80%;
+}
+
+
+.basebar {
+  /* display: inline; */
+  height: 20;
+  width: 100%;
+  margin-left: 2%;
+  margin-top: 6%;
   background-color: #e0e0de;
   border-radius: 50;
-  margin: 50;
+  /* margin: 50; */
 }
 
 .filledbar {
+  /* display: inline; */
   height: 100%;
-  /* width: 40%;
-  background-color: lightgreen; */
   border-radius: inherit;
   text-align: center;
 }

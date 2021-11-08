@@ -7648,37 +7648,57 @@ var Breakdown = function Breakdown(_ref) {
 
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
     className: "breakdown"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, "Breakdown"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", {
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, "Breakdown"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+    className: "star"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", {
     className: "underline",
     onClick: starFilter
-  }, "5 Star"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_StarBar_jsx__WEBPACK_IMPORTED_MODULE_1__["default"], {
+  }, "5 Star"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+    className: "barcontainer"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_StarBar_jsx__WEBPACK_IMPORTED_MODULE_1__["default"], {
     reviews: reviews,
     starCount: starCount['5']
-  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", {
+  }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+    className: "star"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", {
     className: "underline",
     onClick: starFilter
-  }, "4 Star"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_StarBar_jsx__WEBPACK_IMPORTED_MODULE_1__["default"], {
+  }, "4 Star"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+    className: "barcontainer"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_StarBar_jsx__WEBPACK_IMPORTED_MODULE_1__["default"], {
     reviews: reviews,
     starCount: starCount['4']
-  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", {
+  }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+    className: "star"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", {
     className: "underline",
     onClick: starFilter
-  }, "3 Star"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_StarBar_jsx__WEBPACK_IMPORTED_MODULE_1__["default"], {
+  }, "3 Star"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+    className: "barcontainer"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_StarBar_jsx__WEBPACK_IMPORTED_MODULE_1__["default"], {
     reviews: reviews,
     starCount: starCount['3']
-  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", {
+  }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+    className: "star"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", {
     className: "underline",
     onClick: starFilter
-  }, "2 Star"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_StarBar_jsx__WEBPACK_IMPORTED_MODULE_1__["default"], {
+  }, "2 Star"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+    className: "barcontainer"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_StarBar_jsx__WEBPACK_IMPORTED_MODULE_1__["default"], {
     reviews: reviews,
     starCount: starCount['2']
-  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", {
+  }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+    className: "star"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", {
     className: "underline",
     onClick: starFilter
-  }, "1 Star "), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_StarBar_jsx__WEBPACK_IMPORTED_MODULE_1__["default"], {
+  }, "1 Star "), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+    className: "barcontainer"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_StarBar_jsx__WEBPACK_IMPORTED_MODULE_1__["default"], {
     reviews: reviews,
     starCount: starCount['1']
-  }));
+  }))));
 };
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Breakdown);
@@ -7700,11 +7720,58 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var Characteristics = function Characteristics(props) {
-  console.log('These are the items in characteristics: ', props.meta);
-  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, "Characteristics+");
+  var chars = props.meta.characteristics; // console.log("This is the meta data: ", props.meta);
+  // console.log('These are the items in characteristics: ', chars);
+
+  var characteristics = {
+    size: false,
+    width: false,
+    comfort: false,
+    quality: false,
+    length: false,
+    fit: false
+  };
+
+  if (chars === undefined) {
+    console.log('There are no Characteristics at the moment');
+    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, "Characteristics+");
+  }
+
+  if (chars.Size) {
+    console.log('Size is a characteristic: ', chars.Size);
+    characteristics.size = true;
+  }
+
+  if (chars.Width) {
+    console.log('Width is a characteristic: ', chars.Width);
+    characteristics.width = true;
+  }
+
+  if (chars.Comfort) {
+    console.log('Comfort is a characteristic: ', chars.Comfort);
+    characteristics.comfort = true;
+  }
+
+  if (chars.Quality) {
+    console.log('Quality is a characteristic: ', chars.Quality);
+    characteristics.quality = true;
+  }
+
+  if (chars.Length) {
+    console.log('Length is a characteristic: ', chars.Length);
+    characteristics.length = true;
+  }
+
+  if (chars.Fit) {
+    console.log('Fit is a characteristic: ', chars.Fit);
+    characteristics.fit = true;
+  }
+
+  console.log('This is the characteristics that are being displayed: ', characteristics);
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, "Characteristics+"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, null));
 };
 
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Characteristics);
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Characteristics); // Size, Width, Comfort, Quality, Length, and Fit
 
 /***/ }),
 
