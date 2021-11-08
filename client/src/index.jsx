@@ -27,7 +27,7 @@ justify-content: center;
 const App = () => {
   const [random, setRandom] = useState('hello world');
   const [allThings, setAllThings] = useState(sampleData);
-  const [currentProduct, setCurrentProduct] = useState({});
+  const [currentProduct, setCurrentProduct] = useState(allThings[0]);
 
   return (
     <div>
@@ -48,7 +48,7 @@ const App = () => {
       </div>
     <Root>
       {/* <Overview product={currentProduct} /> */}
-      <Reviews product={currentProduct} />
+      <Reviews product={allThings[3]} />
     </Root>
 
     </div>

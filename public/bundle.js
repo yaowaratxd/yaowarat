@@ -39164,7 +39164,7 @@ var App = function App() {
       allThings = _useState4[0],
       setAllThings = _useState4[1];
 
-  var _useState5 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)({}),
+  var _useState5 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(allThings[0]),
       _useState6 = _slicedToArray(_useState5, 2),
       currentProduct = _useState6[0],
       setCurrentProduct = _useState6[1];
@@ -39183,7 +39183,7 @@ var App = function App() {
     setCurrentProduct: setCurrentProduct,
     currentProduct: currentProduct
   }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(Root, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_components_reviews_Reviews_jsx__WEBPACK_IMPORTED_MODULE_4__["default"], {
-    product: currentProduct
+    product: allThings[3]
   })));
 };
 
