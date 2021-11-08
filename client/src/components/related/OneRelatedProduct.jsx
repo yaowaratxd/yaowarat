@@ -25,6 +25,7 @@ class OneRelatedProduct extends React.Component {
   componentDidMount() {
     this.getStyles();
     this.getReviews();
+    this.getOriginalReviews();
   }
 
   componentDidUpdate(prevProps) {
@@ -52,6 +53,14 @@ class OneRelatedProduct extends React.Component {
       .catch(err => console.log(err));
   }
 
+  getOriginalReviews () {
+    axios.get(`/reviews/meta/${this.props.originalProduct.id}`)
+    .then((response) => {
+      this.setState({ mainProductRating: response.data });
+    })
+    .catch(err => console.log(err));
+  }
+
   handleShowModal() {
     this.setState({ showModal: true });
   }
@@ -67,6 +76,19 @@ class OneRelatedProduct extends React.Component {
       for (var key in this.state.thisProductRating.ratings) {
         reviewTotalScore += (parseInt([key]) * parseInt(this.state.thisProductRating.ratings[key]));
         totalReviews += parseInt(this.state.thisProductRating.ratings[key])
+      }
+      return (Math.round((reviewTotalScore / totalReviews) * 4) / 4).toFixed(2);
+    }
+    return 'Be the first to rate this product!';
+  }
+
+  getOriginalRating() {
+    var reviewTotalScore = 0;
+    var totalReviews = 0;
+    if (JSON.stringify(this.state.mainProductRating.ratings) !== '{}') {
+      for (var key in this.state.mainProductRating.ratings) {
+        reviewTotalScore += (parseInt([key]) * parseInt(this.state.mainProductRating.ratings[key]));
+        totalReviews += parseInt(this.state.mainProductRating.ratings[key])
       }
       return (Math.round((reviewTotalScore / totalReviews) * 4) / 4).toFixed(2);
     }
@@ -91,7 +113,7 @@ class OneRelatedProduct extends React.Component {
                   <th scope="col">Selected Comparison</th>
                 </tr>
                 <tr>
-                  <td>This should come from parent</td>
+                  <td><Stars rating={this.getOriginalRating()} /></td>
                   <td>Star Rating</td>
                   <td><Stars rating={this.getRatingScore()} /></td>
                 </tr>
@@ -134,7 +156,7 @@ class OneRelatedProduct extends React.Component {
         picImage = this.state.thisProductExtra[0].photos[0].thumbnail_url;
       }
     }
-    
+
     const renderPrice = function (array, object) {
       for (var i = 0; i < array.length; i++) {
         if (array[i].sale_price) {
@@ -164,13 +186,12 @@ class OneRelatedProduct extends React.Component {
           Price: {renderPrice(this.state.thisProductExtra, this.props.product)}<br/>
         </div>
         <div>
-          Star rating:
-          {productRating}
+          Rating:
+         <Stars rating={productRating} />
         </div>
         <div>{this.props.comparison}</div>
 
         <br />
-        <Stars rating={productRating} />
       </div>
     );
   }
