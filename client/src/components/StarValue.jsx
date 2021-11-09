@@ -38,7 +38,7 @@ const Stars = (props) => {
   // console.log(starArray)
   return (
     <div>
-      {starArray.map((star) => <img src={star} height="20px" width="20px" alt="rating stars" />)}
+      {starArray.map((star, index) => <img src={star} height="20px" width="20px" alt="rating stars" key={index} />)}
     </div>
   );
 };

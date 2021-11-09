@@ -5814,12 +5814,13 @@ var Stars = function Stars(props) {
   } // console.log(starArray)
 
 
-  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, starArray.map(function (star) {
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, starArray.map(function (star, index) {
     return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("img", {
       src: star,
       height: "20px",
       width: "20px",
-      alt: "rating stars"
+      alt: "rating stars",
+      key: index
     });
   }));
 };
@@ -7294,11 +7295,12 @@ var Related = /*#__PURE__*/function (_React$Component) {
       }, String.fromCodePoint(129154));
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h3", null, "current product selected: ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("em", null, this.props.currentProduct.name), " "), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("ul", {
         className: "relatedproducts"
-      }, leftButton, relatedSlice.map(function (oneProduct) {
+      }, leftButton, relatedSlice.map(function (oneProduct, index) {
         return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_OneRelatedProduct_jsx__WEBPACK_IMPORTED_MODULE_2__["default"], {
           product: oneProduct,
           originalProduct: _this4.props.currentProduct,
-          ref: _this4.navRef
+          ref: _this4.navRef,
+          key: index
         });
       }), rightButton)), "Your outfit list:", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("ul", {
         className: "outfitproducts"
@@ -7611,11 +7613,11 @@ __webpack_require__.r(__webpack_exports__);
 
 var Stars = function Stars(props) {
   var value = props.rating;
-  var fullStar = '/client/src/resources/graphics/fullstar.png';
-  var threeQuarterStar = '/client/src/resources/graphics/threequarterstar.png';
-  var halfStar = '/client/src/resources/graphics/halfstar.png';
-  var quarterStar = '/client/src/resources/graphics/onequarterstar.png';
-  var emptyStar = '/client/src/resources/graphics/emptystar.png';
+  var fullStar = '/graphics/fullstar.png';
+  var threeQuarterStar = '/graphics/threequarterstar.png';
+  var halfStar = '/graphics/halfstar.png';
+  var quarterStar = '/graphics/onequarterstar.png';
+  var emptyStar = '/graphics/emptystar.png';
   var starArray = [emptyStar, emptyStar, emptyStar, emptyStar, emptyStar];
   var remainingRating = value - Math.floor(value);
   var fullStars = 0;
@@ -7641,12 +7643,13 @@ var Stars = function Stars(props) {
     }
   }
 
-  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, starArray.map(function (star) {
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, starArray.map(function (star, index) {
     return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("img", {
       src: star,
       height: "20px",
       width: "20px",
-      alt: "rating stars"
+      alt: "rating stars",
+      key: index
     });
   }));
 };
@@ -7765,165 +7768,6 @@ var Breakdown = function Breakdown(_ref) {
 
 /***/ }),
 
-/***/ "./client/src/components/reviews/reviewOverview/Characteristics.jsx":
-/*!**************************************************************************!*\
-  !*** ./client/src/components/reviews/reviewOverview/Characteristics.jsx ***!
-  \**************************************************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
-/* harmony export */ });
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-
-
-var Characteristics = function Characteristics(props) {
-  var chars = props.meta.characteristics; // console.log("This is the meta data: ", props.meta);
-  // console.log('These are the items in characteristics: ', chars);
-
-  var characteristics = {
-    size: false,
-    width: false,
-    comfort: false,
-    quality: false,
-    length: false,
-    fit: false
-  };
-
-  if (chars === undefined) {
-    // console.log('There are no Characteristics at the moment');
-    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, "Characteristics+");
-  }
-
-  if (chars.Size) {
-    // console.log('Size is a characteristic: ', chars.Size);
-    characteristics.size = true;
-  }
-
-  if (chars.Width) {
-    // console.log('Width is a characteristic: ', chars.Width);
-    characteristics.width = true;
-  }
-
-  if (chars.Comfort) {
-    // console.log('Comfort is a characteristic: ', chars.Comfort);
-    characteristics.comfort = true;
-  }
-
-  if (chars.Quality) {
-    // console.log('Quality is a characteristic: ', chars.Quality);
-    characteristics.quality = true;
-  }
-
-  if (chars.Length) {
-    // console.log('Length is a characteristic: ', chars.Length);
-    characteristics.length = true;
-  }
-
-  if (chars.Fit) {
-    // console.log('Fit is a characteristic: ', chars.Fit);
-    characteristics.fit = true;
-  } // console.log('This is the characteristics that are being displayed: ', characteristics);
-
-
-  var pointer = function pointer() {};
-
-  var size = function size() {
-    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, "Size"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-      className: "charbar"
-    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-      className: "bar"
-    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("span", null, ".")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-      className: "bar"
-    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("span", null, ".")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-      className: "bar"
-    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("span", null, "."))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-      className: "charkey"
-    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, "Too Small"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, "Perfect"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, "Too Large")));
-  };
-
-  var width = function width() {
-    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, "Width"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-      className: "charbar"
-    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-      className: "bar"
-    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("span", null, ".")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-      className: "bar"
-    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("span", null, ".")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-      className: "bar"
-    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("span", null, "."))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-      className: "charkey"
-    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, "Too Small"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, "Perfect"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, "Too Large")));
-  };
-
-  var comfort = function comfort() {
-    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, "Comfort"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-      className: "charbar"
-    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-      className: "bar"
-    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("span", null, ".")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-      className: "bar"
-    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("span", null, ".")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-      className: "bar"
-    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("span", null, "."))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-      className: "charkey"
-    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, "Poor"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, "Fine"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, "Great!")));
-  };
-
-  var quality = function quality() {
-    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, "Quality"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-      className: "charbar"
-    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-      className: "bar"
-    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("span", null, ".")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-      className: "bar"
-    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("span", null, ".")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-      className: "bar"
-    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("span", null, "."))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-      className: "charkey"
-    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, "Poor"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, "Fine"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, "Great!")));
-  };
-
-  var length = function length() {
-    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, "Length"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-      className: "charbar"
-    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-      className: "bar"
-    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("span", null, ".")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-      className: "bar"
-    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("span", null, ".")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-      className: "bar"
-    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("span", null, "."))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-      className: "charkey"
-    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, "Too Small"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, "Perfect"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, "Too Large")));
-  };
-
-  var fit = function fit() {
-    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, "Fit"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-      className: "charbar"
-    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-      className: "bar"
-    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("span", null, ".")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-      className: "bar"
-    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("span", null, ".")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-      className: "bar"
-    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("span", null, "."))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-      className: "charkey"
-    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, "Too Small"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, "Perfect"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, "Too Big")));
-  };
-
-  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-    className: "Characteristics"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, String.fromCodePoint(0x25BC)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, characteristics.size ? size() : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, null)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, characteristics.width ? width() : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, null)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, characteristics.comfort ? comfort() : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, null)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, characteristics.quality ? quality() : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, null)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, characteristics.length ? length() : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, null)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, characteristics.fit ? fit() : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, null)));
-};
-
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Characteristics); // <>{String.fromCodePoint(0x25BC)}</>
-// Size, Width, Comfort, Quality, Length, and Fit
-
-/***/ }),
-
 /***/ "./client/src/components/reviews/reviewOverview/Overview.jsx":
 /*!*******************************************************************!*\
   !*** ./client/src/components/reviews/reviewOverview/Overview.jsx ***!
@@ -7939,7 +7783,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _Breakdown_jsx__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Breakdown.jsx */ "./client/src/components/reviews/reviewOverview/Breakdown.jsx");
 /* harmony import */ var _StarRating_jsx__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./StarRating.jsx */ "./client/src/components/reviews/reviewOverview/StarRating.jsx");
 /* harmony import */ var _Recommended_jsx__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./Recommended.jsx */ "./client/src/components/reviews/reviewOverview/Recommended.jsx");
-/* harmony import */ var _Characteristics_jsx__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./Characteristics.jsx */ "./client/src/components/reviews/reviewOverview/Characteristics.jsx");
+/* harmony import */ var _characteristics_Characteristics_jsx__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./characteristics/Characteristics.jsx */ "./client/src/components/reviews/reviewOverview/characteristics/Characteristics.jsx");
 function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -8030,7 +7874,7 @@ var Overview = /*#__PURE__*/function (_React$Component) {
         starFilter: this.props.starFilter
       }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_Recommended_jsx__WEBPACK_IMPORTED_MODULE_3__["default"], {
         reviews: this.props.reviews
-      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_Characteristics_jsx__WEBPACK_IMPORTED_MODULE_4__["default"], {
+      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_characteristics_Characteristics_jsx__WEBPACK_IMPORTED_MODULE_4__["default"], {
         meta: this.props.meta
       }));
     }
@@ -8141,6 +7985,200 @@ var StarRating = function StarRating(props) {
 };
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (StarRating);
+
+/***/ }),
+
+/***/ "./client/src/components/reviews/reviewOverview/characteristics/Characteristics.jsx":
+/*!******************************************************************************************!*\
+  !*** ./client/src/components/reviews/reviewOverview/characteristics/Characteristics.jsx ***!
+  \******************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var _SortChars_jsx__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./SortChars.jsx */ "./client/src/components/reviews/reviewOverview/characteristics/SortChars.jsx");
+
+
+
+var Characteristics = function Characteristics(props) {
+  var chars = props.meta.characteristics;
+  var characteristics = {
+    size: false,
+    width: false,
+    comfort: false,
+    quality: false,
+    length: false,
+    fit: false
+  };
+
+  if (chars === undefined) {
+    // console.log('There are no Characteristics at the moment');
+    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, "Characteristics+");
+  }
+
+  if (chars.Size) {
+    characteristics.size = true;
+    var sValue = props.meta.characteristics.Size.value;
+  }
+
+  if (chars.Width) {
+    characteristics.width = true;
+    var wValue = props.meta.characteristics.Width.value;
+  }
+
+  if (chars.Comfort) {
+    characteristics.comfort = true;
+    var cValue = props.meta.characteristics.Comfort.value;
+  }
+
+  if (chars.Quality) {
+    characteristics.quality = true;
+    var qValue = props.meta.characteristics.Quality.value;
+  }
+
+  if (chars.Length) {
+    characteristics.length = true;
+    var lValue = props.meta.characteristics.Length.value;
+  }
+
+  if (chars.Fit) {
+    characteristics.fit = true;
+    var fValue = props.meta.characteristics.Fit.value;
+  }
+
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+    className: "Characteristics"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, characteristics.size ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_SortChars_jsx__WEBPACK_IMPORTED_MODULE_1__["default"], {
+    item: 'size',
+    value: sValue
+  }) : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, null)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, characteristics.width ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_SortChars_jsx__WEBPACK_IMPORTED_MODULE_1__["default"], {
+    item: 'width',
+    value: wValue
+  }) : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, null)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, characteristics.comfort ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_SortChars_jsx__WEBPACK_IMPORTED_MODULE_1__["default"], {
+    item: 'comfort',
+    value: cValue
+  }) : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, null)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, characteristics.quality ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_SortChars_jsx__WEBPACK_IMPORTED_MODULE_1__["default"], {
+    item: 'quality',
+    value: qValue
+  }) : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, null)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, characteristics.length ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_SortChars_jsx__WEBPACK_IMPORTED_MODULE_1__["default"], {
+    item: 'length',
+    value: lValue
+  }) : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, null)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, characteristics.fit ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_SortChars_jsx__WEBPACK_IMPORTED_MODULE_1__["default"], {
+    item: 'fit',
+    value: fValue
+  }) : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, null)));
+};
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Characteristics); // <>{String.fromCodePoint(0x25BC)}</>
+// Size, Width, Comfort, Quality, Length, and Fit
+
+/***/ }),
+
+/***/ "./client/src/components/reviews/reviewOverview/characteristics/Keys.jsx":
+/*!*******************************************************************************!*\
+  !*** ./client/src/components/reviews/reviewOverview/characteristics/Keys.jsx ***!
+  \*******************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+
+
+var Keys = function Keys(_ref) {
+  var charts = _ref.charts;
+
+  if (charts) {
+    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "charkey"
+    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, "Too Small"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, "Perfect"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, "Too Big"));
+  } else {
+    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "charkey"
+    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, "Poor"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, "Fine"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, "Great"));
+  }
+};
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Keys);
+
+/***/ }),
+
+/***/ "./client/src/components/reviews/reviewOverview/characteristics/SortChars.jsx":
+/*!************************************************************************************!*\
+  !*** ./client/src/components/reviews/reviewOverview/characteristics/SortChars.jsx ***!
+  \************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var _Keys_jsx__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Keys.jsx */ "./client/src/components/reviews/reviewOverview/characteristics/Keys.jsx");
+
+
+
+var Sort = function Sort(_ref) {
+  var item = _ref.item,
+      value = _ref.value;
+  var location = Math.round(100 * (value / 5)); // console.log('This is the arrows location %: ', location);
+
+  var keys = {
+    base: false,
+    barOne: false,
+    barTwo: false,
+    barThree: false
+  };
+
+  if (item === 'size' || item === 'fit' || item === 'width' || item === 'length') {
+    keys.base = true;
+  }
+
+  if (value <= 1.66) {
+    keys.barOne = true;
+    location = Math.round(100 * (location / 33.3333));
+  } else if (value <= 3.33) {
+    keys.barTwo = true;
+    location = Math.round(100 * ((location - 33.3334) / 33.3333));
+  } else {
+    keys.barThree = true;
+    location = Math.round(100 * ((location - 66.6666) / 33.3333));
+  }
+
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, item), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+    className: "charbar"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+    className: "bar"
+  }, keys.barOne ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("span", {
+    style: {
+      'margin': "".concat(location) + '%'
+    }
+  }, String.fromCodePoint(0x25BC)) : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, null)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+    className: "bar"
+  }, keys.barTwo ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("span", {
+    style: {
+      'margin': "".concat(location) + '%'
+    }
+  }, String.fromCodePoint(0x25BC)) : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, null)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+    className: "bar"
+  }, keys.barThree ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("span", {
+    style: {
+      'margin': "".concat(location) + '%'
+    }
+  }, String.fromCodePoint(0x25BC)) : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, null))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_Keys_jsx__WEBPACK_IMPORTED_MODULE_1__["default"], {
+    charts: keys.base
+  }));
+};
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Sort);
 
 /***/ }),
 

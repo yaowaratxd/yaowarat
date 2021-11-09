@@ -3,7 +3,7 @@ import React from 'react';
 import Breakdown from './Breakdown.jsx';
 import StarRating from './StarRating.jsx';
 import Recommended from './Recommended.jsx';
-import Characteristics from './Characteristics.jsx';
+import Characteristics from './characteristics/Characteristics.jsx';
 
 class Overview extends React.Component {
   constructor(props) {

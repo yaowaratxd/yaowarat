@@ -90,11 +90,6 @@
   width: 100%;
 }
 
-/* .outerbar {
-  width: 90%;
-  background-color: gray;
-} */
-
 .bar {
   background-color: rgb(176, 176, 176);
   height: 20;
@@ -106,4 +101,8 @@
   justify-content: space-between;
   width: 81%;
   margin: 1%;
+}
+
+.bar span {
+  color: black;
 }

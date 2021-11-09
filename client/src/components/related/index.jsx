@@ -15,7 +15,7 @@ class Related extends React.Component {
       outfitProducts: [], //move up to app most likely
       left: 0,
       right: 2,
-      };
+    };
     this.getRelated = this.getRelated.bind(this);
     this.addToOutfitList = this.addToOutfitList.bind(this);
     this.removeFromOutfitList = this.removeFromOutfitList.bind(this);
@@ -29,7 +29,7 @@ class Related extends React.Component {
 
   getRelated() {
     axios.get(`/products/${this.props.currentProduct.id}/related`)
-      .then((results) => { this.setState({relatedProductsKey: results.data}); })
+      .then((results) => { this.setState({ relatedProductsKey: results.data }); })
       .then(() => {
         for (var i = 0; i < this.state.relatedProductsKey.length; i++) {
           this.getProduct(this.state.relatedProductsKey[i]);
@@ -51,10 +51,10 @@ class Related extends React.Component {
       console.log('this product id:', product.id, 'is already on outfit list')
       if (this.state.outfitProducts[i].id === product.id) {
         return;
-        }
       }
-      this.setState((state) => ({ outfitProducts: state.outfitProducts.concat(product) }));
     }
+    this.setState((state) => ({ outfitProducts: state.outfitProducts.concat(product) }));
+  }
 
 
   removeFromOutfitList(product) {
@@ -79,16 +79,16 @@ class Related extends React.Component {
     if (direction === 'left') {
       this.setState((state) => (
         {
-        left: state.left - 1,
-        right : state.right - 1,
-      }))
+          left: state.left - 1,
+          right: state.right - 1,
+        }))
       // this.navRef ? (this.navRef.current.scrollLeft -= 200) : null;
     } else {
-    //   // this.navRef ? (this.navRef.current.scrollLeft += 200) : null;
-      this.setState( state => ({
-        left : state.left + 1,
-        right : state.right + 1,
-    }))
+      //   // this.navRef ? (this.navRef.current.scrollLeft += 200) : null;
+      this.setState(state => ({
+        left: state.left + 1,
+        right: state.right + 1,
+      }))
     }
   }
 
@@ -98,16 +98,16 @@ class Related extends React.Component {
     };
     let relatedSlice = this.state.relatedProducts.slice(this.state.left, this.state.right)
     // console.log(relatedSlice)
-    const leftButton = (this.state.left === 0) ? null : <button id="scrollarrow" onClick={() => this.handleNav('left')}>{String.fromCodePoint(129152, )}</button>
-    const rightButton = (this.state.right === this.state.relatedProducts.length) ? null : <button id="scrollarrow" onClick={() => this.handleNav('right')}>{String.fromCodePoint( 129154)}</button>
+    const leftButton = (this.state.left === 0) ? null : <button id="scrollarrow" onClick={() => this.handleNav('left')}>{String.fromCodePoint(129152,)}</button>
+    const rightButton = (this.state.right === this.state.relatedProducts.length) ? null : <button id="scrollarrow" onClick={() => this.handleNav('right')}>{String.fromCodePoint(129154)}</button>
     return (
       <div>
         <h3>current product selected: <em>{this.props.currentProduct.name}</em> </h3>
         <div>
           <ul className="relatedproducts">
             {leftButton}
-            {relatedSlice.map((oneProduct) => {
-              return <OneRelatedProduct product={oneProduct} originalProduct={this.props.currentProduct} ref={this.navRef}/>
+            {relatedSlice.map((oneProduct, index) => {
+              return <OneRelatedProduct product={oneProduct} originalProduct={this.props.currentProduct} ref={this.navRef} key={index} />
             })}
             {rightButton}
           </ul>
@@ -115,9 +115,9 @@ class Related extends React.Component {
         Your outfit list:
         <div>
           <ul className="outfitproducts">
-          <div> <AddCurrentItem setOutfit={this.addToOutfitList} currentProduct={this.props.currentProduct}/> </div>
+            <div> <AddCurrentItem setOutfit={this.addToOutfitList} currentProduct={this.props.currentProduct} /> </div>
             {this.state.outfitProducts.map((oneProduct) => {
-                return <OneOutfit product={oneProduct} removeOutfit={this.removeFromOutfitList} />
+              return <OneOutfit product={oneProduct} removeOutfit={this.removeFromOutfitList} />
             })}
           </ul>
         </div>
