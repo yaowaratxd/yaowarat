@@ -15,7 +15,7 @@ module.exports = {
   setupFiles: ['<rootDir>/enzyme.config.js'],
 
   // The test environment that will be used for testing
-  testEnvironment: 'jsdom',
+  testEnvironment: 'node',
 
   // The glob patterns Jest uses to detect test files
   testMatch: ['**/__tests__/**/*.js?(x)', '**/?(*.)+(spec|test).js?(x)'],
@@ -27,10 +27,11 @@ module.exports = {
   testURL: 'http://localhost',
 
   // An array of regexp pattern strings that are matched against all source file paths, matched files will skip transformation
-  transformIgnorePatterns: ['<rootDir>/node_modules/'],
 
+  // An array of regexp pattern strings that are matched against all source file paths, matched files will skip transformation
+  transformIgnorePatterns: ['<rootDir>/node_modules/'],
   transform: {
-    "^.+\\.[t|j]sx?$": "babel-jest"
+    '^.+\\.(js|jsx|ts|tsx|mjs)$': 'babel-jest',
   },
   // Indicates whether each individual test should be reported during the run
   verbose: false,

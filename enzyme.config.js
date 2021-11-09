@@ -1,5 +1,5 @@
 /** Used in jest.config.js */
-import { configure } from 'enzyme';
-import Adapter from '@wojtekmaj/enzyme-adapter-react-17';
+const { configure } = require('enzyme');
+const Adapter = require('@wojtekmaj/enzyme-adapter-react-17');
 
 configure({ adapter: new Adapter() });
