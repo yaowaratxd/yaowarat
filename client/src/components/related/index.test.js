@@ -11,7 +11,12 @@ test('addition', () => {
 
 const index = require('./index.jsx')
 
-test('state has value', () => {
-  const component = shallow
-  expect(thing).length.not.toEqual(0)
+describe('Related', () => {
+  it('should render properly with no children', () => {
+    const component = shallow(<Related />);
+    console.log(component)
+  })
+
+
+
 })
