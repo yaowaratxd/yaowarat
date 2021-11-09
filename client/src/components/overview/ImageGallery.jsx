@@ -19,29 +19,22 @@ margin-bottom: 5px;
 `;
 const LeftRibbon = styled.div`
 width: 10vw;
-position: absolute;
-top: 5vh;
-left: 5%;
 height: 60vh;
 overflow: scroll;
 z-index: 2;
 `;
+
 const ImageContainer = styled.div`
 width: 10vw;
 `;
+
 const BaseImage = styled.img`
 width: 40vw;
-position: absolute;
-top: 5vh;
-left: 5%;
 height: 60vh;
 cursor: zoom-in;
 `;
 const BaseImageExpanded = styled.img`
 width: 70vw;
-position: absolute;
-top: 5vh;
-left: 5%;
 height: 60vh;
 z-index: 2;
 cursor: zoom-in;
