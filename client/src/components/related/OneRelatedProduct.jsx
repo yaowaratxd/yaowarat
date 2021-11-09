@@ -173,7 +173,7 @@ class OneRelatedProduct extends React.Component {
     return (
       <div className="onerelated" href="">
         <button onClick={this.compareProducts} type="button" id="comparebutton"><icon>{String.fromCodePoint(0x2605)}</icon> </button>
-        <img src={`${picImage}`} id="productimage" height="250px" width="225px" alt="product" onClick={() => this.props.setCurrentProduct(this.props.product)}/>
+        <img src={`${picImage}`} id="productimage" alt="product" onClick={() => this.props.setCurrentProduct(this.props.product)}/>
         <br/>
         {modal}
         <div>

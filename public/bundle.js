@@ -7156,8 +7156,6 @@ var OneRelatedProduct = /*#__PURE__*/function (_React$Component) {
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("icon", null, String.fromCodePoint(0x2605)), " "), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("img", {
         src: "".concat(picImage),
         id: "productimage",
-        height: "250px",
-        width: "225px",
         alt: "product",
         onClick: function onClick() {
           return _this5.props.setCurrentProduct(_this5.props.product);

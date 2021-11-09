@@ -13,9 +13,11 @@
 
 .relatedproducts {
   display: flex;
+  /* grid-template-columns: 1fr 1fr 1fr 1fr; */
   flex-direction: row;
   flex-wrap: nowrap;
   column-gap: 10px;
+  height: 500px;
 }
 
 .onerelated {
@@ -24,22 +26,24 @@
   align-self: stretch;
   background-color: silver;
   align-items: center;
-  flex-grow: 1;
+  flex-grow: 0;
   /* flex: none; */
-  flex-basis: 250px;
-  overflow:auto;
+  flex-basis: 270px;
+  overflow: hidden;
   white-space: normal;
   align-content: center;
   justify-content: center;
+  text-align: left;
+  align-content:flex-start;
   /* display: inline-block; */
   /* padding: 200px; */
 }
 
 #comparebutton {
   position: relative;
-  bottom: 220px;
-  left: 230px;
-  z-index: 500;
+  top: 00px;
+  left: 200px;
+  z-index: 2;
   color: yellow;
   font-size: xx-large;
   background-color: rgba(0,0,0,0);
@@ -48,8 +52,17 @@
 }
 
 #productimage {
+  display: block;
+  position: relative;
+  max-width:230px;
+  max-height:250px;
+  width: auto;
+  height: auto;
   border: solid;
   border-width: 1px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 5px;
 }
 
 .outfitproducts {
