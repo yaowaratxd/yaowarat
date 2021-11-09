@@ -90,6 +90,11 @@
   width: 100%;
 }
 
+/* .outerbar {
+  width: 90%;
+  background-color: gray;
+} */
+
 .bar {
   background-color: rgb(176, 176, 176);
   height: 20;

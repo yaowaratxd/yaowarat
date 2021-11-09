@@ -44,6 +44,12 @@ const Characteristics = (props) => {
   }
   // console.log('This is the characteristics that are being displayed: ', characteristics);
 
+
+
+  const pointer = () => {
+  };
+
+
   const size = () => {
     return (
       <div>
@@ -88,11 +94,13 @@ const Characteristics = (props) => {
     return (
       <div>
         <p>Comfort</p>
+        {/* <div className="outerbar"> */}
         <div className="charbar">
           <div className="bar"><span>.</span></div>
           <div className="bar"><span>.</span></div>
           <div className="bar"><span>.</span></div>
         </div>
+        {/* </div> */}
         <div className="charkey">
           <p>Poor</p>
           <p>Fine</p>
@@ -147,6 +155,7 @@ const Characteristics = (props) => {
   const fit = () => {
     return (
       <div>
+
         <p>Fit</p>
         <div className="charbar">
           <div className="bar"><span>.</span></div>
@@ -158,6 +167,7 @@ const Characteristics = (props) => {
           <p>Perfect</p>
           <p>Too Big</p>
         </div>
+
       </div>
 
     );

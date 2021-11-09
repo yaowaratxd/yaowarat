@@ -7595,6 +7595,66 @@ var Review = /*#__PURE__*/function (_React$Component) {
 
 /***/ }),
 
+/***/ "./client/src/components/reviews/StartValue.jsx":
+/*!******************************************************!*\
+  !*** ./client/src/components/reviews/StartValue.jsx ***!
+  \******************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+
+
+var Stars = function Stars(props) {
+  var value = props.rating;
+  var fullStar = '/client/src/resources/graphics/fullstar.png';
+  var threeQuarterStar = '/client/src/resources/graphics/threequarterstar.png';
+  var halfStar = '/client/src/resources/graphics/halfstar.png';
+  var quarterStar = '/client/src/resources/graphics/onequarterstar.png';
+  var emptyStar = '/client/src/resources/graphics/emptystar.png';
+  var starArray = [emptyStar, emptyStar, emptyStar, emptyStar, emptyStar];
+  var remainingRating = value - Math.floor(value);
+  var fullStars = 0;
+
+  for (var i = 0; i < 5; i++) {
+    if (i <= Math.floor(value) - 1) {
+      starArray[i] = fullStar;
+      fullStars = i;
+    }
+  }
+
+  if (value - Math.floor(value) !== 0) {
+    if (remainingRating === 0.75) {
+      starArray[fullStars + 1] = threeQuarterStar;
+    }
+
+    if (remainingRating === 0.50) {
+      starArray[fullStars + 1] = halfStar;
+    }
+
+    if (remainingRating === 0.25) {
+      starArray[fullStars + 1] = quarterStar;
+    }
+  }
+
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, starArray.map(function (star) {
+    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("img", {
+      src: star,
+      height: "20px",
+      width: "20px",
+      alt: "rating stars"
+    });
+  }));
+};
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Stars);
+
+/***/ }),
+
 /***/ "./client/src/components/reviews/reviewOverview/Breakdown.jsx":
 /*!********************************************************************!*\
   !*** ./client/src/components/reviews/reviewOverview/Breakdown.jsx ***!
@@ -7767,6 +7827,8 @@ var Characteristics = function Characteristics(props) {
     characteristics.fit = true;
   } // console.log('This is the characteristics that are being displayed: ', characteristics);
 
+
+  var pointer = function pointer() {};
 
   var size = function size() {
     return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, "Size"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
@@ -8067,10 +8129,15 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var _StartValue_jsx__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../StartValue.jsx */ "./client/src/components/reviews/StartValue.jsx");
+
 
 
 var StarRating = function StarRating(props) {
-  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h3", null, props.avg()));
+  var rating = props.avg();
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h3", null, rating), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_StartValue_jsx__WEBPACK_IMPORTED_MODULE_1__["default"], {
+    rating: rating
+  }));
 };
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (StarRating);
