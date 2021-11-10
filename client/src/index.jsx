@@ -42,9 +42,6 @@ const App = () => {
 
       <div className="widget">
         <Root>
-          <Top />
-        </Root>
-        <Root>
           <Overview product={currentProduct}/>
         </Root>
       </div>
