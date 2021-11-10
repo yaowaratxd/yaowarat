@@ -14,7 +14,6 @@ const index = require('./index.jsx')
 describe('Related', () => {
   it('should render properly with no children', () => {
     const component = shallow(<Related />);
-    console.log(component)
   })
 
 

@@ -1,6 +1,18 @@
+/*
+// Base Colors
+Light Grey: #A9A9A9
+Light Blue: #7395AE
+// Accent Base Color
+Tan: #B1A296
+// Accent Colors
+Dark Grey: #5D5C61
+Dark Blue: #557A95
+*/
+
+
+
 #related {
   position: absolute;
-  /* z-index: 999; */
   font-size: large;
 }
 
@@ -13,7 +25,6 @@
 
 .relatedproducts {
   display: flex;
-  /* grid-template-columns: 1fr 1fr 1fr 1fr; */
   flex-direction: row;
   flex-wrap: nowrap;
   column-gap: 10px;
@@ -24,10 +35,9 @@
   border-style: solid;
   padding: 5px;
   align-self: stretch;
-  background-color: silver;
+  background-color: #7395AE;
   align-items: center;
   flex-grow: 0;
-  /* flex: none; */
   flex-basis: 270px;
   overflow: hidden;
   white-space: normal;
@@ -35,8 +45,7 @@
   justify-content: center;
   text-align: left;
   align-content:flex-start;
-  /* display: inline-block; */
-  /* padding: 200px; */
+  border-width: thin;
 }
 
 #comparebutton {
@@ -73,13 +82,20 @@
 }
 
 .oneoutfit {
-  justify-self: center;
-  text-align: left;
-  font-size: 18px;
   border-style: solid;
   padding: 5px;
   align-self: stretch;
-  background-color: silver;
+  background-color: #7395AE;
+  align-items: center;
+  flex-grow: 0;
+  flex-basis: 270px;
+  overflow: hidden;
+  white-space: normal;
+  align-content: center;
+  justify-content: center;
+  text-align: left;
+  align-content:flex-start;
+  border-width: thin;
 }
 
 #scrollarrow {
@@ -93,6 +109,7 @@
 }
 
 .modal {
+  z-index: 3;
   background-color: rgba(0,0,0,0.5);
   position: fixed;
   height: 100%;
@@ -110,16 +127,18 @@ table {
   border: 2px solid rgb(200,200,200);
   letter-spacing: 1px;
   font-size: 0.8rem;
-  background-color: rgb(255, 255, 255);
+  background-color: #B1A296;
+  width: 600px;
 }
 
 td, th {
   border: 1px solid rgb(190,190,190);
   padding: 10px 20px;
+  word-wrap: break-word;
 }
 
 th {
-  background-color: rgb(255, 255, 255);
+  background-color: #B1A296;
 }
 
 td {

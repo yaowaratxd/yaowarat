@@ -31,13 +31,16 @@ const App = () => {
 
   return (
     <div>
+      Banner
+      <div className="widget">
         <Root>
           <Overview product={currentProduct}/>
         </Root>
-      <div className="widget">
       </div>
       <div className="widget">
-        <h3>Ratings and Reviews</h3>
+    <Root>
+      <Reviews product={currentProduct} />
+    </Root>
       </div>
       <div className="widget">
         <h3>Questions and Answers</h3>
@@ -46,9 +49,6 @@ const App = () => {
         <br />
         <h3><Related setCurrentProduct={setCurrentProduct} currentProduct={currentProduct}/></h3>
       </div>
-    <Root>
-      <Reviews product={currentProduct} />
-    </Root>
 
     </div>
   );
