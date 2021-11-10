@@ -7393,7 +7393,8 @@ var ReviewList = function ReviewList(props) {
     }, "Helpful")))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_tileComponents_ReviewTiles_jsx__WEBPACK_IMPORTED_MODULE_1__["default"], {
       reviews: props.reviews,
       reviewsShown: props.reviewsShown,
-      helpfulButton: props.helpfulButton
+      helpfulButton: props.helpfulButton,
+      helpfulClick: props.helpfulClick
     }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", {
       type: "button",
       onClick: props.readMore
@@ -7467,7 +7468,8 @@ var Review = /*#__PURE__*/function (_React$Component) {
       reviews: {},
       reviewsShown: 2,
       sort: 'relevant',
-      meta: {}
+      meta: {},
+      helpfulClick: false
     };
     _this.readMore = _this.readMore.bind(_assertThisInitialized(_this));
     _this.writeReview = _this.writeReview.bind(_assertThisInitialized(_this));
@@ -7544,8 +7546,18 @@ var Review = /*#__PURE__*/function (_React$Component) {
     }
   }, {
     key: "helpfulButton",
-    value: function helpfulButton() {
-      console.log('"Yes" was clicked');
+    value: function helpfulButton(event) {
+      if (event.target.innerText === 'Yes') {
+        console.log('Yes was clicked!');
+        this.setState({
+          helpfulClick: true
+        });
+      } else {
+        console.log('No was clicked!');
+        this.setState({
+          helpfulClick: true
+        });
+      }
     }
   }, {
     key: "starFilter",
@@ -7570,7 +7582,8 @@ var Review = /*#__PURE__*/function (_React$Component) {
         reviewsShown: this.state.reviewsShown,
         sort: this.sort,
         sortType: this.state.sort,
-        helpfulButton: this.helpfulButton
+        helpfulButton: this.helpfulButton,
+        helpfulClick: this.state.helpfulClick
       }));
     }
   }]);
@@ -8197,6 +8210,12 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var Helpfulness = function Helpfulness(props) {
+  console.log('This is the current review', props.review);
+
+  if (props.helpfulClick === true) {
+    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, "Thank you for rating! Yes (", props.review.helpfulness, ") No");
+  }
+
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, "Was this review helpful?", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", {
     className: "helpfulbutton",
     onClick: props.helpfulButton
@@ -8253,6 +8272,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var _Helpfulness_jsx__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Helpfulness.jsx */ "./client/src/components/reviews/tileComponents/Helpfulness.jsx");
 /* harmony import */ var _Response_jsx__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./Response.jsx */ "./client/src/components/reviews/tileComponents/Response.jsx");
+/* harmony import */ var _StartValue_jsx__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../StartValue.jsx */ "./client/src/components/reviews/StartValue.jsx");
+
 
 
 
@@ -8294,14 +8315,17 @@ var ReviewTiles = function ReviewTiles(props) {
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
         className: "tile",
         key: index
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, "Rating: ", review.rating), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, "Date: ", date), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", {
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_StartValue_jsx__WEBPACK_IMPORTED_MODULE_3__["default"], {
+        rating: review.rating
+      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, "Date: ", date), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", {
         className: "header"
-      }, "header: ", header), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, "Body: ", review.body), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_Helpfulness_jsx__WEBPACK_IMPORTED_MODULE_1__["default"], {
+      }, "Header: ", header), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, "Body: ", review.body), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_Helpfulness_jsx__WEBPACK_IMPORTED_MODULE_1__["default"], {
         review: review,
-        helpfulButton: props.helpfulButton
+        helpfulButton: props.helpfulButton,
+        helpfulClick: props.helpfulClick
       }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, "UserName: ", review.reviewer_name), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_Response_jsx__WEBPACK_IMPORTED_MODULE_2__["default"], {
         review: review
-      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, "Recommended: ", review.recommend ? 'I recommend this product' : ''));
+      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, "Recommended: ", review.recommend ? 'I recommend this product ' + "".concat(String.fromCodePoint(0x2713)) : ''));
     });
 
     if (props.reviewsShown >= props.reviews.length) {
@@ -8318,7 +8342,7 @@ var ReviewTiles = function ReviewTiles(props) {
   }
 };
 
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (ReviewTiles);
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (ReviewTiles); // {String.fromCodePoint(0x1F5F8)}
 
 /***/ }),
 

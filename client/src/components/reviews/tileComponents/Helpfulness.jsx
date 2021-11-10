@@ -1,6 +1,12 @@
 import React from 'react';
 
 const Helpfulness = (props) => {
+  console.log('This is the current review', props.review);
+  if (props.helpfulClick === true) {
+    return (
+      <p>Thank you for rating! Yes ({props.review.helpfulness}) No</p>
+    );
+  }
   return (
     <p>
       Was this review helpful?

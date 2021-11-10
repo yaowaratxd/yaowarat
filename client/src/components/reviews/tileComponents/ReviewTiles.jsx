@@ -2,6 +2,7 @@ import React from 'react';
 
 import Helpfulness from './Helpfulness.jsx';
 import Response from './Response.jsx';
+import StarValue from '../StartValue.jsx';
 
 const ReviewTiles = (props) => {
   const reviews = props.reviews;
@@ -36,14 +37,14 @@ const ReviewTiles = (props) => {
 
       return (
         <div className="tile" key={index}>
-          <p>Rating: {review.rating}</p>
+          <StarValue rating={review.rating} />
           <p>Date: {date}</p>
-          <p className="header" >header: {header}</p>
+          <p className="header" >Header: {header}</p>
           <p>Body: {review.body}</p>
-          <Helpfulness review={review} helpfulButton={props.helpfulButton} />
+          <Helpfulness review={review} helpfulButton={props.helpfulButton} helpfulClick={props.helpfulClick} />
           <p>UserName: {review.reviewer_name}</p>
           <Response review={review} />
-          <p>Recommended: {review.recommend ? 'I recommend this product' : ''}</p>
+          <p>Recommended: {review.recommend ? 'I recommend this product ' + `${String.fromCodePoint(0x2713)}` : ''}</p>
           {/* <img src={review.photos[0]} alt="Image" width="500" height="600"></img> */}
         </div>
       );
@@ -62,3 +63,5 @@ const ReviewTiles = (props) => {
 }
 
 export default ReviewTiles;
+
+// {String.fromCodePoint(0x1F5F8)}
