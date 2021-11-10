@@ -4634,7 +4634,7 @@ var OneRelatedProduct = /*#__PURE__*/function (_React$Component) {
         onClick: this.compareProducts,
         type: "button",
         id: "comparebutton"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("icon", null, String.fromCodePoint(0x2605)), " "), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("img", {
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("i", null, String.fromCodePoint(0x2605)), " "), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("img", {
         src: "".concat(picImage),
         id: "productimage",
         alt: "product",
@@ -5043,7 +5043,7 @@ var Review = /*#__PURE__*/function (_React$Component) {
     }
   }, {
     key: "componentDidUpdate",
-    value: function componentDidUpdate(prevProps) {
+    value: function componentDidUpdate(prevProps, prevState) {
       var _this3 = this;
 
       if (prevProps.product !== this.props.product) {
@@ -5110,9 +5110,24 @@ var Review = /*#__PURE__*/function (_React$Component) {
     }
   }, {
     key: "helpfulButton",
-    value: function helpfulButton(event) {
+    value: function helpfulButton(event, id) {
+      var _this6 = this;
+
       if (event.target.innerText === 'Yes') {
-        console.log('Yes was clicked!');
+        axios__WEBPACK_IMPORTED_MODULE_1___default().put("/reviews/".concat(id, "/helpful")).then(function (response) {
+          axios__WEBPACK_IMPORTED_MODULE_1___default().get("/api/reviews/".concat(_this6.state.sort, "/").concat(_this6.props.product.id)).then(function (reviews) {
+            _this6.setState({
+              reviews: reviews.data.results
+            });
+
+            _this6.getMeta();
+          })["catch"](function (err) {
+            console.log('There was an Error with reviews');
+            console.log(err);
+          });
+        })["catch"](function (err) {
+          console.log('There was an Error: ', err);
+        });
         this.setState({
           helpfulClick: true
         });
@@ -5763,9 +5778,91 @@ var Sort = function Sort(_ref) {
 /*!**********************************************************************!*\
   !*** ./client/src/components/reviews/tileComponents/Helpfulness.jsx ***!
   \**********************************************************************/
-/***/ (() => {
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-throw new Error("Module build failed (from ./node_modules/babel-loader/lib/index.js):\nSyntaxError: /Users/matchewxd/work/capstone/yaowarat/client/src/components/reviews/tileComponents/Helpfulness.jsx: Identifier 'Helpfulness' has already been declared. (25:6)\n\n\u001b[0m \u001b[90m 23 |\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 24 |\u001b[39m\u001b[0m\n\u001b[0m\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 25 |\u001b[39m \u001b[36mclass\u001b[39m \u001b[33mHelpfulness\u001b[39m \u001b[36mextends\u001b[39m \u001b[33mReact\u001b[39m\u001b[33m.\u001b[39m\u001b[33mComponent\u001b[39m {\u001b[0m\n\u001b[0m \u001b[90m    |\u001b[39m       \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 26 |\u001b[39m   constructor(props) {\u001b[0m\n\u001b[0m \u001b[90m 27 |\u001b[39m     \u001b[36msuper\u001b[39m(props)\u001b[33m;\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 28 |\u001b[39m     \u001b[36mthis\u001b[39m\u001b[33m.\u001b[39mstate \u001b[33m=\u001b[39m {\u001b[0m\n    at Object._raise (/Users/matchewxd/work/capstone/yaowarat/node_modules/@babel/parser/lib/index.js:541:17)\n    at Object.raiseWithData (/Users/matchewxd/work/capstone/yaowarat/node_modules/@babel/parser/lib/index.js:534:17)\n    at Object.raise (/Users/matchewxd/work/capstone/yaowarat/node_modules/@babel/parser/lib/index.js:495:17)\n    at ScopeHandler.checkRedeclarationInScope (/Users/matchewxd/work/capstone/yaowarat/node_modules/@babel/parser/lib/index.js:1686:12)\n    at ScopeHandler.declareName (/Users/matchewxd/work/capstone/yaowarat/node_modules/@babel/parser/lib/index.js:1652:12)\n    at Object.checkLVal (/Users/matchewxd/work/capstone/yaowarat/node_modules/@babel/parser/lib/index.js:10919:24)\n    at Object.parseClassId (/Users/matchewxd/work/capstone/yaowarat/node_modules/@babel/parser/lib/index.js:14213:14)\n    at Object.parseClass (/Users/matchewxd/work/capstone/yaowarat/node_modules/@babel/parser/lib/index.js:13895:10)\n    at Object.parseStatementContent (/Users/matchewxd/work/capstone/yaowarat/node_modules/@babel/parser/lib/index.js:13183:21)\n    at Object.parseStatement (/Users/matchewxd/work/capstone/yaowarat/node_modules/@babel/parser/lib/index.js:13139:17)");
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+function _createSuper(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct(); return function _createSuperInternal() { var Super = _getPrototypeOf(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn(this, result); }; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } else if (call !== void 0) { throw new TypeError("Derived constructors may only return object or undefined"); } return _assertThisInitialized(self); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); return true; } catch (e) { return false; } }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+
+
+var Helpfulness = /*#__PURE__*/function (_React$Component) {
+  _inherits(Helpfulness, _React$Component);
+
+  var _super = _createSuper(Helpfulness);
+
+  function Helpfulness(props) {
+    var _this;
+
+    _classCallCheck(this, Helpfulness);
+
+    _this = _super.call(this, props);
+    _this.state = {
+      helpfulClick: false
+    };
+    _this.clickHandler = _this.clickHandler.bind(_assertThisInitialized(_this));
+    return _this;
+  }
+
+  _createClass(Helpfulness, [{
+    key: "Thanks",
+    value: function Thanks() {
+      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, "Thank you for rating! Yes (", this.props.review.helpfulness, ") No");
+    }
+  }, {
+    key: "Help",
+    value: function Help() {
+      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, "Was this review helpful?", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", {
+        className: "helpfulbutton",
+        onClick: this.clickHandler
+      }, " ", "Yes", " "), "(", this.props.review.helpfulness, ")", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", {
+        className: "helpfulbutton",
+        onClick: this.clickHandler
+      }, " ", "No", " "));
+    }
+  }, {
+    key: "clickHandler",
+    value: function clickHandler(event) {
+      this.setState({
+        helpfulClick: true
+      });
+      this.props.helpfulButton(event, this.props.review.review_id);
+    }
+  }, {
+    key: "render",
+    value: function render() {
+      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, this.state.helpfulClick ? this.Thanks() : this.Help());
+    }
+  }]);
+
+  return Helpfulness;
+}(react__WEBPACK_IMPORTED_MODULE_0__.Component);
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Helpfulness);
 
 /***/ }),
 
@@ -36282,9 +36379,7 @@ var App = function App() {
     className: "widget"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(Root, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_components_reviews_Reviews_jsx__WEBPACK_IMPORTED_MODULE_5__["default"], {
     product: currentProduct
-  }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-    className: "widget"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h3", null, "Questions and Answers")));
+  }))));
 };
 
 react_dom__WEBPACK_IMPORTED_MODULE_1__.render( /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(App, null), document.getElementById('root'));

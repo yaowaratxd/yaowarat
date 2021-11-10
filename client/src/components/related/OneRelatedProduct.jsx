@@ -52,12 +52,12 @@ class OneRelatedProduct extends React.Component {
       .catch(err => console.log(err));
   }
 
-  getOriginalReviews () {
+  getOriginalReviews() {
     axios.get(`/reviews/meta/${this.props.originalProduct.id}`)
-    .then((response) => {
-      this.setState({ mainProductRating: response.data });
-    })
-    .catch(err => console.log(err));
+      .then((response) => {
+        this.setState({ mainProductRating: response.data });
+      })
+      .catch(err => console.log(err));
   }
 
   handleShowModal() {
@@ -148,7 +148,7 @@ class OneRelatedProduct extends React.Component {
               </tbody>
             </table>
           </div>
-          <button onClick={() => this.setState({ showModal: false})}>Hide</button>
+          <button onClick={() => this.setState({ showModal: false })}>Hide</button>
         </div>
       </Comparing>
     ) : null);
@@ -170,24 +170,24 @@ class OneRelatedProduct extends React.Component {
 
     return (
       <div className="onerelated" href="">
-        <button onClick={this.compareProducts} type="button" id="comparebutton"><icon>{String.fromCodePoint(0x2605)}</icon> </button>
-        <img src={`${picImage}`} id="productimage" alt="product" onClick={() => this.props.setCurrentProduct(this.props.product)}/>
-        <br/>
+        <button onClick={this.compareProducts} type="button" id="comparebutton"><i>{String.fromCodePoint(0x2605)}</i> </button>
+        <img src={`${picImage}`} id="productimage" alt="product" onClick={() => this.props.setCurrentProduct(this.props.product)} />
+        <br />
         {modal}
         <div>
           Product category:
-          {this.props.product.category} <br/>
+          {this.props.product.category} <br />
         </div>
         <div>
-          Product name: 
-          {this.props.product.name} <br/>
+          Product name:
+          {this.props.product.name} <br />
         </div>
         <div>
-          Price: {renderPrice(this.state.thisProductExtra, this.props.product)}<br/>
+          Price: {renderPrice(this.state.thisProductExtra, this.props.product)}<br />
         </div>
         <div>
           Rating:
-         {ratingDisplay}
+          {ratingDisplay}
         </div>
         <div>{this.props.comparison}</div>
 

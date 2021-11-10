@@ -34,17 +34,17 @@ class Review extends React.Component {
       });
   }
 
-  componentDidUpdate(prevProps) {
+  componentDidUpdate(prevProps, prevState) {
     if (prevProps.product !== this.props.product) {
       axios.get(`/api/reviews/${this.state.sort}/${this.props.product.id}`)
-      .then((reviews) => {
-        this.setState({ reviews: reviews.data.results });
-        this.getMeta();
-      })
-      .catch((err) => {
-        console.log('There was an Error with reviews');
-        console.log(err);
-      });
+        .then((reviews) => {
+          this.setState({ reviews: reviews.data.results });
+          this.getMeta();
+        })
+        .catch((err) => {
+          console.log('There was an Error with reviews');
+          console.log(err);
+        });
     }
   }
 
@@ -85,9 +85,23 @@ class Review extends React.Component {
     });
   }
 
-  helpfulButton(event) {
+  helpfulButton(event, id) {
     if (event.target.innerText === 'Yes') {
-      console.log('Yes was clicked!');
+      axios.put(`/reviews/${id}/helpful`)
+        .then((response) => {
+          axios.get(`/api/reviews/${this.state.sort}/${this.props.product.id}`)
+            .then((reviews) => {
+              this.setState({ reviews: reviews.data.results });
+              this.getMeta();
+            })
+            .catch((err) => {
+              console.log('There was an Error with reviews');
+              console.log(err);
+            });
+        })
+        .catch((err) => {
+          console.log('There was an Error: ', err);
+        });
       this.setState({ helpfulClick: true });
     } else {
       console.log('No was clicked!');

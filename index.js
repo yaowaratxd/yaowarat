@@ -90,6 +90,16 @@ app.get('/reviews/meta/:product_id', async (req, res) => {
   });
 });
 
+// Update Helpfulness value
+app.put('/reviews/:review_id/helpful', async (req, res) => {
+  const result = await axios.put(`${baseURL}/reviews/${req.params.review_id}/helpful`);
+  // console.log(result.data);
+  res.status(200).json({
+    status: 'sucess',
+    results: result.data
+  });
+});
+
 
 app.listen(port, () => {
   console.log(`Express server listening on port ${port}`);

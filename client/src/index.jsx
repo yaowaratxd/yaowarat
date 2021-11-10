@@ -38,14 +38,14 @@ const App = () => {
   return (
     <div>
 
-        <Banner />
+      <Banner />
 
       <div className="widget">
         <Root>
           <Top />
         </Root>
         <Root>
-          <Overview product={currentProduct}/>
+          <Overview product={currentProduct} />
         </Root>
       </div>
       <div className="widget">
@@ -59,9 +59,9 @@ const App = () => {
           <Reviews product={currentProduct} />
         </Root>
       </div>
-      <div className="widget">
+      {/* <div className="widget">
         <h3>Questions and Answers</h3>
-      </div>
+      </div> */}
     </div>
   );
 };
