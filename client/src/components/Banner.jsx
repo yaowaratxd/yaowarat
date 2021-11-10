@@ -5,13 +5,17 @@ import App from '../index.jsx';
 class Banner extends React.Component {
   constructor(props) {
     super(props);
+    this.state = {
+      colorTheme: 'light',
+    }
+    this.makeDark = this.makeDark.bind(this);
+    this.makeLight = this.makeLight.bind(this);
   }
 
-  changeColor(event) {
+  makeDark(event) {
     event.preventDefault();
-    console.log('event.view.parent.document')
-    const tiles = document.querySelectorAll('.widget')//.style.backgroundColor = "black";
-    console.log(tiles[0]);
+    console.log('makedark')
+    const tiles = document.querySelectorAll('.widget')
     tiles[0].style.backgroundColor = "#202020";
     tiles[1].style.backgroundColor = "#202020";
     tiles[2].style.backgroundColor = "#202020";
@@ -20,13 +24,32 @@ class Banner extends React.Component {
     tiles[1].style.color = "#C0C0C0";
     tiles[2].style.color = "#C0C0C0";
     tiles[3].style.color = "#C0C0C0";
+    this.setState({colorTheme: 'dark'});
+  }
+
+  makeLight(event) {
+    event.preventDefault();
+    console.log('makelight')
+    const tiles = document.querySelectorAll('.widget')
+    tiles[0].style.backgroundColor = "#7395AE";
+    tiles[1].style.backgroundColor = "#7395AE";
+    tiles[2].style.backgroundColor = "#7395AE";
+    tiles[3].style.backgroundColor = "#7395AE";
+    tiles[0].style.color = "black";
+    tiles[1].style.color = "black";
+    tiles[2].style.color = "black";
+    tiles[3].style.color = "black";
+    this.setState({ colorTheme: 'light' });
   }
 
   render () {
+    const toggleButton = (this.state.colorTheme === 'light') ?  <button className="colortoggle" onClick={this.makeDark}>Darken</button>
+    : <button className="colortoggle" onClick={this.makeLight}>Lighten</button>
+
     return (
       <div className="banner">
         Team Yaowarat
-        <button className="colortoggle" onClick={this.changeColor}>Light/Dark</button>
+        {toggleButton}
       </div>
     )
   }

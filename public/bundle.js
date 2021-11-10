@@ -2961,19 +2961,25 @@ var Banner = /*#__PURE__*/function (_React$Component) {
   var _super = _createSuper(Banner);
 
   function Banner(props) {
+    var _this;
+
     _classCallCheck(this, Banner);
 
-    return _super.call(this, props);
+    _this = _super.call(this, props);
+    _this.state = {
+      colorTheme: 'light'
+    };
+    _this.makeDark = _this.makeDark.bind(_assertThisInitialized(_this));
+    _this.makeLight = _this.makeLight.bind(_assertThisInitialized(_this));
+    return _this;
   }
 
   _createClass(Banner, [{
-    key: "changeColor",
-    value: function changeColor(event) {
+    key: "makeDark",
+    value: function makeDark(event) {
       event.preventDefault();
-      console.log('event.view.parent.document');
-      var tiles = document.querySelectorAll('.widget'); //.style.backgroundColor = "black";
-
-      console.log(tiles[0]);
+      console.log('makedark');
+      var tiles = document.querySelectorAll('.widget');
       tiles[0].style.backgroundColor = "#202020";
       tiles[1].style.backgroundColor = "#202020";
       tiles[2].style.backgroundColor = "#202020";
@@ -2982,16 +2988,41 @@ var Banner = /*#__PURE__*/function (_React$Component) {
       tiles[1].style.color = "#C0C0C0";
       tiles[2].style.color = "#C0C0C0";
       tiles[3].style.color = "#C0C0C0";
+      this.setState({
+        colorTheme: 'dark'
+      });
+    }
+  }, {
+    key: "makeLight",
+    value: function makeLight(event) {
+      event.preventDefault();
+      console.log('makelight');
+      var tiles = document.querySelectorAll('.widget');
+      tiles[0].style.backgroundColor = "#7395AE";
+      tiles[1].style.backgroundColor = "#7395AE";
+      tiles[2].style.backgroundColor = "#7395AE";
+      tiles[3].style.backgroundColor = "#7395AE";
+      tiles[0].style.color = "black";
+      tiles[1].style.color = "black";
+      tiles[2].style.color = "black";
+      tiles[3].style.color = "black";
+      this.setState({
+        colorTheme: 'light'
+      });
     }
   }, {
     key: "render",
     value: function render() {
+      var toggleButton = this.state.colorTheme === 'light' ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", {
+        className: "colortoggle",
+        onClick: this.makeDark
+      }, "Darken") : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", {
+        className: "colortoggle",
+        onClick: this.makeLight
+      }, "Lighten");
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
         className: "banner"
-      }, "Team Yaowarat", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", {
-        className: "colortoggle",
-        onClick: this.changeColor
-      }, "Light/Dark"));
+      }, "Team Yaowarat", toggleButton);
     }
   }]);
 

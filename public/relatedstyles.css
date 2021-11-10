@@ -29,6 +29,7 @@ Dark Blue: #557A95
   flex-wrap: nowrap;
   column-gap: 10px;
   height: 500px;
+  border: 1px solid;
 }
 
 .onerelated {
@@ -51,7 +52,7 @@ Dark Blue: #557A95
 #comparebutton {
   position: relative;
   top: 00px;
-  left: 200px;
+  left: 190px;
   z-index: 2;
   color: yellow;
   font-size: xx-large;
@@ -79,6 +80,7 @@ Dark Blue: #557A95
   flex-direction: row;
   flex-wrap: nowrap;
   column-gap: 10px;
+  border: 1px solid;
 }
 
 .oneoutfit {

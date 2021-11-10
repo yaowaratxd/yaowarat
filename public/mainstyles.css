@@ -14,12 +14,17 @@ Dark Blue: #557A95
   overflow: hidden ;
   background-color: #7395AE;
   justify-content: center;
+  border: solid 1px;
 }
 
 .banner {
   background-color: #557A95;
-  color: #95c5e7;
+  color: white;
   font-size: xx-large;
   text-align: center;
   padding: 20px 0;
+}
+
+.colortoggle {
+  float: right;
 }
