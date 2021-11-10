@@ -8199,34 +8199,9 @@ var Sort = function Sort(_ref) {
 /*!**********************************************************************!*\
   !*** ./client/src/components/reviews/tileComponents/Helpfulness.jsx ***!
   \**********************************************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+/***/ (() => {
 
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
-/* harmony export */ });
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-
-
-var Helpfulness = function Helpfulness(props) {
-  console.log('This is the current review', props.review);
-
-  if (props.helpfulClick === true) {
-    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, "Thank you for rating! Yes (", props.review.helpfulness, ") No");
-  }
-
-  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, "Was this review helpful?", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", {
-    className: "helpfulbutton",
-    onClick: props.helpfulButton
-  }, " ", "Yes", " "), "(", props.review.helpfulness, ")", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", {
-    className: "helpfulbutton",
-    onClick: props.helpfulButton
-  }, " ", "No", " "));
-}; // Note: When either button is clicked both should be disabled and the results should be saved
-
-
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Helpfulness);
+throw new Error("Module build failed (from ./node_modules/babel-loader/lib/index.js):\nSyntaxError: /Users/matchewxd/work/capstone/yaowarat/client/src/components/reviews/tileComponents/Helpfulness.jsx: Identifier 'Helpfulness' has already been declared. (25:6)\n\n\u001b[0m \u001b[90m 23 |\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 24 |\u001b[39m\u001b[0m\n\u001b[0m\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 25 |\u001b[39m \u001b[36mclass\u001b[39m \u001b[33mHelpfulness\u001b[39m \u001b[36mextends\u001b[39m \u001b[33mReact\u001b[39m\u001b[33m.\u001b[39m\u001b[33mComponent\u001b[39m {\u001b[0m\n\u001b[0m \u001b[90m    |\u001b[39m       \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 26 |\u001b[39m   constructor(props) {\u001b[0m\n\u001b[0m \u001b[90m 27 |\u001b[39m     \u001b[36msuper\u001b[39m(props)\u001b[33m;\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 28 |\u001b[39m     \u001b[36mthis\u001b[39m\u001b[33m.\u001b[39mstate \u001b[33m=\u001b[39m {\u001b[0m\n    at Object._raise (/Users/matchewxd/work/capstone/yaowarat/node_modules/@babel/parser/lib/index.js:541:17)\n    at Object.raiseWithData (/Users/matchewxd/work/capstone/yaowarat/node_modules/@babel/parser/lib/index.js:534:17)\n    at Object.raise (/Users/matchewxd/work/capstone/yaowarat/node_modules/@babel/parser/lib/index.js:495:17)\n    at ScopeHandler.checkRedeclarationInScope (/Users/matchewxd/work/capstone/yaowarat/node_modules/@babel/parser/lib/index.js:1686:12)\n    at ScopeHandler.declareName (/Users/matchewxd/work/capstone/yaowarat/node_modules/@babel/parser/lib/index.js:1652:12)\n    at Object.checkLVal (/Users/matchewxd/work/capstone/yaowarat/node_modules/@babel/parser/lib/index.js:10919:24)\n    at Object.parseClassId (/Users/matchewxd/work/capstone/yaowarat/node_modules/@babel/parser/lib/index.js:14213:14)\n    at Object.parseClass (/Users/matchewxd/work/capstone/yaowarat/node_modules/@babel/parser/lib/index.js:13895:10)\n    at Object.parseStatementContent (/Users/matchewxd/work/capstone/yaowarat/node_modules/@babel/parser/lib/index.js:13183:21)\n    at Object.parseStatement (/Users/matchewxd/work/capstone/yaowarat/node_modules/@babel/parser/lib/index.js:13139:17)");
 
 /***/ }),
 
