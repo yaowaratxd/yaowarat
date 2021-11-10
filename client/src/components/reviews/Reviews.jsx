@@ -11,7 +11,8 @@ class Review extends React.Component {
       product: this.props.product,
       reviews: {},
       reviewsShown: 2,
-      sort: 'relevant'
+      sort: 'relevant',
+      meta: {}
     };
     this.readMore = this.readMore.bind(this);
     this.writeReview = this.writeReview.bind(this);
@@ -22,14 +23,28 @@ class Review extends React.Component {
 
   componentDidMount() {
     axios.get(`/api/reviews/${this.state.sort}/${this.state.product.id}`)
-      .then((response) => {
-        this.setState({ reviews: response.data.results });
+      .then((reviews) => {
+        this.setState({ reviews: reviews.data.results });
+        this.getMeta();
       })
       .catch((err) => {
-        console.log('There was an Error');
+        console.log('There was an Error with reviews');
         console.log(err);
       });
+
   }
+
+  getMeta() {
+    axios.get(`/reviews/meta/${this.state.product.id}`)
+      .then((meta) => {
+        // console.log('This it the meta data: ', meta.data);
+        this.setState({ meta: meta.data });
+      })
+      .catch((err) => {
+        console.log('There was an Error with meta');
+        console.log(err);
+      })
+  };
   // 37311
 
   readMore(event) {
@@ -67,7 +82,7 @@ class Review extends React.Component {
   render() {
     return (
       <div className="reviewContainer">
-        <Overview className="reviewOverview" reviews={this.state.reviews} starFilter={this.starFilter} />
+        <Overview className="reviewOverview" reviews={this.state.reviews} starFilter={this.starFilter} meta={this.state.meta} />
         <ReviewList className="reviewList" readMore={this.readMore} writeReview={this.writeReview} reviews={this.state.reviews} reviewsShown={this.state.reviewsShown} sort={this.sort} sortType={this.state.sort} helpfulButton={this.helpfulButton} />
       </div>
     );

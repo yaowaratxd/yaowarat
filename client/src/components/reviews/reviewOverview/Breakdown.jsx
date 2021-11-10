@@ -33,20 +33,40 @@ const Breakdown = ({ reviews, starFilter }) => {
     <div className="breakdown">
       <p>Breakdown</p>
 
-      <p className="underline" onClick={starFilter}>5 Star</p>
-      <StarBar reviews={reviews} starCount={starCount['5']} />
+      <div className="star">
+        <p className="underline" onClick={starFilter}>5 Star</p>
+        <div className="barcontainer">
+          <StarBar reviews={reviews} starCount={starCount['5']} />
+        </div>
+      </div>
 
-      <p className="underline" onClick={starFilter}>4 Star</p>
-      <StarBar reviews={reviews} starCount={starCount['4']} />
+      <div className="star">
+        <p className="underline" onClick={starFilter}>4 Star</p>
+        <div className="barcontainer">
+          <StarBar reviews={reviews} starCount={starCount['4']} />
+        </div>
+      </div >
 
-      <p className="underline" onClick={starFilter}>3 Star</p>
-      <StarBar reviews={reviews} starCount={starCount['3']} />
+      <div className="star">
+        <p className="underline" onClick={starFilter}>3 Star</p>
+        <div className="barcontainer">
+          <StarBar reviews={reviews} starCount={starCount['3']} />
+        </div>
+      </div>
 
-      <p className="underline" onClick={starFilter}>2 Star</p>
-      <StarBar reviews={reviews} starCount={starCount['2']} />
+      <div className="star">
+        <p className="underline" onClick={starFilter}>2 Star</p>
+        <div className="barcontainer">
+          <StarBar reviews={reviews} starCount={starCount['2']} />
+        </div>
+      </div>
 
-      <p className="underline" onClick={starFilter}>1 Star </p>
-      <StarBar reviews={reviews} starCount={starCount['1']} />
+      <div className="star">
+        <p className="underline" onClick={starFilter}>1 Star </p>
+        <div className="barcontainer">
+          <StarBar reviews={reviews} starCount={starCount['1']} />
+        </div>
+      </div>
 
     </div>
 

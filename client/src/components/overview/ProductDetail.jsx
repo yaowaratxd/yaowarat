@@ -2,6 +2,8 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import styled from 'styled-components';
 
+import Stars from '../StarValue.jsx';
+
 // position: relative;
 const Container = styled.div`
   position: relative;
@@ -26,7 +28,7 @@ const ProductDetail = ({ product, selectedImage, styles }) => {
         count += parseInt(res.data.ratings[rating]);
         total += parseInt(res.data.ratings[rating] * rating);
       }
-      setRatings((total / count).toFixed(2));
+      setRatings(Math.round((total / count * 4) / 4).toFixed(2));
       axios.get(`/api/reviews/${ product.id}`).then((res) => {
         setReviewTotal(res.data.quantity);
       });
@@ -35,7 +37,8 @@ const ProductDetail = ({ product, selectedImage, styles }) => {
 
   const renderPrice =  selectedImage.salePrice ? <div> <NewPrice> {product.default_price} </NewPrice> { selectedImage.salePrice } </div> : product.default_price;
   return <Container>
-   { ratings !== 'NaN' ?  `${ ratings }  - click here to see all ${ reviewTotal } reviews...` : '' }
+   { ratings !== 'NaN' ?  <Stars rating={ratings} /> : '' }
+   { reviewTotal > 0 ?  `click here to see all ${ reviewTotal } reviews...`  : '' }
     <h1>{ product.name }</h1>
     <h4>{ product.category }</h4>
     { renderPrice }
