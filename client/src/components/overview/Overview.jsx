@@ -6,6 +6,8 @@ import ImageGallery from './ImageGallery.jsx';
 import ProductDetail from './ProductDetail.jsx';
 import Styles from './Styles.jsx';
 import AddToCart from './AddToCart.jsx';
+import Slogan from './Slogan.jsx';
+import Checklist from './Checklist.jsx';
 import ClickCounter from '../ClickCounter.jsx';
 
 const ProductCartandStyleContainer = styled.div`
@@ -18,6 +20,10 @@ margin-left: 2vw;
 const OverviewContainer = styled.div`
 display: flex;
 justify-content: space-between;
+`;
+
+const SloganContainer = styled.div`
+display: flex;
 `;
 
 const Overview = (props) => {
@@ -81,11 +87,10 @@ const Overview = (props) => {
       <Styles styles={styles} selectedImage={selectedImage} setSelectedStyle={setSelectedStyle} />
     </ProductCartandStyleContainer>
   </OverviewContainer>
-
-    { props.product.slogan && props.product.slogan.length > 0 ? props.product.slogan : '' }
-    <br />
-    { props.product.description ? props.product.description : '' }
-    <br />
+  <SloganContainer>
+  <Slogan slogan={props.product.slogan} description={props.product.description} />
+  <Checklist />
+  </SloganContainer>
     <img src='/graphics/facebook.png' onClick={() => window.open(`https://www.facebook.com/sharer/sharer.php?u=${selectedImage.url}`, 'facebook-share-dialog', 'width=626,height=436') } />
     {/* <img src='/graphics/facebook.png' onClick={() => window.open('https://www.facebook.com/sharer/sharer.php?u='+encodeURIComponent(location.href),'facebook-share-dialog', 'width=626,height=436') } /> */}
     <img src='/graphics/twitter.png' onClick={() => window.open('https://www.twitter.com/intent/tweet?url='+selectedImage.url,'twitter-share-dialog', 'width=626,height=436') } />

@@ -61,6 +61,7 @@ const AddToCart = ({ quantity, hasSize }) => {
     setAddCart(!addCart)
   };
  return <Container>
+   <ClickCounter event='AddToCart'>
    <LineBreak>
     <Margins>
       <QuantityDropDown setInStock={setInStock} hasSize={hasSize} quantity={quantity} />
@@ -68,12 +69,11 @@ const AddToCart = ({ quantity, hasSize }) => {
    </LineBreak>
    <LineBreak>
      <MoveLeft>
-       <ClickCounter event='addButton'>
       { inStock ? <AddButton onClick={() => handleAddToCart()}>{ addCart ? 'Remove From Cart' : 'Add To Cart'}</AddButton> : '' }
-      </ClickCounter>
       <FavButton onClick={handleFav}>{ display }</FavButton>
      </MoveLeft>
    </LineBreak>
+   </ClickCounter>
  </Container>
 };
 

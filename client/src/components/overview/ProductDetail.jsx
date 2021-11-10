@@ -4,6 +4,7 @@ import styled from 'styled-components';
 
 import Stars from '../StarValue.jsx';
 import colorScheme from '../../colorScheme.js';
+import ClickCounter from '../ClickCounter.jsx';
 
 // position: relative;
 const Container = styled.div`
@@ -16,7 +17,7 @@ text-decoration: line-through;
 `;
 
 const Link = styled.a`
-color: ${colorScheme.darkGreuy};
+color: ${colorScheme.darkGrey};
 `;
 
 

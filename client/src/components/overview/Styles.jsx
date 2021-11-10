@@ -5,6 +5,7 @@ import AddToCart from './AddToCart.jsx';
 import styled from 'styled-components';
 
 import colorScheme from '../../colorScheme.js';
+import ClickCounter from '../ClickCounter.jsx';
 /*
 position: relative;
 left: 25vw;
@@ -109,6 +110,7 @@ const Styles = ({ styles, setSelectedStyle, selectedImage }) => {
     getName();
   };
   return <div>
+    <ClickCounter event='Styles'>
     <Container>
   <h1>{ name }</h1>
     </Container>
@@ -144,6 +146,7 @@ const Styles = ({ styles, setSelectedStyle, selectedImage }) => {
       <AddToCart hasSize={hasSize} quantity={quantity} />
     {/* </CartContainer> */}
   </Container>
+  </ClickCounter>
   </div>
 };
 

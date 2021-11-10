@@ -3,6 +3,7 @@ import axios from 'axios';
 import styled from 'styled-components';
 
 import colorScheme from '../../colorScheme.js';
+import ClickCounter from '../ClickCounter.jsx';
 
 const Tile = styled.img`
 height: 7vh;
@@ -162,6 +163,7 @@ const ImageGallery = ({ allImages, selectedImage, setSelectedImage, styles, setS
   }
   return <div>
     <div>
+      <ClickCounter event='ImageGallery'>
       <LeftButton>
         { renderLeftButton() }
       </LeftButton>
@@ -182,6 +184,7 @@ const ImageGallery = ({ allImages, selectedImage, setSelectedImage, styles, setS
           )}
         </ImageContainer>
         </LeftRibbon>
+      </ClickCounter>
       </div>
   </div>
 };
