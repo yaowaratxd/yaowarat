@@ -11,10 +11,10 @@ class Related extends React.Component {
     super(props);
     this.state = {
       relatedProducts: [],
-      outfitProducts: [], 
+      outfitProducts: [],
       left: 0,
       right: 2,
-      };
+    };
     this.getRelated = this.getRelated.bind(this);
     this.addToOutfitList = this.addToOutfitList.bind(this);
     this.removeFromOutfitList = this.removeFromOutfitList.bind(this);
@@ -36,7 +36,7 @@ class Related extends React.Component {
 
   getRelated() {
     axios.get(`/products/${this.props.currentProduct.id}/related`)
-      .then((results) => { this.setState({relatedProductsKey: results.data}); })
+      .then((results) => { this.setState({ relatedProductsKey: results.data }); })
       .then(() => {
         for (var i = 0; i < this.state.relatedProductsKey.length; i++) {
           this.getProduct(this.state.relatedProductsKey[i]);
@@ -58,10 +58,10 @@ class Related extends React.Component {
       console.log('this product id:', product.id, 'is already on outfit list')
       if (this.state.outfitProducts[i].id === product.id) {
         return;
-        }
       }
-      this.setState((state) => ({ outfitProducts: state.outfitProducts.concat(product) }));
     }
+    this.setState((state) => ({ outfitProducts: state.outfitProducts.concat(product) }));
+  }
 
 
   removeFromOutfitList(product) {
@@ -116,9 +116,9 @@ class Related extends React.Component {
         Your outfit list:
         <div>
           <ul className="outfitproducts">
-          <div> <AddCurrentItem setOutfit={this.addToOutfitList} currentProduct={this.props.currentProduct}/> </div>
+            <div> <AddCurrentItem setOutfit={this.addToOutfitList} currentProduct={this.props.currentProduct} /> </div>
             {this.state.outfitProducts.map((oneProduct) => {
-                return <OneOutfit product={oneProduct} removeOutfit={this.removeFromOutfitList} />
+              return <OneOutfit product={oneProduct} removeOutfit={this.removeFromOutfitList} />
             })}
           </ul>
         </div>

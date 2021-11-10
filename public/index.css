@@ -102,3 +102,7 @@
   width: 81%;
   margin: 1%;
 }
+
+.bar span {
+  color: black;
+}
