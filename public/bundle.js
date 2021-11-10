@@ -2915,6 +2915,38 @@ module.exports = {
 
 /***/ }),
 
+/***/ "./client/src/components/Banner.jsx":
+/*!******************************************!*\
+  !*** ./client/src/components/Banner.jsx ***!
+  \******************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var styled_components__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! styled-components */ "./node_modules/styled-components/dist/styled-components.browser.esm.js");
+/* harmony import */ var _colorScheme_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../colorScheme.js */ "./client/src/colorScheme.js");
+/* harmony import */ var _colorScheme_js__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_colorScheme_js__WEBPACK_IMPORTED_MODULE_1__);
+var _templateObject;
+
+function _taggedTemplateLiteral(strings, raw) { if (!raw) { raw = strings.slice(0); } return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); }
+
+
+
+
+var Banner = styled_components__WEBPACK_IMPORTED_MODULE_2__["default"].div(_templateObject || (_templateObject = _taggedTemplateLiteral(["\nwidth: 70vw;\nbackground-color: ", ";\nheight: 100px;\n"])), (_colorScheme_js__WEBPACK_IMPORTED_MODULE_1___default().darkGrey));
+
+var Top = function Top() {
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(Banner, null, "Logo");
+};
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Top);
+
+/***/ }),
+
 /***/ "./client/src/components/ClickCounter.jsx":
 /*!************************************************!*\
   !*** ./client/src/components/ClickCounter.jsx ***!
@@ -3262,17 +3294,17 @@ function _taggedTemplateLiteral(strings, raw) { if (!raw) { raw = strings.slice(
 
 
 var Tile = styled_components__WEBPACK_IMPORTED_MODULE_4__["default"].img(_templateObject || (_templateObject = _taggedTemplateLiteral(["\nheight: 7vh;\nwidth:  7vw;\nborder: 1px solid ", ";\nmargin-bottom: 5px;\n"])), (_colorScheme_js__WEBPACK_IMPORTED_MODULE_2___default().tan));
-var SelectedTile = styled_components__WEBPACK_IMPORTED_MODULE_4__["default"].img(_templateObject2 || (_templateObject2 = _taggedTemplateLiteral(["\nheight: 7vh;\nwidth:  7vw;\nborder: 1px solid ", ";\nborder-bottom: 6px solid ", ";\nmargin-bottom: 5px;\n"])), (_colorScheme_js__WEBPACK_IMPORTED_MODULE_2___default().tan), (_colorScheme_js__WEBPACK_IMPORTED_MODULE_2___default().darkGrey));
-var LeftRibbon = styled_components__WEBPACK_IMPORTED_MODULE_4__["default"].div(_templateObject3 || (_templateObject3 = _taggedTemplateLiteral(["\nwidth: 7vw;\nleft:   10vw;\nposition: absolute;\ntop: 1vh;\nheight: 60vh;\noverflow: scroll;\nz-index: 2;\ndisplay: flex;\njustify-content: center;\n"])));
+var SelectedTile = styled_components__WEBPACK_IMPORTED_MODULE_4__["default"].img(_templateObject2 || (_templateObject2 = _taggedTemplateLiteral(["\nheight: 7vh;\nwidth:  7vw;\nborder: 3px solid ", ";\nborder-bottom: 6px solid ", ";\nmargin-bottom: 5px;\n"])), (_colorScheme_js__WEBPACK_IMPORTED_MODULE_2___default().darkGrey), (_colorScheme_js__WEBPACK_IMPORTED_MODULE_2___default().darkGrey));
+var LeftRibbon = styled_components__WEBPACK_IMPORTED_MODULE_4__["default"].div(_templateObject3 || (_templateObject3 = _taggedTemplateLiteral(["\nwidth: 7vw;\nleft:   18vw;\nposition: absolute;\ntop: 15vh;\nheight: 60vh;\noverflow: scroll;\nz-index: 2;\ndisplay: flex;\njustify-content: center;\n"])));
 var ImageContainer = styled_components__WEBPACK_IMPORTED_MODULE_4__["default"].div(_templateObject4 || (_templateObject4 = _taggedTemplateLiteral(["\nwidth: 10vw;\n"])));
 var BaseImage = styled_components__WEBPACK_IMPORTED_MODULE_4__["default"].img(_templateObject5 || (_templateObject5 = _taggedTemplateLiteral(["\nwidth: 40vw;\nheight: 75vh;\ncursor: zoom-in;\n"])));
 var BaseImageExpanded = styled_components__WEBPACK_IMPORTED_MODULE_4__["default"].img(_templateObject6 || (_templateObject6 = _taggedTemplateLiteral(["\nwidth: 70vw;\nheight: 60vh;\nz-index: 2;\ncursor: zoom-in;\n"])));
 var BaseImageExploded = styled_components__WEBPACK_IMPORTED_MODULE_4__["default"].img(_templateObject7 || (_templateObject7 = _taggedTemplateLiteral(["\nwidth: 250%;\nheight: 250%;\noverflow: scroll;\nz-index: 4;\ncursor: zoom-out;\n"])));
 var ClickyButton = styled_components__WEBPACK_IMPORTED_MODULE_4__["default"].button(_templateObject8 || (_templateObject8 = _taggedTemplateLiteral(["\nbackground-color: Transparent;\nborder: none;\ncolor: ", ";\nheight: 250%;\nwidth: 250%;\n"])), (_colorScheme_js__WEBPACK_IMPORTED_MODULE_2___default().darkGrey));
-var ExpandClickyButton = styled_components__WEBPACK_IMPORTED_MODULE_4__["default"].button(_templateObject9 || (_templateObject9 = _taggedTemplateLiteral(["\nbackground-color: Transparent;\nborder: none;\ncolor: ", ";\nposition: relative;\nright: 5vw;\ntop: 5vh;\nz-index: 2;\n"])), (_colorScheme_js__WEBPACK_IMPORTED_MODULE_2___default().darkGrey));
-var LeftButton = styled_components__WEBPACK_IMPORTED_MODULE_4__["default"].div(_templateObject10 || (_templateObject10 = _taggedTemplateLiteral(["\nposition: absolute;\ntop: 25vh;\nleft: 20vw;\n"])));
-var RightButton = styled_components__WEBPACK_IMPORTED_MODULE_4__["default"].div(_templateObject11 || (_templateObject11 = _taggedTemplateLiteral(["\nposition: absolute;\ntop: 25vh;\nleft: 45vw;\n"])));
-var ExpandButton = styled_components__WEBPACK_IMPORTED_MODULE_4__["default"].div(_templateObject12 || (_templateObject12 = _taggedTemplateLiteral(["\nposition: absolute;\ntop: .5vh;\nleft: 50vw;\n"])));
+var ExpandClickyButton = styled_components__WEBPACK_IMPORTED_MODULE_4__["default"].button(_templateObject9 || (_templateObject9 = _taggedTemplateLiteral(["\nbackground-color: Transparent;\nborder: none;\ncolor: ", ";\nposition: relative;\nz-index: 2;\n"])), (_colorScheme_js__WEBPACK_IMPORTED_MODULE_2___default().darkGrey));
+var LeftButton = styled_components__WEBPACK_IMPORTED_MODULE_4__["default"].div(_templateObject10 || (_templateObject10 = _taggedTemplateLiteral(["\nposition: relative;\ntop: 25vh;\nleft: 25vw;\n"])));
+var RightButton = styled_components__WEBPACK_IMPORTED_MODULE_4__["default"].div(_templateObject11 || (_templateObject11 = _taggedTemplateLiteral(["\nposition: relative;\ntop: 25vh;\nleft: 50vw;\n"])));
+var ExpandButton = styled_components__WEBPACK_IMPORTED_MODULE_4__["default"].div(_templateObject12 || (_templateObject12 = _taggedTemplateLiteral(["\nposition: relative;\ntop: -85vh;\nleft: 35vw;\n"])));
 
 var ImageGallery = function ImageGallery(_ref) {
   var allImages = _ref.allImages,
@@ -3346,7 +3378,7 @@ var ImageGallery = function ImageGallery(_ref) {
     if (allImages.length > 0) {
       return allImages[0][0].url === selectedImage.url ? '' : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(ClickyButton, {
         onClick: handleClickLeft
-      }, "\u276E");
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h1", null, '<'));
     }
   };
 
@@ -3356,7 +3388,7 @@ var ImageGallery = function ImageGallery(_ref) {
     if (allImages.length > 0) {
       return allImages[len][allImages[len].length - 1].url === selectedImage.url ? '' : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(ClickyButton, {
         onClick: handleClickRight
-      }, "\u276F");
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h1", null, '>'));
     }
   };
 
@@ -3390,9 +3422,7 @@ var ImageGallery = function ImageGallery(_ref) {
     };
   };
 
-  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_ClickCounter_jsx__WEBPACK_IMPORTED_MODULE_3__["default"], {
-    event: "ImageGallery"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(LeftButton, null, renderLeftButton()), expandedImage === 0 ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(BaseImage, {
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(LeftButton, null, renderLeftButton()), expandedImage === 0 ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(BaseImage, {
     onClick: changeExpansion,
     src: selectedImage.url
   }) : expandedImage === 1 ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(BaseImageExpanded, {
@@ -3403,7 +3433,7 @@ var ImageGallery = function ImageGallery(_ref) {
     src: selectedImage.url
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(RightButton, null, renderRightButton()), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(ExpandButton, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(ExpandClickyButton, {
     onClick: changeExpansion
-  }, " Expand")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(LeftRibbon, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(ImageContainer, null, allImages.map(function (imag) {
+  }, " ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h1", null, '[ ]'), " ")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(LeftRibbon, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(ImageContainer, null, allImages.map(function (imag) {
     return imag.map(function (im) {
       return im.url === selectedImage.url ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(SelectedTile, {
         id: "selectedTile",
@@ -3428,7 +3458,7 @@ var ImageGallery = function ImageGallery(_ref) {
         src: im.thumbnail_url
       });
     });
-  }))))));
+  })))));
 };
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (ImageGallery);
@@ -3461,7 +3491,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _Slogan_jsx__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./Slogan.jsx */ "./client/src/components/overview/Slogan.jsx");
 /* harmony import */ var _Checklist_jsx__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./Checklist.jsx */ "./client/src/components/overview/Checklist.jsx");
 /* harmony import */ var _ClickCounter_jsx__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../ClickCounter.jsx */ "./client/src/components/ClickCounter.jsx");
-var _templateObject, _templateObject2, _templateObject3;
+var _templateObject, _templateObject2, _templateObject3, _templateObject4;
 
 function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _unsupportedIterableToArray(arr) || _nonIterableSpread(); }
 
@@ -3495,9 +3525,10 @@ function _taggedTemplateLiteral(strings, raw) { if (!raw) { raw = strings.slice(
 
 
 
-var ProductCartandStyleContainer = styled_components__WEBPACK_IMPORTED_MODULE_9__["default"].div(_templateObject || (_templateObject = _taggedTemplateLiteral(["\ndisplay: flex;\nflex-direction: column;\nwidth: 40vw;\nmargin-left: 2vw;\n"])));
-var OverviewContainer = styled_components__WEBPACK_IMPORTED_MODULE_9__["default"].div(_templateObject2 || (_templateObject2 = _taggedTemplateLiteral(["\ndisplay: flex;\njustify-content: space-between;\n"])));
-var SloganContainer = styled_components__WEBPACK_IMPORTED_MODULE_9__["default"].div(_templateObject3 || (_templateObject3 = _taggedTemplateLiteral(["\ndisplay: flex;\n"])));
+var ProductCartandStyleContainer = styled_components__WEBPACK_IMPORTED_MODULE_9__["default"].div(_templateObject || (_templateObject = _taggedTemplateLiteral(["\ndisplay: flex;\nflex-direction: column;\nwidth: 40%;\n"])));
+var OverviewContainer = styled_components__WEBPACK_IMPORTED_MODULE_9__["default"].div(_templateObject2 || (_templateObject2 = _taggedTemplateLiteral(["\ndisplay: flex;\njustify-content: space-between;\nborder: 2px solid black;\n"])));
+var SloganContainer = styled_components__WEBPACK_IMPORTED_MODULE_9__["default"].div(_templateObject3 || (_templateObject3 = _taggedTemplateLiteral(["\ndisplay: flex;\nposition: relative;\ntop: -18vh;\nwidth: 100%;\n"])));
+var SocialWrapper = styled_components__WEBPACK_IMPORTED_MODULE_9__["default"].div(_templateObject4 || (_templateObject4 = _taggedTemplateLiteral(["\nposition: relative;\ntop: -20vh;\ndisplay: flex;\njustify-content: flex-start;\n"])));
 
 var Overview = function Overview(props) {
   var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)({}),
@@ -3613,7 +3644,7 @@ var Overview = function Overview(props) {
   }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(SloganContainer, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_Slogan_jsx__WEBPACK_IMPORTED_MODULE_6__["default"], {
     slogan: props.product.slogan,
     description: props.product.description
-  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_Checklist_jsx__WEBPACK_IMPORTED_MODULE_7__["default"], null)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("img", {
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_Checklist_jsx__WEBPACK_IMPORTED_MODULE_7__["default"], null)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(SocialWrapper, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("img", {
     src: "/graphics/facebook.png",
     onClick: function onClick() {
       return window.open("https://www.facebook.com/sharer/sharer.php?u=".concat(selectedImage.url), 'facebook-share-dialog', 'width=626,height=436');
@@ -3628,7 +3659,7 @@ var Overview = function Overview(props) {
     onClick: function onClick() {
       return window.open('http://pinterest.com/pin/create/button/?url=' + selectedImage.url, 'pinterest-share-dialog', 'width=626,height=436');
     }
-  }));
+  })));
 };
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Overview); // style={{ width: '80vw' }}
@@ -3717,7 +3748,7 @@ var ProductDetail = function ProductDetail(_ref) {
     rating: ratings
   }) : '', " ", reviewTotal > 0 ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(Link, {
     href: "#"
-  }, "read all ", reviewTotal, " reviews...") : '', /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h1", null, product.name), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h4", null, product.category), renderPrice);
+  }, "read all ", reviewTotal, " reviews...") : '', /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h5", null, product.category), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h2", null, product.name), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h6", null, renderPrice));
 };
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (ProductDetail);
@@ -3824,7 +3855,11 @@ var Box = styled_components__WEBPACK_IMPORTED_MODULE_1__["default"].div(_templat
 var Slogan = function Slogan(_ref) {
   var description = _ref.description,
       slogan = _ref.slogan;
-  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(Box, null, slogan ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h3", null, slogan) : '', description ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h6", null, description) : '');
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(Box, null, slogan ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h3", {
+    style: {
+      marginBottom: '1vh'
+    }
+  }, slogan) : '', description ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h6", null, description) : '');
 };
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Slogan);
@@ -3982,7 +4017,7 @@ var Styles = function Styles(_ref) {
 
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_ClickCounter_jsx__WEBPACK_IMPORTED_MODULE_4__["default"], {
     event: "Styles"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(Container, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h1", null, name)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(StyleIconCotainer, null, styles.map(function (image) {
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(Container, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h6", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("b", null, "STYLE > "), name)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(StyleIconCotainer, null, styles.map(function (image) {
     for (var i = 0; i < image.photos.length; ++i) {
       if (image.photos[i].thumbnail_url === selectedImage.url || image.photos[i].url === selectedImage.url) {
         return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(SelectedStyleTile, {
@@ -35784,13 +35819,14 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-dom */ "./node_modules/react-dom/index.js");
 /* harmony import */ var _components_related_index_jsx__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./components/related/index.jsx */ "./client/src/components/related/index.jsx");
-/* harmony import */ var styled_components__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! styled-components */ "./node_modules/styled-components/dist/styled-components.browser.esm.js");
+/* harmony import */ var styled_components__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! styled-components */ "./node_modules/styled-components/dist/styled-components.browser.esm.js");
 /* harmony import */ var _components_overview_Overview_jsx__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./components/overview/Overview.jsx */ "./client/src/components/overview/Overview.jsx");
 /* harmony import */ var _components_reviews_Reviews_jsx__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./components/reviews/Reviews.jsx */ "./client/src/components/reviews/Reviews.jsx");
 /* harmony import */ var _sampleData_json__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./sampleData.json */ "./client/src/sampleData.json");
 /* harmony import */ var _components_ClickCounter_jsx__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./components/ClickCounter.jsx */ "./client/src/components/ClickCounter.jsx");
-/* harmony import */ var _colorScheme_js__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./colorScheme.js */ "./client/src/colorScheme.js");
-/* harmony import */ var _colorScheme_js__WEBPACK_IMPORTED_MODULE_7___default = /*#__PURE__*/__webpack_require__.n(_colorScheme_js__WEBPACK_IMPORTED_MODULE_7__);
+/* harmony import */ var _components_Banner_jsx__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./components/Banner.jsx */ "./client/src/components/Banner.jsx");
+/* harmony import */ var _colorScheme_js__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./colorScheme.js */ "./client/src/colorScheme.js");
+/* harmony import */ var _colorScheme_js__WEBPACK_IMPORTED_MODULE_8___default = /*#__PURE__*/__webpack_require__.n(_colorScheme_js__WEBPACK_IMPORTED_MODULE_8__);
 var _templateObject, _templateObject2;
 
 function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
@@ -35815,10 +35851,11 @@ function _taggedTemplateLiteral(strings, raw) { if (!raw) { raw = strings.slice(
 
 
 
+
  // import './index.css';
 
-var Root = styled_components__WEBPACK_IMPORTED_MODULE_8__["default"].div(_templateObject || (_templateObject = _taggedTemplateLiteral(["\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  border: 1px solid ", ";\n  padding: 0px;\n"])), (_colorScheme_js__WEBPACK_IMPORTED_MODULE_7___default().lightBlue));
-var OuterContainer = styled_components__WEBPACK_IMPORTED_MODULE_8__["default"].div(_templateObject2 || (_templateObject2 = _taggedTemplateLiteral(["\ndisplay: flex;\nwidth: 70vw;\nleft: 15vw;\njustify-content: center;\n"])));
+var Root = styled_components__WEBPACK_IMPORTED_MODULE_9__["default"].div(_templateObject || (_templateObject = _taggedTemplateLiteral(["\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  border: 1px solid ", ";\n  padding: 0px;\n"])), (_colorScheme_js__WEBPACK_IMPORTED_MODULE_8___default().lightBlue));
+var OuterContainer = styled_components__WEBPACK_IMPORTED_MODULE_9__["default"].div(_templateObject2 || (_templateObject2 = _taggedTemplateLiteral(["\ndisplay: flex;\nwidth: 50vw;\nleft: 15vw;\njustify-content: center;\n"])));
 
 var App = function App() {
   var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)('hello world'),
@@ -35836,7 +35873,7 @@ var App = function App() {
       currentProduct = _useState6[0],
       setCurrentProduct = _useState6[1];
 
-  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(Root, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_components_overview_Overview_jsx__WEBPACK_IMPORTED_MODULE_3__["default"], {
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(Root, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_components_Banner_jsx__WEBPACK_IMPORTED_MODULE_7__["default"], null)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(Root, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_components_overview_Overview_jsx__WEBPACK_IMPORTED_MODULE_3__["default"], {
     product: currentProduct
   })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
     className: "widget"

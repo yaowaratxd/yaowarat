@@ -112,7 +112,7 @@ const Styles = ({ styles, setSelectedStyle, selectedImage }) => {
   return <div>
     <ClickCounter event='Styles'>
     <Container>
-  <h1>{ name }</h1>
+  <h6><b>STYLE > </b>{ name }</h6>
     </Container>
     <StyleIconCotainer>
     { styles.map((image) =>  {

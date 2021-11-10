@@ -15,15 +15,15 @@ margin-bottom: 5px;
 const SelectedTile = styled.img`
 height: 7vh;
 width:  7vw;
-border: 1px solid ${colorScheme.tan};
+border: 3px solid ${colorScheme.darkGrey};
 border-bottom: 6px solid ${colorScheme.darkGrey};
 margin-bottom: 5px;
 `;
 const LeftRibbon = styled.div`
 width: 7vw;
-left:   10vw;
+left:   18vw;
 position: absolute;
-top: 1vh;
+top: 15vh;
 height: 60vh;
 overflow: scroll;
 z-index: 2;
@@ -66,25 +66,23 @@ background-color: Transparent;
 border: none;
 color: ${colorScheme.darkGrey};
 position: relative;
-right: 5vw;
-top: 5vh;
 z-index: 2;
 `;
 
 const LeftButton = styled.div`
-position: absolute;
+position: relative;
 top: 25vh;
-left: 20vw;
+left: 25vw;
 `;
 const RightButton = styled.div`
-position: absolute;
+position: relative;
 top: 25vh;
-left: 45vw;
+left: 50vw;
 `;
 const ExpandButton = styled.div`
-position: absolute;
-top: .5vh;
-left: 50vw;
+position: relative;
+top: -85vh;
+left: 35vw;
 `;
 
 const ImageGallery = ({ allImages, selectedImage, setSelectedImage, styles, setSelectedStyle }) => {
@@ -132,13 +130,13 @@ const ImageGallery = ({ allImages, selectedImage, setSelectedImage, styles, setS
 
   const renderLeftButton = () => {
     if (allImages.length > 0) {
-      return allImages[0][0].url === selectedImage.url ? '' : <ClickyButton onClick={handleClickLeft}>&#10094;</ClickyButton>;
+      return allImages[0][0].url === selectedImage.url ? '' : <ClickyButton onClick={handleClickLeft}><h1>{'<'}</h1></ClickyButton>;
     }
   };
   const renderRightButton = () => {
     let len = allImages.length - 1
     if (allImages.length > 0) {
-      return allImages[len][allImages[len].length - 1].url === selectedImage.url ? '' : <ClickyButton onClick={handleClickRight}>&#10095;</ClickyButton>;
+      return allImages[len][allImages[len].length - 1].url === selectedImage.url ? '' : <ClickyButton onClick={handleClickRight}><h1>{'>'}</h1></ClickyButton>;
     }
   };
 
@@ -163,7 +161,7 @@ const ImageGallery = ({ allImages, selectedImage, setSelectedImage, styles, setS
   }
   return <div>
     <div>
-      <ClickCounter event='ImageGallery'>
+      {/* <ClickCounter event='ImageGallery'> */}
       <LeftButton>
         { renderLeftButton() }
       </LeftButton>
@@ -174,7 +172,7 @@ const ImageGallery = ({ allImages, selectedImage, setSelectedImage, styles, setS
         { renderRightButton() }
         </RightButton>
         <ExpandButton>
-        <ExpandClickyButton onClick={changeExpansion}> Expand</ExpandClickyButton>
+        <ExpandClickyButton onClick={changeExpansion}> <h1>{'[ ]'}</h1> </ExpandClickyButton>
         </ExpandButton>
         <LeftRibbon>
           <ImageContainer>
@@ -184,7 +182,7 @@ const ImageGallery = ({ allImages, selectedImage, setSelectedImage, styles, setS
           )}
         </ImageContainer>
         </LeftRibbon>
-      </ClickCounter>
+      {/* </ClickCounter> */}
       </div>
   </div>
 };

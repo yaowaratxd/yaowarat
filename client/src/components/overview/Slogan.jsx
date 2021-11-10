@@ -11,7 +11,7 @@ align-items: center;
 
 const Slogan = ({ description, slogan }) => {
   return <Box>
-    { slogan ? <h3>{ slogan }</h3> : '' }
+    { slogan ? <h3 style={{ marginBottom: '1vh' }}>{ slogan }</h3> : '' }
     { description ? <h6>{ description }</h6> : '' }
   </Box>
 };

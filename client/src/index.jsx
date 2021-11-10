@@ -9,6 +9,7 @@ import Overview from './components/overview/Overview.jsx';
 import Reviews from './components/reviews/Reviews.jsx';
 import sampleData from './sampleData.json'
 import ClickCounter from './components/ClickCounter.jsx';
+import Top from './components/Banner.jsx';
 
 import colorScheme from './colorScheme.js';
 // import './index.css';
@@ -23,7 +24,7 @@ const Root = styled.div`
 
 const OuterContainer = styled.div`
 display: flex;
-width: 70vw;
+width: 50vw;
 left: 15vw;
 justify-content: center;
 `;
@@ -35,6 +36,9 @@ const App = () => {
 
   return (
     <div>
+        <Root>
+          <Top />
+        </Root>
         <Root>
           <Overview product={currentProduct}/>
         </Root>
