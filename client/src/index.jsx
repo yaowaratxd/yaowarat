@@ -50,7 +50,9 @@ const App = () => {
       </div>
       <div className="widget">
         <br />
-        <h3><Related setCurrentProduct={setCurrentProduct} currentProduct={currentProduct} /></h3>
+        <Root>
+          <Related setCurrentProduct={setCurrentProduct} currentProduct={currentProduct} />
+        </Root>
       </div>
       <div className="widget">
         <Root>
