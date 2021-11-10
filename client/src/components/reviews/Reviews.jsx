@@ -23,7 +23,7 @@ class Review extends React.Component {
   }
 
   componentDidMount() {
-    axios.get(`/api/reviews/${this.state.sort}/${this.state.product.id}`)
+    axios.get(`/api/reviews/${this.state.sort}/${this.props.product.id}`)
       .then((reviews) => {
         this.setState({ reviews: reviews.data.results });
         this.getMeta();
@@ -32,11 +32,24 @@ class Review extends React.Component {
         console.log('There was an Error with reviews');
         console.log(err);
       });
+  }
 
+  componentDidUpdate(prevProps) {
+    if (prevProps.product !== this.props.product) {
+      axios.get(`/api/reviews/${this.state.sort}/${this.props.product.id}`)
+      .then((reviews) => {
+        this.setState({ reviews: reviews.data.results });
+        this.getMeta();
+      })
+      .catch((err) => {
+        console.log('There was an Error with reviews');
+        console.log(err);
+      });
+    }
   }
 
   getMeta() {
-    axios.get(`/reviews/meta/${this.state.product.id}`)
+    axios.get(`/reviews/meta/${this.props.product.id}`)
       .then((meta) => {
         // console.log('This it the meta data: ', meta.data);
         this.setState({ meta: meta.data });
@@ -61,7 +74,7 @@ class Review extends React.Component {
 
   sort(event) {
     this.setState({ sort: event.target.value }, () => {
-      axios.get(`/api/reviews/${this.state.sort}/${this.state.product.id}`)
+      axios.get(`/api/reviews/${this.state.sort}/${this.props.product.id}`)
         .then((response) => {
           this.setState({ reviews: response.data.results });
         })

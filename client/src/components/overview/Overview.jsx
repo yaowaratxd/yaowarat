@@ -6,6 +6,35 @@ import ImageGallery from './ImageGallery.jsx';
 import ProductDetail from './ProductDetail.jsx';
 import Styles from './Styles.jsx';
 import AddToCart from './AddToCart.jsx';
+import Slogan from './Slogan.jsx';
+import Checklist from './Checklist.jsx';
+import ClickCounter from '../ClickCounter.jsx';
+
+const ProductCartandStyleContainer = styled.div`
+display: flex;
+flex-direction: column;
+width: 40%;
+`;
+
+const OverviewContainer = styled.div`
+display: flex;
+justify-content: space-between;
+border: 2px solid black;
+`;
+
+const SloganContainer = styled.div`
+display: flex;
+position: relative;
+top: -18vh;
+width: 100%;
+`;
+
+const SocialWrapper = styled.div`
+position: relative;
+top: -20vh;
+display: flex;
+justify-content: flex-start;
+`;
 
 const Overview = (props) => {
   const [product, setProduct] = useState({});
@@ -59,21 +88,26 @@ const Overview = (props) => {
       }
       setTotalImages(allHolder);
     });
-  }, []);
-  return <div >
+  }, [props.product]);
+  return <div>
+  <OverviewContainer >
     <ImageGallery setSelectedStyle={setSelectedStyle} styles={styles} allImages={totalImages} selectedImage={selectedImage} setSelectedImage={setSelectedImage} />
-    <ProductDetail product={props.product} styles={styles} selectedImage={selectedImage} />
-    <Styles styles={styles} selectedImage={selectedImage} setSelectedStyle={setSelectedStyle} />
-    <br />
-    <br />
-    <br />
-    <br />
-    <br />
-    { props.product.slogan && props.product.slogan.length > 0 ? props.product.slogan : '' }
-    <br />
-    { props.product.description ? props.product.description : '' }
+    <ProductCartandStyleContainer>
+      <ProductDetail product={props.product} styles={styles} selectedImage={selectedImage} />
+      <Styles styles={styles} selectedImage={selectedImage} setSelectedStyle={setSelectedStyle} />
+    </ProductCartandStyleContainer>
+  </OverviewContainer>
+  <SloganContainer>
+  <Slogan slogan={props.product.slogan} description={props.product.description} />
+  <Checklist />
+  </SloganContainer>
+  <SocialWrapper>
+    <img src='/graphics/facebook.png' onClick={() => window.open(`https://www.facebook.com/sharer/sharer.php?u=${selectedImage.url}`, 'facebook-share-dialog', 'width=626,height=436') } />
+    {/* <img src='/graphics/facebook.png' onClick={() => window.open('https://www.facebook.com/sharer/sharer.php?u='+encodeURIComponent(location.href),'facebook-share-dialog', 'width=626,height=436') } /> */}
+    <img src='/graphics/twitter.png' onClick={() => window.open('https://www.twitter.com/intent/tweet?url='+selectedImage.url,'twitter-share-dialog', 'width=626,height=436') } />
+    <img src='/graphics/pinterest.png' onClick={() => window.open('http://pinterest.com/pin/create/button/?url='+selectedImage.url,'pinterest-share-dialog', 'width=626,height=436') } />
+    </SocialWrapper>
   </div>
-
 };
 
 export default Overview;

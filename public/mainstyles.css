@@ -1,9 +1,25 @@
+/*
+// Base Colors
+Light Grey: #A9A9A9
+Light Blue: #7395AE
+// Accent Base Color
+Tan: #B1A296
+// Accent Colors
+Dark Grey: #5D5C61
+Dark Blue: #557A95
+*/
+
 .widget {
   display: flex;
-  /* grid-template-columns: 300px 300px 300px 300px 300px; */
-  /* grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); */
-  /* grid-template-rows: 600px; */
-  /* justify-items: stretch; */
-  /* align-items: center; */
   overflow: hidden ;
+  background-color: #A9A9A9;
+  justify-content: center;
+}
+
+.banner {
+  background-color: #557A95;
+  color: #95c5e7;
+  font-size: xx-large;
+  text-align: center;
+  padding: 20px 0;
 }

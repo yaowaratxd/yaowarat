@@ -9,7 +9,7 @@ margin-right: 40px;
 margin-top: 20px;
 `;
 
-const QuantityDropDown = ({ quantity, hasSize }) => {
+const QuantityDropDown = ({ quantity, hasSize, setInStock }) => {
   const [selections, setSelections] = useState(['-']);
 
   useEffect(() => {
@@ -18,12 +18,17 @@ const QuantityDropDown = ({ quantity, hasSize }) => {
     for (let i = 1; i <= iters; ++i) {
       results.push(i);
     };
+    if (results.length === 0) {
+      setInStock(false);
+    } else {
+      setInStock(true);
+    }
     setSelections(results);
   }, [quantity])
 
   return <SelectEle>
     { hasSize ? '' : <option key={'--'} value={''}> - </option>}
-    { selections.map((size) => <option key={size} value={size}>{ size }</option>)}
+    { selections.map((size) => <option key={size} value={size}>{ size }</option>) }
   </SelectEle>
 };
 

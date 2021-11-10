@@ -10,9 +10,8 @@ class Related extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      // currentProduct: placeholder,// convert to a prop
       relatedProducts: [],
-      outfitProducts: [], //move up to app most likely
+      outfitProducts: [],
       left: 0,
       right: 2,
     };
@@ -25,6 +24,14 @@ class Related extends React.Component {
 
   componentDidMount() {
     this.getRelated();
+  }
+
+  componentDidUpdate(prevProps) {
+    if (prevProps.currentProduct !== this.props.currentProduct) {
+      console.log('should update the related products')
+      this.setState({relatedProducts: []})
+      this.getRelated();
+    }
   }
 
   getRelated() {
@@ -59,7 +66,6 @@ class Related extends React.Component {
 
   removeFromOutfitList(product) {
     const stringed = JSON.stringify(product);
-    // console.log('removing: ', stringed);
     this.setState((state) => (
       {
         outfitProducts: state.outfitProducts.filter(
@@ -75,20 +81,17 @@ class Related extends React.Component {
   }
 
   handleNav = (direction) => {
-    // console.log(this.navRef.current.scrollLeft)
     if (direction === 'left') {
       this.setState((state) => (
         {
-          left: state.left - 1,
-          right: state.right - 1,
-        }))
-      // this.navRef ? (this.navRef.current.scrollLeft -= 200) : null;
-    } else {
-      //   // this.navRef ? (this.navRef.current.scrollLeft += 200) : null;
-      this.setState(state => ({
-        left: state.left + 1,
-        right: state.right + 1,
+        left: state.left - 1,
+        right : state.right - 1,
       }))
+    } else {
+      this.setState( state => ({
+        left : state.left + 1,
+        right : state.right + 1,
+    }))
     }
   }
 
@@ -97,17 +100,15 @@ class Related extends React.Component {
       ref.current.scrollLeft += scrollOffset;
     };
     let relatedSlice = this.state.relatedProducts.slice(this.state.left, this.state.right)
-    // console.log(relatedSlice)
-    const leftButton = (this.state.left === 0) ? null : <button id="scrollarrow" onClick={() => this.handleNav('left')}>{String.fromCodePoint(129152,)}</button>
-    const rightButton = (this.state.right === this.state.relatedProducts.length) ? null : <button id="scrollarrow" onClick={() => this.handleNav('right')}>{String.fromCodePoint(129154)}</button>
+    const leftButton = (this.state.left === 0) ? null : <button id="scrollarrow" onClick={() => this.handleNav('left')}>{String.fromCodePoint(0x25C0)}</button>
+    const rightButton = (this.state.right === this.state.relatedProducts.length) ? null : <button id="scrollarrow" onClick={() => this.handleNav('right')}>{String.fromCodePoint(0x25B6)}</button>
     return (
       <div>
-        <h3>current product selected: <em>{this.props.currentProduct.name}</em> </h3>
         <div>
           <ul className="relatedproducts">
             {leftButton}
-            {relatedSlice.map((oneProduct, index) => {
-              return <OneRelatedProduct product={oneProduct} originalProduct={this.props.currentProduct} ref={this.navRef} key={index} />
+            {relatedSlice.map((oneProduct) => {
+              return <OneRelatedProduct key={oneProduct.id} setCurrentProduct={this.props.setCurrentProduct} product={oneProduct} originalProduct={this.props.currentProduct} ref={this.navRef}/>
             })}
             {rightButton}
           </ul>
@@ -127,15 +128,3 @@ class Related extends React.Component {
 }
 
 export default Related;
-
-const placeholder = {
-  "id": 37313,
-  "campus": "hr-rfe",
-  "name": "Morning Joggers",
-  "slogan": "Make yourself a morning person",
-  "description": "Whether you're a morning person or not.  Whether you're gym bound or not.  Everyone looks good in joggers.",
-  "category": "Pants",
-  "default_price": "40.00",
-  "created_at": "2021-08-13T14:37:33.145Z",
-  "updated_at": "2021-08-13T14:37:33.145Z"
-};

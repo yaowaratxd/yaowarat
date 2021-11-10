@@ -4,44 +4,50 @@ import QuantityDropDown from './QuantityDropDown.jsx';
 import AddToCart from './AddToCart.jsx';
 import styled from 'styled-components';
 
-// position: relative;
-const Container = styled.div`
+import colorScheme from '../../colorScheme.js';
+import ClickCounter from '../ClickCounter.jsx';
+/*
 position: relative;
 left: 25vw;
 top: 10vh;
+
+border-radius: 50%;
+border: 1px solid black;
+border-radius: 50%;
+border: 3px solid rebeccapurple;
+*/
+
+// position: relative;
+const Container = styled.div`
 display: flex;
 flex-wrap: true;
 `;
 
 const StyleIconCotainer = styled.div`
-position: relative;
-left: 25vw;
-top: 10vh;
 width: 25vw;
 display: flex;
 flex-wrap: wrap;
 `;
 
 const StyleTile = styled.div`
-height: 50px;
-width: 50px;
+width: 20%;
 margin: .3vw;
-border-radius: 50%;
-border: 1px solid black;
 `;
 const SelectedStyleTile = styled.div`
-height: 55px;
-width: 55px;
+width: 20%;
 margin: .3vw;
-border-radius: 50%;
-border: 3px solid rebeccapurple;
 `;
 
 const SelectEle = styled.select`
 width: 100px;
 height: 45px;
-margin-right: 40px;
+margin-right: 20px;
 margin-top: 20px;
+`;
+
+const CartContainer = styled.div`
+position: relative;
+left: -5vw;
 `;
 
 const Styles = ({ styles, setSelectedStyle, selectedImage }) => {
@@ -71,7 +77,6 @@ const Styles = ({ styles, setSelectedStyle, selectedImage }) => {
     })
   };
   useEffect(() => {
-    // createQuantitySelector();
     setQ();
     getName();
   }, [selected, quantity, name, selectedImage]);
@@ -105,25 +110,20 @@ const Styles = ({ styles, setSelectedStyle, selectedImage }) => {
     getName();
   };
   return <div>
+    <ClickCounter event='Styles'>
     <Container>
-  <h1>{ name }</h1>
+  <h6><b>STYLE > </b>{ name }</h6>
     </Container>
     <StyleIconCotainer>
-  {/* <Container> */}
     { styles.map((image) =>  {
       for (let i = 0; i < image.photos.length; ++i) {
         if (image.photos[i].thumbnail_url === selectedImage.url || image.photos[i].url === selectedImage.url) {
-          return <SelectedStyleTile key={image.id}>  <img onClick={() => handleChangeImage(image.image, image.id)} key={image.id} src={image.image} style={{height: '55px', width: '55px', borderRadius: '50%'}}/> </SelectedStyleTile>
+          return <SelectedStyleTile key={image.id}>  <img onClick={() => handleChangeImage(image.image, image.id)} key={image.id} src={image.image} style={{height: '55px', width: '55px', border: `3px solid ${colorScheme.darkGrey}`, borderRadius: '50%'}}/> </SelectedStyleTile>
         }
       }
-      // if (image.url === selectedImage.url ) {
-      //   return <SelectedStyleTile key={image.id}>  <img onClick={() => setSelectedStyle({url: image.image, id: image.id})} key={image.id} src={image.image} style={{height: '55px', width: '55px', borderRadius: '50%'}}/> </SelectedStyleTile>
-      // } else {
         return <StyleTile key={image.id}>  <img onClick={() => handleChangeImage(image.image, image.id)} key={image.id} src={image.image} style={{height: '50px', width: '50px', borderRadius: '50%'}}/> </StyleTile>
-      // }
     }
     )}
-    {/* </Container> */}
     </StyleIconCotainer>
     <Container>
     <SelectEle id='size' onChange={(event) => handleChange(event)}>
@@ -142,18 +142,12 @@ const Styles = ({ styles, setSelectedStyle, selectedImage }) => {
     }
     )}
     </SelectEle>
-    <AddToCart hasSize={hasSize} quantity={quantity} />
+    {/* <CartContainer> */}
+      <AddToCart hasSize={hasSize} quantity={quantity} />
+    {/* </CartContainer> */}
   </Container>
+  </ClickCounter>
   </div>
 };
 
 export default Styles;
-
-// style={{
-//   backgroundImage: `url('${ image.image }')`,
-//   backgroundRepeat: "no-repeat", height: '50px', width: '50px'
-// }
-
-// for (let i = 1; i <= selectedSize; ++i) {
-//   placeholder.push(<option key={i} value={i}>{ i }</option>);
-// }

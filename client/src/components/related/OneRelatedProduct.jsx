@@ -13,7 +13,7 @@ class OneRelatedProduct extends React.Component {
       thisProductExtra: {},
       thisProductRating: {},
       showModal: false,
-      mainProductRating: {}, // could be done at main index level and passed down along with item
+      mainProductRating: {},
     };
     this.getStyles = this.getStyles.bind(this);
     this.getReviews = this.getReviews.bind(this);
@@ -25,6 +25,7 @@ class OneRelatedProduct extends React.Component {
   componentDidMount() {
     this.getStyles();
     this.getReviews();
+    this.getOriginalReviews();
   }
 
   componentDidUpdate(prevProps) {
@@ -38,7 +39,6 @@ class OneRelatedProduct extends React.Component {
   getStyles() {
     axios.get(`/api/products/${this.props.product.id}/styles`)
       .then((response) => {
-        // console.log(response.data.results)
         this.setState({ thisProductExtra: response.data.results });
       })
       .catch(err => console.log(err));
@@ -50,6 +50,14 @@ class OneRelatedProduct extends React.Component {
         this.setState({ thisProductRating: response.data });
       })
       .catch(err => console.log(err));
+  }
+
+  getOriginalReviews () {
+    axios.get(`/reviews/meta/${this.props.originalProduct.id}`)
+    .then((response) => {
+      this.setState({ mainProductRating: response.data });
+    })
+    .catch(err => console.log(err));
   }
 
   handleShowModal() {
@@ -70,6 +78,19 @@ class OneRelatedProduct extends React.Component {
       }
       return (Math.round((reviewTotalScore / totalReviews) * 4) / 4).toFixed(2);
     }
+    return null;
+  }
+
+  getOriginalRating() {
+    var reviewTotalScore = 0;
+    var totalReviews = 0;
+    if (JSON.stringify(this.state.mainProductRating.ratings) !== '{}') {
+      for (var key in this.state.mainProductRating.ratings) {
+        reviewTotalScore += (parseInt([key]) * parseInt(this.state.mainProductRating.ratings[key]));
+        totalReviews += parseInt(this.state.mainProductRating.ratings[key])
+      }
+      return (Math.round((reviewTotalScore / totalReviews) * 4) / 4).toFixed(2);
+    }
     return 'Be the first to rate this product!';
   }
 
@@ -79,6 +100,15 @@ class OneRelatedProduct extends React.Component {
   }
 
   render() {
+    const renderPrice = function (array, object) {
+      for (var i = 0; i < array.length; i++) {
+        if (array[i].sale_price) {
+          return <div><s>{array[i].original_price}</s> Sale! <em id="saleprice">{array[i].sale_price}</em> </div>
+        }
+      }
+      return <div>{object.default_price}</div>
+    }
+
     const modal = (this.state.showModal ? (
       <Comparing>
         <div className="modal" id="modal2">
@@ -91,7 +121,7 @@ class OneRelatedProduct extends React.Component {
                   <th scope="col">Selected Comparison</th>
                 </tr>
                 <tr>
-                  <td>This should come from parent</td>
+                  <td><Stars rating={this.getOriginalRating()} /></td>
                   <td>Star Rating</td>
                   <td><Stars rating={this.getRatingScore()} /></td>
                 </tr>
@@ -118,8 +148,8 @@ class OneRelatedProduct extends React.Component {
               </tbody>
             </table>
           </div>
-          <button onClick={() => this.setState({ showModal: false})}>Hide comparison</button>
-       </div>
+          <button onClick={() => this.setState({ showModal: false})}>Hide</button>
+        </div>
       </Comparing>
     ) : null);
 
@@ -135,32 +165,33 @@ class OneRelatedProduct extends React.Component {
       }
     }
 
+
+    const ratingDisplay = productRating === null ? ' Be the first to leave a rating!' : <Stars rating={productRating} />
+
     return (
       <div className="onerelated" href="">
-        <img src={`${picImage}`} height="250px" width="200px" alt="product" />
+        <button onClick={this.compareProducts} type="button" id="comparebutton"><icon>{String.fromCodePoint(0x2605)}</icon> </button>
+        <img src={`${picImage}`} id="productimage" alt="product" onClick={() => this.props.setCurrentProduct(this.props.product)}/>
         <br/>
-        <button onClick={this.compareProducts} className="fa fa-star" type="button" id="comparebutton"> </button>
         {modal}
         <div>
           Product category:
           {this.props.product.category} <br/>
         </div>
         <div>
-          Product name:
+          Product name: 
           {this.props.product.name} <br/>
         </div>
         <div>
-          Price (default):
-          {this.props.product.default_price}<br/>
+          Price: {renderPrice(this.state.thisProductExtra, this.props.product)}<br/>
         </div>
         <div>
-          Star rating:
-          {productRating}
+          Rating:
+         {ratingDisplay}
         </div>
         <div>{this.props.comparison}</div>
 
         <br />
-        <Stars rating={productRating} />
       </div>
     );
   }

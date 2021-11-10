@@ -1,6 +1,18 @@
+/*
+// Base Colors
+Light Grey: #A9A9A9
+Light Blue: #7395AE
+// Accent Base Color
+Tan: #B1A296
+// Accent Colors
+Dark Grey: #5D5C61
+Dark Blue: #557A95
+*/
+
+
+
 #related {
-  position: relative;
-  z-index: 999;
+  position: absolute;
   font-size: large;
 }
 
@@ -13,74 +25,91 @@
 
 .relatedproducts {
   display: flex;
-  /* grid-template-columns: 30px 300px 300px 300px 300px 30px; */
-  /* grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); */
   flex-direction: row;
-  /* overflow: auto; */
   flex-wrap: nowrap;
-  /* flex: none; */
-  /* grid-template-rows: 600px; */
-  /* justify-items: stretch;
-  justify-content: flex-start;
-  align-items: center; */
-  /* overflow-wrap: auto; */
   column-gap: 10px;
-  /* flex-basis: 33%; */
+  height: 500px;
 }
 
 .onerelated {
-  /* justify-self: center;
-  text-align: center;
-  font-size: 18px;*/
   border-style: solid;
   padding: 5px;
   align-self: stretch;
-  background-color: silver;
-  justify-content: center;
-  flex-grow: 1;
-  flex: none;
-  flex-basis: 300px;
-  overflow:auto;
+  background-color: #7395AE;
+  align-items: center;
+  flex-grow: 0;
+  flex-basis: 270px;
+  overflow: hidden;
   white-space: normal;
+  align-content: center;
+  justify-content: center;
+  text-align: left;
+  align-content:flex-start;
+  border-width: thin;
 }
 
-.onerelated a {
-  display: inline-block;
-  padding: 200px;
+#comparebutton {
+  position: relative;
+  top: 00px;
+  left: 200px;
+  z-index: 2;
+  color: yellow;
+  font-size: xx-large;
+  background-color: rgba(0,0,0,0);
+  border: none;
+  text-shadow: black;
+}
+
+#productimage {
+  display: block;
+  position: relative;
+  max-width:230px;
+  max-height:250px;
+  width: auto;
+  height: auto;
+  border: solid;
+  border-width: 1px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 5px;
 }
 
 .outfitproducts {
   display: flex;
-  /* grid-template-columns: 30px 300px 300px 300px 300px 30px; */
-  /* grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); */
   flex-direction: row;
-  /* overflow: auto; */
   flex-wrap: nowrap;
-  /* flex: none; */
-  /* grid-template-rows: 600px; */
-  /* justify-items: stretch;
-  justify-content: flex-start;
-  align-items: center; */
-  /* overflow-wrap: auto; */
   column-gap: 10px;
-  /* flex-basis: 33%; */
 }
 
 .oneoutfit {
-  justify-self: center;
-  text-align: left;
-  font-size: 18px;
   border-style: solid;
   padding: 5px;
   align-self: stretch;
-  background-color: silver;
+  background-color: #7395AE;
+  align-items: center;
+  flex-grow: 0;
+  flex-basis: 270px;
+  overflow: hidden;
+  white-space: normal;
+  align-content: center;
+  justify-content: center;
+  text-align: left;
+  align-content:flex-start;
+  border-width: thin;
 }
 
 #scrollarrow {
-  font-size: 50px;
+  font-size:xx-large;
+  background-color: rgba(0,0,0,0);
+  border: none
+}
+
+#saleprice {
+  color: red;
 }
 
 .modal {
+  z-index: 3;
   background-color: rgba(0,0,0,0.5);
   position: fixed;
   height: 100%;
@@ -98,22 +127,22 @@ table {
   border: 2px solid rgb(200,200,200);
   letter-spacing: 1px;
   font-size: 0.8rem;
-  background-color: rgb(255, 255, 255);
+  background-color: #B1A296;
+  width: 600px;
 }
 
 td, th {
   border: 1px solid rgb(190,190,190);
   padding: 10px 20px;
+  word-wrap: break-word;
 }
 
 th {
-  background-color: rgb(255, 255, 255);
+  background-color: #B1A296;
 }
 
 td {
   text-align: center;
 }
 
-#comparebutton {
-  align-items: flex-end;
-}
+
