@@ -3,12 +3,11 @@ import axios from 'axios';
 import styled from 'styled-components';
 
 import Stars from '../StarValue.jsx';
+import colorScheme from '../../colorScheme.js';
+import ClickCounter from '../ClickCounter.jsx';
 
 // position: relative;
 const Container = styled.div`
-  position: relative;
-  left: 25vw;
-  top: 4vh;
   width: 20vw;
 `;
 
@@ -16,6 +15,12 @@ const NewPrice = styled.span`
 color: red;
 text-decoration: line-through;
 `;
+
+const Link = styled.a`
+color: ${colorScheme.darkGrey};
+`;
+
+
 
 const ProductDetail = ({ product, selectedImage, styles }) => {
   const [ratings, setRatings] = useState(0);
@@ -37,11 +42,10 @@ const ProductDetail = ({ product, selectedImage, styles }) => {
 
   const renderPrice =  selectedImage.salePrice ? <div> <NewPrice> {product.default_price} </NewPrice> { selectedImage.salePrice } </div> : product.default_price;
   return <Container>
-   { ratings !== 'NaN' ?  <Stars rating={ratings} /> : '' }
-   { reviewTotal > 0 ?  `click here to see all ${ reviewTotal } reviews...`  : '' }
-    <h1>{ product.name }</h1>
-    <h4>{ product.category }</h4>
-    { renderPrice }
+   { ratings !== 'NaN' ?  <Stars rating={ratings} /> : '' } { reviewTotal > 0 ?  <Link href='#'>read all { reviewTotal } reviews...</Link>  : '' }
+    <h5>{ product.category }</h5>
+    <h2>{ product.name }</h2>
+    <h6>{ renderPrice }</h6>
   </Container>
 };
 

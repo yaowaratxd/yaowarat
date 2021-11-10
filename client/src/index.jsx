@@ -9,18 +9,23 @@ import styled from 'styled-components';
 import Overview from './components/overview/Overview.jsx';
 import Reviews from './components/reviews/Reviews.jsx';
 import sampleData from './sampleData.json'
+import ClickCounter from './components/ClickCounter.jsx';
+import Top from './components/Banner.jsx';
 
+import colorScheme from './colorScheme.js';
 // import './index.css';
 
 const Root = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
+  border: 1px solid ${colorScheme.lightBlue};
+  padding: 0px;
 `;
 
 const OuterContainer = styled.div`
 display: flex;
-width: 70vw;
+width: 50vw;
 left: 15vw;
 justify-content: center;
 `;
@@ -37,6 +42,9 @@ const App = () => {
 
       <div className="widget">
         <Root>
+          <Top />
+        </Root>
+        <Root>
           <Overview product={currentProduct}/>
         </Root>
       </div>
@@ -52,7 +60,6 @@ const App = () => {
       <div className="widget">
         <h3>Questions and Answers</h3>
       </div>
-
     </div>
   );
 };

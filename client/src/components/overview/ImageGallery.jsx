@@ -1,47 +1,47 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import styled from 'styled-components';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+
+import colorScheme from '../../colorScheme.js';
+import ClickCounter from '../ClickCounter.jsx';
 
 const Tile = styled.img`
 height: 7vh;
 width:  7vw;
-border: 1px solid black;
+border: 1px solid ${colorScheme.tan};
 margin-bottom: 5px;
 `;
 
 const SelectedTile = styled.img`
 height: 7vh;
 width:  7vw;
-border: 1px solid black;
-border-bottom: 6px solid rebeccapurple;
+border: 3px solid ${colorScheme.darkGrey};
+border-bottom: 6px solid ${colorScheme.darkGrey};
 margin-bottom: 5px;
 `;
 const LeftRibbon = styled.div`
-width: 10vw;
+width: 7vw;
+left:   18vw;
 position: absolute;
-top: 5vh;
-left: 5%;
+top: 15vh;
 height: 60vh;
 overflow: scroll;
 z-index: 2;
+display: flex;
+justify-content: center;
 `;
+
 const ImageContainer = styled.div`
 width: 10vw;
 `;
+
 const BaseImage = styled.img`
 width: 40vw;
-position: absolute;
-top: 5vh;
-left: 5%;
-height: 60vh;
+height: 75vh;
 cursor: zoom-in;
 `;
 const BaseImageExpanded = styled.img`
 width: 70vw;
-position: absolute;
-top: 5vh;
-left: 5%;
 height: 60vh;
 z-index: 2;
 cursor: zoom-in;
@@ -57,16 +57,32 @@ cursor: zoom-out;
 const ClickyButton = styled.button`
 background-color: Transparent;
 border: none;
-color: rebeccapurple;
+color: ${colorScheme.darkGrey};
+height: 250%;
+width: 250%;
 `;
 const ExpandClickyButton = styled.button`
 background-color: Transparent;
 border: none;
-color: rebeccapurple;
+color: ${colorScheme.darkGrey};
 position: relative;
-right: 5vw;
-top: 5vh;
 z-index: 2;
+`;
+
+const LeftButton = styled.div`
+position: relative;
+top: 25vh;
+left: 25vw;
+`;
+const RightButton = styled.div`
+position: relative;
+top: 25vh;
+left: 50vw;
+`;
+const ExpandButton = styled.div`
+position: relative;
+top: -85vh;
+left: 35vw;
 `;
 
 const ImageGallery = ({ allImages, selectedImage, setSelectedImage, styles, setSelectedStyle }) => {
@@ -114,13 +130,13 @@ const ImageGallery = ({ allImages, selectedImage, setSelectedImage, styles, setS
 
   const renderLeftButton = () => {
     if (allImages.length > 0) {
-      return allImages[0][0].url === selectedImage.url ? '' : <ClickyButton onClick={handleClickLeft}>&#10094;</ClickyButton>;
+      return allImages[0][0].url === selectedImage.url ? '' : <ClickyButton onClick={handleClickLeft}><h1>{'<'}</h1></ClickyButton>;
     }
   };
   const renderRightButton = () => {
     let len = allImages.length - 1
     if (allImages.length > 0) {
-      return allImages[len][allImages[len].length - 1].url === selectedImage.url ? '' : <ClickyButton onClick={handleClickRight}>&#10095;</ClickyButton>;
+      return allImages[len][allImages[len].length - 1].url === selectedImage.url ? '' : <ClickyButton onClick={handleClickRight}><h1>{'>'}</h1></ClickyButton>;
     }
   };
 
@@ -145,12 +161,19 @@ const ImageGallery = ({ allImages, selectedImage, setSelectedImage, styles, setS
   }
   return <div>
     <div>
-  { renderLeftButton() }
+      {/* <ClickCounter event='ImageGallery'> */}
+      <LeftButton>
+        { renderLeftButton() }
+      </LeftButton>
         { expandedImage === 0 ?  <BaseImage onClick={changeExpansion} src={selectedImage.url} /> : expandedImage === 1 ? <BaseImageExpanded onClick={changeExpansion} src={selectedImage.url} /> : <BaseImageExploded  onClick={changeExpansion} src={selectedImage.url} /> }
         {/* <ClickyButton onClick={handleClickRight}>Right</ClickyButton>
          */}
+         <RightButton>
         { renderRightButton() }
-        <ExpandClickyButton onClick={changeExpansion}> Expand</ExpandClickyButton>
+        </RightButton>
+        <ExpandButton>
+        <ExpandClickyButton onClick={changeExpansion}> <h1>{'[ ]'}</h1> </ExpandClickyButton>
+        </ExpandButton>
         <LeftRibbon>
           <ImageContainer>
           {/* { allImages.map((im) => im.url === selectedImage ? <SelectedTile onClick={() => setSelectedImage(im.url)} key={im.thumbnail_url} src={im.thumbnail_url} /> : <Tile onClick={() => setSelectedImage(im.url)} key={im.thumbnail_url} src={im.thumbnail_url} /> )
@@ -159,6 +182,7 @@ const ImageGallery = ({ allImages, selectedImage, setSelectedImage, styles, setS
           )}
         </ImageContainer>
         </LeftRibbon>
+      {/* </ClickCounter> */}
       </div>
   </div>
 };
