@@ -6,6 +6,19 @@ import ImageGallery from './ImageGallery.jsx';
 import ProductDetail from './ProductDetail.jsx';
 import Styles from './Styles.jsx';
 import AddToCart from './AddToCart.jsx';
+import ClickCounter from '../ClickCounter.jsx';
+
+const ProductCartandStyleContainer = styled.div`
+display: flex;
+flex-direction: column;
+width: 40vw;
+margin-left: 2vw;
+`;
+
+const OverviewContainer = styled.div`
+display: flex;
+justify-content: space-between;
+`;
 
 const Overview = (props) => {
   const [product, setProduct] = useState({});
@@ -60,15 +73,15 @@ const Overview = (props) => {
       setTotalImages(allHolder);
     });
   }, [props.product]);
-  return <div >
+  return <div>
+  <OverviewContainer >
     <ImageGallery setSelectedStyle={setSelectedStyle} styles={styles} allImages={totalImages} selectedImage={selectedImage} setSelectedImage={setSelectedImage} />
-    <ProductDetail product={props.product} styles={styles} selectedImage={selectedImage} />
-    <Styles styles={styles} selectedImage={selectedImage} setSelectedStyle={setSelectedStyle} />
-    <br />
-    <br />
-    <br />
-    <br />
-    <br />
+    <ProductCartandStyleContainer>
+      <ProductDetail product={props.product} styles={styles} selectedImage={selectedImage} />
+      <Styles styles={styles} selectedImage={selectedImage} setSelectedStyle={setSelectedStyle} />
+    </ProductCartandStyleContainer>
+  </OverviewContainer>
+
     { props.product.slogan && props.product.slogan.length > 0 ? props.product.slogan : '' }
     <br />
     { props.product.description ? props.product.description : '' }
@@ -77,10 +90,7 @@ const Overview = (props) => {
     {/* <img src='/graphics/facebook.png' onClick={() => window.open('https://www.facebook.com/sharer/sharer.php?u='+encodeURIComponent(location.href),'facebook-share-dialog', 'width=626,height=436') } /> */}
     <img src='/graphics/twitter.png' onClick={() => window.open('https://www.twitter.com/intent/tweet?url='+selectedImage.url,'twitter-share-dialog', 'width=626,height=436') } />
     <img src='/graphics/pinterest.png' onClick={() => window.open('http://pinterest.com/pin/create/button/?url='+selectedImage.url,'pinterest-share-dialog', 'width=626,height=436') } />
-
-
   </div>
-
 };
 
 export default Overview;

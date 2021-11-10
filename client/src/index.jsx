@@ -8,13 +8,17 @@ import styled from 'styled-components';
 import Overview from './components/overview/Overview.jsx';
 import Reviews from './components/reviews/Reviews.jsx';
 import sampleData from './sampleData.json'
+import ClickCounter from './components/ClickCounter.jsx';
 
+import colorScheme from './colorScheme.js';
 // import './index.css';
 
 const Root = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
+  border: 1px solid ${colorScheme.lightBlue};
+  padding: 0px;
 `;
 
 const OuterContainer = styled.div`
@@ -27,7 +31,7 @@ justify-content: center;
 const App = () => {
   const [random, setRandom] = useState('hello world');
   const [allThings, setAllThings] = useState(sampleData);
-  const [currentProduct, setCurrentProduct] = useState(allThings[3]);
+  const [currentProduct, setCurrentProduct] = useState(allThings[0]);
 
   return (
     <div>
@@ -47,7 +51,6 @@ const App = () => {
         <h3><Related setCurrentProduct={setCurrentProduct} currentProduct={currentProduct}/></h3>
       </div>
     <Root>
-      {/* <Overview product={currentProduct} /> */}
       <Reviews product={currentProduct} />
     </Root>
 

@@ -1,27 +1,33 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import styled from 'styled-components';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+
+import colorScheme from '../../colorScheme.js';
 
 const Tile = styled.img`
 height: 7vh;
 width:  7vw;
-border: 1px solid black;
+border: 1px solid ${colorScheme.tan};
 margin-bottom: 5px;
 `;
 
 const SelectedTile = styled.img`
 height: 7vh;
 width:  7vw;
-border: 1px solid black;
-border-bottom: 6px solid rebeccapurple;
+border: 1px solid ${colorScheme.tan};
+border-bottom: 6px solid ${colorScheme.darkGrey};
 margin-bottom: 5px;
 `;
 const LeftRibbon = styled.div`
-width: 10vw;
+width: 7vw;
+left:   10vw;
+position: absolute;
+top: 1vh;
 height: 60vh;
 overflow: scroll;
 z-index: 2;
+display: flex;
+justify-content: center;
 `;
 
 const ImageContainer = styled.div`
@@ -30,7 +36,7 @@ width: 10vw;
 
 const BaseImage = styled.img`
 width: 40vw;
-height: 60vh;
+height: 75vh;
 cursor: zoom-in;
 `;
 const BaseImageExpanded = styled.img`
@@ -50,16 +56,34 @@ cursor: zoom-out;
 const ClickyButton = styled.button`
 background-color: Transparent;
 border: none;
-color: rebeccapurple;
+color: ${colorScheme.darkGrey};
+height: 250%;
+width: 250%;
 `;
 const ExpandClickyButton = styled.button`
 background-color: Transparent;
 border: none;
-color: rebeccapurple;
+color: ${colorScheme.darkGrey};
 position: relative;
 right: 5vw;
 top: 5vh;
 z-index: 2;
+`;
+
+const LeftButton = styled.div`
+position: absolute;
+top: 25vh;
+left: 20vw;
+`;
+const RightButton = styled.div`
+position: absolute;
+top: 25vh;
+left: 45vw;
+`;
+const ExpandButton = styled.div`
+position: absolute;
+top: .5vh;
+left: 50vw;
 `;
 
 const ImageGallery = ({ allImages, selectedImage, setSelectedImage, styles, setSelectedStyle }) => {
@@ -138,12 +162,18 @@ const ImageGallery = ({ allImages, selectedImage, setSelectedImage, styles, setS
   }
   return <div>
     <div>
-  { renderLeftButton() }
+      <LeftButton>
+        { renderLeftButton() }
+      </LeftButton>
         { expandedImage === 0 ?  <BaseImage onClick={changeExpansion} src={selectedImage.url} /> : expandedImage === 1 ? <BaseImageExpanded onClick={changeExpansion} src={selectedImage.url} /> : <BaseImageExploded  onClick={changeExpansion} src={selectedImage.url} /> }
         {/* <ClickyButton onClick={handleClickRight}>Right</ClickyButton>
          */}
+         <RightButton>
         { renderRightButton() }
+        </RightButton>
+        <ExpandButton>
         <ExpandClickyButton onClick={changeExpansion}> Expand</ExpandClickyButton>
+        </ExpandButton>
         <LeftRibbon>
           <ImageContainer>
           {/* { allImages.map((im) => im.url === selectedImage ? <SelectedTile onClick={() => setSelectedImage(im.url)} key={im.thumbnail_url} src={im.thumbnail_url} /> : <Tile onClick={() => setSelectedImage(im.url)} key={im.thumbnail_url} src={im.thumbnail_url} /> )
