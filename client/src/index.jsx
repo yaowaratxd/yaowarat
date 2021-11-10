@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import ReactDOM from 'react-dom';
 import Related from './components/related/index.jsx';
+import Banner from './components/Banner.jsx';
 
 
 import styled from 'styled-components';
@@ -31,11 +32,17 @@ const App = () => {
 
   return (
     <div>
-      Banner
+
+        <Banner />
+
       <div className="widget">
         <Root>
           <Overview product={currentProduct}/>
         </Root>
+      </div>
+      <div className="widget">
+        <br />
+        <h3><Related setCurrentProduct={setCurrentProduct} currentProduct={currentProduct} /></h3>
       </div>
       <div className="widget">
         <Root>
@@ -44,10 +51,6 @@ const App = () => {
       </div>
       <div className="widget">
         <h3>Questions and Answers</h3>
-      </div>
-      <div className="widget">
-        <br />
-        <h3><Related setCurrentProduct={setCurrentProduct} currentProduct={currentProduct} /></h3>
       </div>
 
     </div>

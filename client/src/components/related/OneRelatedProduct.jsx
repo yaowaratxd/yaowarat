@@ -13,7 +13,7 @@ class OneRelatedProduct extends React.Component {
       thisProductExtra: {},
       thisProductRating: {},
       showModal: false,
-      mainProductRating: {}, // could be done at main index level and passed down along with item
+      mainProductRating: {},
     };
     this.getStyles = this.getStyles.bind(this);
     this.getReviews = this.getReviews.bind(this);
@@ -39,7 +39,6 @@ class OneRelatedProduct extends React.Component {
   getStyles() {
     axios.get(`/api/products/${this.props.product.id}/styles`)
       .then((response) => {
-        // console.log(response.data.results)
         this.setState({ thisProductExtra: response.data.results });
       })
       .catch(err => console.log(err));
@@ -149,7 +148,7 @@ class OneRelatedProduct extends React.Component {
               </tbody>
             </table>
           </div>
-          <button onClick={() => this.setState({ showModal: false})}>Hide comparison</button>
+          <button onClick={() => this.setState({ showModal: false})}>Hide</button>
         </div>
       </Comparing>
     ) : null);
@@ -169,7 +168,6 @@ class OneRelatedProduct extends React.Component {
 
     const ratingDisplay = productRating === null ? ' Be the first to leave a rating!' : <Stars rating={productRating} />
 
-//selectedImage.salePrice ? <div> <NewPrice> {product.default_price} </NewPrice> { selectedImage.salePrice } </div> : product.default_price;
     return (
       <div className="onerelated" href="">
         <button onClick={this.compareProducts} type="button" id="comparebutton"><icon>{String.fromCodePoint(0x2605)}</icon> </button>
@@ -181,7 +179,7 @@ class OneRelatedProduct extends React.Component {
           {this.props.product.category} <br/>
         </div>
         <div>
-          Product name:
+          Product name: 
           {this.props.product.name} <br/>
         </div>
         <div>

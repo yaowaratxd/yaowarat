@@ -9,22 +9,13 @@ class CompareModal extends React.Component {
     this.state = {};
   }
 
-  componentDidMount() {
-    console.log(this.props.children)
-    // related.appendChild(document.createElement('div'));
-  }
-
-  // componentWillUnmount() {
-  //   related.removeChild(document.getElementById('modal2'));
-  // }
-
   render() {
     return !this.props.children
     ? null
     : ReactDOM.createPortal(
-      // Any valid React child: JSX, strings, arrays, etc.
+
       this.props.children,
-      // A DOM element
+
       document.getElementById('related'),
     );
   }
