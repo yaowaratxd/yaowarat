@@ -42,10 +42,7 @@ const App = () => {
 
       <div className="widget">
         <Root>
-          <Top />
-        </Root>
-        <Root>
-          <Overview product={currentProduct} />
+          <Overview product={currentProduct}/>
         </Root>
       </div>
       <div className="widget">

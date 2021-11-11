@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-const related = document.getElementById('related');
+// const related = document.getElementById('related');
 
 class CompareModal extends React.Component {
   constructor(props) {

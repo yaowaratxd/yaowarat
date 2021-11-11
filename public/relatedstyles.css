@@ -29,13 +29,14 @@ Dark Blue: #557A95
   flex-wrap: nowrap;
   column-gap: 10px;
   height: 500px;
+  border: 1px solid;
 }
 
 .onerelated {
   border-style: solid;
   padding: 5px;
   align-self: stretch;
-  background-color: #7395AE;
+  /* background-color: #B1A296; */
   align-items: center;
   flex-grow: 0;
   flex-basis: 270px;
@@ -46,12 +47,17 @@ Dark Blue: #557A95
   text-align: left;
   align-content:flex-start;
   border-width: thin;
+  /* color:black; */
+}
+
+.tan {
+  background-color: #B1A296;
 }
 
 #comparebutton {
   position: relative;
   top: 00px;
-  left: 200px;
+  left: 190px;
   z-index: 2;
   color: yellow;
   font-size: xx-large;
@@ -72,6 +78,8 @@ Dark Blue: #557A95
   margin-left: auto;
   margin-right: auto;
   margin-top: 5px;
+  border-radius: 6px;
+  box-shadow: 5px;
 }
 
 .outfitproducts {
@@ -79,13 +87,14 @@ Dark Blue: #557A95
   flex-direction: row;
   flex-wrap: nowrap;
   column-gap: 10px;
+  border: 1px solid;
 }
 
 .oneoutfit {
   border-style: solid;
   padding: 5px;
   align-self: stretch;
-  background-color: #7395AE;
+  /* background-color: #B1A296; */
   align-items: center;
   flex-grow: 0;
   flex-basis: 270px;
@@ -96,12 +105,13 @@ Dark Blue: #557A95
   text-align: left;
   align-content:flex-start;
   border-width: thin;
+  border-radius: 6px;
 }
 
 #scrollarrow {
   font-size:xx-large;
-  background-color: rgba(0,0,0,0);
-  border: none
+  background-color: #B1A296;
+  border: none;
 }
 
 #saleprice {

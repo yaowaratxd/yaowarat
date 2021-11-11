@@ -10,16 +10,30 @@ Dark Blue: #557A95
 */
 
 .widget {
-  display: flex;
+  display: grid;
   overflow: hidden ;
-  background-color: #A9A9A9;
+  background-color: #7395AE;
   justify-content: center;
+  border: solid 1px;
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .banner {
   background-color: #557A95;
-  color: #95c5e7;
+  color: white;
   font-size: xx-large;
   text-align: center;
   padding: 20px 0;
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.colortoggle {
+  float: right;
+  border-radius: 50%;
+  size:large;
+  background-color: #B1A296;
 }
