@@ -13,25 +13,12 @@
 
 .relatedproducts {
   display: flex;
-  /* grid-template-columns: 30px 300px 300px 300px 300px 30px; */
-  /* grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); */
   flex-direction: row;
-  /* overflow: auto; */
   flex-wrap: nowrap;
-  /* flex: none; */
-  /* grid-template-rows: 600px; */
-  /* justify-items: stretch;
-  justify-content: flex-start;
-  align-items: center; */
-  /* overflow-wrap: auto; */
   column-gap: 10px;
-  /* flex-basis: 33%; */
 }
 
 .onerelated {
-  /* justify-self: center;
-  text-align: center;
-  font-size: 18px;*/
   border-style: solid;
   padding: 5px;
   align-self: stretch;
@@ -51,19 +38,9 @@
 
 .outfitproducts {
   display: flex;
-  /* grid-template-columns: 30px 300px 300px 300px 300px 30px; */
-  /* grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); */
   flex-direction: row;
-  /* overflow: auto; */
   flex-wrap: nowrap;
-  /* flex: none; */
-  /* grid-template-rows: 600px; */
-  /* justify-items: stretch;
-  justify-content: flex-start;
-  align-items: center; */
-  /* overflow-wrap: auto; */
   column-gap: 10px;
-  /* flex-basis: 33%; */
 }
 
 .oneoutfit {
@@ -78,6 +55,10 @@
 
 #scrollarrow {
   font-size: 50px;
+}
+
+#saleprice {
+  color: red;
 }
 
 .modal {
