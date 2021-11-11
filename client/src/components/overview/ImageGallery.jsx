@@ -162,9 +162,9 @@ const ImageGallery = ({ allImages, selectedImage, setSelectedImage, styles, setS
     return { id, salePrice }
   }
   const handleMouse = (event) => {
-    window.scrollBy(event.clientX - x, event.clientY - y);
-    x = event.clientX;
-    y = event.clientY;
+      window.scrollBy(event.clientX - x, event.clientY - y);
+      x = event.clientX;
+      y = event.clientY;
   };
   return <div>
     <div>
