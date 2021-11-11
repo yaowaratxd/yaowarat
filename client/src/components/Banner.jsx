@@ -14,27 +14,31 @@ class Banner extends React.Component {
 
   makeDark(event) {
     event.preventDefault();
-    console.log('makedark')
-    const tiles = document.querySelectorAll('.widget')
-    tiles[0].style.backgroundColor = "#202020";
-    tiles[1].style.backgroundColor = "#202020";
-    tiles[2].style.backgroundColor = "#202020";
-    tiles[0].style.color = "#C0C0C0";
-    tiles[1].style.color = "#C0C0C0";
-    tiles[2].style.color = "#C0C0C0";
+    const tiles = document.querySelectorAll('.widget');
+    tiles.forEach(tile => {
+      tile.style.backgroundColor = "#202020";
+      tile.style.color = "#C0C0C0";
+    });
+    const frames = document.querySelectorAll('.tan');
+    frames.forEach(frame => {
+      frame.style.backgroundColor = "#b1a2965d";
+      frame.style.color = "#C0C0C0";
+    });
     this.setState({colorTheme: 'dark'});
   }
 
   makeLight(event) {
     event.preventDefault();
-    console.log('makelight')
     const tiles = document.querySelectorAll('.widget')
-    tiles[0].style.backgroundColor = "#7395AE";
-    tiles[1].style.backgroundColor = "#7395AE";
-    tiles[2].style.backgroundColor = "#7395AE";
-    tiles[0].style.color = "black";
-    tiles[1].style.color = "black";
-    tiles[2].style.color = "black";
+    tiles.forEach(tile => {
+      tile.style.backgroundColor = "#7395AE";
+      tile.style.color = "black";
+    });
+    const frames = document.querySelectorAll('.tan');
+    frames.forEach(frame => {
+      frame.style.backgroundColor = "#B1A296";
+      frame.style.color = "black";
+    })
     this.setState({ colorTheme: 'light' });
   }
 

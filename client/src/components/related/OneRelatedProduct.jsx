@@ -169,7 +169,7 @@ class OneRelatedProduct extends React.Component {
     const ratingDisplay = productRating === null ? ' Be the first to leave a rating!' : <Stars rating={productRating} />
 
     return (
-      <div className="onerelated" href="">
+      <div className="onerelated tan">
         <button onClick={this.compareProducts} type="button" id="comparebutton">{String.fromCodePoint(0x2605)}</button>
         <img src={`${picImage}`} id="productimage" alt="product" onClick={() => this.props.setCurrentProduct(this.props.product)}/>
         <br/>

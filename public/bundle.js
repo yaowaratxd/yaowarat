@@ -2978,14 +2978,16 @@ var Banner = /*#__PURE__*/function (_React$Component) {
     key: "makeDark",
     value: function makeDark(event) {
       event.preventDefault();
-      console.log('makedark');
       var tiles = document.querySelectorAll('.widget');
-      tiles[0].style.backgroundColor = "#202020";
-      tiles[1].style.backgroundColor = "#202020";
-      tiles[2].style.backgroundColor = "#202020";
-      tiles[0].style.color = "#C0C0C0";
-      tiles[1].style.color = "#C0C0C0";
-      tiles[2].style.color = "#C0C0C0";
+      tiles.forEach(function (tile) {
+        tile.style.backgroundColor = "#202020";
+        tile.style.color = "#C0C0C0";
+      });
+      var frames = document.querySelectorAll('.tan');
+      frames.forEach(function (frame) {
+        frame.style.backgroundColor = "#b1a2965d";
+        frame.style.color = "#C0C0C0";
+      });
       this.setState({
         colorTheme: 'dark'
       });
@@ -2994,14 +2996,16 @@ var Banner = /*#__PURE__*/function (_React$Component) {
     key: "makeLight",
     value: function makeLight(event) {
       event.preventDefault();
-      console.log('makelight');
       var tiles = document.querySelectorAll('.widget');
-      tiles[0].style.backgroundColor = "#7395AE";
-      tiles[1].style.backgroundColor = "#7395AE";
-      tiles[2].style.backgroundColor = "#7395AE";
-      tiles[0].style.color = "black";
-      tiles[1].style.color = "black";
-      tiles[2].style.color = "black";
+      tiles.forEach(function (tile) {
+        tile.style.backgroundColor = "#7395AE";
+        tile.style.color = "black";
+      });
+      var frames = document.querySelectorAll('.tan');
+      frames.forEach(function (frame) {
+        frame.style.backgroundColor = "#B1A296";
+        frame.style.color = "black";
+      });
       this.setState({
         colorTheme: 'light'
       });
@@ -4416,7 +4420,7 @@ var OneOutfit = /*#__PURE__*/function (_React$Component) {
         rating: productRating
       });
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-        className: "oneoutfit"
+        className: "oneoutfit tan"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", {
         onClick: function onClick() {
           _this4.props.removeOutfit(_this4.props.product);
@@ -4673,8 +4677,7 @@ var OneRelatedProduct = /*#__PURE__*/function (_React$Component) {
         rating: productRating
       });
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-        className: "onerelated",
-        href: ""
+        className: "onerelated tan"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", {
         onClick: this.compareProducts,
         type: "button",

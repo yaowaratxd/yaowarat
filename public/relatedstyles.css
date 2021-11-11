@@ -36,7 +36,7 @@ Dark Blue: #557A95
   border-style: solid;
   padding: 5px;
   align-self: stretch;
-  background-color: #B1A296;
+  /* background-color: #B1A296; */
   align-items: center;
   flex-grow: 0;
   flex-basis: 270px;
@@ -47,7 +47,11 @@ Dark Blue: #557A95
   text-align: left;
   align-content:flex-start;
   border-width: thin;
-  color:black;
+  /* color:black; */
+}
+
+.tan {
+  background-color: #B1A296;
 }
 
 #comparebutton {
@@ -90,7 +94,7 @@ Dark Blue: #557A95
   border-style: solid;
   padding: 5px;
   align-self: stretch;
-  background-color: #B1A296;
+  /* background-color: #B1A296; */
   align-items: center;
   flex-grow: 0;
   flex-basis: 270px;

@@ -88,7 +88,7 @@ class OneOutfit extends React.Component {
     const ratingDisplay = productRating === null ? ' Be the first to leave a rating!' : <Stars rating={productRating} />
 
     return (
-      <div className="oneoutfit">
+      <div className="oneoutfit tan">
         <button onClick={ () => {this.props.removeOutfit(this.props.product)} } type="button" id="outfitbutton"> {String.fromCodePoint( 0x2715)} </button>
         <img src={`${picImage}`} height="250px" width="200px" alt="outfit product"/> <br/>
         <div>Product category: {this.props.product.category} </div>
