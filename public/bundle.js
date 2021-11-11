@@ -4893,17 +4893,25 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var _tileComponents_ReviewTiles_jsx__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./tileComponents/ReviewTiles.jsx */ "./client/src/components/reviews/tileComponents/ReviewTiles.jsx");
+/* harmony import */ var _submitModal_SubmitModal_jsx__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./submitModal/SubmitModal.jsx */ "./client/src/components/reviews/submitModal/SubmitModal.jsx");
+
 
 
 
 var ReviewList = function ReviewList(props) {
+  var modal = props.showModal ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_submitModal_SubmitModal_jsx__WEBPACK_IMPORTED_MODULE_2__["default"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+    className: "modal"
+  }, "hello", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", {
+    onClick: props.writeReview
+  }, "Hide"))) : null;
+
   if (!Array.isArray(props.reviews) || props.reviews.length === 0) {
     return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
       className: "container"
     }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h4", null, "Reviews"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, "There are no reviews. Go ahead and add one!"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", {
       type: "button",
       onClick: props.writeReview
-    }, "Submit Review"));
+    }, "Submit Review"), modal);
   } else if (props.reviewsShown >= props.reviews.length) {
     return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
       className: "container"
@@ -4923,7 +4931,7 @@ var ReviewList = function ReviewList(props) {
     }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", {
       type: "button",
       onClick: props.writeReview
-    }, "Submit Review"));
+    }, "Submit Review"), modal);
   } else {
     return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
       className: "container"
@@ -4948,7 +4956,7 @@ var ReviewList = function ReviewList(props) {
     }, "Read More"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", {
       type: "button",
       onClick: props.writeReview
-    }, "Submit Review"));
+    }, "Submit Review"), modal);
   }
 };
 
@@ -5023,7 +5031,8 @@ var Review = /*#__PURE__*/function (_React$Component) {
         '3': false,
         '2': false,
         '1': false
-      }
+      },
+      showModal: false
     };
     _this.readMore = _this.readMore.bind(_assertThisInitialized(_this));
     _this.writeReview = _this.writeReview.bind(_assertThisInitialized(_this));
@@ -5096,7 +5105,17 @@ var Review = /*#__PURE__*/function (_React$Component) {
   }, {
     key: "writeReview",
     value: function writeReview(event) {
-      console.log('Write Review was clicked!');
+      var showModal = this.state.showModal;
+
+      if (showModal === false) {
+        this.setState({
+          showModal: true
+        });
+      } else {
+        this.setState({
+          showModal: false
+        });
+      }
     }
   }, {
     key: "sort",
@@ -5234,7 +5253,8 @@ var Review = /*#__PURE__*/function (_React$Component) {
         sortType: this.state.sort,
         helpfulButton: this.helpfulButton,
         helpfulClick: this.state.helpfulClick,
-        starFilter: this.state.starFilter
+        starFilter: this.state.starFilter,
+        showModal: this.state.showModal
       }));
     }
   }]);
@@ -5846,6 +5866,30 @@ var Sort = function Sort(_ref) {
 
 /***/ }),
 
+/***/ "./client/src/components/reviews/submitModal/SubmitModal.jsx":
+/*!*******************************************************************!*\
+  !*** ./client/src/components/reviews/submitModal/SubmitModal.jsx ***!
+  \*******************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-dom */ "./node_modules/react-dom/index.js");
+
+
+
+var SubmitModal = function SubmitModal(props) {
+  return !props.children ? null : /*#__PURE__*/react_dom__WEBPACK_IMPORTED_MODULE_1__.createPortal(props.children, document.getElementById('review'));
+};
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (SubmitModal);
+
+/***/ }),
+
 /***/ "./client/src/components/reviews/tileComponents/Helpfulness.jsx":
 /*!**********************************************************************!*\
   !*** ./client/src/components/reviews/tileComponents/Helpfulness.jsx ***!
@@ -5990,7 +6034,9 @@ var ReviewTiles = function ReviewTiles(props) {
   var filtered = function filtered(reviews, filter) {
     var newReviewList = [];
 
-    if (!filter['1'] && !filter['2'] && !filter['3'] && !filter['4'] && !filter['5']) {
+    if (!filter) {
+      return reviews;
+    } else if (!filter['1'] && !filter['2'] && !filter['3'] && !filter['4'] && !filter['5']) {
       return reviews;
     }
 
@@ -36457,7 +36503,7 @@ var App = function App() {
       allThings = _useState4[0],
       setAllThings = _useState4[1];
 
-  var _useState5 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(allThings[0]),
+  var _useState5 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(allThings[3]),
       _useState6 = _slicedToArray(_useState5, 2),
       currentProduct = _useState6[0],
       setCurrentProduct = _useState6[1];

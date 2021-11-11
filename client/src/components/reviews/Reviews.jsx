@@ -20,7 +20,8 @@ class Review extends React.Component {
         '3': false,
         '2': false,
         '1': false
-      }
+      },
+      showModal: false
     };
 
     this.readMore = this.readMore.bind(this);
@@ -77,7 +78,12 @@ class Review extends React.Component {
   }
 
   writeReview(event) {
-    console.log('Write Review was clicked!');
+    var showModal = this.state.showModal;
+    if (showModal === false) {
+      this.setState({ showModal: true });
+    } else {
+      this.setState({ showModal: false })
+    }
   }
 
   sort(event) {
@@ -167,7 +173,7 @@ class Review extends React.Component {
     return (
       <div className="reviewContainer">
         <Overview className="reviewOverview" reviews={this.state.reviews} starFilter={this.starFilter} meta={this.state.meta} />
-        <ReviewList className="reviewList" readMore={this.readMore} writeReview={this.writeReview} reviews={this.state.reviews} reviewsShown={this.state.reviewsShown} sort={this.sort} sortType={this.state.sort} helpfulButton={this.helpfulButton} helpfulClick={this.state.helpfulClick} starFilter={this.state.starFilter} />
+        <ReviewList className="reviewList" readMore={this.readMore} writeReview={this.writeReview} reviews={this.state.reviews} reviewsShown={this.state.reviewsShown} sort={this.sort} sortType={this.state.sort} helpfulButton={this.helpfulButton} helpfulClick={this.state.helpfulClick} starFilter={this.state.starFilter} showModal={this.state.showModal} />
       </div>
     );
   }

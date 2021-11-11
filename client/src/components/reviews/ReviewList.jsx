@@ -1,14 +1,24 @@
 import React from 'react';
 
 import ReviewTiles from './tileComponents/ReviewTiles.jsx';
+import SubmitModal from './submitModal/SubmitModal.jsx';
 
 const ReviewList = (props) => {
+  const modal = (props.showModal ? (
+    <SubmitModal>
+      <div className="modal">
+        hello
+        <button onClick={props.writeReview}>Hide</button>
+      </div>
+    </SubmitModal>
+  ) : null);
   if (!Array.isArray(props.reviews) || props.reviews.length === 0) {
     return (
       < div className="container" >
         <h4>Reviews</h4>
         <p>There are no reviews. Go ahead and add one!</p>
         <button type="button" onClick={props.writeReview}>Submit Review</button>
+        {modal}
       </div >
     );
   } else if (props.reviewsShown >= props.reviews.length) {
@@ -24,6 +34,7 @@ const ReviewList = (props) => {
           </label></h5>
         < ReviewTiles reviews={props.reviews} reviewsShown={props.reviewsShown} helpfulButton={props.helpfulButton} />
         <button type="button" onClick={props.writeReview}>Submit Review</button>
+        {modal}
       </div >
     );
   } else {
@@ -40,6 +51,7 @@ const ReviewList = (props) => {
         < ReviewTiles reviews={props.reviews} reviewsShown={props.reviewsShown} helpfulButton={props.helpfulButton} helpfulClick={props.helpfulClick} starFilter={props.starFilter} />
         <button type="button" onClick={props.readMore}>Read More</button>
         <button type="button" onClick={props.writeReview}>Submit Review</button>
+        {modal}
       </div >
     );
   }
