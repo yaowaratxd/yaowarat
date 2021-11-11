@@ -13,8 +13,16 @@ class Review extends React.Component {
       reviewsShown: 2,
       sort: 'relevant',
       meta: {},
-      helpfulClick: false
+      helpfulClick: false,
+      starFilter: {
+        '5': true,
+        '4': true,
+        '3': true,
+        '2': true,
+        '1': true
+      }
     };
+
     this.readMore = this.readMore.bind(this);
     this.writeReview = this.writeReview.bind(this);
     this.sort = this.sort.bind(this);
@@ -117,7 +125,7 @@ class Review extends React.Component {
     return (
       <div className="reviewContainer">
         <Overview className="reviewOverview" reviews={this.state.reviews} starFilter={this.starFilter} meta={this.state.meta} />
-        <ReviewList className="reviewList" readMore={this.readMore} writeReview={this.writeReview} reviews={this.state.reviews} reviewsShown={this.state.reviewsShown} sort={this.sort} sortType={this.state.sort} helpfulButton={this.helpfulButton} helpfulClick={this.state.helpfulClick} />
+        <ReviewList className="reviewList" readMore={this.readMore} writeReview={this.writeReview} reviews={this.state.reviews} reviewsShown={this.state.reviewsShown} sort={this.sort} sortType={this.state.sort} helpfulButton={this.helpfulButton} helpfulClick={this.state.helpfulClick} starFilter={this.state.starFilter} />
       </div>
     );
   }

@@ -4940,7 +4940,8 @@ var ReviewList = function ReviewList(props) {
       reviews: props.reviews,
       reviewsShown: props.reviewsShown,
       helpfulButton: props.helpfulButton,
-      helpfulClick: props.helpfulClick
+      helpfulClick: props.helpfulClick,
+      starFilter: props.starFilter
     }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", {
       type: "button",
       onClick: props.readMore
@@ -5015,7 +5016,14 @@ var Review = /*#__PURE__*/function (_React$Component) {
       reviewsShown: 2,
       sort: 'relevant',
       meta: {},
-      helpfulClick: false
+      helpfulClick: false,
+      starFilter: {
+        '5': true,
+        '4': true,
+        '3': true,
+        '2': true,
+        '1': true
+      }
     };
     _this.readMore = _this.readMore.bind(_assertThisInitialized(_this));
     _this.writeReview = _this.writeReview.bind(_assertThisInitialized(_this));
@@ -5162,7 +5170,8 @@ var Review = /*#__PURE__*/function (_React$Component) {
         sort: this.sort,
         sortType: this.state.sort,
         helpfulButton: this.helpfulButton,
-        helpfulClick: this.state.helpfulClick
+        helpfulClick: this.state.helpfulClick,
+        starFilter: this.state.starFilter
       }));
     }
   }]);
@@ -5915,7 +5924,27 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var ReviewTiles = function ReviewTiles(props) {
-  var reviews = props.reviews;
+  var filtered = function filtered(reviews, filter) {
+    var newReviewList = [];
+
+    for (var keys in filter) {
+      if (filter[keys]) {
+        for (var i = 0; i < reviews.length; i++) {
+          var cKey = keys;
+          var cReview = reviews[i];
+          var cRating = cReview.rating;
+
+          if ("".concat(cRating) === "".concat(cKey)) {
+            newReviewList.push(cReview);
+          }
+        }
+      }
+    }
+
+    return newReviewList;
+  };
+
+  var reviews = filtered(props.reviews, props.starFilter); // console.log('These are the current reviews: ', reviews);
 
   if (reviews === undefined) {
     return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, null);
