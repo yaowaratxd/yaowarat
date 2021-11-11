@@ -1,4 +1,4 @@
-const {defaults} = require('jest-config');
+// const {defaults} = require('jest-config');
 
 module.exports = {
   // Automatically clear mock calls and instances between every test
@@ -11,8 +11,7 @@ module.exports = {
   coverageDirectory: 'coverage',
 
   // An array of file extensions your modules use
-  moduleFileExtensions: [...defaults.moduleFileExtensions,
-    'js', 'json', 'jsx', 'ts', 'tsx'],
+  moduleFileExtensions: ['js', 'json', 'jsx', 'ts', 'tsx'],
 
   moduleNameMapper: { "\\.(s?css|jpg|png|svg)$": '<rootDir>/css.js'},
 
