@@ -3378,7 +3378,7 @@ var Tile = styled_components__WEBPACK_IMPORTED_MODULE_4__["default"].img(_templa
 var SelectedTile = styled_components__WEBPACK_IMPORTED_MODULE_4__["default"].img(_templateObject2 || (_templateObject2 = _taggedTemplateLiteral(["\nheight: 7vh;\nwidth:  7vw;\nborder: 3px solid ", ";\nborder-bottom: 6px solid ", ";\nmargin-bottom: 5px;\n"])), (_colorScheme_js__WEBPACK_IMPORTED_MODULE_2___default().darkGrey), (_colorScheme_js__WEBPACK_IMPORTED_MODULE_2___default().darkGrey));
 var LeftRibbon = styled_components__WEBPACK_IMPORTED_MODULE_4__["default"].div(_templateObject3 || (_templateObject3 = _taggedTemplateLiteral(["\nwidth: 7vw;\nleft:   18vw;\nposition: absolute;\ntop: 15vh;\nheight: 60vh;\noverflow: scroll;\nz-index: 2;\ndisplay: flex;\njustify-content: center;\n"])));
 var ImageContainer = styled_components__WEBPACK_IMPORTED_MODULE_4__["default"].div(_templateObject4 || (_templateObject4 = _taggedTemplateLiteral(["\nwidth: 10vw;\n"])));
-var BaseImage = styled_components__WEBPACK_IMPORTED_MODULE_4__["default"].img(_templateObject5 || (_templateObject5 = _taggedTemplateLiteral(["\nwidth: 40vw;\nheight: 75vh;\ncursor: zoom-in;\n"])));
+var BaseImage = styled_components__WEBPACK_IMPORTED_MODULE_4__["default"].img(_templateObject5 || (_templateObject5 = _taggedTemplateLiteral(["\nwidth: 40vw;\nheight: 70vh;\ncursor: zoom-in;\n"])));
 var BaseImageExpanded = styled_components__WEBPACK_IMPORTED_MODULE_4__["default"].img(_templateObject6 || (_templateObject6 = _taggedTemplateLiteral(["\nwidth: 70vw;\nheight: 60vh;\nz-index: 2;\ncursor: zoom-in;\n"])));
 var BaseImageExploded = styled_components__WEBPACK_IMPORTED_MODULE_4__["default"].img(_templateObject7 || (_templateObject7 = _taggedTemplateLiteral(["\nwidth: 250%;\nheight: 250%;\noverflow: scroll;\nz-index: 4;\ncursor: zoom-out;\n"])));
 var ClickyButton = styled_components__WEBPACK_IMPORTED_MODULE_4__["default"].button(_templateObject8 || (_templateObject8 = _taggedTemplateLiteral(["\nbackground-color: Transparent;\nborder: none;\ncolor: ", ";\nheight: 250%;\nwidth: 250%;\n"])), (_colorScheme_js__WEBPACK_IMPORTED_MODULE_2___default().darkGrey));
@@ -3515,19 +3515,16 @@ var ImageGallery = function ImageGallery(_ref) {
     y = event.clientY;
   };
 
-  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(LeftButton, null, renderLeftButton()), expandedImage === 0 ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(BaseImage, {
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(LeftButton, null), expandedImage === 0 ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(BaseImage, {
     onClick: changeExpansion,
     src: selectedImage.url
   }) : expandedImage === 1 ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(BaseImageExpanded, {
     onClick: changeExpansion,
     src: selectedImage.url
   }) : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(BaseImageExploded, {
-    onMouseMove: function onMouseMove(e) {
-      return handleMouse(e);
-    },
     onClick: changeExpansion,
     src: selectedImage.url
-  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(RightButton, null, renderRightButton()), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(ExpandButton, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(ExpandClickyButton, {
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(RightButton, null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(ExpandButton, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(ExpandClickyButton, {
     onClick: changeExpansion
   }, " ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h1", null, '[ ]'), " ")), expandedImage <= 1 ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(LeftRibbon, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(ImageContainer, null, allImages.map(function (imag) {
     return imag.map(function (im) {
@@ -3558,10 +3555,6 @@ var ImageGallery = function ImageGallery(_ref) {
 };
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (ImageGallery);
-{
-  /* <div><svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="angle-left" class="svg-inline--fa fa-angle-left" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 512"><path fill="currentColor" d="M192 448c-8.188 0-16.38-3.125-22.62-9.375l-160-160c-12.5-12.5-12.5-32.75 0-45.25l160-160c12.5-12.5 32.75-12.5 45.25 0s12.5 32.75 0 45.25L77.25 256l137.4 137.4c12.5 12.5 12.5 32.75 0 45.25C208.4 444.9 200.2 448 192 448z"></path></svg>
-  */
-}
 
 /***/ }),
 
@@ -3622,9 +3615,9 @@ function _taggedTemplateLiteral(strings, raw) { if (!raw) { raw = strings.slice(
 
 
 var ProductCartandStyleContainer = styled_components__WEBPACK_IMPORTED_MODULE_9__["default"].div(_templateObject || (_templateObject = _taggedTemplateLiteral(["\ndisplay: flex;\nflex-direction: column;\nwidth: 40%;\n"])));
-var OverviewContainer = styled_components__WEBPACK_IMPORTED_MODULE_9__["default"].div(_templateObject2 || (_templateObject2 = _taggedTemplateLiteral(["\ndisplay: flex;\njustify-content: space-between;\nborder: 2px solid black;\n"])));
-var SloganContainer = styled_components__WEBPACK_IMPORTED_MODULE_9__["default"].div(_templateObject3 || (_templateObject3 = _taggedTemplateLiteral(["\ndisplay: flex;\nposition: relative;\ntop: -18vh;\nwidth: 100%;\n"])));
-var SocialWrapper = styled_components__WEBPACK_IMPORTED_MODULE_9__["default"].div(_templateObject4 || (_templateObject4 = _taggedTemplateLiteral(["\nposition: relative;\ntop: -20vh;\ndisplay: flex;\njustify-content: flex-start;\n"])));
+var OverviewContainer = styled_components__WEBPACK_IMPORTED_MODULE_9__["default"].div(_templateObject2 || (_templateObject2 = _taggedTemplateLiteral(["\ndisplay: flex;\njustify-content: space-between;\n"])));
+var SloganContainer = styled_components__WEBPACK_IMPORTED_MODULE_9__["default"].div(_templateObject3 || (_templateObject3 = _taggedTemplateLiteral(["\ndisplay: flex;\nposition: relative;\ntop: -10vh;\nwidth: 100%;\n"])));
+var SocialWrapper = styled_components__WEBPACK_IMPORTED_MODULE_9__["default"].div(_templateObject4 || (_templateObject4 = _taggedTemplateLiteral(["\nposition: relative;\ntop: -21vh;\ndisplay: flex;\njustify-content: flex-start;\n"])));
 
 var Overview = function Overview(props) {
   var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)({}),
@@ -4120,7 +4113,7 @@ var Styles = function Styles(_ref) {
   };
 
   var handleChangeImage = function handleChangeImage(url, id) {
-    document.getElementById('selectedTile').scrollIntoView();
+    // document.getElementById('selectedTile').scrollIntoView();
     setSelectedStyle({
       url: url,
       id: id

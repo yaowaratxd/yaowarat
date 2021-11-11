@@ -19,19 +19,18 @@ width: 40%;
 const OverviewContainer = styled.div`
 display: flex;
 justify-content: space-between;
-border: 2px solid black;
 `;
 
 const SloganContainer = styled.div`
 display: flex;
 position: relative;
-top: -18vh;
+top: -10vh;
 width: 100%;
 `;
 
 const SocialWrapper = styled.div`
 position: relative;
-top: -20vh;
+top: -21vh;
 display: flex;
 justify-content: flex-start;
 `;
