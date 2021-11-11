@@ -87,6 +87,7 @@ left: 35vw;
 
 const ImageGallery = ({ allImages, selectedImage, setSelectedImage, styles, setSelectedStyle, changeImageSize }) => {
   const [expandedImage, setExpandedImage] = useState(0);
+  let x = 0, y = 0;
 
   const handleClickLeft = () => {
     for (let i = 0; i < allImages.length; ++i) {
@@ -160,7 +161,11 @@ const ImageGallery = ({ allImages, selectedImage, setSelectedImage, styles, setS
     }
     return { id, salePrice }
   }
-  const handle
+  const handleMouse = (event) => {
+    window.scrollBy(event.clientX - x, event.clientY - y);
+    x = event.clientX;
+    y = event.clientY;
+  };
   return <div>
     <div>
       <LeftButton>

@@ -99,6 +99,7 @@ const Overview = (props) => {
     </ProductCartandStyleContainer> : ''
     }
   </OverviewContainer>
+  { imageSize >= 1 ? <>
   <SloganContainer>
   <Slogan slogan={props.product.slogan} description={props.product.description} />
   <Checklist />
@@ -108,6 +109,8 @@ const Overview = (props) => {
     <img src='/graphics/twitter.png' onClick={() => window.open('https://www.twitter.com/intent/tweet?url='+selectedImage.url,'twitter-share-dialog', 'width=626,height=436') } />
     <img src='/graphics/pinterest.png' onClick={() => window.open('http://pinterest.com/pin/create/button/?url='+selectedImage.url,'pinterest-share-dialog', 'width=626,height=436') } />
     </SocialWrapper>
+    </> : ''
+}
   </div>
 };
 
