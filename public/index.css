@@ -36,6 +36,8 @@
   overflow-y: scroll;
   border: lightsalmon solid 2px;
   width: 50%;
+  margin-top: 2%;
+  margin-bottom: 2%;
   padding-left: 2%;
 }
 
@@ -101,7 +103,7 @@
   display: flex;
   justify-content: space-between;
   width: 81%;
-  margin: 1%;
+  margin-bottom: 2%;
 }
 
 .bar span {
@@ -110,4 +112,12 @@
 
 .tan {
   background-color: rgb(196, 166, 130);
+}
+
+form p {
+  margin: 0%;
+}
+
+.Characteristics p {
+  margin: 0%;
 }

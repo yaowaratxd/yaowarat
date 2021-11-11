@@ -1,13 +1,72 @@
 import React from 'react';
 
 import ReviewTiles from './tileComponents/ReviewTiles.jsx';
-import SubmitModal from './submitModal/SubmitModal.jsx';
+import SubmitModal from './submitreview/SubmitModal.jsx';
+import StarRating from './submitreview/StarRating.jsx';
+import CharSubmit from './submitreview/CharSubmit.jsx';
 
 const ReviewList = (props) => {
   const modal = (props.showModal ? (
     <SubmitModal>
-      <div className="modal">
-        hello
+      <div className="modal"  >
+        <table>
+          <tbody>
+            <tr>
+              <th scope="col">Write Your Review</th>
+            </tr>
+            <tr>
+              <td>
+                <form>
+                  <label>How was your product?</label>
+                  <StarRating rating={4} />
+
+                  <br />
+
+                  <p>Would you recommend this product?</p>
+                  <input type="radio" name="recommend" value="yes"></input>
+                  <label>Yes</label>
+                  <input type="radio" name="recommend" value="no"></input>
+                  <label> No</label>
+
+                  <br />
+                  <br />
+
+                  <CharSubmit meta={props.meta} />
+
+                  <br />
+                  <br />
+
+                  <label>Summary</label>
+                  <br />
+                  <input type="text" placeholder="Ex: Best purchase ever!"></input>
+
+                  <br />
+                  <br />
+
+                  <label>Why did you like or dislike this product?</label>
+                  <br />
+                  <input type="text" placeholder="Ex: Super Comfy"></input>
+
+                  <br />
+                  <br />
+
+                  <label>Display Name</label>
+                  <br />
+                  <input type="text" placeholder="Ex: Jackson11"></input>
+                  <p>For privacy reasons, do not use your full name or email address</p>
+
+                  <br />
+
+                  <label>Email</label>
+                  <br />
+                  <input type="text" placeholder="Ex: Jackson11@email.com"></input>
+                  <p>For authentication reasons, you will not be emailed</p>
+                  <button type="submit" value="Submit">Submit</button>
+                </form>
+              </td>
+            </tr>
+          </tbody>
+        </table>
         <button onClick={props.writeReview}>Hide</button>
       </div>
     </SubmitModal>

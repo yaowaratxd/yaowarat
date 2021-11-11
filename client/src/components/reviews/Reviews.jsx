@@ -173,7 +173,7 @@ class Review extends React.Component {
     return (
       <div className="reviewContainer">
         <Overview className="reviewOverview" reviews={this.state.reviews} starFilter={this.starFilter} meta={this.state.meta} />
-        <ReviewList className="reviewList" readMore={this.readMore} writeReview={this.writeReview} reviews={this.state.reviews} reviewsShown={this.state.reviewsShown} sort={this.sort} sortType={this.state.sort} helpfulButton={this.helpfulButton} helpfulClick={this.state.helpfulClick} starFilter={this.state.starFilter} showModal={this.state.showModal} />
+        <ReviewList className="reviewList" readMore={this.readMore} writeReview={this.writeReview} reviews={this.state.reviews} reviewsShown={this.state.reviewsShown} sort={this.sort} sortType={this.state.sort} helpfulButton={this.helpfulButton} helpfulClick={this.state.helpfulClick} starFilter={this.state.starFilter} showModal={this.state.showModal} meta={this.state.meta} />
       </div>
     );
   }
