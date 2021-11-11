@@ -6,7 +6,6 @@ import Stars from '../StarValue.jsx';
 import colorScheme from '../../colorScheme.js';
 import ClickCounter from '../ClickCounter.jsx';
 
-// position: relative;
 const Container = styled.div`
   width: 20vw;
 `;
