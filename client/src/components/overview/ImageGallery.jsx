@@ -85,8 +85,9 @@ top: -85vh;
 left: 35vw;
 `;
 
-const ImageGallery = ({ allImages, selectedImage, setSelectedImage, styles, setSelectedStyle }) => {
+const ImageGallery = ({ allImages, selectedImage, setSelectedImage, styles, setSelectedStyle, changeImageSize }) => {
   const [expandedImage, setExpandedImage] = useState(0);
+  let x = 0, y = 0;
 
   const handleClickLeft = () => {
     for (let i = 0; i < allImages.length; ++i) {
@@ -121,10 +122,13 @@ const ImageGallery = ({ allImages, selectedImage, setSelectedImage, styles, setS
   const changeExpansion = () => {
     if (expandedImage === 0) {
       setExpandedImage(1)
+      changeImageSize(1);
     } else if (expandedImage === 1) {
       setExpandedImage(2);
+      changeImageSize(2);
     } else {
       setExpandedImage(0);
+      changeImageSize(3);
     }
   };
 
@@ -142,9 +146,7 @@ const ImageGallery = ({ allImages, selectedImage, setSelectedImage, styles, setS
 
   const handleTileClick = ({ url, id, thumbnail }) => {
     const obj = Object.assign({ url, id }, saveDiscount());
-    // console.log(obj);
     setSelectedImage(obj);
-    // setSelectedStyle(Object.assign({ url: thumbnail, image: url }, saveDiscount()));
   };
 
   const saveDiscount = () => {
@@ -159,30 +161,29 @@ const ImageGallery = ({ allImages, selectedImage, setSelectedImage, styles, setS
     }
     return { id, salePrice }
   }
+  const handleMouse = (event) => {
+      window.scrollBy(event.clientX - x, event.clientY - y);
+      x = event.clientX;
+      y = event.clientY;
+  };
   return <div>
     <div>
-      {/* <ClickCounter event='ImageGallery'> */}
       <LeftButton>
         { renderLeftButton() }
       </LeftButton>
-        { expandedImage === 0 ?  <BaseImage onClick={changeExpansion} src={selectedImage.url} /> : expandedImage === 1 ? <BaseImageExpanded onClick={changeExpansion} src={selectedImage.url} /> : <BaseImageExploded  onClick={changeExpansion} src={selectedImage.url} /> }
-        {/* <ClickyButton onClick={handleClickRight}>Right</ClickyButton>
-         */}
+        { expandedImage === 0 ?  <BaseImage onClick={changeExpansion} src={selectedImage.url} /> : expandedImage === 1 ? <BaseImageExpanded onClick={changeExpansion} src={selectedImage.url} /> : <BaseImageExploded onMouseMove={(e) => handleMouse(e)}  onClick={changeExpansion} src={selectedImage.url} /> }
          <RightButton>
         { renderRightButton() }
         </RightButton>
         <ExpandButton>
         <ExpandClickyButton onClick={changeExpansion}> <h1>{'[ ]'}</h1> </ExpandClickyButton>
         </ExpandButton>
-        <LeftRibbon>
+        { expandedImage <= 1 ? <LeftRibbon>
           <ImageContainer>
-          {/* { allImages.map((im) => im.url === selectedImage ? <SelectedTile onClick={() => setSelectedImage(im.url)} key={im.thumbnail_url} src={im.thumbnail_url} /> : <Tile onClick={() => setSelectedImage(im.url)} key={im.thumbnail_url} src={im.thumbnail_url} /> )
-          } */}
           { allImages.map((imag) => imag.map((im) => im.url === selectedImage.url  ? <SelectedTile id='selectedTile' onClick={() => handleTileClick({ url: im.url, id: im.id, thumbnail: im.thumbnail_url })} key={im.thumbnail_url} src={im.thumbnail_url} /> : <Tile onClick={() => handleTileClick({ url: im.url, id: im.id, thumbnail: im.thumbnail_url  })} key={im.thumbnail_url} src={im.thumbnail_url} /> )
           )}
         </ImageContainer>
-        </LeftRibbon>
-      {/* </ClickCounter> */}
+        </LeftRibbon> : '' }
       </div>
   </div>
 };

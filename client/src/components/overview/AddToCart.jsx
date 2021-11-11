@@ -7,14 +7,14 @@ import ClickCounter from '../ClickCounter.jsx';
 const AddButton = styled.button`
 width: 190px;
 height: 45px;
-background-color: Transparent;
+background-color: white;
 margin-right: 40px;
 margin-top: 20px;
 `;
 const FavButton = styled.button`
 width: 50px;
 height: 45px;
-background-color: Transparent;
+background-color: white;
 margin-right: 40px;
 margin-top: 20px;
 `;
