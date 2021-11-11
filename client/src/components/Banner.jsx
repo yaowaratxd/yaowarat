@@ -43,8 +43,8 @@ class Banner extends React.Component {
   }
 
   render () {
-    const toggleButton = (this.state.colorTheme === 'light') ?  <button className="colortoggle" onClick={this.makeDark}>Darken</button>
-    : <button className="colortoggle" onClick={this.makeLight}>Lighten</button>
+    const toggleButton = (this.state.colorTheme === 'light') ?  <button className="colortoggle" onClick={this.makeDark}>{String.fromCodePoint(0x1f31b)}</button>
+    : <button className="colortoggle" onClick={this.makeLight}>{String.fromCodePoint(0x1f31e)}</button>
 
     return (
       <div className="banner">

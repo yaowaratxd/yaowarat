@@ -3016,10 +3016,10 @@ var Banner = /*#__PURE__*/function (_React$Component) {
       var toggleButton = this.state.colorTheme === 'light' ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", {
         className: "colortoggle",
         onClick: this.makeDark
-      }, "Darken") : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", {
+      }, String.fromCodePoint(0x1f31b)) : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", {
         className: "colortoggle",
         onClick: this.makeLight
-      }, "Lighten");
+      }, String.fromCodePoint(0x1f31e));
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
         className: "banner"
       }, "Team Yaowarat", toggleButton);
@@ -4431,7 +4431,8 @@ var OneOutfit = /*#__PURE__*/function (_React$Component) {
       }, " ", String.fromCodePoint(0x2715), " "), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("img", {
         src: "".concat(picImage),
         height: "250px",
-        width: "200px"
+        width: "200px",
+        alt: "outfit product"
       }), " ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, "Product category: ", this.props.product.category, " "), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, "Product name: ", this.props.product.name), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, "Price: ", renderPrice(this.state.thisProductExtra, this.props.product.default_price)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, "Rating:", ratingDisplay), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("br", null));
     }
   }]);
@@ -4763,7 +4764,7 @@ var Related = /*#__PURE__*/function (_React$Component) {
       relatedProducts: [],
       outfitProducts: [],
       left: 0,
-      right: 3
+      right: 4
     };
     _this.getRelated = _this.getRelated.bind(_assertThisInitialized(_this));
     _this.addToOutfitList = _this.addToOutfitList.bind(_assertThisInitialized(_this));

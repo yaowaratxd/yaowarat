@@ -13,7 +13,7 @@ class Related extends React.Component {
       relatedProducts: [],
       outfitProducts: [],
       left: 0,
-      right: 3,
+      right: 4,
     };
     this.getRelated = this.getRelated.bind(this);
     this.addToOutfitList = this.addToOutfitList.bind(this);

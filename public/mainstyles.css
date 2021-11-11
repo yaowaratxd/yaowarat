@@ -27,4 +27,7 @@ Dark Blue: #557A95
 
 .colortoggle {
   float: right;
+  border-radius: 50%;
+  size:large;
+  background-color: #B1A296;
 }
