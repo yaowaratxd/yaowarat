@@ -7,7 +7,9 @@ import StarValue from '../StartValue.jsx';
 const ReviewTiles = (props) => {
   var filtered = (reviews, filter) => {
     var newReviewList = [];
-    if (!filter['1'] && !filter['2'] && !filter['3'] && !filter['4'] && !filter['5']) {
+    if (!filter) {
+      return reviews;
+    } else if (!filter['1'] && !filter['2'] && !filter['3'] && !filter['4'] && !filter['5']) {
       return reviews;
     }
     for (var keys in filter) {

@@ -1,10 +1,5 @@
 import React from 'react';
 
-<<<<<<< HEAD
-const Helpfulness = (props) => {
-  // console.log('This is the current review', props.review);
-  if (props.helpfulClick === true) {
-=======
 class Helpfulness extends React.Component {
   constructor(props) {
     super(props);
@@ -21,7 +16,6 @@ class Helpfulness extends React.Component {
   }
 
   Help() {
->>>>>>> origin/matthew
     return (
       <p>
         Was this review helpful?

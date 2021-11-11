@@ -19,11 +19,9 @@ class Banner extends React.Component {
     tiles[0].style.backgroundColor = "#202020";
     tiles[1].style.backgroundColor = "#202020";
     tiles[2].style.backgroundColor = "#202020";
-    tiles[3].style.backgroundColor = "#202020";
     tiles[0].style.color = "#C0C0C0";
     tiles[1].style.color = "#C0C0C0";
     tiles[2].style.color = "#C0C0C0";
-    tiles[3].style.color = "#C0C0C0";
     this.setState({colorTheme: 'dark'});
   }
 
@@ -34,11 +32,9 @@ class Banner extends React.Component {
     tiles[0].style.backgroundColor = "#7395AE";
     tiles[1].style.backgroundColor = "#7395AE";
     tiles[2].style.backgroundColor = "#7395AE";
-    tiles[3].style.backgroundColor = "#7395AE";
     tiles[0].style.color = "black";
     tiles[1].style.color = "black";
     tiles[2].style.color = "black";
-    tiles[3].style.color = "black";
     this.setState({ colorTheme: 'light' });
   }
 
