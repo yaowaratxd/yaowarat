@@ -13,8 +13,16 @@ class Review extends React.Component {
       reviewsShown: 2,
       sort: 'relevant',
       meta: {},
-      helpfulClick: false
+      helpfulClick: false,
+      starFilter: {
+        '5': false,
+        '4': false,
+        '3': false,
+        '2': false,
+        '1': false
+      }
     };
+
     this.readMore = this.readMore.bind(this);
     this.writeReview = this.writeReview.bind(this);
     this.sort = this.sort.bind(this);
@@ -34,17 +42,17 @@ class Review extends React.Component {
       });
   }
 
-  componentDidUpdate(prevProps) {
+  componentDidUpdate(prevProps, prevState) {
     if (prevProps.product !== this.props.product) {
       axios.get(`/api/reviews/${this.state.sort}/${this.props.product.id}`)
-      .then((reviews) => {
-        this.setState({ reviews: reviews.data.results });
-        this.getMeta();
-      })
-      .catch((err) => {
-        console.log('There was an Error with reviews');
-        console.log(err);
-      });
+        .then((reviews) => {
+          this.setState({ reviews: reviews.data.results });
+          this.getMeta();
+        })
+        .catch((err) => {
+          console.log('There was an Error with reviews');
+          console.log(err);
+        });
     }
   }
 
@@ -85,9 +93,23 @@ class Review extends React.Component {
     });
   }
 
-  helpfulButton(event) {
+  helpfulButton(event, id) {
     if (event.target.innerText === 'Yes') {
-      console.log('Yes was clicked!');
+      axios.put(`/reviews/${id}/helpful`)
+        .then((response) => {
+          axios.get(`/api/reviews/${this.state.sort}/${this.props.product.id}`)
+            .then((reviews) => {
+              this.setState({ reviews: reviews.data.results });
+              this.getMeta();
+            })
+            .catch((err) => {
+              console.log('There was an Error with reviews');
+              console.log(err);
+            });
+        })
+        .catch((err) => {
+          console.log('There was an Error: ', err);
+        });
       this.setState({ helpfulClick: true });
     } else {
       console.log('No was clicked!');
@@ -95,15 +117,57 @@ class Review extends React.Component {
     }
   }
 
-  starFilter() {
-    console.log('A star was clicked!');
+  starFilter(event) {
+    var starFilter = this.state.starFilter;
+    var target = event.target.innerText.charAt(0);
+    if (target === '5') {
+      if (starFilter['5'] === false) {
+        starFilter['5'] = true;
+        this.setState({ starFilter: starFilter })
+      } else {
+        starFilter['5'] = false
+        this.setState({ starFilter: starFilter })
+      }
+    } else if (target === '4') {
+      if (starFilter['4'] === false) {
+        starFilter['4'] = true;
+        this.setState({ starFilter: starFilter })
+      } else {
+        starFilter['4'] = false
+        this.setState({ starFilter: starFilter })
+      }
+    } else if (target === '3') {
+      if (starFilter['3'] === false) {
+        starFilter['3'] = true;
+        this.setState({ starFilter: starFilter })
+      } else {
+        starFilter['3'] = false
+        this.setState({ starFilter: starFilter })
+      }
+    } else if (target === '2') {
+      if (starFilter['2'] === false) {
+        starFilter['2'] = true;
+        this.setState({ starFilter: starFilter })
+      } else {
+        starFilter['2'] = false
+        this.setState({ starFilter: starFilter })
+      }
+    } else if (target === '1') {
+      if (starFilter['1'] === false) {
+        starFilter['1'] = true;
+        this.setState({ starFilter: starFilter })
+      } else {
+        starFilter['1'] = false
+        this.setState({ starFilter: starFilter })
+      }
+    }
   }
 
   render() {
     return (
       <div className="reviewContainer">
         <Overview className="reviewOverview" reviews={this.state.reviews} starFilter={this.starFilter} meta={this.state.meta} />
-        <ReviewList className="reviewList" readMore={this.readMore} writeReview={this.writeReview} reviews={this.state.reviews} reviewsShown={this.state.reviewsShown} sort={this.sort} sortType={this.state.sort} helpfulButton={this.helpfulButton} helpfulClick={this.state.helpfulClick} />
+        <ReviewList className="reviewList" readMore={this.readMore} writeReview={this.writeReview} reviews={this.state.reviews} reviewsShown={this.state.reviewsShown} sort={this.sort} sortType={this.state.sort} helpfulButton={this.helpfulButton} helpfulClick={this.state.helpfulClick} starFilter={this.state.starFilter} />
       </div>
     );
   }

@@ -52,12 +52,12 @@ class OneRelatedProduct extends React.Component {
       .catch(err => console.log(err));
   }
 
-  getOriginalReviews () {
+  getOriginalReviews() {
     axios.get(`/reviews/meta/${this.props.originalProduct.id}`)
-    .then((response) => {
-      this.setState({ mainProductRating: response.data });
-    })
-    .catch(err => console.log(err));
+      .then((response) => {
+        this.setState({ mainProductRating: response.data });
+      })
+      .catch(err => console.log(err));
   }
 
   handleShowModal() {
@@ -148,7 +148,7 @@ class OneRelatedProduct extends React.Component {
               </tbody>
             </table>
           </div>
-          <button onClick={() => this.setState({ showModal: false})}>Hide</button>
+          <button onClick={() => this.setState({ showModal: false })}>Hide</button>
         </div>
       </Comparing>
     ) : null);
@@ -176,18 +176,18 @@ class OneRelatedProduct extends React.Component {
         {modal}
         <div>
           Product category:
-          {this.props.product.category} <br/>
+          {this.props.product.category} <br />
         </div>
         <div>
           Product name:
           {this.props.product.name} <br/>
         </div>
         <div>
-          Price: {renderPrice(this.state.thisProductExtra, this.props.product)}<br/>
+          Price: {renderPrice(this.state.thisProductExtra, this.props.product)}<br />
         </div>
         <div>
           Rating:
-         {ratingDisplay}
+          {ratingDisplay}
         </div>
         <div>{this.props.comparison}</div>
 

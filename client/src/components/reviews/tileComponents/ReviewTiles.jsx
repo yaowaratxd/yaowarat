@@ -5,7 +5,28 @@ import Response from './Response.jsx';
 import StarValue from '../StartValue.jsx';
 
 const ReviewTiles = (props) => {
-  const reviews = props.reviews;
+  var filtered = (reviews, filter) => {
+    var newReviewList = [];
+    if (!filter['1'] && !filter['2'] && !filter['3'] && !filter['4'] && !filter['5']) {
+      return reviews;
+    }
+    for (var keys in filter) {
+      if (filter[keys]) {
+        for (var i = 0; i < reviews.length; i++) {
+          var cKey = keys;
+          var cReview = reviews[i];
+          var cRating = cReview.rating;
+          if (`${cRating}` === `${cKey}`) {
+            newReviewList.push(cReview);
+          }
+        }
+      }
+    }
+    return newReviewList;
+  };
+  var reviews = filtered(props.reviews, props.starFilter);
+  // console.log('These are the current reviews: ', reviews);
+
   if (reviews === undefined) {
     return <></>
   } else {
@@ -59,6 +80,7 @@ const ReviewTiles = (props) => {
       }
       return render;
     }
+
   }
 }
 

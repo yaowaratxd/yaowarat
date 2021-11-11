@@ -38,7 +38,7 @@ const App = () => {
   return (
     <div>
 
-        <Banner />
+      <Banner />
 
       <div className="widget">
         <Root>
@@ -56,9 +56,9 @@ const App = () => {
           <Reviews product={currentProduct} />
         </Root>
       </div>
-      <div className="widget">
+      {/* <div className="widget">
         <h3>Questions and Answers</h3>
-      </div>
+      </div> */}
     </div>
   );
 };
