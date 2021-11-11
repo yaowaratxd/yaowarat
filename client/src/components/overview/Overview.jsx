@@ -99,15 +99,15 @@ const Overview = (props) => {
     </ProductCartandStyleContainer> : ''
     }
   </OverviewContainer>
-  { imageSize >= 1 ? <>
+  { imageSize <= 1 ? <>
   <SloganContainer>
   <Slogan slogan={props.product.slogan} description={props.product.description} />
   <Checklist />
   </SloganContainer>
   <SocialWrapper>
-    <img src='/graphics/facebook.png' onClick={() => window.open(`https://www.facebook.com/sharer/sharer.php?u=${selectedImage.url}`, 'facebook-share-dialog', 'width=626,height=436') } />
-    <img src='/graphics/twitter.png' onClick={() => window.open('https://www.twitter.com/intent/tweet?url='+selectedImage.url,'twitter-share-dialog', 'width=626,height=436') } />
-    <img src='/graphics/pinterest.png' onClick={() => window.open('http://pinterest.com/pin/create/button/?url='+selectedImage.url,'pinterest-share-dialog', 'width=626,height=436') } />
+    <img src='/graphics/facebook.png' style={{ height: '50px', width: '50px' }} onClick={() => window.open(`https://www.facebook.com/sharer/sharer.php?u=${selectedImage.url}`, 'facebook-share-dialog', 'width=626,height=436') } />
+    <img src='/graphics/twitter.png' style={{ height: '50px', width: '50px' }} onClick={() => window.open('https://www.twitter.com/intent/tweet?url='+selectedImage.url,'twitter-share-dialog', 'width=626,height=436') } />
+    <img src='/graphics/pinterest.png' style={{ height: '50px', width: '50px' }} onClick={() => window.open('http://pinterest.com/pin/create/button/?url='+selectedImage.url,'pinterest-share-dialog', 'width=626,height=436') } />
     </SocialWrapper>
     </> : ''
 }

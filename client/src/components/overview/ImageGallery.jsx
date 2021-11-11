@@ -128,7 +128,7 @@ const ImageGallery = ({ allImages, selectedImage, setSelectedImage, styles, setS
       changeImageSize(2);
     } else {
       setExpandedImage(0);
-      changeImageSize(3);
+      changeImageSize(0);
     }
   };
 

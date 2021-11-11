@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import ReactDOM from 'react-dom';
 import Related from './components/related/index.jsx';
+import Banner from './components/Banner.jsx';
 
 
 import styled from 'styled-components';
@@ -36,20 +37,24 @@ const App = () => {
 
   return (
     <div>
-      <Root>
-        <Overview product={currentProduct} />
-      </Root>
+
+      <Banner />
+
       <div className="widget">
-      </div>
-      <div className="widget">
-        <h3>Ratings and Reviews</h3>
-      </div>
-      <div className="widget">
-        <h3>Questions and Answers</h3>
+        <Root>
+          <Overview product={currentProduct}/>
+        </Root>
       </div>
       <div className="widget">
         <br />
-        <h3><Related setCurrentProduct={setCurrentProduct} currentProduct={currentProduct} /></h3>
+        <Root>
+          <Related setCurrentProduct={setCurrentProduct} currentProduct={currentProduct} />
+        </Root>
+      </div>
+      <div className="widget">
+        <Root>
+          <Reviews product={currentProduct} />
+        </Root>
       </div>
     <Root>
       <Reviews product={currentProduct} />
