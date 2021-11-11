@@ -6073,6 +6073,70 @@ var CharSubmit = function CharSubmit(props) {
 
 /***/ }),
 
+/***/ "./client/src/components/reviews/submitreview/StarHover.jsx":
+/*!******************************************************************!*\
+  !*** ./client/src/components/reviews/submitreview/StarHover.jsx ***!
+  \******************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _unsupportedIterableToArray(arr) || _nonIterableSpread(); }
+
+function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+
+function _iterableToArray(iter) { if (typeof Symbol !== "undefined" && iter[Symbol.iterator] != null || iter["@@iterator"] != null) return Array.from(iter); }
+
+function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) return _arrayLikeToArray(arr); }
+
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+
+
+
+var StarHover = function StarHover(props) {
+  var value = props.rating;
+  var fullStar = '/graphics/fullstar.png';
+  var emptyStar = '/graphics/emptystar.png';
+  var starArray = [emptyStar, emptyStar, emptyStar, emptyStar, emptyStar];
+
+  var updateStar = function updateStar(event) {
+    console.log('A star was hovered'); // debugger;
+
+    event.target = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("img", {
+      src: fullStar,
+      height: "20px",
+      width: "20px",
+      alt: "rating stars"
+    });
+  };
+
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+    className: "submitstars"
+  }, _toConsumableArray(Array(5)).map(function (star, index) {
+    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("label", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("input", {
+      type: "radio",
+      name: "rating"
+    }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("img", {
+      src: emptyStar,
+      height: "20px",
+      width: "20px",
+      alt: "rating stars",
+      key: index,
+      onMouseOver: updateStar
+    }));
+  }));
+};
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (StarHover);
+
+/***/ }),
+
 /***/ "./client/src/components/reviews/submitreview/StarRating.jsx":
 /*!*******************************************************************!*\
   !*** ./client/src/components/reviews/submitreview/StarRating.jsx ***!
@@ -6086,11 +6150,13 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var _StartValue_jsx__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../StartValue.jsx */ "./client/src/components/reviews/StartValue.jsx");
+/* harmony import */ var _StarHover_jsx__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./StarHover.jsx */ "./client/src/components/reviews/submitreview/StarHover.jsx");
+
 
 
 
 var StarRating = function StarRating(props) {
-  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_StartValue_jsx__WEBPACK_IMPORTED_MODULE_1__["default"], {
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_StarHover_jsx__WEBPACK_IMPORTED_MODULE_2__["default"], {
     rating: 3
   }));
 };

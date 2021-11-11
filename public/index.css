@@ -152,3 +152,8 @@ form p {
   margin: 0% 0% 4% 0%;
   text-align: center;
 }
+
+/* Star Submit */
+input[name="rating"] {
+  display: none;
+}
