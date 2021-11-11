@@ -3458,7 +3458,7 @@ var ImageGallery = function ImageGallery(_ref) {
       changeImageSize(2);
     } else {
       setExpandedImage(0);
-      changeImageSize(3);
+      changeImageSize(0);
     }
   };
 
