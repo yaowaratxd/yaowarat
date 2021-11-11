@@ -39,7 +39,7 @@ class Overview extends React.Component {
   render() {
     return (
       <div className="reviewOverview">
-        <h4>Ratings & Reviews</h4>
+        <h4>Ratings & Reviews </h4>
         <StarRating avg={this.Average} />
         <Breakdown reviews={this.props.reviews} starFilter={this.props.starFilter} />
         <Recommended reviews={this.props.reviews} />
