@@ -5018,11 +5018,11 @@ var Review = /*#__PURE__*/function (_React$Component) {
       meta: {},
       helpfulClick: false,
       starFilter: {
-        '5': true,
-        '4': true,
-        '3': true,
-        '2': true,
-        '1': true
+        '5': false,
+        '4': false,
+        '3': false,
+        '2': false,
+        '1': false
       }
     };
     _this.readMore = _this.readMore.bind(_assertThisInitialized(_this));
@@ -5148,8 +5148,71 @@ var Review = /*#__PURE__*/function (_React$Component) {
     }
   }, {
     key: "starFilter",
-    value: function starFilter() {
-      console.log('A star was clicked!');
+    value: function starFilter(event) {
+      var starFilter = this.state.starFilter;
+      var target = event.target.innerText.charAt(0);
+
+      if (target === '5') {
+        if (starFilter['5'] === false) {
+          starFilter['5'] = true;
+          this.setState({
+            starFilter: starFilter
+          });
+        } else {
+          starFilter['5'] = false;
+          this.setState({
+            starFilter: starFilter
+          });
+        }
+      } else if (target === '4') {
+        if (starFilter['4'] === false) {
+          starFilter['4'] = true;
+          this.setState({
+            starFilter: starFilter
+          });
+        } else {
+          starFilter['4'] = false;
+          this.setState({
+            starFilter: starFilter
+          });
+        }
+      } else if (target === '3') {
+        if (starFilter['3'] === false) {
+          starFilter['3'] = true;
+          this.setState({
+            starFilter: starFilter
+          });
+        } else {
+          starFilter['3'] = false;
+          this.setState({
+            starFilter: starFilter
+          });
+        }
+      } else if (target === '2') {
+        if (starFilter['2'] === false) {
+          starFilter['2'] = true;
+          this.setState({
+            starFilter: starFilter
+          });
+        } else {
+          starFilter['2'] = false;
+          this.setState({
+            starFilter: starFilter
+          });
+        }
+      } else if (target === '1') {
+        if (starFilter['1'] === false) {
+          starFilter['1'] = true;
+          this.setState({
+            starFilter: starFilter
+          });
+        } else {
+          starFilter['1'] = false;
+          this.setState({
+            starFilter: starFilter
+          });
+        }
+      }
     }
   }, {
     key: "render",
@@ -5926,6 +5989,10 @@ __webpack_require__.r(__webpack_exports__);
 var ReviewTiles = function ReviewTiles(props) {
   var filtered = function filtered(reviews, filter) {
     var newReviewList = [];
+
+    if (!filter['1'] && !filter['2'] && !filter['3'] && !filter['4'] && !filter['5']) {
+      return reviews;
+    }
 
     for (var keys in filter) {
       if (filter[keys]) {
