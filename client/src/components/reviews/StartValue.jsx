@@ -3,11 +3,11 @@ import React from 'react';
 const Stars = (props) => {
   const value = props.rating;
 
-  const fullStar = '/client/src/resources/graphics/fullstar.png';
-  const threeQuarterStar = '/client/src/resources/graphics/threequarterstar.png';
-  const halfStar = '/client/src/resources/graphics/halfstar.png';
-  const quarterStar = '/client/src/resources/graphics/onequarterstar.png';
-  const emptyStar = '/client/src/resources/graphics/emptystar.png';
+  const fullStar = '/graphics/fullstar.png';
+  const threeQuarterStar = '/graphics/threequarterstar.png';
+  const halfStar = '/graphics/halfstar.png';
+  const quarterStar = '/graphics/onequarterstar.png';
+  const emptyStar = '/graphics/emptystar.png';
 
   const starArray = [emptyStar, emptyStar, emptyStar, emptyStar, emptyStar];
 
@@ -36,7 +36,7 @@ const Stars = (props) => {
 
   return (
     <div>
-      {starArray.map((star) => <img src={star} height="20px" width="20px" alt="rating stars" />)}
+      {starArray.map((star, index) => <img src={star} height="20px" width="20px" alt="rating stars" key={index} />)}
     </div>
   );
 };

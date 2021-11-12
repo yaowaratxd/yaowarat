@@ -37,7 +37,7 @@ const ReviewList = (props) => {
               <option value="helpful">Helpful</option>
             </select>
           </label></h5>
-        < ReviewTiles reviews={props.reviews} reviewsShown={props.reviewsShown} helpfulButton={props.helpfulButton} />
+        < ReviewTiles reviews={props.reviews} reviewsShown={props.reviewsShown} helpfulButton={props.helpfulButton} helpfulClick={props.helpfulClick} starFilter={props.starFilter} />
         <button type="button" onClick={props.readMore}>Read More</button>
         <button type="button" onClick={props.writeReview}>Submit Review</button>
       </div >
