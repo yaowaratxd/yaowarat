@@ -56,10 +56,6 @@ const App = () => {
           <Reviews product={currentProduct} />
         </Root>
       </div>
-    <Root>
-      <Reviews product={currentProduct} />
-    </Root>
-
     </div>
   );
 };
