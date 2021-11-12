@@ -6,6 +6,34 @@ import ImageGallery from './ImageGallery.jsx';
 import ProductDetail from './ProductDetail.jsx';
 import Styles from './Styles.jsx';
 import AddToCart from './AddToCart.jsx';
+import Slogan from './Slogan.jsx';
+import Checklist from './Checklist.jsx';
+import ClickCounter from '../ClickCounter.jsx';
+
+const ProductCartandStyleContainer = styled.div`
+display: flex;
+flex-direction: column;
+width: 40%;
+`;
+
+const OverviewContainer = styled.div`
+display: flex;
+justify-content: space-between;
+`;
+
+const SloganContainer = styled.div`
+display: flex;
+position: relative;
+top: -10vh;
+width: 100%;
+`;
+
+const SocialWrapper = styled.div`
+position: relative;
+top: -21vh;
+display: flex;
+justify-content: flex-start;
+`;
 
 const Overview = (props) => {
   const [product, setProduct] = useState({});
@@ -13,6 +41,7 @@ const Overview = (props) => {
   const [allImages, setAllImages] = useState([]);
   const [totalImages, setTotalImages] = useState([])
   const [styles, setStyles] = useState([]);
+  const [imageSize, setImageSize] = useState(0);
 
   const fetchImages = (productId, callback) => {
     axios.get(`/api/products/${productId}/styles`).then((results) => {
@@ -60,29 +89,29 @@ const Overview = (props) => {
       setTotalImages(allHolder);
     });
   }, [props.product]);
-  return <div >
-    <ImageGallery setSelectedStyle={setSelectedStyle} styles={styles} allImages={totalImages} selectedImage={selectedImage} setSelectedImage={setSelectedImage} />
-    <ProductDetail product={props.product} styles={styles} selectedImage={selectedImage} />
-    <Styles styles={styles} selectedImage={selectedImage} setSelectedStyle={setSelectedStyle} />
-    <br />
-    <br />
-    <br />
-    <br />
-    <br />
-    { props.product.slogan && props.product.slogan.length > 0 ? props.product.slogan : '' }
-    <br />
-    { props.product.description ? props.product.description : '' }
-    <br />
-    <img src='/graphics/facebook.png' onClick={() => window.open(`https://www.facebook.com/sharer/sharer.php?u=${selectedImage.url}`, 'facebook-share-dialog', 'width=626,height=436') } />
-    {/* <img src='/graphics/facebook.png' onClick={() => window.open('https://www.facebook.com/sharer/sharer.php?u='+encodeURIComponent(location.href),'facebook-share-dialog', 'width=626,height=436') } /> */}
-    <img src='/graphics/twitter.png' onClick={() => window.open('https://www.twitter.com/intent/tweet?url='+selectedImage.url,'twitter-share-dialog', 'width=626,height=436') } />
-    <img src='/graphics/pinterest.png' onClick={() => window.open('http://pinterest.com/pin/create/button/?url='+selectedImage.url,'pinterest-share-dialog', 'width=626,height=436') } />
-
-
+  return <div>
+  <OverviewContainer >
+    <ImageGallery changeImageSize={setImageSize} setSelectedStyle={setSelectedStyle} styles={styles} allImages={totalImages} selectedImage={selectedImage} setSelectedImage={setSelectedImage} />
+    { imageSize ===  0 ? <ProductCartandStyleContainer>
+      <ProductDetail product={props.product} styles={styles} selectedImage={selectedImage} />
+      <Styles styles={styles} selectedImage={selectedImage} setSelectedStyle={setSelectedStyle} />
+    </ProductCartandStyleContainer> : ''
+    }
+  </OverviewContainer>
+  { imageSize <= 1 ? <>
+  <SloganContainer>
+  <Slogan slogan={props.product.slogan} description={props.product.description} />
+  <Checklist />
+  </SloganContainer>
+  <SocialWrapper>
+    <img src='/graphics/facebook.png' style={{ height: '50px', width: '50px' }} onClick={() => window.open(`https://www.facebook.com/sharer/sharer.php?u=${selectedImage.url}`, 'facebook-share-dialog', 'width=626,height=436') } />
+    <img src='/graphics/twitter.png' style={{ height: '50px', width: '50px' }} onClick={() => window.open('https://www.twitter.com/intent/tweet?url='+selectedImage.url,'twitter-share-dialog', 'width=626,height=436') } />
+    <img src='/graphics/pinterest.png' style={{ height: '50px', width: '50px' }} onClick={() => window.open('http://pinterest.com/pin/create/button/?url='+selectedImage.url,'pinterest-share-dialog', 'width=626,height=436') } />
+    </SocialWrapper>
+    </> : ''
+}
   </div>
-
 };
 
 export default Overview;
 
-// style={{ width: '80vw' }}

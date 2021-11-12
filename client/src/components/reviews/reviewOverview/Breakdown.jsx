@@ -30,7 +30,7 @@ const Breakdown = ({ reviews, starFilter }) => {
 
 
   return (
-    <div className="breakdown">
+    <div className="breakdown tan">
       <p>Breakdown</p>
 
       <div className="star">

@@ -2,9 +2,33 @@ import React from 'react';
 
 import Helpfulness from './Helpfulness.jsx';
 import Response from './Response.jsx';
+import StarValue from '../StartValue.jsx';
 
 const ReviewTiles = (props) => {
-  const reviews = props.reviews;
+  var filtered = (reviews, filter) => {
+    var newReviewList = [];
+    if (!filter) {
+      return reviews;
+    } else if (!filter['1'] && !filter['2'] && !filter['3'] && !filter['4'] && !filter['5']) {
+      return reviews;
+    }
+    for (var keys in filter) {
+      if (filter[keys]) {
+        for (var i = 0; i < reviews.length; i++) {
+          var cKey = keys;
+          var cReview = reviews[i];
+          var cRating = cReview.rating;
+          if (`${cRating}` === `${cKey}`) {
+            newReviewList.push(cReview);
+          }
+        }
+      }
+    }
+    return newReviewList;
+  };
+  var reviews = filtered(props.reviews, props.starFilter);
+  // console.log('These are the current reviews: ', reviews);
+
   if (reviews === undefined) {
     return <></>
   } else {
@@ -35,15 +59,15 @@ const ReviewTiles = (props) => {
       */
 
       return (
-        <div className="tile" key={index}>
-          <p>Rating: {review.rating}</p>
+        <div className="tile tan" key={index}>
+          <StarValue rating={review.rating} />
           <p>Date: {date}</p>
-          <p className="header" >header: {header}</p>
+          <p className="header" >Header: {header}</p>
           <p>Body: {review.body}</p>
-          <Helpfulness review={review} helpfulButton={props.helpfulButton} />
+          <Helpfulness review={review} helpfulButton={props.helpfulButton} helpfulClick={props.helpfulClick} />
           <p>UserName: {review.reviewer_name}</p>
           <Response review={review} />
-          <p>Recommended: {review.recommend ? 'I recommend this product' : ''}</p>
+          <p>Recommended: {review.recommend ? 'I recommend this product ' + `${String.fromCodePoint(0x2713)}` : ''}</p>
           {/* <img src={review.photos[0]} alt="Image" width="500" height="600"></img> */}
         </div>
       );
@@ -58,7 +82,10 @@ const ReviewTiles = (props) => {
       }
       return render;
     }
+
   }
 }
 
 export default ReviewTiles;
+
+// {String.fromCodePoint(0x1F5F8)}

@@ -8,8 +8,6 @@ const Stars = (props) => {
   const halfStar = '/graphics/halfstar.png';
   const quarterStar = '/graphics/onequarterstar.png';
   const emptyStar = '/graphics/emptystar.png';
-  // /home/pjjpb/hackreactor/yaowarat/public/resources/graphics/emptystar.png
-  // public/graphics/emptystar.png
 
   const starArray = [emptyStar, emptyStar, emptyStar, emptyStar, emptyStar];
 
@@ -35,10 +33,9 @@ const Stars = (props) => {
       starArray[fullStars + 1] = quarterStar;
     }
   }
-
   return (
     <div>
-      {starArray.map((star, i) => <img key={i} src={star} height="20px" width="20px" alt="rating stars" />)}
+      {starArray.map((star, index) => <img src={star} height="20px" width="20px" alt="rating stars" key={index} />)}
     </div>
   );
 };

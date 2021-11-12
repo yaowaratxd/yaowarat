@@ -1,47 +1,47 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import styled from 'styled-components';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+
+import colorScheme from '../../colorScheme.js';
+import ClickCounter from '../ClickCounter.jsx';
 
 const Tile = styled.img`
 height: 7vh;
 width:  7vw;
-border: 1px solid black;
+border: 1px solid ${colorScheme.tan};
 margin-bottom: 5px;
 `;
 
 const SelectedTile = styled.img`
 height: 7vh;
 width:  7vw;
-border: 1px solid black;
-border-bottom: 6px solid rebeccapurple;
+border: 3px solid ${colorScheme.darkGrey};
+border-bottom: 6px solid ${colorScheme.darkGrey};
 margin-bottom: 5px;
 `;
 const LeftRibbon = styled.div`
-width: 10vw;
+width: 7vw;
+left:   18vw;
 position: absolute;
-top: 5vh;
-left: 5%;
+top: 15vh;
 height: 60vh;
 overflow: scroll;
 z-index: 2;
+display: flex;
+justify-content: center;
 `;
+
 const ImageContainer = styled.div`
 width: 10vw;
 `;
+
 const BaseImage = styled.img`
 width: 40vw;
-position: absolute;
-top: 5vh;
-left: 5%;
-height: 60vh;
+height: 70vh;
 cursor: zoom-in;
 `;
 const BaseImageExpanded = styled.img`
 width: 70vw;
-position: absolute;
-top: 5vh;
-left: 5%;
 height: 60vh;
 z-index: 2;
 cursor: zoom-in;
@@ -57,20 +57,37 @@ cursor: zoom-out;
 const ClickyButton = styled.button`
 background-color: Transparent;
 border: none;
-color: rebeccapurple;
+color: ${colorScheme.darkGrey};
+height: 250%;
+width: 250%;
 `;
 const ExpandClickyButton = styled.button`
 background-color: Transparent;
 border: none;
-color: rebeccapurple;
+color: ${colorScheme.darkGrey};
 position: relative;
-right: 5vw;
-top: 5vh;
 z-index: 2;
 `;
 
-const ImageGallery = ({ allImages, selectedImage, setSelectedImage, styles, setSelectedStyle }) => {
+const LeftButton = styled.div`
+position: relative;
+top: 25vh;
+left: 25vw;
+`;
+const RightButton = styled.div`
+position: relative;
+top: 25vh;
+left: 50vw;
+`;
+const ExpandButton = styled.div`
+position: relative;
+top: -85vh;
+left: 35vw;
+`;
+
+const ImageGallery = ({ allImages, selectedImage, setSelectedImage, styles, setSelectedStyle, changeImageSize }) => {
   const [expandedImage, setExpandedImage] = useState(0);
+  let x = 0, y = 0;
 
   const handleClickLeft = () => {
     for (let i = 0; i < allImages.length; ++i) {
@@ -105,30 +122,31 @@ const ImageGallery = ({ allImages, selectedImage, setSelectedImage, styles, setS
   const changeExpansion = () => {
     if (expandedImage === 0) {
       setExpandedImage(1)
+      changeImageSize(1);
     } else if (expandedImage === 1) {
       setExpandedImage(2);
+      changeImageSize(2);
     } else {
       setExpandedImage(0);
+      changeImageSize(0);
     }
   };
 
   const renderLeftButton = () => {
     if (allImages.length > 0) {
-      return allImages[0][0].url === selectedImage.url ? '' : <ClickyButton onClick={handleClickLeft}>&#10094;</ClickyButton>;
+      return allImages[0][0].url === selectedImage.url ? '' : <ClickyButton onClick={handleClickLeft}><h1>{'<'}</h1></ClickyButton>;
     }
   };
   const renderRightButton = () => {
     let len = allImages.length - 1
     if (allImages.length > 0) {
-      return allImages[len][allImages[len].length - 1].url === selectedImage.url ? '' : <ClickyButton onClick={handleClickRight}>&#10095;</ClickyButton>;
+      return allImages[len][allImages[len].length - 1].url === selectedImage.url ? '' : <ClickyButton onClick={handleClickRight}><h1>{'>'}</h1></ClickyButton>;
     }
   };
 
   const handleTileClick = ({ url, id, thumbnail }) => {
     const obj = Object.assign({ url, id }, saveDiscount());
-    // console.log(obj);
     setSelectedImage(obj);
-    // setSelectedStyle(Object.assign({ url: thumbnail, image: url }, saveDiscount()));
   };
 
   const saveDiscount = () => {
@@ -143,28 +161,31 @@ const ImageGallery = ({ allImages, selectedImage, setSelectedImage, styles, setS
     }
     return { id, salePrice }
   }
+  const handleMouse = (event) => {
+      window.scrollBy(event.clientX - x, event.clientY - y);
+      x = event.clientX;
+      y = event.clientY;
+  };
   return <div>
     <div>
-  { renderLeftButton() }
-        { expandedImage === 0 ?  <BaseImage onClick={changeExpansion} src={selectedImage.url} /> : expandedImage === 1 ? <BaseImageExpanded onClick={changeExpansion} src={selectedImage.url} /> : <BaseImageExploded  onClick={changeExpansion} src={selectedImage.url} /> }
-        {/* <ClickyButton onClick={handleClickRight}>Right</ClickyButton>
-         */}
-        { renderRightButton() }
-        <ExpandClickyButton onClick={changeExpansion}> Expand</ExpandClickyButton>
-        <LeftRibbon>
+      <LeftButton>
+        {/* { renderLeftButton() } onMouseMove={(e) => handleMouse(e)} */}
+      </LeftButton>
+        { expandedImage === 0 ?  <BaseImage onClick={changeExpansion} src={selectedImage.url} /> : expandedImage === 1 ? <BaseImageExpanded onClick={changeExpansion} src={selectedImage.url} /> : <BaseImageExploded   onClick={changeExpansion} src={selectedImage.url} /> }
+         <RightButton>
+        {/* { renderRightButton() } */}
+        </RightButton>
+        <ExpandButton>
+        <ExpandClickyButton onClick={changeExpansion}> <h1>{'[ ]'}</h1> </ExpandClickyButton>
+        </ExpandButton>
+        { expandedImage <= 1 ? <LeftRibbon>
           <ImageContainer>
-          {/* { allImages.map((im) => im.url === selectedImage ? <SelectedTile onClick={() => setSelectedImage(im.url)} key={im.thumbnail_url} src={im.thumbnail_url} /> : <Tile onClick={() => setSelectedImage(im.url)} key={im.thumbnail_url} src={im.thumbnail_url} /> )
-          } */}
           { allImages.map((imag) => imag.map((im) => im.url === selectedImage.url  ? <SelectedTile id='selectedTile' onClick={() => handleTileClick({ url: im.url, id: im.id, thumbnail: im.thumbnail_url })} key={im.thumbnail_url} src={im.thumbnail_url} /> : <Tile onClick={() => handleTileClick({ url: im.url, id: im.id, thumbnail: im.thumbnail_url  })} key={im.thumbnail_url} src={im.thumbnail_url} /> )
           )}
         </ImageContainer>
-        </LeftRibbon>
+        </LeftRibbon> : '' }
       </div>
   </div>
 };
 
 export default ImageGallery;
-
-{/* <div><svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="angle-left" class="svg-inline--fa fa-angle-left" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 512"><path fill="currentColor" d="M192 448c-8.188 0-16.38-3.125-22.62-9.375l-160-160c-12.5-12.5-12.5-32.75 0-45.25l160-160c12.5-12.5 32.75-12.5 45.25 0s12.5 32.75 0 45.25L77.25 256l137.4 137.4c12.5 12.5 12.5 32.75 0 45.25C208.4 444.9 200.2 448 192 448z"></path></svg>
-
-*/}
