@@ -56,9 +56,10 @@ const App = () => {
           <Reviews product={currentProduct} />
         </Root>
       </div>
-      {/* <div className="widget">
-        <h3>Questions and Answers</h3>
-      </div> */}
+    <Root>
+      <Reviews product={currentProduct} />
+    </Root>
+
     </div>
   );
 };

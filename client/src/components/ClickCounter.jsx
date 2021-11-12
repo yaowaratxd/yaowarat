@@ -25,8 +25,5 @@ class ClickCounter extends React.Component {
   }
 }
 
-// const ClickCounter = (Component) => props =>
-//   <Component { ...props } onClick={(e) => console.log(`clicked ${e.target}`)} />
-
 
 export default ClickCounter;

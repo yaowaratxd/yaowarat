@@ -37,7 +37,7 @@ width: 10vw;
 
 const BaseImage = styled.img`
 width: 40vw;
-height: 75vh;
+height: 70vh;
 cursor: zoom-in;
 `;
 const BaseImageExpanded = styled.img`
@@ -85,8 +85,9 @@ top: -85vh;
 left: 35vw;
 `;
 
-const ImageGallery = ({ allImages, selectedImage, setSelectedImage, styles, setSelectedStyle }) => {
+const ImageGallery = ({ allImages, selectedImage, setSelectedImage, styles, setSelectedStyle, changeImageSize }) => {
   const [expandedImage, setExpandedImage] = useState(0);
+  let x = 0, y = 0;
 
   const handleClickLeft = () => {
     for (let i = 0; i < allImages.length; ++i) {
@@ -121,10 +122,13 @@ const ImageGallery = ({ allImages, selectedImage, setSelectedImage, styles, setS
   const changeExpansion = () => {
     if (expandedImage === 0) {
       setExpandedImage(1)
+      changeImageSize(1);
     } else if (expandedImage === 1) {
       setExpandedImage(2);
+      changeImageSize(2);
     } else {
       setExpandedImage(0);
+      changeImageSize(0);
     }
   };
 
@@ -142,9 +146,7 @@ const ImageGallery = ({ allImages, selectedImage, setSelectedImage, styles, setS
 
   const handleTileClick = ({ url, id, thumbnail }) => {
     const obj = Object.assign({ url, id }, saveDiscount());
-    // console.log(obj);
     setSelectedImage(obj);
-    // setSelectedStyle(Object.assign({ url: thumbnail, image: url }, saveDiscount()));
   };
 
   const saveDiscount = () => {
@@ -159,36 +161,31 @@ const ImageGallery = ({ allImages, selectedImage, setSelectedImage, styles, setS
     }
     return { id, salePrice }
   }
+  const handleMouse = (event) => {
+      window.scrollBy(event.clientX - x, event.clientY - y);
+      x = event.clientX;
+      y = event.clientY;
+  };
   return <div>
     <div>
-      {/* <ClickCounter event='ImageGallery'> */}
       <LeftButton>
-        { renderLeftButton() }
+        {/* { renderLeftButton() } onMouseMove={(e) => handleMouse(e)} */}
       </LeftButton>
-        { expandedImage === 0 ?  <BaseImage onClick={changeExpansion} src={selectedImage.url} /> : expandedImage === 1 ? <BaseImageExpanded onClick={changeExpansion} src={selectedImage.url} /> : <BaseImageExploded  onClick={changeExpansion} src={selectedImage.url} /> }
-        {/* <ClickyButton onClick={handleClickRight}>Right</ClickyButton>
-         */}
+        { expandedImage === 0 ?  <BaseImage onClick={changeExpansion} src={selectedImage.url} /> : expandedImage === 1 ? <BaseImageExpanded onClick={changeExpansion} src={selectedImage.url} /> : <BaseImageExploded   onClick={changeExpansion} src={selectedImage.url} /> }
          <RightButton>
-        { renderRightButton() }
+        {/* { renderRightButton() } */}
         </RightButton>
         <ExpandButton>
         <ExpandClickyButton onClick={changeExpansion}> <h1>{'[ ]'}</h1> </ExpandClickyButton>
         </ExpandButton>
-        <LeftRibbon>
+        { expandedImage <= 1 ? <LeftRibbon>
           <ImageContainer>
-          {/* { allImages.map((im) => im.url === selectedImage ? <SelectedTile onClick={() => setSelectedImage(im.url)} key={im.thumbnail_url} src={im.thumbnail_url} /> : <Tile onClick={() => setSelectedImage(im.url)} key={im.thumbnail_url} src={im.thumbnail_url} /> )
-          } */}
           { allImages.map((imag) => imag.map((im) => im.url === selectedImage.url  ? <SelectedTile id='selectedTile' onClick={() => handleTileClick({ url: im.url, id: im.id, thumbnail: im.thumbnail_url })} key={im.thumbnail_url} src={im.thumbnail_url} /> : <Tile onClick={() => handleTileClick({ url: im.url, id: im.id, thumbnail: im.thumbnail_url  })} key={im.thumbnail_url} src={im.thumbnail_url} /> )
           )}
         </ImageContainer>
-        </LeftRibbon>
-      {/* </ClickCounter> */}
+        </LeftRibbon> : '' }
       </div>
   </div>
 };
 
 export default ImageGallery;
-
-{/* <div><svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="angle-left" class="svg-inline--fa fa-angle-left" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 512"><path fill="currentColor" d="M192 448c-8.188 0-16.38-3.125-22.62-9.375l-160-160c-12.5-12.5-12.5-32.75 0-45.25l160-160c12.5-12.5 32.75-12.5 45.25 0s12.5 32.75 0 45.25L77.25 256l137.4 137.4c12.5 12.5 12.5 32.75 0 45.25C208.4 444.9 200.2 448 192 448z"></path></svg>
-
-*/}
