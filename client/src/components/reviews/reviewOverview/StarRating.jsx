@@ -4,11 +4,11 @@ import StartValue from '../StartValue.jsx';
 const StarRating = (props) => {
   var rating = props.avg();
   return (
-    <>
-      <h3>{rating}</h3>
+    <div className="starRating">
+      <h3>{rating}  </h3>
       {/* Stars */}
       <StartValue rating={rating} />
-    </>
+    </div>
   );
 }
 

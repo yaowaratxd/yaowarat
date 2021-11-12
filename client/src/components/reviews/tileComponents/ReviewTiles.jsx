@@ -59,7 +59,7 @@ const ReviewTiles = (props) => {
       */
 
       return (
-        <div className="tile" key={index}>
+        <div className="tile tan" key={index}>
           <StarValue rating={review.rating} />
           <p>Date: {date}</p>
           <p className="header" >Header: {header}</p>
