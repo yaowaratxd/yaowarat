@@ -3853,7 +3853,7 @@ var ProductDetail = function ProductDetail(_ref) {
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(Container, null, ratings !== 'NaN' ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_StarValue_jsx__WEBPACK_IMPORTED_MODULE_2__["default"], {
     rating: ratings
   }) : '', " ", reviewTotal > 0 ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(Link, {
-    href: "#"
+    href: "#reviewContainer"
   }, "read all ", reviewTotal, " reviews...") : '', /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h5", null, product.category), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h2", null, product.name), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h6", null, renderPrice));
 };
 
@@ -5285,6 +5285,7 @@ var Review = /*#__PURE__*/function (_React$Component) {
     key: "render",
     value: function render() {
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+        id: "reviewContainer",
         className: "reviewContainer"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_reviewOverview_Overview_jsx__WEBPACK_IMPORTED_MODULE_3__["default"], {
         className: "reviewOverview",

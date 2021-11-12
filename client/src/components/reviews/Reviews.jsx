@@ -165,7 +165,7 @@ class Review extends React.Component {
 
   render() {
     return (
-      <div className="reviewContainer">
+      <div id='reviewContainer' className="reviewContainer">
         <Overview className="reviewOverview" reviews={this.state.reviews} starFilter={this.starFilter} meta={this.state.meta} />
         <ReviewList className="reviewList" readMore={this.readMore} writeReview={this.writeReview} reviews={this.state.reviews} reviewsShown={this.state.reviewsShown} sort={this.sort} sortType={this.state.sort} helpfulButton={this.helpfulButton} helpfulClick={this.state.helpfulClick} starFilter={this.state.starFilter} />
       </div>

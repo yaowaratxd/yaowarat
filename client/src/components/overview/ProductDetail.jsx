@@ -41,7 +41,7 @@ const ProductDetail = ({ product, selectedImage, styles }) => {
 
   const renderPrice =  selectedImage.salePrice ? <div> <NewPrice> {product.default_price} </NewPrice> { selectedImage.salePrice } </div> : product.default_price;
   return <Container>
-   { ratings !== 'NaN' ?  <Stars rating={ratings} /> : '' } { reviewTotal > 0 ?  <Link href='#'>read all { reviewTotal } reviews...</Link>  : '' }
+   { ratings !== 'NaN' ?  <Stars rating={ratings} /> : '' } { reviewTotal > 0 ?  <Link href='#reviewContainer'>read all { reviewTotal } reviews...</Link>  : '' }
     <h5>{ product.category }</h5>
     <h2>{ product.name }</h2>
     <h6>{ renderPrice }</h6>
