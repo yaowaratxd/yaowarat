@@ -4978,11 +4978,12 @@ var ReviewList = function ReviewList(props) {
     type: "text",
     placeholder: "Ex: Jackson11@email.com"
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, "For authentication reasons, you will not be emailed"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", {
-    type: "submit",
-    value: "Submit"
-  }, "Submit")))))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", {
     onClick: props.writeReview
-  }, "Hide"))) : null;
+  }, "Cancel"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", {
+    type: "submit",
+    value: "Submit",
+    onClick: props.submitReview
+  }, "Submit")))))))) : null;
 
   if (!Array.isArray(props.reviews) || props.reviews.length === 0) {
     return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
@@ -5118,6 +5119,7 @@ var Review = /*#__PURE__*/function (_React$Component) {
     _this.sort = _this.sort.bind(_assertThisInitialized(_this));
     _this.helpfulButton = _this.helpfulButton.bind(_assertThisInitialized(_this));
     _this.starFilter = _this.starFilter.bind(_assertThisInitialized(_this));
+    _this.submitReview = _this.submitReview.bind(_assertThisInitialized(_this));
     return _this;
   }
 
@@ -5313,6 +5315,12 @@ var Review = /*#__PURE__*/function (_React$Component) {
       }
     }
   }, {
+    key: "submitReview",
+    value: function submitReview(event) {
+      event.preventDefault;
+      this.writeReview(event);
+    }
+  }, {
     key: "render",
     value: function render() {
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
@@ -5334,7 +5342,8 @@ var Review = /*#__PURE__*/function (_React$Component) {
         helpfulClick: this.state.helpfulClick,
         starFilter: this.state.starFilter,
         showModal: this.state.showModal,
-        meta: this.state.meta
+        meta: this.state.meta,
+        submitReview: this.submitReview
       }));
     }
   }]);

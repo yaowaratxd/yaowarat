@@ -61,13 +61,14 @@ const ReviewList = (props) => {
                   <br />
                   <input type="text" placeholder="Ex: Jackson11@email.com"></input>
                   <p>For authentication reasons, you will not be emailed</p>
-                  <button type="submit" value="Submit">Submit</button>
+                  <button onClick={props.writeReview}>Cancel</button>
+                  <button type="submit" value="Submit" onClick={props.submitReview} >Submit</button>
                 </form>
               </td>
             </tr>
           </tbody>
         </table>
-        <button onClick={props.writeReview}>Hide</button>
+
       </div>
     </SubmitModal>
   ) : null);

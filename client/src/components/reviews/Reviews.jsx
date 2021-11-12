@@ -29,6 +29,7 @@ class Review extends React.Component {
     this.sort = this.sort.bind(this);
     this.helpfulButton = this.helpfulButton.bind(this);
     this.starFilter = this.starFilter.bind(this);
+    this.submitReview = this.submitReview.bind(this);
   }
 
   componentDidMount() {
@@ -169,11 +170,16 @@ class Review extends React.Component {
     }
   }
 
+  submitReview(event) {
+    event.preventDefault;
+    this.writeReview(event);
+  }
+
   render() {
     return (
       <div className="reviewContainer">
         <Overview className="reviewOverview" reviews={this.state.reviews} starFilter={this.starFilter} meta={this.state.meta} />
-        <ReviewList className="reviewList" readMore={this.readMore} writeReview={this.writeReview} reviews={this.state.reviews} reviewsShown={this.state.reviewsShown} sort={this.sort} sortType={this.state.sort} helpfulButton={this.helpfulButton} helpfulClick={this.state.helpfulClick} starFilter={this.state.starFilter} showModal={this.state.showModal} meta={this.state.meta} />
+        <ReviewList className="reviewList" readMore={this.readMore} writeReview={this.writeReview} reviews={this.state.reviews} reviewsShown={this.state.reviewsShown} sort={this.sort} sortType={this.state.sort} helpfulButton={this.helpfulButton} helpfulClick={this.state.helpfulClick} starFilter={this.state.starFilter} showModal={this.state.showModal} meta={this.state.meta} submitReview={this.submitReview} />
       </div>
     );
   }
