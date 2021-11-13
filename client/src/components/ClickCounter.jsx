@@ -1,17 +1,19 @@
 import React from 'react';
+import axios from 'axios';
 
 class ClickCounter extends React.Component {
   state = {
     clicks: []
   };
   onClick = (e) => {
+
     let newClick = {
-      module: this.props.event,
-      time: Date.now(),
-      element: e.target,
+      widget: this.props.event,
+      time: String(Date.now()),
+      element: String(e.target),
     }
     this.setState({ clicks: [...this.state.clicks, newClick]});
-    console.log(this.state);
+    axios.post('/api/interactions', newClick);
   }
   mapOverChildren(children) {
     const { onClick } = this;

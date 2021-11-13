@@ -3045,6 +3045,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_1__);
 function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _unsupportedIterableToArray(arr) || _nonIterableSpread(); }
@@ -3083,6 +3085,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
 
 
+
 var ClickCounter = /*#__PURE__*/function (_React$Component) {
   _inherits(ClickCounter, _React$Component);
 
@@ -3105,16 +3108,16 @@ var ClickCounter = /*#__PURE__*/function (_React$Component) {
 
     _defineProperty(_assertThisInitialized(_this), "onClick", function (e) {
       var newClick = {
-        module: _this.props.event,
-        time: Date.now(),
-        element: e.target
+        widget: _this.props.event,
+        time: String(Date.now()),
+        element: String(e.target)
       };
 
       _this.setState({
         clicks: [].concat(_toConsumableArray(_this.state.clicks), [newClick])
       });
 
-      console.log(_this.state);
+      axios__WEBPACK_IMPORTED_MODULE_1___default().post('/api/interactions', newClick);
     });
 
     return _this;

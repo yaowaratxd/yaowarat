@@ -100,6 +100,11 @@ app.put('/reviews/:review_id/helpful', async (req, res) => {
   });
 });
 
+app.post('/api/interactions', catchAsync(async (req, res) => {
+  const result = await axios.post(`${baseURL}/interactions`, req.body);
+  console.log(result);
+}));
+
 
 app.listen(port, () => {
   console.log(`Express server listening on port ${port}`);
