@@ -1,5 +1,5 @@
 
-# Gratful Goods
+# Grateful Goods
 ### Table of Contents
 1. [General Info](#🌴-General-Info)
 2. [Demo](#✨-Demo)
